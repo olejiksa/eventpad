@@ -3,27 +3,44 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB9978132430925800DD5663 /* BigButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9978122430925800DD5663 /* BigButton.swift */; };
+		EB997816243096BB00DD5663 /* KeyboardAdjuster in Frameworks */ = {isa = PBXBuildFile; productRef = EB997815243096BB00DD5663 /* KeyboardAdjuster */; };
+		EB9978182430995B00DD5663 /* FormHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9978172430995B00DD5663 /* FormHelper.swift */; };
+		EB99781A2431FEA800DD5663 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9978192431FEA800DD5663 /* Utils.swift */; };
+		EB99781C24320A4200DD5663 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB99781B24320A4200DD5663 /* UserDefaultsService.swift */; };
 		EBF87440242F81330056623E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF8743F242F81330056623E /* AppDelegate.swift */; };
 		EBF87442242F81330056623E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF87441242F81330056623E /* SceneDelegate.swift */; };
-		EBF87444242F81330056623E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF87443242F81330056623E /* ViewController.swift */; };
-		EBF87447242F81330056623E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBF87445242F81330056623E /* Main.storyboard */; };
+		EBF87444242F81330056623E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF87443242F81330056623E /* MainViewController.swift */; };
 		EBF87449242F81370056623E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBF87448242F81370056623E /* Assets.xcassets */; };
 		EBF8744C242F81370056623E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBF8744A242F81370056623E /* LaunchScreen.storyboard */; };
+		EBF87454242F830D0056623E /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBF87453242F830D0056623E /* MainView.xib */; };
+		EBF87457242F84FA0056623E /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF87455242F84FA0056623E /* AuthViewController.swift */; };
+		EBF87458242F84FA0056623E /* AuthView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBF87456242F84FA0056623E /* AuthView.xib */; };
+		EBF8745B242F85B00056623E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF87459242F85B00056623E /* SignUpViewController.swift */; };
+		EBF8745C242F85B00056623E /* SignUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBF8745A242F85B00056623E /* SignUpView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EB9978122430925800DD5663 /* BigButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigButton.swift; sourceTree = "<group>"; };
+		EB9978172430995B00DD5663 /* FormHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormHelper.swift; sourceTree = "<group>"; };
+		EB9978192431FEA800DD5663 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		EB99781B24320A4200DD5663 /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
 		EBF8743C242F81330056623E /* Eventpad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eventpad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBF8743F242F81330056623E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBF87441242F81330056623E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EBF87443242F81330056623E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		EBF87446242F81330056623E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EBF87443242F81330056623E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		EBF87448242F81370056623E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBF8744B242F81370056623E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EBF8744D242F81370056623E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EBF87453242F830D0056623E /* MainView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
+		EBF87455242F84FA0056623E /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		EBF87456242F84FA0056623E /* AuthView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthView.xib; sourceTree = "<group>"; };
+		EBF87459242F85B00056623E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		EBF8745A242F85B00056623E /* SignUpView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB997816243096BB00DD5663 /* KeyboardAdjuster in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,10 +74,18 @@
 		EBF8743E242F81330056623E /* Eventpad */ = {
 			isa = PBXGroup;
 			children = (
+				EB9978122430925800DD5663 /* BigButton.swift */,
+				EB9978172430995B00DD5663 /* FormHelper.swift */,
+				EB99781B24320A4200DD5663 /* UserDefaultsService.swift */,
+				EB9978192431FEA800DD5663 /* Utils.swift */,
 				EBF8743F242F81330056623E /* AppDelegate.swift */,
 				EBF87441242F81330056623E /* SceneDelegate.swift */,
-				EBF87443242F81330056623E /* ViewController.swift */,
-				EBF87445242F81330056623E /* Main.storyboard */,
+				EBF87443242F81330056623E /* MainViewController.swift */,
+				EBF87453242F830D0056623E /* MainView.xib */,
+				EBF87455242F84FA0056623E /* AuthViewController.swift */,
+				EBF87456242F84FA0056623E /* AuthView.xib */,
+				EBF87459242F85B00056623E /* SignUpViewController.swift */,
+				EBF8745A242F85B00056623E /* SignUpView.xib */,
 				EBF87448242F81370056623E /* Assets.xcassets */,
 				EBF8744A242F81370056623E /* LaunchScreen.storyboard */,
 				EBF8744D242F81370056623E /* Info.plist */,
@@ -83,6 +109,9 @@
 			dependencies = (
 			);
 			name = Eventpad;
+			packageProductDependencies = (
+				EB997815243096BB00DD5663 /* KeyboardAdjuster */,
+			);
 			productName = Eventpad;
 			productReference = EBF8743C242F81330056623E /* Eventpad.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +140,9 @@
 				Base,
 			);
 			mainGroup = EBF87433242F81330056623E;
+			packageReferences = (
+				EB997814243096BB00DD5663 /* XCRemoteSwiftPackageReference "KeyboardAdjuster" */,
+			);
 			productRefGroup = EBF8743D242F81330056623E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -125,9 +157,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBF8745C242F85B00056623E /* SignUpView.xib in Resources */,
+				EBF87458242F84FA0056623E /* AuthView.xib in Resources */,
+				EBF87454242F830D0056623E /* MainView.xib in Resources */,
 				EBF8744C242F81370056623E /* LaunchScreen.storyboard in Resources */,
 				EBF87449242F81370056623E /* Assets.xcassets in Resources */,
-				EBF87447242F81330056623E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +172,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF87444242F81330056623E /* ViewController.swift in Sources */,
+				EBF87457242F84FA0056623E /* AuthViewController.swift in Sources */,
+				EBF87444242F81330056623E /* MainViewController.swift in Sources */,
+				EB9978132430925800DD5663 /* BigButton.swift in Sources */,
 				EBF87440242F81330056623E /* AppDelegate.swift in Sources */,
+				EB9978182430995B00DD5663 /* FormHelper.swift in Sources */,
+				EB99781C24320A4200DD5663 /* UserDefaultsService.swift in Sources */,
 				EBF87442242F81330056623E /* SceneDelegate.swift in Sources */,
+				EBF8745B242F85B00056623E /* SignUpViewController.swift in Sources */,
+				EB99781A2431FEA800DD5663 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		EBF87445242F81330056623E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EBF87446242F81330056623E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		EBF8744A242F81370056623E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -287,6 +319,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B2FMGUSH44;
 				INFOPLIST_FILE = Eventpad/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -294,7 +327,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.olejiksa.Eventpad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -305,6 +338,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B2FMGUSH44;
 				INFOPLIST_FILE = Eventpad/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -312,7 +346,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.olejiksa.Eventpad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -338,6 +372,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EB997814243096BB00DD5663 /* XCRemoteSwiftPackageReference "KeyboardAdjuster" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lionheart/KeyboardAdjuster.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EB997815243096BB00DD5663 /* KeyboardAdjuster */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EB997814243096BB00DD5663 /* XCRemoteSwiftPackageReference "KeyboardAdjuster" */;
+			productName = KeyboardAdjuster;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EBF87434242F81330056623E /* Project object */;
 }
