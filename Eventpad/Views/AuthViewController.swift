@@ -16,7 +16,6 @@ final class AuthViewController: UIViewController {
     @IBOutlet private weak var loginButton: BigButton!
     @IBOutlet private weak var loginField: UITextField!
     @IBOutlet private weak var passwordField: UITextField!
-    @IBOutlet private weak var rememberSwitch: UISwitch!
     
     private let userDefaultsService = UserDefaultsService()
     private var formHelper: FormHelper?
@@ -31,14 +30,17 @@ final class AuthViewController: UIViewController {
     
     private func setupNavigation() {
         navigationItem.title = "Вход"
-        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        let closeButton = UIBarButtonItem(barButtonSystemItem: .close,
+                                          target: self,
+                                          action: #selector(close))
+        navigationItem.rightBarButtonItem = closeButton
     }
     
     private func setupFormHelper() {
         let textFields: [UITextField] = [loginField, passwordField]
         
         formHelper = FormHelper(textFields: textFields,
-                                requiredTextFields: textFields,
                                 button: loginButton,
                                 stackView: UIStackView())
     }
@@ -50,19 +52,19 @@ final class AuthViewController: UIViewController {
     @IBAction private func loginDidTap() {
         loginButton.showLoading()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.userDefaultsService.set(self.rememberSwitch.isOn)
-            
-            let vc = MainViewController()
-            Utils.hostViewController(vc)
-            
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.userDefaultsService.set()
             self.loginButton.hideLoading()
+            self.close()
         }
     }
     
     @IBAction private func signUpDidTap() {
         let vc = SignUpViewController()
-        let nvc = UINavigationController(rootViewController: vc)
-        present(nvc, animated: true)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc private func close() {
+        dismiss(animated: true)
     }
 }

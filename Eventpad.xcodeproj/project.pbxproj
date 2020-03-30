@@ -10,8 +10,9 @@
 		EB9978132430925800DD5663 /* BigButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9978122430925800DD5663 /* BigButton.swift */; };
 		EB997816243096BB00DD5663 /* KeyboardAdjuster in Frameworks */ = {isa = PBXBuildFile; productRef = EB997815243096BB00DD5663 /* KeyboardAdjuster */; };
 		EB9978182430995B00DD5663 /* FormHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9978172430995B00DD5663 /* FormHelper.swift */; };
-		EB99781A2431FEA800DD5663 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9978192431FEA800DD5663 /* Utils.swift */; };
 		EB99781C24320A4200DD5663 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB99781B24320A4200DD5663 /* UserDefaultsService.swift */; };
+		EB9978202432890300DD5663 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB99781E2432890300DD5663 /* AccountViewController.swift */; };
+		EB9978212432890300DD5663 /* AccountView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB99781F2432890300DD5663 /* AccountView.xib */; };
 		EBF87440242F81330056623E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF8743F242F81330056623E /* AppDelegate.swift */; };
 		EBF87442242F81330056623E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF87441242F81330056623E /* SceneDelegate.swift */; };
 		EBF87444242F81330056623E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF87443242F81330056623E /* MainViewController.swift */; };
@@ -27,8 +28,9 @@
 /* Begin PBXFileReference section */
 		EB9978122430925800DD5663 /* BigButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigButton.swift; sourceTree = "<group>"; };
 		EB9978172430995B00DD5663 /* FormHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormHelper.swift; sourceTree = "<group>"; };
-		EB9978192431FEA800DD5663 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		EB99781B24320A4200DD5663 /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
+		EB99781E2432890300DD5663 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		EB99781F2432890300DD5663 /* AccountView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountView.xib; sourceTree = "<group>"; };
 		EBF8743C242F81330056623E /* Eventpad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eventpad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBF8743F242F81330056623E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBF87441242F81330056623E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +57,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EB99781D243244A400DD5663 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EBF87443242F81330056623E /* MainViewController.swift */,
+				EBF87453242F830D0056623E /* MainView.xib */,
+				EBF87455242F84FA0056623E /* AuthViewController.swift */,
+				EBF87456242F84FA0056623E /* AuthView.xib */,
+				EBF87459242F85B00056623E /* SignUpViewController.swift */,
+				EBF8745A242F85B00056623E /* SignUpView.xib */,
+				EB99781E2432890300DD5663 /* AccountViewController.swift */,
+				EB99781F2432890300DD5663 /* AccountView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		EBF87433242F81330056623E = {
 			isa = PBXGroup;
 			children = (
@@ -74,18 +91,12 @@
 		EBF8743E242F81330056623E /* Eventpad */ = {
 			isa = PBXGroup;
 			children = (
+				EB99781D243244A400DD5663 /* Views */,
 				EB9978122430925800DD5663 /* BigButton.swift */,
 				EB9978172430995B00DD5663 /* FormHelper.swift */,
 				EB99781B24320A4200DD5663 /* UserDefaultsService.swift */,
-				EB9978192431FEA800DD5663 /* Utils.swift */,
 				EBF8743F242F81330056623E /* AppDelegate.swift */,
 				EBF87441242F81330056623E /* SceneDelegate.swift */,
-				EBF87443242F81330056623E /* MainViewController.swift */,
-				EBF87453242F830D0056623E /* MainView.xib */,
-				EBF87455242F84FA0056623E /* AuthViewController.swift */,
-				EBF87456242F84FA0056623E /* AuthView.xib */,
-				EBF87459242F85B00056623E /* SignUpViewController.swift */,
-				EBF8745A242F85B00056623E /* SignUpView.xib */,
 				EBF87448242F81370056623E /* Assets.xcassets */,
 				EBF8744A242F81370056623E /* LaunchScreen.storyboard */,
 				EBF8744D242F81370056623E /* Info.plist */,
@@ -161,6 +172,7 @@
 				EBF87458242F84FA0056623E /* AuthView.xib in Resources */,
 				EBF87454242F830D0056623E /* MainView.xib in Resources */,
 				EBF8744C242F81370056623E /* LaunchScreen.storyboard in Resources */,
+				EB9978212432890300DD5663 /* AccountView.xib in Resources */,
 				EBF87449242F81370056623E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -178,9 +190,9 @@
 				EBF87440242F81330056623E /* AppDelegate.swift in Sources */,
 				EB9978182430995B00DD5663 /* FormHelper.swift in Sources */,
 				EB99781C24320A4200DD5663 /* UserDefaultsService.swift in Sources */,
+				EB9978202432890300DD5663 /* AccountViewController.swift in Sources */,
 				EBF87442242F81330056623E /* SceneDelegate.swift in Sources */,
 				EBF8745B242F85B00056623E /* SignUpViewController.swift in Sources */,
-				EB99781A2431FEA800DD5663 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +336,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.olejiksa.Eventpad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -343,6 +356,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.olejiksa.Eventpad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

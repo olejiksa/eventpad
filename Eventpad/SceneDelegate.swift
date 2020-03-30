@@ -9,8 +9,6 @@
 import UIKit
 
 final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
-    private let userDefaultsService = UserDefaultsService()
     
     var window: UIWindow?
 
@@ -24,18 +22,10 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        if userDefaultsService.get() {
-            let vc = MainViewController()
-            let nvc = UINavigationController(rootViewController: vc)
-            
-            window?.rootViewController = nvc
-        } else {
-            let vc = AuthViewController()
-            let nvc = UINavigationController(rootViewController: vc)
-            
-            window?.rootViewController = nvc
-        }
+        let vc = MainViewController()
+        let nvc = UINavigationController(rootViewController: vc)
         
+        window?.rootViewController = nvc
         window?.makeKeyAndVisible()
         window?.windowScene = windowScene
     }

@@ -7,22 +7,22 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="Eventpad" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AccountViewController" customModule="Eventpad" customModuleProvider="target">
             <connections>
-                <outlet property="logoutButton" destination="xG4-2G-043" id="BXd-Kf-ORw"/>
-                <outlet property="view" destination="iN0-l3-epB" id="byo-oV-rbh"/>
+                <outlet property="logoutButton" destination="v6c-l3-RIX" id="iQ7-91-sXN"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xG4-2G-043" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v6c-l3-RIX" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
                     <rect key="frame" x="20" y="105" width="374" height="54"/>
                     <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="54" id="wo7-O4-TT8"/>
+                        <constraint firstAttribute="height" constant="54" id="ADG-tb-hQL"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                     <state key="normal" title="Выйти">
@@ -34,10 +34,10 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <action selector="logoutDidTap" destination="-1" eventType="touchUpInside" id="ZKE-QT-LvR"/>
+                        <action selector="logoutDidTap" destination="-1" eventType="touchUpInside" id="emz-zS-raJ"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Здесь будет имя пользователя" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dK5-w6-pEO">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Здесь будет имя пользователя" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nw6-SH-rKD">
                     <rect key="frame" x="20" y="64" width="374" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
@@ -46,14 +46,14 @@
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
-                <constraint firstItem="xG4-2G-043" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="195-al-rwC"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="dK5-w6-pEO" secondAttribute="trailing" constant="20" id="5gf-XN-0pW"/>
-                <constraint firstItem="dK5-w6-pEO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="8Xp-7o-Ysc"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="xG4-2G-043" secondAttribute="trailing" constant="20" id="ndr-zB-J4f"/>
-                <constraint firstItem="dK5-w6-pEO" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="sEq-Xj-EUS"/>
-                <constraint firstItem="xG4-2G-043" firstAttribute="top" secondItem="dK5-w6-pEO" secondAttribute="bottom" constant="20" id="wFc-DH-ybT"/>
+                <constraint firstItem="v6c-l3-RIX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="SK0-QB-Kch"/>
+                <constraint firstItem="v6c-l3-RIX" firstAttribute="top" secondItem="Nw6-SH-rKD" secondAttribute="bottom" constant="20" id="SwK-zQ-zBF"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Nw6-SH-rKD" secondAttribute="trailing" constant="20" id="ViL-WG-amp"/>
+                <constraint firstItem="Nw6-SH-rKD" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="mdx-kM-c69"/>
+                <constraint firstItem="Nw6-SH-rKD" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="tah-cT-3ha"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="v6c-l3-RIX" secondAttribute="trailing" constant="20" id="xXz-GG-EEq"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="139" y="120"/>
         </view>
     </objects>

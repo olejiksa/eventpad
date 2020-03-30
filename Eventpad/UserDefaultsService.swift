@@ -15,9 +15,9 @@ final class UserDefaultsService {
         return defaults.bool(forKey: "login")
     }
     
-    func set(_ value: Bool) {
+    func set() {
         let defaults = UserDefaults.standard
-        defaults.set(value, forKey: "login")
+        defaults.set(true, forKey: "login")
     }
     
     func clear() {

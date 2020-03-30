@@ -11,7 +11,7 @@ import UIKit
 final class FormHelper: NSObject {
  
     private let textFields: [UITextField]
-    private let requiredTextFields: [UITextField]
+    private let switches: [UISwitch]
     private let button: UIButton
     private var stackView: UIStackView
     
@@ -36,11 +36,11 @@ final class FormHelper: NSObject {
     }()
     
     init(textFields: [UITextField],
-         requiredTextFields: [UITextField],
+         switches: [UISwitch] = [],
          button: UIButton,
          stackView: UIStackView) {
         self.textFields = textFields
-        self.requiredTextFields = requiredTextFields
+        self.switches = switches
         self.button = button
         self.stackView = stackView
         
@@ -60,6 +60,12 @@ final class FormHelper: NSObject {
                                 for: .editingChanged)
             textField.delegate = self
         }
+        
+        for item in switches {
+            item.addTarget(self,
+                           action: #selector(checkForEmptyFields),
+                           for: .valueChanged)
+        }
     }
     
     @objc private func textFieldsIsNotEmpty(sender: UITextField) {
@@ -67,7 +73,7 @@ final class FormHelper: NSObject {
         checkForEmptyFields()
     }
     
-    private func checkForEmptyFields() {
+    @objc private func checkForEmptyFields() {
         var passwords: Set<String> = []
         
         for textField in textFields {
@@ -101,6 +107,15 @@ final class FormHelper: NSObject {
             let matched = passwords.count == 1
             matchLabel.isHidden = matched
             button.isEnabled = matched
+        }
+        
+        for item in switches {
+            guard item.isOn else {
+                button.isEnabled = false
+                return
+            }
+            
+            continue
         }
     }
     
