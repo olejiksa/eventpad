@@ -43,7 +43,7 @@ final class BigButton: UIButton {
     override var isHighlighted: Bool {
         didSet {
             if isHighlighted {
-                UIView.animate(withDuration: 0.7) {
+                UIView.animate(withDuration: 0.3) {
                     super.backgroundColor = super.backgroundColor?.withAlphaComponent(0.5)
                 }
             } else {

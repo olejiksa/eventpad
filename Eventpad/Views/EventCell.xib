@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EventCell" id="RIH-kc-SOH" customClass="EventCell" customModule="Eventpad" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="372"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="n5e-I8-swV">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="372"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="asg-qz-NHH">
+                        <rect key="frame" x="20" y="20" width="335" height="335"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Warsaw" translatesAutoresizingMaskIntoConstraints="NO" id="0gt-zl-gYQ">
+                                <rect key="frame" x="0.0" y="0.0" width="335" height="335"/>
+                            </imageView>
+                            <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="del-gM-QCG">
+                                <rect key="frame" x="0.0" y="245" width="335" height="90"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="День открытых дверей: программы бакалавриата и магистратуры" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTR-bo-eSw">
+                                        <rect key="frame" x="10" y="32" width="315" height="48"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31 марта | Варшава | Образование" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kc3-Xb-quk">
+                                        <rect key="frame" x="10" y="10" width="315" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="kc3-Xb-quk" secondAttribute="trailing" constant="10" id="DiP-Lb-0wp"/>
+                                    <constraint firstItem="nTR-bo-eSw" firstAttribute="leading" secondItem="del-gM-QCG" secondAttribute="leading" constant="10" id="Hhv-Nf-sse"/>
+                                    <constraint firstItem="kc3-Xb-quk" firstAttribute="leading" secondItem="del-gM-QCG" secondAttribute="leading" constant="10" id="JcC-hF-41a"/>
+                                    <constraint firstAttribute="trailing" secondItem="nTR-bo-eSw" secondAttribute="trailing" constant="10" id="LoW-o7-JTL"/>
+                                    <constraint firstAttribute="bottom" secondItem="nTR-bo-eSw" secondAttribute="bottom" constant="10" id="rdY-nU-el9"/>
+                                    <constraint firstAttribute="height" constant="90" id="uD5-VL-4uO"/>
+                                    <constraint firstItem="kc3-Xb-quk" firstAttribute="top" secondItem="del-gM-QCG" secondAttribute="top" constant="10" id="w9K-jt-81b"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="0gt-zl-gYQ" firstAttribute="leading" secondItem="asg-qz-NHH" secondAttribute="leading" id="CCl-vB-wfe"/>
+                            <constraint firstItem="0gt-zl-gYQ" firstAttribute="top" secondItem="asg-qz-NHH" secondAttribute="top" id="H4b-UT-ue2"/>
+                            <constraint firstItem="del-gM-QCG" firstAttribute="leading" secondItem="asg-qz-NHH" secondAttribute="leading" id="OVI-Zt-BoQ"/>
+                            <constraint firstAttribute="trailing" secondItem="del-gM-QCG" secondAttribute="trailing" id="Q5o-xh-Hnk"/>
+                            <constraint firstAttribute="bottom" secondItem="del-gM-QCG" secondAttribute="bottom" id="ZBN-kq-Vgi"/>
+                            <constraint firstAttribute="bottom" secondItem="0gt-zl-gYQ" secondAttribute="bottom" id="msb-dc-4Dv"/>
+                            <constraint firstAttribute="trailing" secondItem="0gt-zl-gYQ" secondAttribute="trailing" id="nON-We-raa"/>
+                            <constraint firstAttribute="width" secondItem="asg-qz-NHH" secondAttribute="height" multiplier="1:1" id="oWv-Ki-ZU6"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="asg-qz-NHH" firstAttribute="leading" secondItem="n5e-I8-swV" secondAttribute="leading" constant="20" id="Z0c-8u-eeU"/>
+                    <constraint firstItem="asg-qz-NHH" firstAttribute="top" secondItem="n5e-I8-swV" secondAttribute="top" constant="20" id="e3b-NK-3iT"/>
+                    <constraint firstAttribute="trailing" secondItem="asg-qz-NHH" secondAttribute="trailing" constant="20" id="gaN-NJ-LK2"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="375" height="375"/>
+            <connections>
+                <outlet property="imageView" destination="0gt-zl-gYQ" id="3VL-bd-KUQ"/>
+                <outlet property="view" destination="asg-qz-NHH" id="AOj-AM-JVt"/>
+            </connections>
+            <point key="canvasLocation" x="-20" y="215.02463054187194"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Warsaw" width="1699" height="1130"/>
+    </resources>
+</document>
