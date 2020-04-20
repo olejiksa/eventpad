@@ -15,23 +15,27 @@ final class FeedViewController: UIViewController {
     
     private let refreshControl = UIRefreshControl()
     
-    private lazy var sections: [Section] = [
-        EventSection(),
-        EventSection(),
-        EventSection(),
-        EventSection(),
-        EventSection(),
-        EventSection(),
-        EventSection(),
-        EventSection(),
-        EventSection(),
-        EventSection(),
-        EventSection(),
-        EventSection(),
-        EventSection(),
-        EventSection(),
-        EventSection(),
-        EventSection(),
+    private lazy var sections = [
+        EventSection(event: Event(id: 0,
+                                  title: "Название",
+                                  description: "...",
+                                  location: "Москва",
+                                  category: .noCategory,
+                                  tariffs: [],
+                                  dateStart: Date(),
+                                  dateEnd: Date(),
+                                  organizerID: 0,
+                                  isCancelled: false)),
+        EventSection(event: Event(id: 0,
+                                  title: "Название",
+                                  description: "...",
+                                  location: "Москва",
+                                  category: .noCategory,
+                                  tariffs: [],
+                                  dateStart: Date(),
+                                  dateEnd: Date(),
+                                  organizerID: 0,
+                                  isCancelled: false))
     ]
     
     private lazy var collectionView: UICollectionView = {
@@ -154,7 +158,8 @@ extension FeedViewController: UICollectionViewDataSource {
 
 extension FeedViewController: UICollectionViewDelegate {
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
         let viewController = EventDetailViewController()
         navigationController?.pushViewController(viewController, animated: true)
     }

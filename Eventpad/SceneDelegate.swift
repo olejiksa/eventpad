@@ -22,15 +22,15 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        let vc = MainViewController()
+        let vc = FeedViewController()
         let nvc = UINavigationController(rootViewController: vc)
         nvc.tabBarItem = UITabBarItem(title: "Афиша", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house.fill"))
         
-        let vc3 = MainViewController()
+        let vc3 = FeedViewController()
         let nvc3 = UINavigationController(rootViewController: vc3)
         nvc3.tabBarItem = UITabBarItem(title: "Создать", image: UIImage(systemName: "plus.circle"), selectedImage: UIImage(systemName: "plus.circle.fill"))
         
-        let vc2 = MainViewController()
+        let vc2 = FeedViewController()
         let nvc2 = UINavigationController(rootViewController: vc2)
         nvc2.tabBarItem = UITabBarItem(title: "Поиск", image: UIImage(systemName: "magnifyingglass"), selectedImage: UIImage(systemName: "magnifyingglass"))
         

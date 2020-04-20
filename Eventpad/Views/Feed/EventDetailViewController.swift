@@ -22,6 +22,19 @@ final class EventDetailViewController: UIViewController {
     private func setupNavigation() {
         navigationItem.title = "Событие"
         navigationItem.largeTitleDisplayMode = .never
+        
+        let shareImage = UIImage(systemName: "square.and.arrow.up")
+        let shareButton = UIBarButtonItem(image: shareImage,
+                                         style: .plain,
+                                         target: self,
+                                         action: #selector(shareDidTap))
+        
+        let favoriteImage = UIImage(systemName: "star")
+        let favoriteButton = UIBarButtonItem(image: favoriteImage,
+                                             style: .plain,
+                                             target: self,
+                                             action: #selector(shareDidTap))
+        navigationItem.rightBarButtonItems = [shareButton, favoriteButton]
     }
     
     @IBAction func registerDidTap() {
@@ -30,5 +43,9 @@ final class EventDetailViewController: UIViewController {
             let nvc = UINavigationController(rootViewController: vc)
             present(nvc, animated: true)
         }
+    }
+    
+    @objc private func shareDidTap() {
+        // todo
     }
 }

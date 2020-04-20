@@ -19,7 +19,13 @@ protocol Section {
 
 struct EventSection: Section {
     
+    private let cellID = "\(EventCell.self)"
+    let event: Event
     let numberOfItems = 1
+    
+    init(event: Event) {
+        self.event = event
+    }
 
     func layoutSection() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
@@ -35,7 +41,9 @@ struct EventSection: Section {
     }
 
     func configureCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: EventCell.self), for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? EventCell else { return .init() }
+        
+        cell.configure(with: event)
         return cell
     }
 }
