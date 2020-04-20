@@ -25,6 +25,8 @@ final class SignUpViewController: UIViewController {
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var signUpButton: BigButton!
     
+    private let alertService = AlertService()
+    private let requestSender = RequestSender()
     private let userDefaultsService = UserDefaultsService()
     private var formHelper: FormHelper?
     
@@ -77,14 +79,64 @@ final class SignUpViewController: UIViewController {
                                 stackView: stackView)
     }
     
-    @IBAction private func signUpDidTap() {
-        signUpButton.showLoading()
+    private func signUp(_ signUp: SignUp) {
+        let config = RequestFactory.signUp(signUp)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.userDefaultsService.set()
-            self.close()
-            self.signUpButton.hideLoading()
+        requestSender.send(config: config) { [weak self] result in
+            guard let self = self else { return }
+            
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let response):
+                    guard response.success else {
+                        self.signUpButton.hideLoading()
+                        
+                        let alert = self.alertService.alert(response.message)
+                        self.present(alert, animated: true)
+                        return
+                    }
+                    
+                    self.userDefaultsService.setToken(response.message)
+                    
+                    let user = User(email: signUp.email,
+                                    phone: signUp.phone,
+                                    name: signUp.name,
+                                    surname: signUp.surname)
+                    self.userDefaultsService.setUser(user)
+                    self.signUpButton.hideLoading()
+                    self.close()
+                    
+                case .failure(let error):
+                    self.signUpButton.hideLoading()
+                    
+                    let alert = self.alertService.alert(error.localizedDescription)
+                    self.present(alert, animated: true)
+                }
+            }
         }
+    }
+    
+    @IBAction private func signUpDidTap() {
+        guard
+            let username = loginField.text,
+            let password = passwordField.text,
+            let name = nameField.text,
+            let surname = surnameField.text,
+            let email = emailField.text,
+            let phone = phoneField.text
+        else { return }
+        
+        signUpButton.showLoading()
+
+        let deviceName = UIDevice.current.name
+        let signUp = SignUp(username: username,
+                            password: password,
+                            deviceName: deviceName,
+                            name: name,
+                            surname: surname,
+                            email: email,
+                            phone: phone)
+        self.signUp(signUp)
     }
     
     @objc private func close() {

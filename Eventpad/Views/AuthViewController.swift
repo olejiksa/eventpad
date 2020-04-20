@@ -17,6 +17,8 @@ final class AuthViewController: UIViewController {
     @IBOutlet private weak var loginField: UITextField!
     @IBOutlet private weak var passwordField: UITextField!
     
+    private let alertService = AlertService()
+    private let requestSender = RequestSender()
     private let userDefaultsService = UserDefaultsService()
     private var formHelper: FormHelper?
     
@@ -49,14 +51,50 @@ final class AuthViewController: UIViewController {
         scrollView.bottomAnchor.constraint(lessThanOrEqualTo: keyboardLayoutGuide.topAnchor).isActive = true
     }
     
+    private func login(username: String, password: String) {
+        let deviceName = UIDevice.current.name
+        let config = RequestFactory.login(username: username,
+                                          password: password,
+                                          deviceName: deviceName)
+        
+        requestSender.send(config: config) { [weak self] result in
+            guard let self = self else { return }
+            
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let response):
+                    guard response.success else {
+                        self.loginButton.hideLoading()
+                        
+                        let alert = self.alertService.alert(response.message)
+                        self.present(alert, animated: true)
+                        return
+                    }
+                    
+                    self.userDefaultsService.setToken(response.message)
+                    // setUser
+                    self.loginButton.hideLoading()
+                    self.close()
+                    
+                case .failure(let error):
+                    self.loginButton.hideLoading()
+                    
+                    let alert = self.alertService.alert(error.localizedDescription)
+                    self.present(alert, animated: true)
+                }
+            }
+        }
+    }
+    
     @IBAction private func loginDidTap() {
+        guard
+            let username = loginField.text,
+            let password = passwordField.text
+        else { return }
+        
         loginButton.showLoading()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.userDefaultsService.set()
-            self.loginButton.hideLoading()
-            self.close()
-        }
+        login(username: username, password: password)
     }
     
     @IBAction private func signUpDidTap() {

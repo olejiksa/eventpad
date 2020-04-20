@@ -2,14 +2,17 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AccountViewController" customModule="Eventpad" customModuleProvider="target">
             <connections>
-                <outlet property="logoutButton" destination="v6c-l3-RIX" id="iQ7-91-sXN"/>
+                <outlet property="emailButton" destination="wXz-VI-Tef" id="kyP-br-lYl"/>
+                <outlet property="fullNameLabel" destination="IuW-UA-hB6" id="oeT-ME-Vpb"/>
+                <outlet property="logoutButton" destination="3qV-ac-rio" id="rap-QH-Gqg"/>
+                <outlet property="phoneButton" destination="oS5-Gv-bFB" id="RDR-ce-HQb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,43 +21,159 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v6c-l3-RIX" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
-                    <rect key="frame" x="20" y="105" width="374" height="54"/>
-                    <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T2o-xc-HTH">
+                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="3Wm-nX-Qj7">
+                            <rect key="frame" x="20" y="15.5" width="100" height="99"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="3Wm-nX-Qj7" secondAttribute="height" multiplier="1:1" id="C7u-Ru-9jH"/>
+                                <constraint firstAttribute="height" constant="100" id="J3s-cU-O1U"/>
+                            </constraints>
+                        </imageView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="17.5" translatesAutoresizingMaskIntoConstraints="NO" id="Cqg-oL-OaU">
+                            <rect key="frame" x="20" y="132" width="374" height="190.5"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="S8Q-vj-cMG">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="119"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="tHw-q0-hrt">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="53.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Адрес электронной почты" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BG0-9a-Aui">
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wXz-VI-Tef">
+                                                    <rect key="frame" x="0.0" y="20.5" width="374" height="33"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <state key="normal" title="Адрес электронной почты"/>
+                                                    <connections>
+                                                        <action selector="emailDidTap" destination="-1" eventType="touchUpInside" id="ox1-2S-ORT"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="pcs-vx-CrG">
+                                            <rect key="frame" x="0.0" y="65.5" width="374" height="53.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Номер телефона" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9s2-Ff-wzz">
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oS5-Gv-bFB">
+                                                    <rect key="frame" x="0.0" y="20.5" width="374" height="33"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <state key="normal" title="Номер телефона"/>
+                                                    <connections>
+                                                        <action selector="phoneDidTap" destination="-1" eventType="touchUpInside" id="ZZq-GO-M2e"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                </stackView>
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drx-eh-lsz" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="128" width="374" height="54"/>
+                                    <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="54" id="HLQ-Ti-lgb"/>
+                                    </constraints>
+                                    <state key="normal" title="Транзакции">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </button>
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BTB-MU-yZa" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="128" width="374" height="54"/>
+                                    <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="54" id="Fv9-46-nUI"/>
+                                    </constraints>
+                                    <state key="normal" title="Повысить права">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3qV-ac-rio" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="136.5" width="374" height="54"/>
+                                    <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="54" id="rnO-rH-xag"/>
+                                    </constraints>
+                                    <state key="normal" title="Выйти">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="logoutDidTap" destination="-1" eventType="touchUpInside" id="inN-XB-zZJ"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="7wV-nk-Uy2">
+                            <rect key="frame" x="135" y="41" width="259" height="48"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Имя и фамилия" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IuW-UA-hB6">
+                                    <rect key="frame" x="0.0" y="0.0" width="259" height="20.5"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Обычная учетная запись" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZTv-9m-taw">
+                                    <rect key="frame" x="0.0" y="27.5" width="259" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
                     <constraints>
-                        <constraint firstAttribute="height" constant="54" id="ADG-tb-hQL"/>
+                        <constraint firstItem="3Wm-nX-Qj7" firstAttribute="top" secondItem="T2o-xc-HTH" secondAttribute="top" constant="15" id="C6p-AF-fQf"/>
+                        <constraint firstItem="7wV-nk-Uy2" firstAttribute="centerY" secondItem="3Wm-nX-Qj7" secondAttribute="centerY" id="C99-4e-xc1"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="3Wm-nX-Qj7" secondAttribute="trailing" constant="20" id="DPi-gX-p9e"/>
+                        <constraint firstItem="7wV-nk-Uy2" firstAttribute="leading" secondItem="3Wm-nX-Qj7" secondAttribute="trailing" constant="15" id="HuI-Ui-8RU"/>
+                        <constraint firstAttribute="bottom" secondItem="Cqg-oL-OaU" secondAttribute="bottom" constant="20" id="VJY-he-hjI"/>
+                        <constraint firstItem="Cqg-oL-OaU" firstAttribute="leading" secondItem="T2o-xc-HTH" secondAttribute="leading" constant="20" id="ZV5-Nf-bgG"/>
+                        <constraint firstAttribute="trailing" secondItem="Cqg-oL-OaU" secondAttribute="trailing" constant="20" id="j7U-yd-7r2"/>
+                        <constraint firstItem="Cqg-oL-OaU" firstAttribute="centerX" secondItem="T2o-xc-HTH" secondAttribute="centerX" id="lvu-hg-OKO"/>
+                        <constraint firstItem="3Wm-nX-Qj7" firstAttribute="leading" secondItem="T2o-xc-HTH" secondAttribute="leading" constant="20" id="nHt-Q5-fro"/>
+                        <constraint firstItem="Cqg-oL-OaU" firstAttribute="top" secondItem="3Wm-nX-Qj7" secondAttribute="bottom" constant="17" id="raP-5b-mBU"/>
+                        <constraint firstAttribute="trailing" secondItem="7wV-nk-Uy2" secondAttribute="trailing" constant="20" id="sud-O3-rob"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                    <state key="normal" title="Выйти">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                            <real key="value" value="10"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="logoutDidTap" destination="-1" eventType="touchUpInside" id="emz-zS-raJ"/>
-                    </connections>
-                </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Здесь будет имя пользователя" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nw6-SH-rKD">
-                    <rect key="frame" x="20" y="64" width="374" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                    <viewLayoutGuide key="contentLayoutGuide" id="zgd-XH-4y4"/>
+                    <viewLayoutGuide key="frameLayoutGuide" id="avs-bP-D6D"/>
+                </scrollView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
-                <constraint firstItem="v6c-l3-RIX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="SK0-QB-Kch"/>
-                <constraint firstItem="v6c-l3-RIX" firstAttribute="top" secondItem="Nw6-SH-rKD" secondAttribute="bottom" constant="20" id="SwK-zQ-zBF"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Nw6-SH-rKD" secondAttribute="trailing" constant="20" id="ViL-WG-amp"/>
-                <constraint firstItem="Nw6-SH-rKD" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="mdx-kM-c69"/>
-                <constraint firstItem="Nw6-SH-rKD" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="tah-cT-3ha"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="v6c-l3-RIX" secondAttribute="trailing" constant="20" id="xXz-GG-EEq"/>
+                <constraint firstItem="T2o-xc-HTH" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="PUj-pw-whR"/>
+                <constraint firstAttribute="bottom" secondItem="T2o-xc-HTH" secondAttribute="bottom" id="X4c-Jf-5PK"/>
+                <constraint firstItem="T2o-xc-HTH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="YCx-f9-Nim"/>
+                <constraint firstItem="T2o-xc-HTH" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="nRi-hh-OPa"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="139" y="120"/>
+            <point key="canvasLocation" x="139" y="108"/>
         </view>
     </objects>
+    <resources>
+        <image name="person.crop.circle" catalog="system" width="128" height="121"/>
+    </resources>
 </document>

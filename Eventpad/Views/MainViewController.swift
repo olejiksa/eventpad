@@ -77,13 +77,13 @@ final class MainViewController: UIViewController {
         let filterButton = UIBarButtonItem(image: filterImage,
                                            style: .plain,
                                            target: self,
-                                           action: #selector(userDidTap))
+                                           action: #selector(filterDidTap))
         
         let locationImage = UIImage(systemName: "location.circle")
         let locationButton = UIBarButtonItem(image: locationImage,
                                              style: .plain,
                                              target: self,
-                                             action: #selector(userDidTap))
+                                             action: #selector(filterDidTap))
         
         navigationItem.leftBarButtonItems = [locationButton, filterButton]
     }
@@ -105,9 +105,9 @@ final class MainViewController: UIViewController {
         collectionView.refreshControl = refreshControl
     }
     
-    @IBAction private func userDidTap() {
-        if userDefaultsService.get() {
-            let vc = AccountViewController()
+    @objc private func userDidTap() {
+        if let user = userDefaultsService.getUser() {
+            let vc = AccountViewController(user: user)
             let nvc = UINavigationController(rootViewController: vc)
             present(nvc, animated: true)
         } else {
@@ -115,6 +115,12 @@ final class MainViewController: UIViewController {
             let nvc = UINavigationController(rootViewController: vc)
             present(nvc, animated: true)
         }
+    }
+    
+    @objc private func filterDidTap() {
+        let vc = CategoriesViewController()
+        let nvc = UINavigationController(rootViewController: vc)
+        present(nvc, animated: true)
     }
     
     @objc private func refresh() {
