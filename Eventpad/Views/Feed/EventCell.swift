@@ -23,7 +23,11 @@ final class EventCell: UICollectionViewCell {
     }
     
     func configure(with event: Event) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE, MMM d"
+        let date = dateFormatter.string(from: event.dateStart)
+        
         titleLabel.text = event.title
-        subtitleLabel.text = "\(event.location) | \(event.category.description)"
+        subtitleLabel.text = "\(date) | \(event.location) | \(event.category.description)"
     }
 }

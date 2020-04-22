@@ -6,8 +6,19 @@
 //  Copyright © 2020 Oleg Samoylov. All rights reserved.
 //
 
-struct User {
+struct User: Decodable {
     
+    enum CodingKeys: String, CodingKey {
+        case id
+        case username = "login"
+        case email
+        case phone
+        case name
+        case surname
+    }
+    
+    let id: Int
+    let username: String
     let email: String
     let phone: String
     let name: String

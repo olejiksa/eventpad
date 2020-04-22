@@ -13,7 +13,7 @@ final class CategoriesViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     private let cellID = "\(UITableViewCell.self)"
-    private let categories: [String] = ["Без категории",
+    private let categories: [String] = ["Все",
                                         "Политика",
                                         "Общество",
                                         "Экономика",

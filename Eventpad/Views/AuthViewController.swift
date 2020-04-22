@@ -53,11 +53,13 @@ final class AuthViewController: UIViewController {
     
     private func login(username: String, password: String) {
         let deviceName = UIDevice.current.name
-        let config = RequestFactory.login(username: username,
-                                          password: password,
-                                          deviceName: deviceName)
         
-        requestSender.send(config: config) { [weak self] result in
+        let loginConfig = RequestFactory.login(username: username,
+                                               password: password,
+                                               deviceName: deviceName)
+        let userConfig = RequestFactory.user(username: username)
+        
+        requestSender.send(config: loginConfig) { [weak self] result in
             guard let self = self else { return }
             
             DispatchQueue.main.async {
@@ -72,9 +74,24 @@ final class AuthViewController: UIViewController {
                     }
                     
                     self.userDefaultsService.setToken(response.message)
-                    // setUser
-                    self.loginButton.hideLoading()
-                    self.close()
+                    self.requestSender.send(config: userConfig) { [weak self] result in
+                        guard let self = self else { return }
+                        
+                        DispatchQueue.main.async {
+                            switch result {
+                            case .success(let response):
+                                self.userDefaultsService.setUser(response)
+                                self.loginButton.hideLoading()
+                                self.close()
+                                
+                            case .failure(let error):
+                                self.loginButton.hideLoading()
+                                
+                                let alert = self.alertService.alert(error.localizedDescription)
+                                self.present(alert, animated: true)
+                            }
+                        }
+                    }
                     
                 case .failure(let error):
                     self.loginButton.hideLoading()

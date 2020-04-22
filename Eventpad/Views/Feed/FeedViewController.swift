@@ -17,7 +17,7 @@ final class FeedViewController: UIViewController {
     
     private lazy var sections = [
         EventSection(event: Event(id: 0,
-                                  title: "Название",
+                                  title: "День открытых дверей: программы магистратуры",
                                   description: "...",
                                   location: "Москва",
                                   category: .noCategory,
@@ -27,7 +27,7 @@ final class FeedViewController: UIViewController {
                                   organizerID: 0,
                                   isCancelled: false)),
         EventSection(event: Event(id: 0,
-                                  title: "Название",
+                                  title: "День открытых дверей: программы бакалавриата",
                                   description: "...",
                                   location: "Москва",
                                   category: .noCategory,
@@ -75,7 +75,13 @@ final class FeedViewController: UIViewController {
                                          style: .plain,
                                          target: self,
                                          action: #selector(userDidTap))
-        navigationItem.rightBarButtonItem = userButton
+        
+        let addImage = UIImage(systemName: "plus")
+        let addButton = UIBarButtonItem(image: addImage,
+                                        style: .plain,
+                                        target: self,
+                                        action: #selector(addDidTap))
+        navigationItem.rightBarButtonItems = [userButton, addButton]
         
         let filterImage = UIImage(systemName: "line.horizontal.3.decrease.circle")
         let filterButton = UIBarButtonItem(image: filterImage,
@@ -86,8 +92,8 @@ final class FeedViewController: UIViewController {
         let locationImage = UIImage(systemName: "location.circle")
         let locationButton = UIBarButtonItem(image: locationImage,
                                              style: .plain,
-                                             target: self,
-                                             action: #selector(filterDidTap))
+                                             target: nil,
+                                             action: nil)
         
         navigationItem.leftBarButtonItems = [locationButton, filterButton]
     }
@@ -127,6 +133,12 @@ final class FeedViewController: UIViewController {
         present(nvc, animated: true)
     }
     
+    @objc private func addDidTap() {
+        let vc = OrganizerSignUpViewController()
+        let nvc = UINavigationController(rootViewController: vc)
+        present(nvc, animated: true)
+    }
+    
     @objc private func refresh() {
         refreshControl.endRefreshing()
     }
@@ -160,7 +172,7 @@ extension FeedViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        let viewController = EventDetailViewController()
+        let viewController = EventDetailViewController(event: sections[indexPath.row].event)
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

@@ -11,6 +11,10 @@
 		EB06F37824332D810018605E /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB06F37624332D810018605E /* EventCell.xib */; };
 		EB06F37A2433309A0018605E /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB06F3792433309A0018605E /* Section.swift */; };
 		EB3B31F0244D7A880023E930 /* Tariff.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3B31EF244D7A880023E930 /* Tariff.swift */; };
+		EB3B31F4244DA6510023E930 /* UserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3B31F3244DA6510023E930 /* UserRequest.swift */; };
+		EB3B31F6244DA6F50023E930 /* UserParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3B31F5244DA6F50023E930 /* UserParser.swift */; };
+		EB3B31FA24501A010023E930 /* OrganizerSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3B31F824501A010023E930 /* OrganizerSignUpViewController.swift */; };
+		EB3B31FB24501A010023E930 /* OrganizerSignUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB3B31F924501A010023E930 /* OrganizerSignUpView.xib */; };
 		EB67D77B244C8B5C00E66B3C /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB67D779244C8B5C00E66B3C /* CategoriesViewController.swift */; };
 		EB67D77C244C8B5C00E66B3C /* CategoriesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB67D77A244C8B5C00E66B3C /* CategoriesView.xib */; };
 		EB67D781244D74AE00E66B3C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB67D780244D74AE00E66B3C /* Event.swift */; };
@@ -54,6 +58,10 @@
 		EB06F37624332D810018605E /* EventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		EB06F3792433309A0018605E /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		EB3B31EF244D7A880023E930 /* Tariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tariff.swift; sourceTree = "<group>"; };
+		EB3B31F3244DA6510023E930 /* UserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequest.swift; sourceTree = "<group>"; };
+		EB3B31F5244DA6F50023E930 /* UserParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserParser.swift; sourceTree = "<group>"; };
+		EB3B31F824501A010023E930 /* OrganizerSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizerSignUpViewController.swift; sourceTree = "<group>"; };
+		EB3B31F924501A010023E930 /* OrganizerSignUpView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrganizerSignUpView.xib; sourceTree = "<group>"; };
 		EB67D779244C8B5C00E66B3C /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		EB67D77A244C8B5C00E66B3C /* CategoriesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoriesView.xib; sourceTree = "<group>"; };
 		EB67D780244D74AE00E66B3C /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -105,6 +113,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EB3B31F7244DA6F80023E930 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				EBB32230244843DB00942A2B /* BaseGetRequest.swift */,
+				EBB32232244843FA00942A2B /* BasePostRequest.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		EB67D77F244D73EF00E66B3C /* Feed */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +147,8 @@
 				EB67D779244C8B5C00E66B3C /* CategoriesViewController.swift */,
 				EBF8745A242F85B00056623E /* SignUpView.xib */,
 				EBF87459242F85B00056623E /* SignUpViewController.swift */,
+				EB3B31F824501A010023E930 /* OrganizerSignUpViewController.swift */,
+				EB3B31F924501A010023E930 /* OrganizerSignUpView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -151,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				EBB3223A24486A5100942A2B /* LoginParser.swift */,
+				EB3B31F5244DA6F50023E930 /* UserParser.swift */,
 			);
 			path = Parsers;
 			sourceTree = "<group>";
@@ -158,10 +178,10 @@
 		EBB3222B2448420700942A2B /* Requests */ = {
 			isa = PBXGroup;
 			children = (
-				EBB32230244843DB00942A2B /* BaseGetRequest.swift */,
-				EBB32232244843FA00942A2B /* BasePostRequest.swift */,
+				EB3B31F7244DA6F80023E930 /* Base */,
 				EBB3224024486AF500942A2B /* LoginRequest.swift */,
 				EBB3223E24486AEC00942A2B /* SignUpRequest.swift */,
+				EB3B31F3244DA6510023E930 /* UserRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -284,6 +304,7 @@
 				EBF87458242F84FA0056623E /* AuthView.xib in Resources */,
 				EB67D77C244C8B5C00E66B3C /* CategoriesView.xib in Resources */,
 				EBD451BF2435F9D800F6A4C2 /* EventDetailView.xib in Resources */,
+				EB3B31FB24501A010023E930 /* OrganizerSignUpView.xib in Resources */,
 				EBF87454242F830D0056623E /* FeedView.xib in Resources */,
 				EBF8744C242F81370056623E /* LaunchScreen.storyboard in Resources */,
 				EB9978212432890300DD5663 /* AccountView.xib in Resources */,
@@ -301,6 +322,7 @@
 			files = (
 				EBB3224A244B6E0400942A2B /* User.swift in Sources */,
 				EBF87457242F84FA0056623E /* AuthViewController.swift in Sources */,
+				EB3B31FA24501A010023E930 /* OrganizerSignUpViewController.swift in Sources */,
 				EBF87444242F81330056623E /* FeedViewController.swift in Sources */,
 				EBB3223B24486A5100942A2B /* LoginParser.swift in Sources */,
 				EBB3222F2448431100942A2B /* RequestSender.swift in Sources */,
@@ -321,6 +343,8 @@
 				EB9978202432890300DD5663 /* AccountViewController.swift in Sources */,
 				EBF87442242F81330056623E /* SceneDelegate.swift in Sources */,
 				EB3B31F0244D7A880023E930 /* Tariff.swift in Sources */,
+				EB3B31F4244DA6510023E930 /* UserRequest.swift in Sources */,
+				EB3B31F6244DA6F50023E930 /* UserParser.swift in Sources */,
 				EBB3224424486D9300942A2B /* Login.swift in Sources */,
 				EBB3224824498E8C00942A2B /* AlertService.swift in Sources */,
 				EBF8745B242F85B00056623E /* SignUpViewController.swift in Sources */,

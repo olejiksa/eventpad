@@ -98,7 +98,9 @@ final class SignUpViewController: UIViewController {
                     
                     self.userDefaultsService.setToken(response.message)
                     
-                    let user = User(email: signUp.email,
+                    let user = User(id: 0,
+                                    username: signUp.username,
+                                    email: signUp.email,
                                     phone: signUp.phone,
                                     name: signUp.name,
                                     surname: signUp.surname)

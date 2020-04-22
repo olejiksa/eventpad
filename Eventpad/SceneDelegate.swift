@@ -24,18 +24,14 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let vc = FeedViewController()
         let nvc = UINavigationController(rootViewController: vc)
-        nvc.tabBarItem = UITabBarItem(title: "Афиша", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house.fill"))
-        
-        let vc3 = FeedViewController()
-        let nvc3 = UINavigationController(rootViewController: vc3)
-        nvc3.tabBarItem = UITabBarItem(title: "Создать", image: UIImage(systemName: "plus.circle"), selectedImage: UIImage(systemName: "plus.circle.fill"))
+        nvc.tabBarItem = UITabBarItem(title: "Афиша", image: UIImage(systemName: "circle"), selectedImage: UIImage(systemName: "circle.fill"))
         
         let vc2 = FeedViewController()
         let nvc2 = UINavigationController(rootViewController: vc2)
-        nvc2.tabBarItem = UITabBarItem(title: "Поиск", image: UIImage(systemName: "magnifyingglass"), selectedImage: UIImage(systemName: "magnifyingglass"))
+        nvc2.tabBarItem = UITabBarItem(title: "Билеты", image: UIImage(systemName: "circle"), selectedImage: UIImage(systemName: "circle.fill"))
         
         let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [nvc, nvc3, nvc2]
+        tabBarController.viewControllers = [nvc, nvc2]
         
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()

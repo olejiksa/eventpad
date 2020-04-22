@@ -22,19 +22,26 @@ final class UserDefaultsService {
     
     func getUser() -> User? {
         guard
+            let username = defaults.string(forKey: "username"),
             let email = defaults.string(forKey: "email"),
             let phone = defaults.string(forKey: "phone"),
             let name = defaults.string(forKey: "name"),
             let surname = defaults.string(forKey: "surname")
         else { return nil }
         
-        return .init(email: email,
+        let id = defaults.integer(forKey: "id")
+        
+        return .init(id: id,
+                     username: username,
+                     email: email,
                      phone: phone,
                      name: name,
                      surname: surname)
     }
     
     func setUser(_ user: User) {
+        defaults.set(user.id, forKey: "id")
+        defaults.set(user.username, forKey: "username")
         defaults.set(user.email, forKey: "email")
         defaults.set(user.phone, forKey: "phone")
         defaults.set(user.name, forKey: "name")

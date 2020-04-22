@@ -20,6 +20,13 @@ final class RequestSender: RequestSenderProtocol {
     private let session = URLSession(configuration: .default)
     private let userDefaultsService = UserDefaultsService()
     
+    lazy var queue: OperationQueue = {
+        var queue = OperationQueue()
+        queue.name = "HTTP Requests Queue"
+        queue.maxConcurrentOperationCount = 1
+        return queue
+    }()
+    
     init() {}
     
     func send<Parser>(config: RequestConfig<Parser>,
@@ -32,79 +39,57 @@ final class RequestSender: RequestSenderProtocol {
             return
         }
         
-        let task = session.dataTask(with: urlRequest) { data, response, error in
-            guard
-                let httpResponse = response as? HTTPURLResponse,
-                let statusCode = HttpStatusCode(rawValue: httpResponse.statusCode)
-            else { return }
+        let operation = BlockOperation { [weak self] in
+            guard let self = self else { return }
             
-            switch statusCode {
-            case .ok, .badRequest:
-                break
+            self.session.dataTask(with: urlRequest) { data, response, error in
+                guard
+                    let httpResponse = response as? HTTPURLResponse,
+                    let statusCode = HttpStatusCode(rawValue: httpResponse.statusCode)
+                else { return }
                 
-//            case .unauthorized:
-//                let retryConfig = RequestFactory.tokenRefresh()
-//                self.send(config: retryConfig) { result in
-//                    switch result {
-//                    case .success(let token):
-//                        guard let token = token.accessToken else { return }
-//                        
-//                        Global.accessToken = token
-//                        self.userDefaultsService.updateToken(access: token)
-//                        
-//                        return
-//                        
-//                    case .failure:
-//                        DispatchQueue.main.async {
-//                            let scene = UIApplication.shared.connectedScenes.first
-//                            if let mySceneDelegate = scene?.delegate as? SceneDelegate {
-//                                let vc = AuthViewController()
-//                                let nvc = UINavigationController(rootViewController: vc)
-//                                mySceneDelegate.window?.rootViewController = nvc
-//                            }
-//                        }
-//                        
-//                        return
-//                    }
-//                }
-                
-            default:
-                DispatchQueue.main.async {
-                    completion(.failure(ResponseError(statusCode)))
+                switch statusCode {
+                case .ok, .badRequest:
+                    break
+                    
+                default:
+                    DispatchQueue.main.async {
+                        completion(.failure(ResponseError(statusCode)))
+                    }
+                    
+                    return
                 }
                 
-                return
-            }
-            
-            if let error = error {
-                DispatchQueue.main.async {
-                    completion(.failure(error))
+                if let error = error {
+                    DispatchQueue.main.async {
+                        completion(.failure(error))
+                    }
+                    
+                    return
                 }
                 
-                return
-            }
-            
-            if let data = data {
-                print(String(data: data, encoding: .utf8) ?? "")
-            }
-            
-            guard
-                let data = data,
-                let parsedModel: Parser.Model = config.parser.parse(data: data)
-            else {
-                DispatchQueue.main.async {
-                    completion(.failure(ParserError.dataParserError))
+                if let data = data {
+                    print(String(data: data, encoding: .utf8) ?? "")
                 }
                 
-                return
-            }
-            
-            DispatchQueue.main.async {
-                completion(.success(parsedModel))
-            }
+                guard
+                    let data = data,
+                    let parsedModel: Parser.Model = config.parser.parse(data: data)
+                else {
+                    DispatchQueue.main.async {
+                        completion(.failure(ParserError.dataParserError))
+                    }
+                    
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    completion(.success(parsedModel))
+                }
+            }.resume()
         }
         
-        task.resume()
+        queue.addOperation(operation)
     }
 }
 
