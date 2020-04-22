@@ -8,6 +8,25 @@
 
 import Foundation
 
+struct SimpleEvent: Encodable {
+    
+    enum CodingKeys: String, CodingKey {
+        case dateStart = "date_start"
+        case dateEnd = "date_end"
+        case isLeaf = "is_leaf"
+        case conferenceID = "conference_id"
+        case speakerName = "speaker_login"
+        case description
+    }
+    
+    let dateStart: Date
+    let dateEnd: Date
+    let isLeaf: Bool
+    let conferenceID: Int
+    let speakerName: String
+    let description: String
+}
+
 struct Event: Decodable {
     
     enum CodingKeys: String, CodingKey {

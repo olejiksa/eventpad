@@ -15,6 +15,11 @@
 		EB3B31F6244DA6F50023E930 /* UserParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3B31F5244DA6F50023E930 /* UserParser.swift */; };
 		EB3B31FA24501A010023E930 /* OrganizerSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3B31F824501A010023E930 /* OrganizerSignUpViewController.swift */; };
 		EB3B31FB24501A010023E930 /* OrganizerSignUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB3B31F924501A010023E930 /* OrganizerSignUpView.xib */; };
+		EB3B31FD24509B300023E930 /* CreateConferenceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3B31FC24509B300023E930 /* CreateConferenceRequest.swift */; };
+		EB3B31FF24509C110023E930 /* Conference.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3B31FE24509C110023E930 /* Conference.swift */; };
+		EB3B320124509D130023E930 /* SuccessParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3B320024509D130023E930 /* SuccessParser.swift */; };
+		EB3B320324509E3C0023E930 /* AddEventsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3B320224509E3C0023E930 /* AddEventsRequest.swift */; };
+		EB3B320524509E4A0023E930 /* AddTariffsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3B320424509E4A0023E930 /* AddTariffsRequest.swift */; };
 		EB67D77B244C8B5C00E66B3C /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB67D779244C8B5C00E66B3C /* CategoriesViewController.swift */; };
 		EB67D77C244C8B5C00E66B3C /* CategoriesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB67D77A244C8B5C00E66B3C /* CategoriesView.xib */; };
 		EB67D781244D74AE00E66B3C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB67D780244D74AE00E66B3C /* Event.swift */; };
@@ -35,7 +40,7 @@
 		EBB3223B24486A5100942A2B /* LoginParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3223A24486A5100942A2B /* LoginParser.swift */; };
 		EBB3223F24486AEC00942A2B /* SignUpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3223E24486AEC00942A2B /* SignUpRequest.swift */; };
 		EBB3224124486AF500942A2B /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3224024486AF500942A2B /* LoginRequest.swift */; };
-		EBB3224424486D9300942A2B /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3224324486D9300942A2B /* Login.swift */; };
+		EBB3224424486D9300942A2B /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3224324486D9300942A2B /* Response.swift */; };
 		EBB3224624486F3F00942A2B /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3224524486F3F00942A2B /* SignUp.swift */; };
 		EBB3224824498E8C00942A2B /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3224724498E8C00942A2B /* AlertService.swift */; };
 		EBB3224A244B6E0400942A2B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB32249244B6E0400942A2B /* User.swift */; };
@@ -62,6 +67,11 @@
 		EB3B31F5244DA6F50023E930 /* UserParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserParser.swift; sourceTree = "<group>"; };
 		EB3B31F824501A010023E930 /* OrganizerSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizerSignUpViewController.swift; sourceTree = "<group>"; };
 		EB3B31F924501A010023E930 /* OrganizerSignUpView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrganizerSignUpView.xib; sourceTree = "<group>"; };
+		EB3B31FC24509B300023E930 /* CreateConferenceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateConferenceRequest.swift; sourceTree = "<group>"; };
+		EB3B31FE24509C110023E930 /* Conference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conference.swift; sourceTree = "<group>"; };
+		EB3B320024509D130023E930 /* SuccessParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessParser.swift; sourceTree = "<group>"; };
+		EB3B320224509E3C0023E930 /* AddEventsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventsRequest.swift; sourceTree = "<group>"; };
+		EB3B320424509E4A0023E930 /* AddTariffsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTariffsRequest.swift; sourceTree = "<group>"; };
 		EB67D779244C8B5C00E66B3C /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		EB67D77A244C8B5C00E66B3C /* CategoriesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoriesView.xib; sourceTree = "<group>"; };
 		EB67D780244D74AE00E66B3C /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -81,7 +91,7 @@
 		EBB3223A24486A5100942A2B /* LoginParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginParser.swift; sourceTree = "<group>"; };
 		EBB3223E24486AEC00942A2B /* SignUpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequest.swift; sourceTree = "<group>"; };
 		EBB3224024486AF500942A2B /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
-		EBB3224324486D9300942A2B /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		EBB3224324486D9300942A2B /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		EBB3224524486F3F00942A2B /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		EBB3224724498E8C00942A2B /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
 		EBB32249244B6E0400942A2B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -170,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				EBB3223A24486A5100942A2B /* LoginParser.swift */,
+				EB3B320024509D130023E930 /* SuccessParser.swift */,
 				EB3B31F5244DA6F50023E930 /* UserParser.swift */,
 			);
 			path = Parsers;
@@ -179,9 +190,12 @@
 			isa = PBXGroup;
 			children = (
 				EB3B31F7244DA6F80023E930 /* Base */,
+				EB3B320224509E3C0023E930 /* AddEventsRequest.swift */,
+				EB3B320424509E4A0023E930 /* AddTariffsRequest.swift */,
+				EB3B31FC24509B300023E930 /* CreateConferenceRequest.swift */,
+				EB3B31F3244DA6510023E930 /* UserRequest.swift */,
 				EBB3224024486AF500942A2B /* LoginRequest.swift */,
 				EBB3223E24486AEC00942A2B /* SignUpRequest.swift */,
-				EB3B31F3244DA6510023E930 /* UserRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -190,11 +204,12 @@
 			isa = PBXGroup;
 			children = (
 				EB67D782244D756100E66B3C /* Category.swift */,
+				EB3B31FE24509C110023E930 /* Conference.swift */,
 				EB67D780244D74AE00E66B3C /* Event.swift */,
-				EBB3224324486D9300942A2B /* Login.swift */,
+				EBB3224324486D9300942A2B /* Response.swift */,
 				EBB3224524486F3F00942A2B /* SignUp.swift */,
-				EBB32249244B6E0400942A2B /* User.swift */,
 				EB3B31EF244D7A880023E930 /* Tariff.swift */,
+				EBB32249244B6E0400942A2B /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -327,6 +342,7 @@
 				EBB3223B24486A5100942A2B /* LoginParser.swift in Sources */,
 				EBB3222F2448431100942A2B /* RequestSender.swift in Sources */,
 				EB06F37724332D810018605E /* EventCell.swift in Sources */,
+				EB3B31FD24509B300023E930 /* CreateConferenceRequest.swift in Sources */,
 				EBB3222D2448427F00942A2B /* RequestFactory.swift in Sources */,
 				EB9978132430925800DD5663 /* BigButton.swift in Sources */,
 				EB06F37A2433309A0018605E /* Section.swift in Sources */,
@@ -336,19 +352,23 @@
 				EB67D781244D74AE00E66B3C /* Event.swift in Sources */,
 				EBD451BE2435F9D800F6A4C2 /* EventDetailViewController.swift in Sources */,
 				EB9978182430995B00DD5663 /* FormHelper.swift in Sources */,
+				EB3B31FF24509C110023E930 /* Conference.swift in Sources */,
 				EBB32233244843FA00942A2B /* BasePostRequest.swift in Sources */,
 				EBB3224624486F3F00942A2B /* SignUp.swift in Sources */,
+				EB3B320124509D130023E930 /* SuccessParser.swift in Sources */,
 				EBB32231244843DB00942A2B /* BaseGetRequest.swift in Sources */,
 				EB99781C24320A4200DD5663 /* UserDefaultsService.swift in Sources */,
 				EB9978202432890300DD5663 /* AccountViewController.swift in Sources */,
 				EBF87442242F81330056623E /* SceneDelegate.swift in Sources */,
 				EB3B31F0244D7A880023E930 /* Tariff.swift in Sources */,
+				EB3B320324509E3C0023E930 /* AddEventsRequest.swift in Sources */,
 				EB3B31F4244DA6510023E930 /* UserRequest.swift in Sources */,
 				EB3B31F6244DA6F50023E930 /* UserParser.swift in Sources */,
-				EBB3224424486D9300942A2B /* Login.swift in Sources */,
+				EBB3224424486D9300942A2B /* Response.swift in Sources */,
 				EBB3224824498E8C00942A2B /* AlertService.swift in Sources */,
 				EBF8745B242F85B00056623E /* SignUpViewController.swift in Sources */,
 				EBB322372448466400942A2B /* HttpStatusCode.swift in Sources */,
+				EB3B320524509E4A0023E930 /* AddTariffsRequest.swift in Sources */,
 				EB67D783244D756100E66B3C /* Category.swift in Sources */,
 				EBB3223F24486AEC00942A2B /* SignUpRequest.swift in Sources */,
 				EBB322352448441900942A2B /* RequestConfig.swift in Sources */,
