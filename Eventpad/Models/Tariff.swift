@@ -8,7 +8,7 @@
 
 struct Tariff: Codable {
     
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case id
         case title = "name"
         case price = "cost"

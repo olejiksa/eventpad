@@ -1,21 +1,21 @@
 //
-//  SuccessParser.swift
+//  MessageParser.swift
 //  Eventpad
 //
-//  Created by Oleg Samoylov on 22.04.2020.
+//  Created by Oleg Samoylov on 16.04.2020.
 //  Copyright © 2020 Oleg Samoylov. All rights reserved.
 //
 
 import Foundation
 
-final class SuccessParser: ParserProtocol {
+final class MessageParser: ParserProtocol {
     
-    func parse(data: Data) -> SuccessResponse? {
+    func parse(data: Data) -> MessageResponse? {
         do {
             let jsonDecorder = JSONDecoder()
             jsonDecorder.dateDecodingStrategy = .iso8601
             jsonDecorder.keyDecodingStrategy = .convertFromSnakeCase
-            return try jsonDecorder.decode(SuccessResponse.self, from: data)
+            return try jsonDecorder.decode(MessageResponse.self, from: data)
         } catch  {
             print(error)
             return nil

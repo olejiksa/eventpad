@@ -21,13 +21,19 @@ enum ParserError: Error {
     case dataParserError
 }
 
-struct ResponseError: LocalizedError, CustomStringConvertible {
+struct ResponseError: LocalizedError {
     
     let statusCode: HttpStatusCode
     
     init(_ statusCode: HttpStatusCode) {
         self.statusCode = statusCode
     }
+}
+
+
+// MARK: - CustomStringConvertible
+
+extension ResponseError: CustomStringConvertible {
     
     var description: String {
         return "HTTP Status: \(statusCode.rawValue) (\(statusCode))"

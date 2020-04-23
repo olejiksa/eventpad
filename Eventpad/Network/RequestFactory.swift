@@ -15,28 +15,31 @@ struct RequestFactory {
     static let endpointRoot = "http://54.93.249.91:8080/api/"
     
     
-    // MARK: - Credentials
+    // MARK: Credentials
     
-    static func login(username: String,
-                      password: String,
-                      deviceName: String) -> RequestConfig<LoginParser> {
-        let request = LoginRequest(username: username,
-                                   password: password,
-                                   deviceName: deviceName)
-        let parser = LoginParser()
+    static func login(login: Login, role: Role) -> RequestConfig<MessageParser> {
+        let request = LoginRequest(login: login, role: role)
+        let parser = MessageParser()
         
         return .init(request: request, parser: parser)
     }
     
-    static func signUp(_ signUp: SignUp) -> RequestConfig<LoginParser> {
-        let request = SignUpRequest(signUp)
-        let parser = LoginParser()
+    static func signUp(_ signUp: SignUp, role: Role) -> RequestConfig<MessageParser> {
+        let request = SignUpRequest(signUp, role: role)
+        let parser = MessageParser()
         
         return .init(request: request, parser: parser)
     }
     
     
-    // MARK: - Main
+    // MARK: Main
+    
+    static func users(text: String, limit: Int, offset: Int) -> RequestConfig<UsersParser> {
+        let request = UsersRequest(text: text, limit: limit, offset: offset)
+        let parser = UsersParser()
+        
+        return .init(request: request, parser: parser)
+    }
     
     static func user(username: String) -> RequestConfig<UserParser> {
         let request = UserRequest(username: username)
@@ -45,8 +48,64 @@ struct RequestFactory {
         return .init(request: request, parser: parser)
     }
     
+    static func user(userID: String) -> RequestConfig<UserParser> {
+        let request = UserRequest(userID: userID)
+        let parser = UserParser()
+        
+        return .init(request: request, parser: parser)
+    }
     
-    // MARK: - Organizer
+    static func events(username: String, limit: Int, offset: Int) -> RequestConfig<EventsParser> {
+        let request = EventsRequest(username: username, limit: limit, offset: offset)
+        let parser = EventsParser()
+        
+        return .init(request: request, parser: parser)
+    }
+    
+    static func events(conferenceID: Int, limit: Int, offset: Int) -> RequestConfig<EventsParser> {
+        let request = EventsRequest(conferenceID: conferenceID, limit: limit, offset: offset)
+        let parser = EventsParser()
+        
+        return .init(request: request, parser: parser)
+    }
+    
+    static func events(parentEventID: Int, limit: Int, offset: Int) -> RequestConfig<EventsParser> {
+        let request = EventsRequest(parentEventID: parentEventID, limit: limit, offset: offset)
+        let parser = EventsParser()
+        
+        return .init(request: request, parser: parser)
+    }
+    
+    static func events(text: String, limit: Int, offset: Int) -> RequestConfig<EventsParser> {
+        let request = EventsRequest(text: text, limit: limit, offset: offset)
+        let parser = EventsParser()
+               
+        return .init(request: request, parser: parser)
+    }
+    
+    static func event(eventID: Int) -> RequestConfig<EventParser> {
+        let request = EventRequest(eventID: eventID)
+        let parser = EventParser()
+        
+        return .init(request: request, parser: parser)
+    }
+
+    static func conferences(text: String, limit: Int, offset: Int) -> RequestConfig<ConferencesParser> {
+        let request = ConferencesRequest(text: text, limit: limit, offset: offset)
+        let parser = ConferencesParser()
+               
+        return .init(request: request, parser: parser)
+    }
+    
+    static func conference(conferenceID: Int) -> RequestConfig<ConferenceParser> {
+        let request = ConferenceRequest(conferenceID: conferenceID)
+        let parser = ConferenceParser()
+               
+        return .init(request: request, parser: parser)
+    }
+    
+    
+    // MARK: Organizer
     
     static func createConference(_ conference: Conference) -> RequestConfig<SuccessParser> {
         let request = CreateConferenceRequest(conference: conference)

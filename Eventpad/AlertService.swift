@@ -30,26 +30,26 @@ protocol AlertServiceProtocol: class {
 
 final class AlertService: AlertServiceProtocol {
     
-    public init() {}
+    init() {}
     
-    public func alert(_ message: String) -> UIAlertController {
+    func alert(_ message: String) -> UIAlertController {
         let alert = UIAlertController(title: AlertTitle.error.rawValue, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(action)
         return alert
     }
     
-    public func alert(_ message: String, title: AlertTitle) -> UIAlertController {
+    func alert(_ message: String, title: AlertTitle) -> UIAlertController {
         let alert = UIAlertController(title: title.rawValue, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(action)
         return alert
     }
     
-    public func alert(_ message: String,
-                      title: AlertTitle,
-                      isDestructive: Bool,
-                      okAction: @escaping ((UIAlertAction) -> ())) -> UIAlertController {
+    func alert(_ message: String,
+               title: AlertTitle,
+               isDestructive: Bool,
+               okAction: @escaping ((UIAlertAction) -> ())) -> UIAlertController {
         let alert = UIAlertController(title: title.rawValue, message: message, preferredStyle: .alert)
         
         if isDestructive {

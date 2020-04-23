@@ -10,16 +10,26 @@ import Foundation
 
 final class SignUpRequest: BasePostRequest {
     
-    init(_ signUp: SignUp) {
-        let endpoint = "\(RequestFactory.endpointRoot)reg/user"
-        let parameters = ["login": signUp.username,
-                          "password_hash": signUp.password,
-                          "device_id": signUp.deviceName,
-                          "name": signUp.name,
-                          "surname": signUp.surname,
-                          "email": signUp.email,
-                          "phone": signUp.phone]
+    init(_ signUp: SignUp, role: Role) {
+        let endpoint: String
+        switch role {
+        case .organizer:
+            endpoint = "\(RequestFactory.endpointRoot)reg/organizer"
+            
+        case .participant:
+            endpoint = "\(RequestFactory.endpointRoot)reg/user"
+        }
         
-        super.init(endpoint: endpoint, parameters: parameters)
+        do {
+            let jsonEncoder = JSONEncoder()
+            let encodedJson = try jsonEncoder.encode(signUp)
+            guard let parameters = try JSONSerialization.jsonObject(with: encodedJson) as? [String: Any] else {
+                fatalError()
+            }
+            
+            super.init(endpoint: endpoint, parameters: parameters)
+        } catch {
+            fatalError()
+        }
     }
 }

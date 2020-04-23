@@ -19,6 +19,7 @@ final class AddTariffsRequest: BasePostRequest {
             guard let parameters = try JSONSerialization.jsonObject(with: encodedJson) as? [String: Any] else {
                 fatalError()
             }
+            
             super.init(endpoint: endpoint, parameters: parameters)
         } catch {
             fatalError()

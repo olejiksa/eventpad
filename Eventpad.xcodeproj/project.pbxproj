@@ -10,6 +10,20 @@
 		EB06F37724332D810018605E /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB06F37524332D810018605E /* EventCell.swift */; };
 		EB06F37824332D810018605E /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB06F37624332D810018605E /* EventCell.xib */; };
 		EB06F37A2433309A0018605E /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB06F3792433309A0018605E /* Section.swift */; };
+		EB30813124515FE500EB7598 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB30813024515FE500EB7598 /* Login.swift */; };
+		EB3081332451604100EB7598 /* SimpleEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3081322451604100EB7598 /* SimpleEvent.swift */; };
+		EB3081352451608A00EB7598 /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3081342451608A00EB7598 /* Role.swift */; };
+		EB3081382451631100EB7598 /* MessageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3081372451631100EB7598 /* MessageResponse.swift */; };
+		EB30813A2451689600EB7598 /* EventsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3081392451689600EB7598 /* EventsRequest.swift */; };
+		EB30813C245168A000EB7598 /* EventsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB30813B245168A000EB7598 /* EventsParser.swift */; };
+		EB308140245172BC00EB7598 /* ConferenceParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB30813F245172BC00EB7598 /* ConferenceParser.swift */; };
+		EB3081422451735200EB7598 /* ConferenceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3081412451735200EB7598 /* ConferenceRequest.swift */; };
+		EB3081442451742100EB7598 /* EventRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3081432451742100EB7598 /* EventRequest.swift */; };
+		EB3081462451742E00EB7598 /* EventParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3081452451742E00EB7598 /* EventParser.swift */; };
+		EB3081482451753000EB7598 /* ConferencesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3081472451753000EB7598 /* ConferencesRequest.swift */; };
+		EB30814A2451763B00EB7598 /* ConferencesParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3081492451763B00EB7598 /* ConferencesParser.swift */; };
+		EB30814C2451799700EB7598 /* UsersParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB30814B2451799700EB7598 /* UsersParser.swift */; };
+		EB30814E245179A600EB7598 /* UsersRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB30814D245179A600EB7598 /* UsersRequest.swift */; };
 		EB3B31F0244D7A880023E930 /* Tariff.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3B31EF244D7A880023E930 /* Tariff.swift */; };
 		EB3B31F4244DA6510023E930 /* UserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3B31F3244DA6510023E930 /* UserRequest.swift */; };
 		EB3B31F6244DA6F50023E930 /* UserParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3B31F5244DA6F50023E930 /* UserParser.swift */; };
@@ -37,10 +51,10 @@
 		EBB322352448441900942A2B /* RequestConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB322342448441900942A2B /* RequestConfig.swift */; };
 		EBB322372448466400942A2B /* HttpStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB322362448466400942A2B /* HttpStatusCode.swift */; };
 		EBB32239244846A800942A2B /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB32238244846A800942A2B /* Error.swift */; };
-		EBB3223B24486A5100942A2B /* LoginParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3223A24486A5100942A2B /* LoginParser.swift */; };
+		EBB3223B24486A5100942A2B /* MessageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3223A24486A5100942A2B /* MessageParser.swift */; };
 		EBB3223F24486AEC00942A2B /* SignUpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3223E24486AEC00942A2B /* SignUpRequest.swift */; };
 		EBB3224124486AF500942A2B /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3224024486AF500942A2B /* LoginRequest.swift */; };
-		EBB3224424486D9300942A2B /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3224324486D9300942A2B /* Response.swift */; };
+		EBB3224424486D9300942A2B /* SuccessResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3224324486D9300942A2B /* SuccessResponse.swift */; };
 		EBB3224624486F3F00942A2B /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3224524486F3F00942A2B /* SignUp.swift */; };
 		EBB3224824498E8C00942A2B /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3224724498E8C00942A2B /* AlertService.swift */; };
 		EBB3224A244B6E0400942A2B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB32249244B6E0400942A2B /* User.swift */; };
@@ -62,6 +76,20 @@
 		EB06F37524332D810018605E /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		EB06F37624332D810018605E /* EventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		EB06F3792433309A0018605E /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		EB30813024515FE500EB7598 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		EB3081322451604100EB7598 /* SimpleEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEvent.swift; sourceTree = "<group>"; };
+		EB3081342451608A00EB7598 /* Role.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
+		EB3081372451631100EB7598 /* MessageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageResponse.swift; sourceTree = "<group>"; };
+		EB3081392451689600EB7598 /* EventsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsRequest.swift; sourceTree = "<group>"; };
+		EB30813B245168A000EB7598 /* EventsParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsParser.swift; sourceTree = "<group>"; };
+		EB30813F245172BC00EB7598 /* ConferenceParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceParser.swift; sourceTree = "<group>"; };
+		EB3081412451735200EB7598 /* ConferenceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceRequest.swift; sourceTree = "<group>"; };
+		EB3081432451742100EB7598 /* EventRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRequest.swift; sourceTree = "<group>"; };
+		EB3081452451742E00EB7598 /* EventParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventParser.swift; sourceTree = "<group>"; };
+		EB3081472451753000EB7598 /* ConferencesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferencesRequest.swift; sourceTree = "<group>"; };
+		EB3081492451763B00EB7598 /* ConferencesParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferencesParser.swift; sourceTree = "<group>"; };
+		EB30814B2451799700EB7598 /* UsersParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersParser.swift; sourceTree = "<group>"; };
+		EB30814D245179A600EB7598 /* UsersRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersRequest.swift; sourceTree = "<group>"; };
 		EB3B31EF244D7A880023E930 /* Tariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tariff.swift; sourceTree = "<group>"; };
 		EB3B31F3244DA6510023E930 /* UserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequest.swift; sourceTree = "<group>"; };
 		EB3B31F5244DA6F50023E930 /* UserParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserParser.swift; sourceTree = "<group>"; };
@@ -88,10 +116,10 @@
 		EBB322342448441900942A2B /* RequestConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestConfig.swift; sourceTree = "<group>"; };
 		EBB322362448466400942A2B /* HttpStatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpStatusCode.swift; sourceTree = "<group>"; };
 		EBB32238244846A800942A2B /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
-		EBB3223A24486A5100942A2B /* LoginParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginParser.swift; sourceTree = "<group>"; };
+		EBB3223A24486A5100942A2B /* MessageParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageParser.swift; sourceTree = "<group>"; };
 		EBB3223E24486AEC00942A2B /* SignUpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequest.swift; sourceTree = "<group>"; };
 		EBB3224024486AF500942A2B /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
-		EBB3224324486D9300942A2B /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		EBB3224324486D9300942A2B /* SuccessResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessResponse.swift; sourceTree = "<group>"; };
 		EBB3224524486F3F00942A2B /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		EBB3224724498E8C00942A2B /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
 		EBB32249244B6E0400942A2B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -123,6 +151,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EB308136245162F400EB7598 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				EBB3224324486D9300942A2B /* SuccessResponse.swift */,
+				EB3081372451631100EB7598 /* MessageResponse.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
 		EB3B31F7244DA6F80023E930 /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,9 +216,14 @@
 		EBB3222A244841FE00942A2B /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
-				EBB3223A24486A5100942A2B /* LoginParser.swift */,
+				EB30813F245172BC00EB7598 /* ConferenceParser.swift */,
+				EB3081492451763B00EB7598 /* ConferencesParser.swift */,
+				EB3081452451742E00EB7598 /* EventParser.swift */,
+				EB30813B245168A000EB7598 /* EventsParser.swift */,
+				EBB3223A24486A5100942A2B /* MessageParser.swift */,
 				EB3B320024509D130023E930 /* SuccessParser.swift */,
 				EB3B31F5244DA6F50023E930 /* UserParser.swift */,
+				EB30814B2451799700EB7598 /* UsersParser.swift */,
 			);
 			path = Parsers;
 			sourceTree = "<group>";
@@ -192,10 +234,15 @@
 				EB3B31F7244DA6F80023E930 /* Base */,
 				EB3B320224509E3C0023E930 /* AddEventsRequest.swift */,
 				EB3B320424509E4A0023E930 /* AddTariffsRequest.swift */,
+				EB3081412451735200EB7598 /* ConferenceRequest.swift */,
+				EB3081472451753000EB7598 /* ConferencesRequest.swift */,
 				EB3B31FC24509B300023E930 /* CreateConferenceRequest.swift */,
-				EB3B31F3244DA6510023E930 /* UserRequest.swift */,
+				EB3081432451742100EB7598 /* EventRequest.swift */,
+				EB3081392451689600EB7598 /* EventsRequest.swift */,
 				EBB3224024486AF500942A2B /* LoginRequest.swift */,
 				EBB3223E24486AEC00942A2B /* SignUpRequest.swift */,
+				EB3B31F3244DA6510023E930 /* UserRequest.swift */,
+				EB30814D245179A600EB7598 /* UsersRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -203,11 +250,14 @@
 		EBB3224224486D8C00942A2B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EB308136245162F400EB7598 /* Responses */,
 				EB67D782244D756100E66B3C /* Category.swift */,
 				EB3B31FE24509C110023E930 /* Conference.swift */,
 				EB67D780244D74AE00E66B3C /* Event.swift */,
-				EBB3224324486D9300942A2B /* Response.swift */,
+				EB30813024515FE500EB7598 /* Login.swift */,
+				EB3081342451608A00EB7598 /* Role.swift */,
 				EBB3224524486F3F00942A2B /* SignUp.swift */,
+				EB3081322451604100EB7598 /* SimpleEvent.swift */,
 				EB3B31EF244D7A880023E930 /* Tariff.swift */,
 				EBB32249244B6E0400942A2B /* User.swift */,
 			);
@@ -335,21 +385,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB3081332451604100EB7598 /* SimpleEvent.swift in Sources */,
 				EBB3224A244B6E0400942A2B /* User.swift in Sources */,
 				EBF87457242F84FA0056623E /* AuthViewController.swift in Sources */,
+				EB308140245172BC00EB7598 /* ConferenceParser.swift in Sources */,
 				EB3B31FA24501A010023E930 /* OrganizerSignUpViewController.swift in Sources */,
 				EBF87444242F81330056623E /* FeedViewController.swift in Sources */,
-				EBB3223B24486A5100942A2B /* LoginParser.swift in Sources */,
+				EB3081352451608A00EB7598 /* Role.swift in Sources */,
+				EBB3223B24486A5100942A2B /* MessageParser.swift in Sources */,
 				EBB3222F2448431100942A2B /* RequestSender.swift in Sources */,
 				EB06F37724332D810018605E /* EventCell.swift in Sources */,
 				EB3B31FD24509B300023E930 /* CreateConferenceRequest.swift in Sources */,
+				EB30813C245168A000EB7598 /* EventsParser.swift in Sources */,
+				EB30814E245179A600EB7598 /* UsersRequest.swift in Sources */,
 				EBB3222D2448427F00942A2B /* RequestFactory.swift in Sources */,
+				EB3081422451735200EB7598 /* ConferenceRequest.swift in Sources */,
 				EB9978132430925800DD5663 /* BigButton.swift in Sources */,
 				EB06F37A2433309A0018605E /* Section.swift in Sources */,
 				EBB3224124486AF500942A2B /* LoginRequest.swift in Sources */,
 				EBF87440242F81330056623E /* AppDelegate.swift in Sources */,
+				EB3081482451753000EB7598 /* ConferencesRequest.swift in Sources */,
 				EB67D77B244C8B5C00E66B3C /* CategoriesViewController.swift in Sources */,
 				EB67D781244D74AE00E66B3C /* Event.swift in Sources */,
+				EB30813124515FE500EB7598 /* Login.swift in Sources */,
 				EBD451BE2435F9D800F6A4C2 /* EventDetailViewController.swift in Sources */,
 				EB9978182430995B00DD5663 /* FormHelper.swift in Sources */,
 				EB3B31FF24509C110023E930 /* Conference.swift in Sources */,
@@ -358,20 +416,26 @@
 				EB3B320124509D130023E930 /* SuccessParser.swift in Sources */,
 				EBB32231244843DB00942A2B /* BaseGetRequest.swift in Sources */,
 				EB99781C24320A4200DD5663 /* UserDefaultsService.swift in Sources */,
+				EB30814A2451763B00EB7598 /* ConferencesParser.swift in Sources */,
+				EB3081442451742100EB7598 /* EventRequest.swift in Sources */,
 				EB9978202432890300DD5663 /* AccountViewController.swift in Sources */,
 				EBF87442242F81330056623E /* SceneDelegate.swift in Sources */,
+				EB30813A2451689600EB7598 /* EventsRequest.swift in Sources */,
 				EB3B31F0244D7A880023E930 /* Tariff.swift in Sources */,
 				EB3B320324509E3C0023E930 /* AddEventsRequest.swift in Sources */,
 				EB3B31F4244DA6510023E930 /* UserRequest.swift in Sources */,
 				EB3B31F6244DA6F50023E930 /* UserParser.swift in Sources */,
-				EBB3224424486D9300942A2B /* Response.swift in Sources */,
+				EBB3224424486D9300942A2B /* SuccessResponse.swift in Sources */,
 				EBB3224824498E8C00942A2B /* AlertService.swift in Sources */,
 				EBF8745B242F85B00056623E /* SignUpViewController.swift in Sources */,
 				EBB322372448466400942A2B /* HttpStatusCode.swift in Sources */,
 				EB3B320524509E4A0023E930 /* AddTariffsRequest.swift in Sources */,
+				EB30814C2451799700EB7598 /* UsersParser.swift in Sources */,
 				EB67D783244D756100E66B3C /* Category.swift in Sources */,
+				EB3081462451742E00EB7598 /* EventParser.swift in Sources */,
 				EBB3223F24486AEC00942A2B /* SignUpRequest.swift in Sources */,
 				EBB322352448441900942A2B /* RequestConfig.swift in Sources */,
+				EB3081382451631100EB7598 /* MessageResponse.swift in Sources */,
 				EBB32239244846A800942A2B /* Error.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

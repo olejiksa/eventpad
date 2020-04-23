@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum HttpStatusCode: Int {
+enum HttpStatusCode: Int {
     
     case `continue` = 100
     case switchingProtocols = 101
@@ -81,7 +81,7 @@ public enum HttpStatusCode: Int {
 
 extension HttpStatusCode: CustomStringConvertible {
     
-    public var description: String {
+    var description: String {
         return HTTPURLResponse.localizedString(forStatusCode: rawValue)
     }
 }

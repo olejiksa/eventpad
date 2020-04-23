@@ -6,7 +6,7 @@
 //  Copyright © 2020 Oleg Samoylov. All rights reserved.
 //
 
-enum Category: Int, Decodable {
+enum Category: Int, Codable {
     
     case noCategory
     case politics
@@ -17,6 +17,12 @@ enum Category: Int, Decodable {
     case tech
     case science
     case auto
+}
+
+
+// MARK: - CustomStringConvertible
+
+extension Category: CustomStringConvertible {
     
     var description: String {
         switch self {

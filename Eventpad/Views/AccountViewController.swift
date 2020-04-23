@@ -61,11 +61,13 @@ final class AccountViewController: UIViewController {
         }
     }
     
-    @IBAction func emailDidTap() {
+    @IBAction private func emailDidTap() {
+        guard let email = user.email else { return }
+        
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
-            mail.setToRecipients([user.email])
+            mail.setToRecipients([email])
             
             present(mail, animated: true)
         } else {
@@ -74,8 +76,10 @@ final class AccountViewController: UIViewController {
         }
     }
     
-    @IBAction func phoneDidTap() {
-        if let url = URL(string: "tel://\(user.phone)"), UIApplication.shared.canOpenURL(url) {
+    @IBAction private func phoneDidTap() {
+        guard let phone = user.phone else { return }
+        
+        if let url = URL(string: "tel://\(phone)"), UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url)
         } else {
             let alert = alertService.alert("Не удалось позвонить по номеру телефона. Возможно, он является некорректным либо ваше устройство не поддерживает телефонию.")
@@ -87,8 +91,6 @@ final class AccountViewController: UIViewController {
         dismiss(animated: true)
     }
 }
-
-
 
 
 // MARK: - MFMailComposeViewControllerDelegate

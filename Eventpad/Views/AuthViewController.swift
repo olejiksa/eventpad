@@ -53,10 +53,8 @@ final class AuthViewController: UIViewController {
     
     private func login(username: String, password: String) {
         let deviceName = UIDevice.current.name
-        
-        let loginConfig = RequestFactory.login(username: username,
-                                               password: password,
-                                               deviceName: deviceName)
+        let login = Login(username: username, password: password, deviceName: deviceName)
+        let loginConfig = RequestFactory.login(login: login, role: .participant)
         let userConfig = RequestFactory.user(username: username)
         
         requestSender.send(config: loginConfig) { [weak self] result in

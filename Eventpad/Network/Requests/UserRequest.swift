@@ -12,4 +12,9 @@ final class UserRequest: BaseGetRequest {
         let endpoint = "\(RequestFactory.endpointRoot)usr/info/\(username)"
         super.init(endpoint: endpoint)
     }
+    
+    init(userID: String) {
+        let endpoint = "\(RequestFactory.endpointRoot)usr/info/byId/\(userID)"
+        super.init(endpoint: endpoint)
+    }
 }
