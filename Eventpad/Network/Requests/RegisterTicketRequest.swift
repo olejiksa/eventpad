@@ -1,21 +1,21 @@
 //
-//  CreateConferenceRequest.swift
+//  RegisterTicketRequest.swift
 //  Eventpad
 //
-//  Created by Oleg Samoylov on 22.04.2020.
+//  Created by Oleg Samoylov on 23.04.2020.
 //  Copyright © 2020 Oleg Samoylov. All rights reserved.
 //
 
 import Foundation
 
-final class CreateConferenceRequest: BasePostRequest {
-    
-    init(conference: Conference) {
-        let endpoint = "\(RequestFactory.endpointRoot)org/createConference"
+final class RegisterTicketRequest: BasePostRequest {
+
+    init(ticket: Ticket) {
+        let endpoint = "\(RequestFactory.endpointRoot)usr/registerTicker/\(ticket.buyerID)"
         
         do {
             let jsonEncoder = JSONEncoder()
-            let encodedJson = try jsonEncoder.encode(conference)
+            let encodedJson = try jsonEncoder.encode(ticket)
             guard let parameters = try JSONSerialization.jsonObject(with: encodedJson) as? [String: Any] else {
                 fatalError()
             }
@@ -26,3 +26,4 @@ final class CreateConferenceRequest: BasePostRequest {
         }
     }
 }
+

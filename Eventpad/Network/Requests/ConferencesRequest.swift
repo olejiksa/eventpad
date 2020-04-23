@@ -14,4 +14,18 @@ final class ConferencesRequest: BaseGetRequest {
         
         super.init(endpoint: endpoint, parameters: parameters)
     }
+    
+    init(categoryID: Int, limit: Int, offset: Int) {
+        let endpoint = "\(RequestFactory.endpointRoot)usr/findConferencesByCategory/\(categoryID)"
+        let parameters = ["pageSize": limit, "pageNumber": offset]
+        
+        super.init(endpoint: endpoint, parameters: parameters)
+    }
+    
+    init(userID: Int, limit: Int, offset: Int) {
+        let endpoint = "\(RequestFactory.endpointRoot)usr/personal/getConferences/\(userID)"
+        let parameters = ["limit": limit, "offset": offset]
+        
+        super.init(endpoint: endpoint, parameters: parameters)
+    }
 }

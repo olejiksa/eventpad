@@ -83,9 +83,30 @@ struct RequestFactory {
         return .init(request: request, parser: parser)
     }
     
+    static func events(userID: Int, limit: Int, offset: Int, areActual: Bool) -> RequestConfig<EventsParser> {
+        let request = EventsRequest(userID: userID, limit: limit, offset: offset, areActual: areActual)
+        let parser = EventsParser()
+               
+        return .init(request: request, parser: parser)
+    }
+    
     static func event(eventID: Int) -> RequestConfig<EventParser> {
         let request = EventRequest(eventID: eventID)
         let parser = EventParser()
+        
+        return .init(request: request, parser: parser)
+    }
+    
+    static func favoriteEvent(eventID: Int, userID: Int) -> RequestConfig<SuccessParser> {
+        let request = FavoriteEventRequest(eventID: eventID, userID: userID)
+        let parser = SuccessParser()
+        
+        return .init(request: request, parser: parser)
+    }
+    
+    static func unfavoriteEvent(eventID: Int, userID: Int) -> RequestConfig<SuccessParser> {
+        let request = UnfavoriteEventRequest(eventID: eventID, userID: userID)
+        let parser = SuccessParser()
         
         return .init(request: request, parser: parser)
     }
@@ -97,9 +118,37 @@ struct RequestFactory {
         return .init(request: request, parser: parser)
     }
     
+    static func conferences(categoryID: Int, limit: Int, offset: Int) -> RequestConfig<ConferencesParser> {
+        let request = ConferencesRequest(categoryID: categoryID, limit: limit, offset: offset)
+        let parser = ConferencesParser()
+               
+        return .init(request: request, parser: parser)
+    }
+    
+    static func conferences(userID: Int, limit: Int, offset: Int) -> RequestConfig<ConferencesParser> {
+        let request = ConferencesRequest(userID: userID, limit: limit, offset: offset)
+        let parser = ConferencesParser()
+               
+        return .init(request: request, parser: parser)
+    }
+    
     static func conference(conferenceID: Int) -> RequestConfig<ConferenceParser> {
         let request = ConferenceRequest(conferenceID: conferenceID)
         let parser = ConferenceParser()
+               
+        return .init(request: request, parser: parser)
+    }
+    
+    static func registerTicket(_ ticket: Ticket) -> RequestConfig<MessageParser> {
+        let request = RegisterTicketRequest(ticket: ticket)
+        let parser = MessageParser()
+               
+        return .init(request: request, parser: parser)
+    }
+    
+    static func ticket(ticketID: Int) -> RequestConfig<TicketParser> {
+        let request = TicketRequest(ticketID: ticketID)
+        let parser = TicketParser()
                
         return .init(request: request, parser: parser)
     }
