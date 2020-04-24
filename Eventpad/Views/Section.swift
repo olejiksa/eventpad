@@ -20,11 +20,11 @@ protocol Section {
 struct EventSection: Section {
     
     private let cellID = "\(EventCell.self)"
-    let event: Event
+    let conference: Conference
     let numberOfItems = 1
     
-    init(event: Event) {
-        self.event = event
+    init(conference: Conference) {
+        self.conference = conference
     }
 
     func layoutSection() -> NSCollectionLayoutSection {
@@ -43,7 +43,7 @@ struct EventSection: Section {
     func configureCell(collectionView: UICollectionView, indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? EventCell else { return .init() }
         
-        cell.configure(with: event)
+        cell.configure(with: conference)
         return cell
     }
 }

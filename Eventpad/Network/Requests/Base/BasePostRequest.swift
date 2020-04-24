@@ -18,7 +18,7 @@ class BasePostRequest: RequestProtocol {
         self.parameters = parameters
     }
     
-    open var urlRequest: URLRequest? {
+    var urlRequest: URLRequest? {
         guard
             let encodedString = endpoint.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed),
             let url = URL(string: encodedString)

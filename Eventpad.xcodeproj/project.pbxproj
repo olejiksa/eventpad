@@ -30,6 +30,14 @@
 		EB3081562451EF4800EB7598 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3081552451EF4800EB7598 /* Ticket.swift */; };
 		EB3081582451F05700EB7598 /* TicketRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3081572451F05700EB7598 /* TicketRequest.swift */; };
 		EB30815A2451F0AD00EB7598 /* TicketParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3081592451F0AD00EB7598 /* TicketParser.swift */; };
+		EB30815E2452E3C800EB7598 /* TabBarFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB30815D2452E3C800EB7598 /* TabBarFactory.swift */; };
+		EB3081622452E4B600EB7598 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3081602452E4B600EB7598 /* SearchViewController.swift */; };
+		EB3081632452E4B600EB7598 /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB3081612452E4B600EB7598 /* SearchView.xib */; };
+		EB3081662452E4DE00EB7598 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3081642452E4DE00EB7598 /* FavoritesViewController.swift */; };
+		EB3081672452E4DE00EB7598 /* FavoritesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB3081652452E4DE00EB7598 /* FavoritesView.xib */; };
+		EB30816A2452E59600EB7598 /* TicketsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3081682452E59600EB7598 /* TicketsViewController.swift */; };
+		EB30816B2452E59600EB7598 /* TicketsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB3081692452E59600EB7598 /* TicketsView.xib */; };
+		EB30816E2452EBF800EB7598 /* SubtitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB30816D2452EBF800EB7598 /* SubtitleCell.swift */; };
 		EB3B31F0244D7A880023E930 /* Tariff.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3B31EF244D7A880023E930 /* Tariff.swift */; };
 		EB3B31F4244DA6510023E930 /* UserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3B31F3244DA6510023E930 /* UserRequest.swift */; };
 		EB3B31F6244DA6F50023E930 /* UserParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3B31F5244DA6F50023E930 /* UserParser.swift */; };
@@ -102,6 +110,14 @@
 		EB3081552451EF4800EB7598 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		EB3081572451F05700EB7598 /* TicketRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketRequest.swift; sourceTree = "<group>"; };
 		EB3081592451F0AD00EB7598 /* TicketParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketParser.swift; sourceTree = "<group>"; };
+		EB30815D2452E3C800EB7598 /* TabBarFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarFactory.swift; sourceTree = "<group>"; };
+		EB3081602452E4B600EB7598 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		EB3081612452E4B600EB7598 /* SearchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchView.xib; sourceTree = "<group>"; };
+		EB3081642452E4DE00EB7598 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		EB3081652452E4DE00EB7598 /* FavoritesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesView.xib; sourceTree = "<group>"; };
+		EB3081682452E59600EB7598 /* TicketsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsViewController.swift; sourceTree = "<group>"; };
+		EB3081692452E59600EB7598 /* TicketsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TicketsView.xib; sourceTree = "<group>"; };
+		EB30816D2452EBF800EB7598 /* SubtitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleCell.swift; sourceTree = "<group>"; };
 		EB3B31EF244D7A880023E930 /* Tariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tariff.swift; sourceTree = "<group>"; };
 		EB3B31F3244DA6510023E930 /* UserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequest.swift; sourceTree = "<group>"; };
 		EB3B31F5244DA6F50023E930 /* UserParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserParser.swift; sourceTree = "<group>"; };
@@ -163,6 +179,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EB30815B2451F23400EB7598 /* Credentials */ = {
+			isa = PBXGroup;
+			children = (
+				EB99781F2432890300DD5663 /* AccountView.xib */,
+				EB99781E2432890300DD5663 /* AccountViewController.swift */,
+				EBF87456242F84FA0056623E /* AuthView.xib */,
+				EBF87455242F84FA0056623E /* AuthViewController.swift */,
+				EB67D77A244C8B5C00E66B3C /* CategoriesView.xib */,
+				EB67D779244C8B5C00E66B3C /* CategoriesViewController.swift */,
+				EBF8745A242F85B00056623E /* SignUpView.xib */,
+				EBF87459242F85B00056623E /* SignUpViewController.swift */,
+				EB3B31F924501A010023E930 /* OrganizerSignUpView.xib */,
+				EB3B31F824501A010023E930 /* OrganizerSignUpViewController.swift */,
+			);
+			path = Credentials;
+			sourceTree = "<group>";
+		};
+		EB30815C2452B6EB00EB7598 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				EBB3224724498E8C00942A2B /* AlertService.swift */,
+				EB99781B24320A4200DD5663 /* UserDefaultsService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		EB30815F2452E4A700EB7598 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				EB3081602452E4B600EB7598 /* SearchViewController.swift */,
+				EB3081612452E4B600EB7598 /* SearchView.xib */,
+				EB3081642452E4DE00EB7598 /* FavoritesViewController.swift */,
+				EB3081652452E4DE00EB7598 /* FavoritesView.xib */,
+				EB3081682452E59600EB7598 /* TicketsViewController.swift */,
+				EB3081692452E59600EB7598 /* TicketsView.xib */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
 		EB3B31F7244DA6F80023E930 /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,17 +243,14 @@
 		EB99781D243244A400DD5663 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EB30815F2452E4A700EB7598 /* Other */,
+				EB30815B2451F23400EB7598 /* Credentials */,
 				EB67D77F244D73EF00E66B3C /* Feed */,
-				EB99781F2432890300DD5663 /* AccountView.xib */,
-				EB99781E2432890300DD5663 /* AccountViewController.swift */,
-				EBF87456242F84FA0056623E /* AuthView.xib */,
-				EBF87455242F84FA0056623E /* AuthViewController.swift */,
-				EB67D77A244C8B5C00E66B3C /* CategoriesView.xib */,
-				EB67D779244C8B5C00E66B3C /* CategoriesViewController.swift */,
-				EBF8745A242F85B00056623E /* SignUpView.xib */,
-				EBF87459242F85B00056623E /* SignUpViewController.swift */,
-				EB3B31F824501A010023E930 /* OrganizerSignUpViewController.swift */,
-				EB3B31F924501A010023E930 /* OrganizerSignUpView.xib */,
+				EB9978122430925800DD5663 /* BigButton.swift */,
+				EB9978172430995B00DD5663 /* FormHelper.swift */,
+				EB06F3792433309A0018605E /* Section.swift */,
+				EB30815D2452E3C800EB7598 /* TabBarFactory.swift */,
+				EB30816D2452EBF800EB7598 /* SubtitleCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -208,10 +260,11 @@
 			children = (
 				EBB3222B2448420700942A2B /* Requests */,
 				EBB3222A244841FE00942A2B /* Parsers */,
+				EBB32238244846A800942A2B /* Error.swift */,
+				EBB322362448466400942A2B /* HttpStatusCode.swift */,
 				EBB322342448441900942A2B /* RequestConfig.swift */,
 				EBB3222C2448427F00942A2B /* RequestFactory.swift */,
 				EBB3222E2448431100942A2B /* RequestSender.swift */,
-				EBB322362448466400942A2B /* HttpStatusCode.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -295,15 +348,10 @@
 			children = (
 				EBB3224224486D8C00942A2B /* Models */,
 				EBA2AF6F2442668A00AF59EE /* Network */,
+				EB30815C2452B6EB00EB7598 /* Services */,
 				EB99781D243244A400DD5663 /* Views */,
-				EBB3224724498E8C00942A2B /* AlertService.swift */,
 				EBF8743F242F81330056623E /* AppDelegate.swift */,
-				EB9978122430925800DD5663 /* BigButton.swift */,
-				EB9978172430995B00DD5663 /* FormHelper.swift */,
-				EBB32238244846A800942A2B /* Error.swift */,
 				EBF87441242F81330056623E /* SceneDelegate.swift */,
-				EB06F3792433309A0018605E /* Section.swift */,
-				EB99781B24320A4200DD5663 /* UserDefaultsService.swift */,
 				EBF87448242F81370056623E /* Assets.xcassets */,
 				EBF8744A242F81370056623E /* LaunchScreen.storyboard */,
 				EBF8744D242F81370056623E /* Info.plist */,
@@ -382,8 +430,11 @@
 				EB3B31FB24501A010023E930 /* OrganizerSignUpView.xib in Resources */,
 				EBF87454242F830D0056623E /* FeedView.xib in Resources */,
 				EBF8744C242F81370056623E /* LaunchScreen.storyboard in Resources */,
+				EB30816B2452E59600EB7598 /* TicketsView.xib in Resources */,
+				EB3081632452E4B600EB7598 /* SearchView.xib in Resources */,
 				EB9978212432890300DD5663 /* AccountView.xib in Resources */,
 				EBF87449242F81370056623E /* Assets.xcassets in Resources */,
+				EB3081672452E4DE00EB7598 /* FavoritesView.xib in Resources */,
 				EB06F37824332D810018605E /* EventCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,6 +458,7 @@
 				EB06F37724332D810018605E /* EventCell.swift in Sources */,
 				EB3081582451F05700EB7598 /* TicketRequest.swift in Sources */,
 				EB3B31FD24509B300023E930 /* CreateConferenceRequest.swift in Sources */,
+				EB30816E2452EBF800EB7598 /* SubtitleCell.swift in Sources */,
 				EB30813C245168A000EB7598 /* EventsParser.swift in Sources */,
 				EB30814E245179A600EB7598 /* UsersRequest.swift in Sources */,
 				EBB3222D2448427F00942A2B /* RequestFactory.swift in Sources */,
@@ -425,10 +477,12 @@
 				EBD451BE2435F9D800F6A4C2 /* EventDetailViewController.swift in Sources */,
 				EB9978182430995B00DD5663 /* FormHelper.swift in Sources */,
 				EB3B31FF24509C110023E930 /* Conference.swift in Sources */,
+				EB3081622452E4B600EB7598 /* SearchViewController.swift in Sources */,
 				EBB32233244843FA00942A2B /* BasePostRequest.swift in Sources */,
 				EBB3224624486F3F00942A2B /* SignUp.swift in Sources */,
 				EB3B320124509D130023E930 /* SuccessParser.swift in Sources */,
 				EBB32231244843DB00942A2B /* BaseGetRequest.swift in Sources */,
+				EB3081662452E4DE00EB7598 /* FavoritesViewController.swift in Sources */,
 				EB99781C24320A4200DD5663 /* UserDefaultsService.swift in Sources */,
 				EB30814A2451763B00EB7598 /* ConferencesParser.swift in Sources */,
 				EB3081442451742100EB7598 /* EventRequest.swift in Sources */,
@@ -437,6 +491,7 @@
 				EB30813A2451689600EB7598 /* EventsRequest.swift in Sources */,
 				EB3B31F0244D7A880023E930 /* Tariff.swift in Sources */,
 				EB3B320324509E3C0023E930 /* AddEventsRequest.swift in Sources */,
+				EB30815E2452E3C800EB7598 /* TabBarFactory.swift in Sources */,
 				EB3B31F4244DA6510023E930 /* UserRequest.swift in Sources */,
 				EB3B31F6244DA6F50023E930 /* UserParser.swift in Sources */,
 				EBB3224424486D9300942A2B /* SuccessResponse.swift in Sources */,
@@ -444,6 +499,7 @@
 				EB3081502451E7FE00EB7598 /* RegisterTicketRequest.swift in Sources */,
 				EBF8745B242F85B00056623E /* SignUpViewController.swift in Sources */,
 				EBB322372448466400942A2B /* HttpStatusCode.swift in Sources */,
+				EB30816A2452E59600EB7598 /* TicketsViewController.swift in Sources */,
 				EB3B320524509E4A0023E930 /* AddTariffsRequest.swift in Sources */,
 				EB30814C2451799700EB7598 /* UsersParser.swift in Sources */,
 				EB67D783244D756100E66B3C /* Category.swift in Sources */,

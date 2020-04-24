@@ -13,16 +13,6 @@ final class CategoriesViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     private let cellID = "\(UITableViewCell.self)"
-    private let categories: [String] = ["Все",
-                                        "Политика",
-                                        "Общество",
-                                        "Экономика",
-                                        "Спорт",
-                                        "Культура",
-                                        "Технологии",
-                                        "Наука",
-                                        "Авто"]
-    
     private var lastSelectedIndexPath: IndexPath?
     
     override func viewDidLoad() {
@@ -63,13 +53,13 @@ extension CategoriesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        return categories.count
+        return Category.allCases.count
     }
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
-        cell.textLabel?.text = categories[indexPath.row]
+        cell.textLabel?.text = Category.allCases[indexPath.row].description
         let isLastSelected = lastSelectedIndexPath?.row == indexPath.row
         cell.accessoryType = isLastSelected ? .checkmark : .none
         return cell

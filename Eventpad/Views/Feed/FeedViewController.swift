@@ -11,30 +11,20 @@ import UIKit
 final class FeedViewController: UIViewController {
     
     private let cellID = "\(EventCell.self)"
+    private let requestSender = RequestSender()
+    private let alertService = AlertService()
     private let userDefaultsService = UserDefaultsService()
     
     private let refreshControl = UIRefreshControl()
+    private lazy var sections = [EventSection]()
     
-    private lazy var sections = [
-        EventSection(event: Event(id: 0,
-                                  title: "День открытых дверей: программы магистратуры",
-                                  description: "...",
-                                  location: "Москва",
-                                  category: .noCategory,
-                                  dateStart: Date(),
-                                  dateEnd: Date(),
-                                  organizerID: 0,
-                                  isCancelled: false)),
-        EventSection(event: Event(id: 0,
-                                  title: "День открытых дверей: программы бакалавриата",
-                                  description: "...",
-                                  location: "Москва",
-                                  category: .noCategory,
-                                  dateStart: Date(),
-                                  dateEnd: Date(),
-                                  organizerID: 0,
-                                  isCancelled: false))
-    ]
+    private lazy var noDataLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Нет конференций"
+        label.textColor = UIColor.secondaryLabel
+        label.isHidden = true
+        return label
+    }()
     
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
@@ -62,6 +52,7 @@ final class FeedViewController: UIViewController {
         setupNavigation()
         setupCollectionView()
         setupRefreshControl()
+        loadData()
     }
     
     private func setupNavigation() {
@@ -105,12 +96,35 @@ final class FeedViewController: UIViewController {
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)])
+        
+        noDataLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(noDataLabel)
+        NSLayoutConstraint.activate([
+            noDataLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            noDataLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)])
     }
     
     private func setupRefreshControl() {
-        refreshControl.attributedTitle = NSAttributedString(string: "Потяните для обновления")
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         collectionView.refreshControl = refreshControl
+    }
+    
+    private func loadData() {
+        let config = RequestFactory.conferences(categoryID: Category.other.rawValue, limit: 20, offset: 0)
+        requestSender.send(config: config) { [weak self] result in
+            guard let self = self else { return }
+            self.refreshControl.endRefreshing()
+
+            switch result {
+            case .success(let conferences):
+                self.sections = conferences.map { EventSection(conference: $0) }
+                self.noDataLabel.isHidden = !conferences.isEmpty
+                
+            case .failure(let error):
+                let alert = self.alertService.alert(error.localizedDescription)
+                self.present(alert, animated: true)
+            }
+        }
     }
     
     @objc private func userDidTap() {
@@ -138,7 +152,7 @@ final class FeedViewController: UIViewController {
     }
     
     @objc private func refresh() {
-        refreshControl.endRefreshing()
+        loadData()
     }
 }
 
@@ -170,7 +184,7 @@ extension FeedViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        let viewController = EventDetailViewController(event: sections[indexPath.row].event)
+        let viewController = EventDetailViewController(conference: sections[indexPath.row].conference)
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

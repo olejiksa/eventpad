@@ -22,12 +22,12 @@ final class EventCell: UICollectionViewCell {
         imageView.layer.cornerRadius = 10
     }
     
-    func configure(with event: Event) {
+    func configure(with conference: Conference) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE, MMM d"
-        let date = dateFormatter.string(from: event.dateStart)
+        let date = dateFormatter.string(from: conference.dateStart)
         
-        titleLabel.text = event.title
-        subtitleLabel.text = "\(date) | \(event.location) | \(event.category.description)"
+        titleLabel.text = conference.title
+        subtitleLabel.text = "\(date) | \(conference.location) | \(conference.category.description)"
     }
 }

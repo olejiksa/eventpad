@@ -8,38 +8,25 @@
 
 import UIKit
 
+final class AlertService {
 
-enum AlertTitle: String {
-    
-    case attention = "Внимание"
-    case error = "Ошибка"
-    case info = "Информация"
-}
-
-
-protocol AlertServiceProtocol: class {
-    
-    func alert(_ message: String) -> UIAlertController
-    func alert(_ message: String, title: AlertTitle) -> UIAlertController
-    func alert(_ message: String,
-               title: AlertTitle,
-               isDestructive: Bool,
-               okAction: @escaping ((UIAlertAction) -> ())) -> UIAlertController
-}
-
-
-final class AlertService: AlertServiceProtocol {
+    enum Title: String {
+        
+        case attention = "Внимание"
+        case error = "Ошибка"
+        case info = "Информация"
+    }
     
     init() {}
     
     func alert(_ message: String) -> UIAlertController {
-        let alert = UIAlertController(title: AlertTitle.error.rawValue, message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: Title.error.rawValue, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(action)
         return alert
     }
     
-    func alert(_ message: String, title: AlertTitle) -> UIAlertController {
+    func alert(_ message: String, title: Title) -> UIAlertController {
         let alert = UIAlertController(title: title.rawValue, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(action)
@@ -47,7 +34,7 @@ final class AlertService: AlertServiceProtocol {
     }
     
     func alert(_ message: String,
-               title: AlertTitle,
+               title: Title,
                isDestructive: Bool,
                okAction: @escaping ((UIAlertAction) -> ())) -> UIAlertController {
         let alert = UIAlertController(title: title.rawValue, message: message, preferredStyle: .alert)

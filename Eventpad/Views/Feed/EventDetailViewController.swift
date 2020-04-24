@@ -12,15 +12,15 @@ import UIKit
 final class EventDetailViewController: UIViewController {
     
     private let userDefaultsService = UserDefaultsService()
-    private let event: Event
+    private let conference: Conference
     
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var dateTimeLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var categoryLabel: UILabel!
     
-    init(event: Event) {
-        self.event = event
+    init(conference: Conference) {
+        self.conference = conference
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -37,7 +37,7 @@ final class EventDetailViewController: UIViewController {
     }
     
     private func setupNavigation() {
-        navigationItem.title = "Событие"
+        navigationItem.title = "Конференция"
         navigationItem.largeTitleDisplayMode = .never
         
         let shareImage = UIImage(systemName: "square.and.arrow.up")
@@ -57,12 +57,12 @@ final class EventDetailViewController: UIViewController {
     private func setupView() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE, MMM d"
-        let date = dateFormatter.string(from: event.dateStart)
+        let date = dateFormatter.string(from: conference.dateStart)
         
-        titleLabel.text = event.title
+        titleLabel.text = conference.title
         dateTimeLabel.text = date
-        descriptionLabel.text = event.description
-        categoryLabel.text = event.category.description
+        descriptionLabel.text = conference.description
+        categoryLabel.text = conference.category.description
     }
     
     @IBAction private func registerDidTap() {
@@ -83,12 +83,12 @@ final class EventDetailViewController: UIViewController {
         ]
         let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
         let mapItem = MKMapItem(placemark: placemark)
-        mapItem.name = event.title
+        mapItem.name = conference.title
         mapItem.openInMaps(launchOptions: options)
     }
     
     @objc private func shareDidTap() {
-        let text = event.title
+        let text = conference.title
         let url = URL(string: "http://www.google.com")!
         let sharedObjects = [url as AnyObject, text as AnyObject]
         let activityViewController = UIActivityViewController(activityItems: sharedObjects, applicationActivities: nil)

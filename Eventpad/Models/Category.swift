@@ -6,7 +6,7 @@
 //  Copyright © 2020 Oleg Samoylov. All rights reserved.
 //
 
-enum Category: Int, Codable {
+enum Category: Int, CaseIterable, Codable {
     
     case noCategory
     case politics
@@ -17,6 +17,7 @@ enum Category: Int, Codable {
     case tech
     case science
     case auto
+    case other
 }
 
 
@@ -26,6 +27,9 @@ extension Category: CustomStringConvertible {
     
     var description: String {
         switch self {
+        case .noCategory:
+            return "Без категории"
+            
         case .politics:
             return "Политика"
             
@@ -50,8 +54,8 @@ extension Category: CustomStringConvertible {
         case .auto:
             return "Авто"
             
-        default:
-            return "Без категории"
+        case .other:
+            return "Другое"
         }
     }
 }
