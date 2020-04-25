@@ -28,11 +28,11 @@ struct Conference: Codable {
     let title: String
     let description: String
     let category: Category
-    let tariffs: [Tariff]
+    let tariffs: [Tariff]?
     let location: String
     let dateStart: Date
     let dateEnd: Date
     let isCancelled: Bool
     let organizerName: String?
-    let organizerID: String?
+    let organizerID: Int?
 }

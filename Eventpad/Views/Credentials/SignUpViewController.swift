@@ -80,7 +80,7 @@ final class SignUpViewController: UIViewController {
     }
     
     private func signUp(_ signUp: SignUp) {
-        let config = RequestFactory.signUp(signUp, role: .participant)
+        let config = RequestFactory.signUp(signUp, role: .organizer)
         
         requestSender.send(config: config) { [weak self] result in
             guard let self = self else { return }

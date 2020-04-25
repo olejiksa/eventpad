@@ -18,6 +18,7 @@ struct SimpleEvent: Codable {
         case conferenceID = "conference_id"
         case speakerName = "speaker_login"
         case speakerID = "speaker_id"
+        case title = "name"
         case description
     }
     
@@ -28,5 +29,6 @@ struct SimpleEvent: Codable {
     let conferenceID: Int
     let speakerName: String?
     let speakerID: Int?
+    let title: String
     let description: String
 }

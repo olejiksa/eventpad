@@ -16,7 +16,7 @@ final class FeedViewController: UIViewController {
     private let userDefaultsService = UserDefaultsService()
     
     private let refreshControl = UIRefreshControl()
-    private lazy var sections = [EventSection]()
+    private var sections = [EventSection]()
     
     private lazy var noDataLabel: UILabel = {
         let label = UILabel()
@@ -26,31 +26,15 @@ final class FeedViewController: UIViewController {
         return label
     }()
     
-    private lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
-        collectionView.backgroundColor = .systemBackground
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.contentInset = UIEdgeInsets(top: -10, left: 0, bottom: 20, right: 0)
-
-        collectionView.register(UINib(nibName: String(describing: EventCell.self), bundle: nil), forCellWithReuseIdentifier: String(describing: EventCell.self))
-
-        return collectionView
-    }()
-    
-    private lazy var collectionViewLayout: UICollectionViewLayout = {
-        var sections = self.sections
-        let layout = UICollectionViewCompositionalLayout { sectionIndex, environment -> NSCollectionLayoutSection? in
-            return sections[sectionIndex].layoutSection()
-        }
-        return layout
-    }()
+    private var collectionView: UICollectionView!
+    private var collectionViewLayout: UICollectionViewLayout!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNavigation()
         setupCollectionView()
+        setupNoDataLabel()
         setupRefreshControl()
         loadData()
     }
@@ -88,6 +72,20 @@ final class FeedViewController: UIViewController {
     }
     
     private func setupCollectionView() {
+        collectionViewLayout = UICollectionViewCompositionalLayout { [weak self] index, _ -> NSCollectionLayoutSection? in
+            guard let self = self else { return nil }
+            return self.sections[index].layoutSection()
+        }
+        
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
+        collectionView.backgroundColor = .systemBackground
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.contentInset = UIEdgeInsets(top: -10, left: 0, bottom: 20, right: 0)
+
+        let nib = UINib(nibName: String(describing: EventCell.self), bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: String(describing: EventCell.self))
+        
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(collectionView)
 
@@ -96,9 +94,12 @@ final class FeedViewController: UIViewController {
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)])
-        
+    }
+    
+    private func setupNoDataLabel() {
         noDataLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(noDataLabel)
+        
         NSLayoutConstraint.activate([
             noDataLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             noDataLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)])
@@ -110,7 +111,7 @@ final class FeedViewController: UIViewController {
     }
     
     private func loadData() {
-        let config = RequestFactory.conferences(categoryID: Category.other.rawValue, limit: 20, offset: 0)
+        let config = RequestFactory.conferences(categoryID: Category.science.rawValue, limit: 20, offset: 0)
         requestSender.send(config: config) { [weak self] result in
             guard let self = self else { return }
             self.refreshControl.endRefreshing()
@@ -119,6 +120,7 @@ final class FeedViewController: UIViewController {
             case .success(let conferences):
                 self.sections = conferences.map { EventSection(conference: $0) }
                 self.noDataLabel.isHidden = !conferences.isEmpty
+                self.collectionView.reloadData()
                 
             case .failure(let error):
                 let alert = self.alertService.alert(error.localizedDescription)
@@ -146,9 +148,35 @@ final class FeedViewController: UIViewController {
     }
     
     @objc private func addDidTap() {
-        let vc = OrganizerSignUpViewController()
-        let nvc = UINavigationController(rootViewController: vc)
-        present(nvc, animated: true)
+        let alert = UIAlertController(title: "Создать организацию или конференцию",
+                                      message: "Что вы хотите сделать?",
+                                      preferredStyle: .actionSheet)
+        
+        let organizationAction = UIAlertAction(title: "Организация",
+                                               style: .default,
+                                               handler: { [weak self] _ in
+            guard let self = self else { return }
+            let vc = OrganizerSignUpViewController()
+            let nvc = UINavigationController(rootViewController: vc)
+            self.present(nvc, animated: true)
+        })
+        
+        let conferenceAction = UIAlertAction(title: "Конференция",
+                                             style: .default,
+                                             handler: { [weak self] _ in
+            guard let self = self else { return }
+            let vc = NewConferenceViewController()
+            let nvc = UINavigationController(rootViewController: vc)
+            self.present(nvc, animated: true)
+        })
+        
+        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
+        
+        alert.addAction(organizationAction)
+        alert.addAction(conferenceAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true)
     }
     
     @objc private func refresh() {

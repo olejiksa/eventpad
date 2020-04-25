@@ -12,12 +12,13 @@ final class SearchViewController: UIViewController {
 
     private let cellID = "\(SubtitleCell.self)"
     private let searchController = UISearchController(searchResultsController: nil)
+    private let alertService = AlertService()
+    private let requestSender = RequestSender()
     
-    private var selectedScope: Int = 0
+    private var searchItemType: SearchItemType = .conference
     private var conferences: [Conference] = []
-    private var events: [Event] = []
+    private var events: [SimpleEvent] = []
     private var users: [User] = []
-    private var speakers: [User] = []
     
     @IBOutlet private weak var tableView: UITableView!
    
@@ -45,17 +46,77 @@ final class SearchViewController: UIViewController {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
-        searchController.searchBar.placeholder = "Конференции, события, пользователи, спикеры"
+        searchController.searchBar.placeholder = "Конференции, события, пользователи"
         searchController.searchBar.scopeButtonTitles = ["Конференции",
                                                         "События",
-                                                        "Пользователи",
-                                                        "Спикеры"]
+                                                        "Пользователи"]
         
         navigationItem.searchController = searchController
     }
     
     private func setupTableView() {
         tableView.register(SubtitleCell.self, forCellReuseIdentifier: cellID)
+    }
+    
+    private func loadData(for searchText: String) {
+        switch searchItemType {
+        case .conference:
+            loadConferences(for: searchText)
+        
+        case .event:
+            loadEvents(for: searchText)
+            
+        case .user:
+            loadUsers(for: searchText)
+        }
+    }
+    
+    private func loadConferences(for searchText: String) {
+        let config = RequestFactory.conferences(text: searchText, limit: 20, offset: 0)
+        requestSender.send(config: config) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let conferences):
+                self.conferences = conferences
+        
+            case .failure(let error):
+                let alert = self.alertService.alert(error.localizedDescription)
+                self.present(alert, animated: true)
+            }
+        }
+    }
+    
+    private func loadEvents(for searchText: String) {
+        let config = RequestFactory.events(text: searchText, limit: 20, offset: 0)
+        requestSender.send(config: config) { [weak self] result in
+            guard let self = self else { return }
+        
+            switch result {
+            case .success(let events):
+                self.events = events
+                
+            case .failure(let error):
+                let alert = self.alertService.alert(error.localizedDescription)
+                self.present(alert, animated: true)
+            }
+        }
+    }
+    
+    private func loadUsers(for searchText: String) {
+        let config = RequestFactory.users(text: searchText, limit: 20, offset: 0)
+        requestSender.send(config: config) { [weak self] result in
+            guard let self = self else { return }
+        
+            switch result {
+            case .success(let users):
+                self.users = users
+                
+            case .failure(let error):
+                let alert = self.alertService.alert(error.localizedDescription)
+                self.present(alert, animated: true)
+            }
+        }
     }
 }
 
@@ -65,9 +126,9 @@ final class SearchViewController: UIViewController {
 extension SearchViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
-        // guard let searchText = searchController.searchBar.text else { return }
-        // filterContent(for: searchText)
-        // tableView.reloadData()
+        guard let searchText = searchController.searchBar.text, !searchText.isEmpty else { return }
+        loadData(for: searchText)
+        tableView.reloadData()
     }
 }
 
@@ -77,7 +138,7 @@ extension SearchViewController: UISearchResultsUpdating {
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        self.selectedScope = selectedScope
+        searchItemType = SearchItemType(rawValue: selectedScope) ?? .conference
     }
 }
 
@@ -87,21 +148,15 @@ extension SearchViewController: UISearchBarDelegate {
 extension SearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch selectedScope {
-        case 0:
+        switch searchItemType {
+        case .conference:
             return conferences.count
         
-        case 1:
+        case .event:
             return events.count
             
-        case 2:
+        case .user:
             return users.count
-            
-        case 3:
-            return speakers.count
-            
-        default:
-            return 0
         }
     }
     
@@ -110,29 +165,21 @@ extension SearchViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? SubtitleCell
         else { return .init(frame: .zero) }
         
-        switch selectedScope {
-        case 0:
+        switch searchItemType {
+        case .conference:
             let conference = conferences[indexPath.row]
             cell.textLabel?.text = conference.title
             cell.detailTextLabel?.text = conference.description
         
-        case 1:
+        case .event:
             let event = events[indexPath.row]
             cell.textLabel?.text = event.title
             cell.detailTextLabel?.text = event.description
             
-        case 2:
+        case .user:
             let user = users[indexPath.row]
             cell.textLabel?.text = user.username
             cell.detailTextLabel?.text = "\(user.name) \(user.surname)"
-            
-        case 3:
-            let speaker = speakers[indexPath.row]
-            cell.textLabel?.text = speaker.username
-            cell.detailTextLabel?.text = "\(speaker.name) \(speaker.surname)"
-            
-        default:
-            break
         }
         
         return cell

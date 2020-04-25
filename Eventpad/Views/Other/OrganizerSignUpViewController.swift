@@ -149,15 +149,9 @@ extension OrganizerSignUpViewController: UIPickerViewDataSource {
 
 extension OrganizerSignUpViewController: UIPickerViewDelegate {
  
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView,
+                    didSelectRow row: Int,
+                    inComponent component: Int) {
        descriptionTextField.text = options[row]
     }
-}
-
-
-// MARK: - UITextFieldDelegate
-
-extension OrganizerSignUpViewController: UITextFieldDelegate {
-    
-    
 }

@@ -13,12 +13,21 @@ final class ConferenceParser: ParserProtocol {
     func parse(data: Data) -> Conference? {
         do {
             let jsonDecorder = JSONDecoder()
-            jsonDecorder.dateDecodingStrategy = .iso8601
-            jsonDecorder.keyDecodingStrategy = .convertFromSnakeCase
+            jsonDecorder.dateDecodingStrategy = .custom(customDateDecoder)
             return try jsonDecorder.decode(Conference.self, from: data)
         } catch  {
             print(error)
             return nil
         }
+    }
+    
+    private func customDateDecoder(decoder: Decoder) throws -> Date {
+        let container = try decoder.singleValueContainer()
+        let str = try container.decode(String.self)
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS+ZZZZ"
+        let date = dateFormatter.date(from: str)
+        return date ?? Date()
     }
 }

@@ -66,7 +66,7 @@ final class EventDetailViewController: UIViewController {
     }
     
     @IBAction private func registerDidTap() {
-        if userDefaultsService.getToken() == nil {
+        if Global.accessToken == nil {
             let vc = AuthViewController()
             let nvc = UINavigationController(rootViewController: vc)
             present(nvc, animated: true)

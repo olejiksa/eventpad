@@ -16,7 +16,8 @@ final class AuthViewController: UIViewController {
     @IBOutlet private weak var loginButton: BigButton!
     @IBOutlet private weak var loginField: UITextField!
     @IBOutlet private weak var passwordField: UITextField!
-    
+    @IBOutlet private weak var rememberSwitch: UISwitch!
+
     private let alertService = AlertService()
     private let requestSender = RequestSender()
     private let userDefaultsService = UserDefaultsService()
@@ -28,6 +29,7 @@ final class AuthViewController: UIViewController {
         setupNavigation()
         setupKeyboard()
         setupFormHelper()
+        setupView()
     }
     
     private func setupNavigation() {
@@ -54,7 +56,7 @@ final class AuthViewController: UIViewController {
     private func login(username: String, password: String) {
         let deviceName = UIDevice.current.name
         let login = Login(username: username, password: password, deviceName: deviceName)
-        let loginConfig = RequestFactory.login(login: login, role: .participant)
+        let loginConfig = RequestFactory.login(login: login, role: .organizer)
         let userConfig = RequestFactory.user(username: username)
         
         requestSender.send(config: loginConfig) { [weak self] result in
@@ -71,14 +73,20 @@ final class AuthViewController: UIViewController {
                         return
                     }
                     
-                    self.userDefaultsService.setToken(response.message)
+                    if self.rememberSwitch.isOn {
+                        self.userDefaultsService.setToken(response.message)
+                    }
+                    
                     self.requestSender.send(config: userConfig) { [weak self] result in
                         guard let self = self else { return }
                         
                         DispatchQueue.main.async {
                             switch result {
                             case .success(let response):
-                                self.userDefaultsService.setUser(response)
+                                if self.rememberSwitch.isOn {
+                                    self.userDefaultsService.setUser(response)
+                                }
+                                
                                 self.loginButton.hideLoading()
                                 self.close()
                                 
@@ -99,6 +107,10 @@ final class AuthViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    private func setupView() {
+        rememberSwitch.onTintColor = UIColor.systemBlue
     }
     
     @IBAction private func loginDidTap() {

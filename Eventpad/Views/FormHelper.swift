@@ -69,7 +69,10 @@ final class FormHelper: NSObject {
     }
     
     @objc private func textFieldsIsNotEmpty(sender: UITextField) {
-        sender.text = sender.text?.trimmingCharacters(in: .whitespaces)
+        if sender.textContentType != nil {
+            sender.text = sender.text?.trimmingCharacters(in: .whitespaces)
+        }
+        
         checkForEmptyFields()
     }
     

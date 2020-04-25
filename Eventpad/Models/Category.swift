@@ -18,6 +18,18 @@ enum Category: Int, CaseIterable, Codable {
     case science
     case auto
     case other
+    
+    init?(string: String) {
+        var value: Category = .noCategory
+        for item in Category.allCases {
+            if item.description == string {
+                value = item
+                break
+            }
+        }
+        
+        self.init(rawValue: value.rawValue)
+    }
 }
 
 
