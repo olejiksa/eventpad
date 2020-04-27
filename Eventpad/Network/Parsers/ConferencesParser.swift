@@ -26,7 +26,7 @@ final class ConferencesParser: ParserProtocol {
         let str = try container.decode(String.self)
 
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS+ZZZZ"
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         let date = dateFormatter.date(from: str)
         return date ?? Date()
     }

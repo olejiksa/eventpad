@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "KeyboardAdjuster",
+        "repositoryURL": "https://github.com/lionheart/KeyboardAdjuster.git",
+        "state": {
+          "branch": "master",
+          "revision": "f4c1081ac3a5f298363702b224efbf54a71b2c76",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

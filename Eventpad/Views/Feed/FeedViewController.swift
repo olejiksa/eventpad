@@ -213,6 +213,7 @@ extension FeedViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         let viewController = EventDetailViewController(conference: sections[indexPath.row].conference)
-        navigationController?.pushViewController(viewController, animated: true)
+        let nvc = UINavigationController(rootViewController: viewController)
+        present(nvc, animated: true)
     }
 }

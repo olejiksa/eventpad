@@ -15,9 +15,11 @@ final class EventDetailViewController: UIViewController {
     private let conference: Conference
     
     @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var dateTimeLabel: UILabel!
+    @IBOutlet private weak var dateStartLabel: UILabel!
+    @IBOutlet private weak var dateEndLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var categoryLabel: UILabel!
+    @IBOutlet private weak var locationLabel: UILabel!
     
     init(conference: Conference) {
         self.conference = conference
@@ -52,17 +54,26 @@ final class EventDetailViewController: UIViewController {
                                              target: self,
                                              action: #selector(shareDidTap))
         navigationItem.rightBarButtonItems = [shareButton, favoriteButton]
+        
+        let closeButton = UIBarButtonItem(barButtonSystemItem: .close,
+                                          target: self,
+                                          action: #selector(close))
+        navigationItem.leftBarButtonItem = closeButton
     }
     
     private func setupView() {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEEE, MMM d"
-        let date = dateFormatter.string(from: conference.dateStart)
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .short
+        let dateStart = dateFormatter.string(from: conference.dateStart)
+        let dateEnd = dateFormatter.string(from: conference.dateEnd)
         
         titleLabel.text = conference.title
-        dateTimeLabel.text = date
+        dateStartLabel.text = dateStart
+        dateEndLabel.text = dateEnd
         descriptionLabel.text = conference.description
         categoryLabel.text = conference.category.description
+        locationLabel.text = conference.location
     }
     
     @IBAction private func registerDidTap() {
@@ -94,5 +105,9 @@ final class EventDetailViewController: UIViewController {
         let activityViewController = UIActivityViewController(activityItems: sharedObjects, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
         present(activityViewController, animated: true, completion: nil)
+    }
+
+    @objc private func close() {
+        dismiss(animated: true)
     }
 }

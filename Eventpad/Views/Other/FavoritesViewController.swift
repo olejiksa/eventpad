@@ -10,14 +10,31 @@ import UIKit
 
 final class FavoritesViewController: UIViewController {
 
+   private lazy var noDataLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Нет избранного"
+        label.textColor = UIColor.secondaryLabel
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupNavigation()
+        setupNoDataLabel()
     }
     
     private func setupNavigation() {
         navigationItem.title = "Избранное"
         navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    private func setupNoDataLabel() {
+        noDataLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(noDataLabel)
+        
+        NSLayoutConstraint.activate([
+            noDataLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            noDataLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)])
     }
 }

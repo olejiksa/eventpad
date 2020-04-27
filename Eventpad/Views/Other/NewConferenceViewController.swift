@@ -168,8 +168,8 @@ final class NewConferenceViewController: UIViewController {
     @objc private func tapDoneEnd() {
         if let datePicker = dateEndTextField.inputView as? UIDatePicker {
             let dateformatter = DateFormatter()
-            dateformatter.dateStyle = .medium
-            dateformatter.timeStyle = .medium
+            dateformatter.dateStyle = .short
+            dateformatter.timeStyle = .short
             dateEndTextField.text = dateformatter.string(from: datePicker.date)
             dateEnd = datePicker.date
         }
