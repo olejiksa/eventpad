@@ -88,7 +88,7 @@ final class NewConferenceViewController: UIViewController {
                                     dateEnd: dateEnd,
                                     isCancelled: false,
                                     organizerName: user.username,
-                                    organizerID: nil)
+                                    organizerID: user.id)
         create(conference)
     }
     

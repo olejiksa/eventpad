@@ -11,6 +11,7 @@ import UIKit
 final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private let userDefaultsService = UserDefaultsService()
+    private let requestSender = RequestSender()
     var window: UIWindow?
 
     func scene(_ scene: UIScene,
@@ -19,18 +20,10 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        if let urlContext = connectionOptions.urlContexts.first {
-            let sendingAppID = urlContext.options.sourceApplication
-            let url = urlContext.url
-            print("source application = \(sendingAppID ?? "Unknown")")
-            print("url = \(url)")
-                
-            // Process the URL similarly to the UIApplicationDelegate example.
-        }
-        
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         Global.accessToken = userDefaultsService.getToken()
+        Global.role = userDefaultsService.getRole()
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
@@ -68,6 +61,51 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        guard let context = URLContexts.first else { return }
+        guard let view = context.url.host else { return }
         
+        var parameters: [String: String] = [:]
+        URLComponents(url: context.url, resolvingAgainstBaseURL: false)?.queryItems?.forEach {
+            parameters[$0.name] = $0.value
+        }
+        
+        navigate(to: view, with: parameters)
+    }
+    
+    private func navigate(to view: String, with parameters: [String: String]) {
+        // 1
+        var tabBarController = window?.rootViewController as? UITabBarController
+        if tabBarController == nil {
+            Global.accessToken = userDefaultsService.getToken()
+            Global.role = userDefaultsService.getRole()
+            
+            window = UIWindow(frame: UIScreen.main.bounds)
+            
+            tabBarController = TabBarFactory.tabBarController()
+            window?.rootViewController = tabBarController
+            window?.makeKeyAndVisible()
+        }
+        
+        guard let tbc = tabBarController else { return }
+
+        // 2
+        tbc.selectedIndex = 0
+        guard let nvc = tbc.viewControllers?.first as? UINavigationController else { return }
+
+        // 3
+        nvc.popToRootViewController(animated: false)
+        
+        guard let string = parameters["id"], let id = Int(string) else { return }
+        let config = RequestFactory.conference(conferenceID: id)
+        requestSender.send(config: config) { result in
+            switch result {
+            case .success(let conference):
+                let detailViewController = EventDetailViewController(conference: conference)
+                nvc.pushViewController(detailViewController, animated: true)
+                
+            case .failure:
+                return
+            }
+        }
     }
 }

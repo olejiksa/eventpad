@@ -20,7 +20,7 @@ final class SignUpViewController: UIViewController {
     @IBOutlet private weak var repeatPasswordField: UITextField!
     @IBOutlet private weak var acceptTextView: UITextView!
     @IBOutlet private weak var acceptSwitch: UISwitch!
-    
+    @IBOutlet private weak var organizerSwitch: UISwitch!
     @IBOutlet private weak var stackView: UIStackView!
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var signUpButton: BigButton!
@@ -34,7 +34,7 @@ final class SignUpViewController: UIViewController {
         super.viewDidLoad()
         
         setupNavigation()
-        setupTextView()
+        setupTextViews()
         setupKeyboard()
         setupFormHelper()
     }
@@ -48,16 +48,24 @@ final class SignUpViewController: UIViewController {
         navigationItem.rightBarButtonItem = closeButton
     }
     
-    private func setupTextView() {
-        let string = "Я принимаю условия пользовательского соглашения и политики конфиденциальности"
-        let attributedString = NSMutableAttributedString(string: string)
-        attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 17), range: NSRange(location: 0, length: 77))
-        attributedString.addAttribute(.foregroundColor, value: UIColor.label, range: NSRange(location: 0, length: 77))
-        attributedString.addAttribute(.link, value: "https://vk.com/@hseapp-terms", range: NSRange(location: 19, length: 28))
-        attributedString.addAttribute(.link, value: "https://vk.com/@hseapp-privacy", range: NSRange(location: 50, length: 27))
+    private func setupTextViews() {
+        let acceptString = "Я принимаю условия пользовательского соглашения и политики конфиденциальности"
+        let acceptAttributedString = NSMutableAttributedString(string: acceptString)
+        acceptAttributedString.addAttribute(.font,
+                                            value: UIFont.systemFont(ofSize: 17),
+                                            range: NSRange(location: 0, length: 77))
+        acceptAttributedString.addAttribute(.foregroundColor,
+                                            value: UIColor.label,
+                                            range: NSRange(location: 0, length: 77))
+        acceptAttributedString.addAttribute(.link,
+                                            value: "https://vk.com/@hseapp-terms",
+                                            range: NSRange(location: 19, length: 28))
+        acceptAttributedString.addAttribute(.link,
+                                            value: "https://vk.com/@hseapp-privacy",
+                                            range: NSRange(location: 50, length: 27))
         acceptTextView.textContainerInset = .zero
         acceptTextView.textContainer.lineFragmentPadding = 0
-        acceptTextView.attributedText = attributedString
+        acceptTextView.attributedText = acceptAttributedString
     }
     
     private func setupKeyboard() {
@@ -80,7 +88,8 @@ final class SignUpViewController: UIViewController {
     }
     
     private func signUp(_ signUp: SignUp) {
-        let config = RequestFactory.signUp(signUp, role: .organizer)
+        let role: Role = organizerSwitch.isOn ? .organizer : .participant
+        let config = RequestFactory.signUp(signUp, role: role)
         
         requestSender.send(config: config) { [weak self] result in
             guard let self = self else { return }
@@ -96,6 +105,7 @@ final class SignUpViewController: UIViewController {
                         return
                     }
                     
+                    self.userDefaultsService.setRole(role)
                     self.userDefaultsService.setToken(response.message)
                     
                     let user = User(id: 0,

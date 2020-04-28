@@ -25,4 +25,11 @@ final class AddEventsRequest: BasePostRequest {
             fatalError()
         }
     }
+    
+    override var urlRequest: URLRequest? {
+        var request = super.urlRequest
+        guard let accessToken = Global.accessToken else { return request }
+        request?.setValue(accessToken, forHTTPHeaderField: "token")
+        return request
+    }
 }

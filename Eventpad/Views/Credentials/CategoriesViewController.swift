@@ -11,6 +11,7 @@ import UIKit
 final class CategoriesViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var showAllSwitch: UISwitch!
     
     private let cellID = "\(UITableViewCell.self)"
     private var lastSelectedIndexPath: IndexPath?
@@ -19,13 +20,13 @@ final class CategoriesViewController: UIViewController {
         super.viewDidLoad()
 
         setupNavigation()
-        setupTableView()
+        setupView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        lastSelectedIndexPath = IndexPath(row: 0, section: 0)
+        setupIndex()
     }
     
     private func setupNavigation() {
@@ -37,12 +38,34 @@ final class CategoriesViewController: UIViewController {
         navigationItem.rightBarButtonItem = closeButton
     }
     
-    private func setupTableView() {
+    private func setupView() {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
+        tableView.isHidden = Global.categoryInUse == nil
+        showAllSwitch.isOn = Global.categoryInUse == nil
     }
 
     @objc private func close() {
         dismiss(animated: true)
+    }
+    
+    @IBAction private func showAllSwitchDidValueChange() {
+        tableView.isHidden = showAllSwitch.isOn
+        if showAllSwitch.isOn {
+            Global.categoryInUse = nil
+            lastSelectedIndexPath = nil
+        } else {
+            setupIndex()
+        }
+    }
+    
+    private func setupIndex() {
+        if let category = Global.categoryInUse {
+            lastSelectedIndexPath = IndexPath(row: category.rawValue, section: 0)
+            Global.categoryInUse = category
+        } else {
+            lastSelectedIndexPath = IndexPath(row: 0, section: 0)
+            Global.categoryInUse = Category.noCategory
+        }
     }
 }
 
@@ -72,6 +95,8 @@ extension CategoriesViewController: UITableViewDataSource {
 extension CategoriesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        Global.categoryInUse = Category(rawValue: indexPath.row)
+        
         tableView.deselectRow(at: indexPath, animated: true)
         
         if indexPath.row != lastSelectedIndexPath?.row {

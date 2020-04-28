@@ -15,7 +15,7 @@ final class AddTariffsRequest: BasePostRequest {
         
         do {
             let jsonEncoder = JSONEncoder()
-            let encodedJson = try jsonEncoder.encode(tariffs)
+            let encodedJson = try jsonEncoder.encode(tariffs.first!)
             guard let parameters = try JSONSerialization.jsonObject(with: encodedJson) as? [String: Any] else {
                 fatalError()
             }
@@ -24,5 +24,12 @@ final class AddTariffsRequest: BasePostRequest {
         } catch {
             fatalError()
         }
+    }
+    
+    override var urlRequest: URLRequest? {
+        var request = super.urlRequest
+        guard let accessToken = Global.accessToken else { return request }
+        request?.setValue(accessToken, forHTTPHeaderField: "token")
+        return request
     }
 }

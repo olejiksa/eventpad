@@ -17,7 +17,7 @@ struct Tariff: Codable {
         case ticketsTotalCount = "tickets_total"
     }
     
-    let id: Int
+    let id: Int?
     let title: String
     let price: Double
     let conferenceID: Int

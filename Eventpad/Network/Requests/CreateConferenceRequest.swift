@@ -26,7 +26,7 @@ final class CreateConferenceRequest: BasePostRequest {
         }
     }
     
-    override public var urlRequest: URLRequest? {
+    override var urlRequest: URLRequest? {
         var request = super.urlRequest
         guard let accessToken = Global.accessToken else { return request }
         request?.setValue(accessToken, forHTTPHeaderField: "token")

@@ -77,6 +77,12 @@
 		EBB3224A244B6E0400942A2B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB32249244B6E0400942A2B /* User.swift */; };
 		EBD451BE2435F9D800F6A4C2 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD451BC2435F9D800F6A4C2 /* EventDetailViewController.swift */; };
 		EBD451BF2435F9D800F6A4C2 /* EventDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBD451BD2435F9D800F6A4C2 /* EventDetailView.xib */; };
+		EBDB1E0A245750BE009316FC /* MyConferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB1E08245750BE009316FC /* MyConferencesViewController.swift */; };
+		EBDB1E0B245750BE009316FC /* MyConferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBDB1E09245750BE009316FC /* MyConferencesView.xib */; };
+		EBDB1E0E24589AA8009316FC /* NewTariffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB1E0C24589AA8009316FC /* NewTariffViewController.swift */; };
+		EBDB1E0F24589AA8009316FC /* NewTariffView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBDB1E0D24589AA8009316FC /* NewTariffView.xib */; };
+		EBDB1E1224589B64009316FC /* NewEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB1E1024589B64009316FC /* NewEventViewController.swift */; };
+		EBDB1E1324589B64009316FC /* NewEventView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBDB1E1124589B64009316FC /* NewEventView.xib */; };
 		EBE681B82454919400CB9285 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE681B72454919400CB9285 /* Global.swift */; };
 		EBF87440242F81330056623E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF8743F242F81330056623E /* AppDelegate.swift */; };
 		EBF87442242F81330056623E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF87441242F81330056623E /* SceneDelegate.swift */; };
@@ -160,6 +166,12 @@
 		EBB32249244B6E0400942A2B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EBD451BC2435F9D800F6A4C2 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		EBD451BD2435F9D800F6A4C2 /* EventDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventDetailView.xib; sourceTree = "<group>"; };
+		EBDB1E08245750BE009316FC /* MyConferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyConferencesViewController.swift; sourceTree = "<group>"; };
+		EBDB1E09245750BE009316FC /* MyConferencesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyConferencesView.xib; sourceTree = "<group>"; };
+		EBDB1E0C24589AA8009316FC /* NewTariffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTariffViewController.swift; sourceTree = "<group>"; };
+		EBDB1E0D24589AA8009316FC /* NewTariffView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewTariffView.xib; sourceTree = "<group>"; };
+		EBDB1E1024589B64009316FC /* NewEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventViewController.swift; sourceTree = "<group>"; };
+		EBDB1E1124589B64009316FC /* NewEventView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewEventView.xib; sourceTree = "<group>"; };
 		EBE681B72454919400CB9285 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		EBF8743C242F81330056623E /* Eventpad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eventpad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBF8743F242F81330056623E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -224,6 +236,12 @@
 				EB5CE48E245379A40085E59B /* NewConferenceView.xib */,
 				EB3B31F824501A010023E930 /* OrganizerSignUpViewController.swift */,
 				EB3B31F924501A010023E930 /* OrganizerSignUpView.xib */,
+				EBDB1E08245750BE009316FC /* MyConferencesViewController.swift */,
+				EBDB1E09245750BE009316FC /* MyConferencesView.xib */,
+				EBDB1E0C24589AA8009316FC /* NewTariffViewController.swift */,
+				EBDB1E0D24589AA8009316FC /* NewTariffView.xib */,
+				EBDB1E1024589B64009316FC /* NewEventViewController.swift */,
+				EBDB1E1124589B64009316FC /* NewEventView.xib */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -436,6 +454,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBF8745C242F85B00056623E /* SignUpView.xib in Resources */,
+				EBDB1E0F24589AA8009316FC /* NewTariffView.xib in Resources */,
 				EBF87458242F84FA0056623E /* AuthView.xib in Resources */,
 				EB67D77C244C8B5C00E66B3C /* CategoriesView.xib in Resources */,
 				EBD451BF2435F9D800F6A4C2 /* EventDetailView.xib in Resources */,
@@ -447,7 +466,9 @@
 				EB5CE490245379A40085E59B /* NewConferenceView.xib in Resources */,
 				EB9978212432890300DD5663 /* AccountView.xib in Resources */,
 				EBF87449242F81370056623E /* Assets.xcassets in Resources */,
+				EBDB1E1324589B64009316FC /* NewEventView.xib in Resources */,
 				EB3081672452E4DE00EB7598 /* FavoritesView.xib in Resources */,
+				EBDB1E0B245750BE009316FC /* MyConferencesView.xib in Resources */,
 				EB06F37824332D810018605E /* EventCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -472,6 +493,7 @@
 				EB3081582451F05700EB7598 /* TicketRequest.swift in Sources */,
 				EB3B31FD24509B300023E930 /* CreateConferenceRequest.swift in Sources */,
 				EB30816E2452EBF800EB7598 /* SubtitleCell.swift in Sources */,
+				EBDB1E0E24589AA8009316FC /* NewTariffViewController.swift in Sources */,
 				EB30813C245168A000EB7598 /* EventsParser.swift in Sources */,
 				EB30814E245179A600EB7598 /* UsersRequest.swift in Sources */,
 				EBB3222D2448427F00942A2B /* RequestFactory.swift in Sources */,
@@ -483,6 +505,7 @@
 				EBB3224124486AF500942A2B /* LoginRequest.swift in Sources */,
 				EBF87440242F81330056623E /* AppDelegate.swift in Sources */,
 				EB3081562451EF4800EB7598 /* Ticket.swift in Sources */,
+				EBDB1E1224589B64009316FC /* NewEventViewController.swift in Sources */,
 				EB3081482451753000EB7598 /* ConferencesRequest.swift in Sources */,
 				EB3081522451EBD900EB7598 /* FavoriteEventRequest.swift in Sources */,
 				EB67D77B244C8B5C00E66B3C /* CategoriesViewController.swift in Sources */,
@@ -498,6 +521,7 @@
 				EB3B320124509D130023E930 /* SuccessParser.swift in Sources */,
 				EBB32231244843DB00942A2B /* BaseGetRequest.swift in Sources */,
 				EB3081662452E4DE00EB7598 /* FavoritesViewController.swift in Sources */,
+				EBDB1E0A245750BE009316FC /* MyConferencesViewController.swift in Sources */,
 				EB99781C24320A4200DD5663 /* UserDefaultsService.swift in Sources */,
 				EB30814A2451763B00EB7598 /* ConferencesParser.swift in Sources */,
 				EB3081442451742100EB7598 /* EventRequest.swift in Sources */,
@@ -668,7 +692,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.olejiksa.Eventpad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -688,7 +712,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.olejiksa.Eventpad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

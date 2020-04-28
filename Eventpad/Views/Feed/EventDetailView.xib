@@ -27,7 +27,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="duJ-Qu-ED9">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="1317.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="1465.5"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="WcP-3S-8aX">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="213.5"/>
@@ -189,7 +189,7 @@
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="5G9-TD-Yhs">
-                                    <rect key="frame" x="20" y="1095.5" width="280" height="202"/>
+                                    <rect key="frame" x="20" y="1095.5" width="280" height="350"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="owh-EA-6Y7" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="280" height="54"/>
@@ -246,6 +246,46 @@
                                             </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="registerDidTap" destination="-1" eventType="touchUpInside" id="Dq2-JW-jS4"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFo-KY-G8B" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="222" width="280" height="54"/>
+                                            <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="54" id="oRT-de-RNS"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                            <state key="normal" title="Добавить событие">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="addEventDidTap" destination="-1" eventType="touchUpInside" id="vcZ-rO-Kyk"/>
+                                                <action selector="registerDidTap" destination="-1" eventType="touchUpInside" id="2ey-1h-aih"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FiD-P2-gfb" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="296" width="280" height="54"/>
+                                            <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="54" id="tr5-Zn-GCS"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                            <state key="normal" title="Добавить тариф">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="addTariffDidTap" destination="-1" eventType="touchUpInside" id="6e4-lL-ooa"/>
+                                                <action selector="registerDidTap" destination="-1" eventType="touchUpInside" id="Tda-U2-HDV"/>
                                             </connections>
                                         </button>
                                     </subviews>

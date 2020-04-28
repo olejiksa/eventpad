@@ -11,3 +11,17 @@ enum Role {
     case organizer
     case participant
 }
+
+
+extension Role: CustomStringConvertible {
+    
+    var description: String {
+        switch self {
+        case .organizer:
+            return "Организатор"
+            
+        case .participant:
+            return "Гость"
+        }
+    }
+}

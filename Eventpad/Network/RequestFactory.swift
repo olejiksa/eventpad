@@ -132,6 +132,13 @@ struct RequestFactory {
         return .init(request: request, parser: parser)
     }
     
+    static func conferences(limit: Int, offset: Int) -> RequestConfig<ConferencesParser> {
+        let request = ConferencesRequest(limit: limit, offset: offset)
+        let parser = ConferencesParser()
+               
+        return .init(request: request, parser: parser)
+    }
+    
     static func conference(conferenceID: Int) -> RequestConfig<ConferenceParser> {
         let request = ConferenceRequest(conferenceID: conferenceID)
         let parser = ConferenceParser()

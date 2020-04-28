@@ -54,11 +54,6 @@ final class EventDetailViewController: UIViewController {
                                              target: self,
                                              action: #selector(shareDidTap))
         navigationItem.rightBarButtonItems = [shareButton, favoriteButton]
-        
-        let closeButton = UIBarButtonItem(barButtonSystemItem: .close,
-                                          target: self,
-                                          action: #selector(close))
-        navigationItem.leftBarButtonItem = closeButton
     }
     
     private func setupView() {
@@ -99,15 +94,25 @@ final class EventDetailViewController: UIViewController {
     }
     
     @objc private func shareDidTap() {
+        guard let id = conference.id else { return }
         let text = conference.title
-        let url = URL(string: "http://www.google.com")!
+        let url = URL(string: "eventpad://conference?id=\(id)")!
         let sharedObjects = [url as AnyObject, text as AnyObject]
         let activityViewController = UIActivityViewController(activityItems: sharedObjects, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
         present(activityViewController, animated: true, completion: nil)
     }
-
-    @objc private func close() {
-        dismiss(animated: true)
+    
+    @IBAction private func addEventDidTap() {
+        let vc = NewEventViewController()
+        let nvc = UINavigationController(rootViewController: vc)
+        present(nvc, animated: true)
+    }
+    
+    @IBAction private func addTariffDidTap() {
+        let vc = NewTariffViewController()
+        vc.conferenceID = conference.id
+        let nvc = UINavigationController(rootViewController: vc)
+        present(nvc, animated: true)
     }
 }

@@ -41,7 +41,6 @@ final class FeedViewController: UIViewController {
     
     private func setupNavigation() {
         navigationItem.title = "Афиша"
-        navigationController?.navigationBar.prefersLargeTitles = true
         
         let userImage = UIImage(systemName: "person.crop.circle")
         let userButton = UIBarButtonItem(image: userImage,
@@ -49,12 +48,16 @@ final class FeedViewController: UIViewController {
                                          target: self,
                                          action: #selector(userDidTap))
         
-        let addImage = UIImage(systemName: "plus")
-        let addButton = UIBarButtonItem(image: addImage,
-                                        style: .plain,
-                                        target: self,
-                                        action: #selector(addDidTap))
-        navigationItem.rightBarButtonItems = [userButton, addButton]
+        if Global.role == .organizer {
+            let addImage = UIImage(systemName: "plus")
+            let addButton = UIBarButtonItem(image: addImage,
+                                            style: .plain,
+                                            target: self,
+                                            action: #selector(addDidTap))
+            navigationItem.rightBarButtonItems = [userButton, addButton]
+        } else {
+            navigationItem.rightBarButtonItems = [userButton]
+        }
         
         let filterImage = UIImage(systemName: "line.horizontal.3.decrease.circle")
         let filterButton = UIBarButtonItem(image: filterImage,
@@ -81,7 +84,7 @@ final class FeedViewController: UIViewController {
         collectionView.backgroundColor = .systemBackground
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.contentInset = UIEdgeInsets(top: -10, left: 0, bottom: 20, right: 0)
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
 
         let nib = UINib(nibName: String(describing: EventCell.self), bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: String(describing: EventCell.self))
@@ -111,20 +114,39 @@ final class FeedViewController: UIViewController {
     }
     
     private func loadData() {
-        let config = RequestFactory.conferences(categoryID: Category.science.rawValue, limit: 20, offset: 0)
-        requestSender.send(config: config) { [weak self] result in
-            guard let self = self else { return }
-            self.refreshControl.endRefreshing()
+        if let category = Global.categoryInUse {
+            let config = RequestFactory.conferences(categoryID: category.rawValue, limit: 20, offset: 0)
+            requestSender.send(config: config) { [weak self] result in
+                guard let self = self else { return }
+                self.refreshControl.endRefreshing()
 
-            switch result {
-            case .success(let conferences):
-                self.sections = conferences.map { EventSection(conference: $0) }
-                self.noDataLabel.isHidden = !conferences.isEmpty
-                self.collectionView.reloadData()
-                
-            case .failure(let error):
-                let alert = self.alertService.alert(error.localizedDescription)
-                self.present(alert, animated: true)
+                switch result {
+                case .success(let conferences):
+                    self.sections = conferences.map { EventSection(conference: $0) }
+                    self.noDataLabel.isHidden = !conferences.isEmpty
+                    self.collectionView.reloadData()
+                    
+                case .failure(let error):
+                    let alert = self.alertService.alert(error.localizedDescription)
+                    self.present(alert, animated: true)
+                }
+            }
+        } else {
+            let config = RequestFactory.conferences(limit: 20, offset: 0)
+            requestSender.send(config: config) { [weak self] result in
+                guard let self = self else { return }
+                self.refreshControl.endRefreshing()
+
+                switch result {
+                case .success(let conferences):
+                    self.sections = conferences.map { EventSection(conference: $0) }
+                    self.noDataLabel.isHidden = !conferences.isEmpty
+                    self.collectionView.reloadData()
+                    
+                case .failure(let error):
+                    let alert = self.alertService.alert(error.localizedDescription)
+                    self.present(alert, animated: true)
+                }
             }
         }
     }
@@ -132,8 +154,7 @@ final class FeedViewController: UIViewController {
     @objc private func userDidTap() {
         if let user = userDefaultsService.getUser() {
             let vc = AccountViewController(user: user)
-            let nvc = UINavigationController(rootViewController: vc)
-            present(nvc, animated: true)
+            navigationController?.pushViewController(vc, animated: true)
         } else {
             let vc = AuthViewController()
             let nvc = UINavigationController(rootViewController: vc)
@@ -148,35 +169,9 @@ final class FeedViewController: UIViewController {
     }
     
     @objc private func addDidTap() {
-        let alert = UIAlertController(title: "Создать организацию или конференцию",
-                                      message: "Что вы хотите сделать?",
-                                      preferredStyle: .actionSheet)
-        
-        let organizationAction = UIAlertAction(title: "Организация",
-                                               style: .default,
-                                               handler: { [weak self] _ in
-            guard let self = self else { return }
-            let vc = OrganizerSignUpViewController()
-            let nvc = UINavigationController(rootViewController: vc)
-            self.present(nvc, animated: true)
-        })
-        
-        let conferenceAction = UIAlertAction(title: "Конференция",
-                                             style: .default,
-                                             handler: { [weak self] _ in
-            guard let self = self else { return }
-            let vc = NewConferenceViewController()
-            let nvc = UINavigationController(rootViewController: vc)
-            self.present(nvc, animated: true)
-        })
-        
-        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
-        
-        alert.addAction(organizationAction)
-        alert.addAction(conferenceAction)
-        alert.addAction(cancelAction)
-        
-        present(alert, animated: true)
+        let vc = OrganizerSignUpViewController()
+        let nvc = UINavigationController(rootViewController: vc)
+        self.present(nvc, animated: true)
     }
     
     @objc private func refresh() {
@@ -212,8 +207,7 @@ extension FeedViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        let viewController = EventDetailViewController(conference: sections[indexPath.row].conference)
-        let nvc = UINavigationController(rootViewController: viewController)
-        present(nvc, animated: true)
+        let viewController = EventDetailViewController(conference: sections[indexPath.section].conference)
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }

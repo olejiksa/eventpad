@@ -12,9 +12,11 @@ import UIKit
 final class AccountViewController: UIViewController {
 
     @IBOutlet private weak var fullNameLabel: UILabel!
+    @IBOutlet private weak var accountLabel: UILabel!
     @IBOutlet private weak var emailButton: UIButton!
     @IBOutlet private weak var phoneButton: UIButton!
     @IBOutlet private weak var logoutButton: BigButton!
+    @IBOutlet private weak var conferencesButton: BigButton!
     
     private let user: User
     private let alertService = AlertService()
@@ -38,17 +40,14 @@ final class AccountViewController: UIViewController {
     
     private func setupNavigation() {
         navigationItem.title = "Учетная запись"
-        
-        let closeButton = UIBarButtonItem(barButtonSystemItem: .close,
-                                          target: self,
-                                          action: #selector(close))
-        navigationItem.rightBarButtonItem = closeButton
     }
     
     private func setupView() {
         fullNameLabel.text = "\(user.name) \(user.surname)"
+        accountLabel.text = Global.role.description
         emailButton.setTitle(user.email, for: .normal)
         phoneButton.setTitle(user.phone, for: .normal)
+        conferencesButton.isHidden = Global.role == .participant
     }
     
     @IBAction private func logoutDidTap() {
@@ -57,7 +56,7 @@ final class AccountViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.userDefaultsService.clear()
             self.logoutButton.hideLoading()
-            self.close()
+            self.navigationController?.popViewController(animated: true)
         }
     }
     
@@ -87,8 +86,9 @@ final class AccountViewController: UIViewController {
         }
     }
     
-    @objc private func close() {
-        dismiss(animated: true)
+    @IBAction private func myConferencesDidTap() {
+        let vc = MyConferencesViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

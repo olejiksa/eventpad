@@ -17,7 +17,25 @@ final class UserDefaultsService {
     }
     
     func setToken(_ token: String) {
+        Global.accessToken = token
         defaults.set(token, forKey: "token")
+    }
+    
+    func getRole() -> Role {
+        guard getToken() != nil else { return .participant }
+        return defaults.bool(forKey: "is_organizer") ? .organizer : .participant
+    }
+    
+    func setRole(_ role: Role) {
+        Global.role = role
+        
+        switch role {
+        case .organizer:
+            defaults.set(true, forKey: "is_organizer")
+            
+        case .participant:
+            defaults.set(false, forKey: "is_organizer")
+        }
     }
     
     func getUser() -> User? {

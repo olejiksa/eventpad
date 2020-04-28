@@ -17,7 +17,8 @@ final class AuthViewController: UIViewController {
     @IBOutlet private weak var loginField: UITextField!
     @IBOutlet private weak var passwordField: UITextField!
     @IBOutlet private weak var rememberSwitch: UISwitch!
-
+    @IBOutlet private weak var organizerSwitch: UISwitch!
+    
     private let alertService = AlertService()
     private let requestSender = RequestSender()
     private let userDefaultsService = UserDefaultsService()
@@ -56,7 +57,8 @@ final class AuthViewController: UIViewController {
     private func login(username: String, password: String) {
         let deviceName = UIDevice.current.name
         let login = Login(username: username, password: password, deviceName: deviceName)
-        let loginConfig = RequestFactory.login(login: login, role: .organizer)
+        let role: Role = organizerSwitch.isOn ? .organizer : .participant
+        let loginConfig = RequestFactory.login(login: login, role: role)
         let userConfig = RequestFactory.user(username: username)
         
         requestSender.send(config: loginConfig) { [weak self] result in
@@ -73,6 +75,7 @@ final class AuthViewController: UIViewController {
                         return
                     }
                     
+                    self.userDefaultsService.setRole(role)
                     if self.rememberSwitch.isOn {
                         self.userDefaultsService.setToken(response.message)
                     }

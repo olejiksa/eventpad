@@ -18,6 +18,11 @@ class BasePostRequest: RequestProtocol {
         self.parameters = parameters
     }
     
+    init(endpoint: String, parameters: [[String: Any]]) {
+        self.endpoint = endpoint
+        self.parameters = parameters.first ?? [:]
+    }
+    
     var urlRequest: URLRequest? {
         guard
             let encodedString = endpoint.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed),
