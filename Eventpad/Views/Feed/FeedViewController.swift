@@ -68,8 +68,8 @@ final class FeedViewController: UIViewController {
         let locationImage = UIImage(systemName: "location.circle")
         let locationButton = UIBarButtonItem(image: locationImage,
                                              style: .plain,
-                                             target: nil,
-                                             action: nil)
+                                             target: self,
+                                             action: #selector(locationDidTap))
         
         navigationItem.leftBarButtonItems = [locationButton, filterButton]
     }
@@ -122,7 +122,8 @@ final class FeedViewController: UIViewController {
 
                 switch result {
                 case .success(let conferences):
-                    self.sections = conferences.map { EventSection(conference: $0) }
+                    let results = Global.location != nil ? conferences.filter { $0.location == Global.location } : conferences
+                    self.sections = results.map { EventSection(conference: $0) }
                     self.noDataLabel.isHidden = !conferences.isEmpty
                     self.collectionView.reloadData()
                     
@@ -139,7 +140,8 @@ final class FeedViewController: UIViewController {
 
                 switch result {
                 case .success(let conferences):
-                    self.sections = conferences.map { EventSection(conference: $0) }
+                    let results = Global.location != nil ? conferences.filter { $0.location == Global.location } : conferences
+                    self.sections = results.map { EventSection(conference: $0) }
                     self.noDataLabel.isHidden = !conferences.isEmpty
                     self.collectionView.reloadData()
                     
@@ -176,6 +178,12 @@ final class FeedViewController: UIViewController {
     
     @objc private func refresh() {
         loadData()
+    }
+    
+    @objc private func locationDidTap() {
+        let vc = LocationViewController()
+        let nvc = UINavigationController(rootViewController: vc)
+        present(nvc, animated: true)
     }
 }
 

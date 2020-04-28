@@ -11,4 +11,5 @@ struct Global {
     static var role: Role = .participant
     static var accessToken: String?
     static var categoryInUse: Category?
+    static var location: String?
 }

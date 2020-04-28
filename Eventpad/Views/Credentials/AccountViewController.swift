@@ -17,6 +17,8 @@ final class AccountViewController: UIViewController {
     @IBOutlet private weak var phoneButton: UIButton!
     @IBOutlet private weak var logoutButton: BigButton!
     @IBOutlet private weak var conferencesButton: BigButton!
+    @IBOutlet private weak var validationButton: BigButton!
+    @IBOutlet private weak var statsButton: BigButton!
     
     private let user: User
     private let alertService = AlertService()
@@ -48,6 +50,8 @@ final class AccountViewController: UIViewController {
         emailButton.setTitle(user.email, for: .normal)
         phoneButton.setTitle(user.phone, for: .normal)
         conferencesButton.isHidden = Global.role == .participant
+        validationButton.isHidden = Global.role == .participant
+        statsButton.isHidden = Global.role == .participant
     }
     
     @IBAction private func logoutDidTap() {

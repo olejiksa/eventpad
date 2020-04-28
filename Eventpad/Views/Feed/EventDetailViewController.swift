@@ -8,11 +8,14 @@
 
 import MapKit
 import UIKit
+import EventKit
 
 final class EventDetailViewController: UIViewController {
     
+    private let alertService = AlertService()
     private let userDefaultsService = UserDefaultsService()
     private let conference: Conference
+    private let store = EKEventStore()
     
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var dateStartLabel: UILabel!
@@ -48,7 +51,8 @@ final class EventDetailViewController: UIViewController {
                                          target: self,
                                          action: #selector(shareDidTap))
         
-        let favoriteImage = UIImage(systemName: "star")
+        let isFavorites = conference.id == 1 || conference.id == 2
+        let favoriteImage = UIImage(systemName: isFavorites ? "star.fill" : "star")
         let favoriteButton = UIBarButtonItem(image: favoriteImage,
                                              style: .plain,
                                              target: self,
@@ -60,8 +64,14 @@ final class EventDetailViewController: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .short
-        let dateStart = dateFormatter.string(from: conference.dateStart)
-        let dateEnd = dateFormatter.string(from: conference.dateEnd)
+        
+        var dateComponent = DateComponents()
+        dateComponent.year = 31
+        let dateStartFinal = Calendar.current.date(byAdding: dateComponent, to: conference.dateStart)!
+        let dateEndFinal = Calendar.current.date(byAdding: dateComponent, to: conference.dateEnd)!
+        
+        let dateStart = dateFormatter.string(from: dateStartFinal)
+        let dateEnd = dateFormatter.string(from: dateEndFinal)
         
         titleLabel.text = conference.title
         dateStartLabel.text = dateStart
@@ -80,8 +90,8 @@ final class EventDetailViewController: UIViewController {
     }
     
     @IBAction private func openMapDidTap() {
-        let regionDistance: CLLocationDistance = 10000
-        let coordinates = CLLocationCoordinate2DMake(-78.07020, -75.98125)
+        let regionDistance: CLLocationDistance = 1000
+        let coordinates = CLLocationCoordinate2DMake(55.4524, 37.3851)
         let regionSpan = MKCoordinateRegion(center: coordinates, latitudinalMeters: regionDistance, longitudinalMeters: regionDistance)
         let options = [
             MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
@@ -114,5 +124,102 @@ final class EventDetailViewController: UIViewController {
         vc.conferenceID = conference.id
         let nvc = UINavigationController(rootViewController: vc)
         present(nvc, animated: true)
+    }
+    
+    @IBAction private func didCalendarTap() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .short
+        
+        var dateComponent = DateComponents()
+        dateComponent.year = 31
+        let dateStartFinal = Calendar.current.date(byAdding: dateComponent, to: conference.dateStart)!
+        let dateEndFinal = Calendar.current.date(byAdding: dateComponent, to: conference.dateEnd)!
+        
+        createEventInTheCalendar(with: conference.title,
+                                 forDate: dateStartFinal,
+                                 toDate: dateEndFinal)
+    }
+    
+    @IBAction func didRemindersTap() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .short
+        
+        var dateComponent = DateComponents()
+        dateComponent.year = 31
+        let dateStartFinal = Calendar.current.date(byAdding: dateComponent, to: conference.dateStart)!
+        let dateEndFinal = Calendar.current.date(byAdding: dateComponent, to: conference.dateEnd)!
+        
+        createEventInTheReminders(with: conference.title,
+                                  forDate: dateStartFinal,
+                                  toDate: dateEndFinal)
+    }
+    
+    private func createEventInTheCalendar(with title: String,
+                                          forDate eventStartDate: Date,
+                                          toDate eventEndDate: Date) {
+        store.requestAccess(to: .event) { [weak self] success, error in
+            guard let strongSelf = self else { return }
+            
+            guard error == nil else {
+                print("error: \(String(describing: error?.localizedDescription))")
+                return
+            }
+            
+            let event = EKEvent(eventStore: strongSelf.store)
+            event.title = title
+            event.calendar = strongSelf.store.defaultCalendarForNewEvents
+            event.startDate = eventStartDate
+            event.endDate = eventEndDate
+            event.notes = strongSelf.conference.description
+            
+            let alarm = EKAlarm(absoluteDate: Date(timeInterval: -3600, since: event.startDate))
+            event.addAlarm(alarm)
+            
+            do {
+                try strongSelf.store.save(event, span: .thisEvent)
+                DispatchQueue.main.async {
+                    let alert = strongSelf.alertService.alert("Событие добавлено в Календарь", title: .info)
+                    strongSelf.present(alert, animated: true)
+                }
+            } catch {
+                print("error: \(error)")
+            }
+        }
+    }
+    
+    private func createEventInTheReminders(with title: String,
+                                           forDate eventStartDate: Date,
+                                           toDate eventEndDate: Date?) {
+        store.requestAccess(to: EKEntityType.reminder, completion: { [weak self] granted, error in
+            guard let strongSelf = self else { return }
+            
+            if granted && error == nil {
+                print("granted \(granted)")
+                
+                let reminder: EKReminder = EKReminder(eventStore: strongSelf.store)
+                reminder.title = title
+                
+                let alarmTime = eventStartDate
+                let alarm = EKAlarm(absoluteDate: alarmTime)
+                reminder.addAlarm(alarm)
+                reminder.notes = strongSelf.conference.description
+                reminder.calendar = strongSelf.store.defaultCalendarForNewReminders()
+                
+                do {
+                    try strongSelf.store.save(reminder, commit: true)
+                    DispatchQueue.main.async {
+                        let alert = strongSelf.alertService.alert("Событие добавлено в Напоминание", title: .info)
+                        strongSelf.present(alert, animated: true)
+                    }
+                } catch {
+                    print("Cannot save")
+                    return
+                }
+                
+                print("Reminder saved")
+            }
+        })
     }
 }

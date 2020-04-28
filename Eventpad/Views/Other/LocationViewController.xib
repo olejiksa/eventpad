@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LocationViewController" customModule="Eventpad" customModuleProvider="target">
+            <connections>
+                <outlet property="showAllSwitch" destination="dfz-gJ-Fjh" id="F7A-m8-VVP"/>
+                <outlet property="tableView" destination="QLd-4G-Ajg" id="OUZ-e7-qoi"/>
+                <outlet property="view" destination="Cgn-Yg-hK4" id="LRC-ly-4K3"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Cgn-Yg-hK4">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ow-Vr-FmU">
+                    <rect key="frame" x="14" y="56" width="386" height="31"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Показывать все" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VxE-21-w5T">
+                            <rect key="frame" x="0.0" y="0.0" width="337" height="31"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dfz-gJ-Fjh">
+                            <rect key="frame" x="337" y="0.0" width="51" height="31"/>
+                            <color key="onTintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="showAllSwitchDidValueChange" destination="-1" eventType="valueChanged" id="iQo-bk-6m7"/>
+                            </connections>
+                        </switch>
+                    </subviews>
+                </stackView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QLd-4G-Ajg">
+                    <rect key="frame" x="0.0" y="99" width="414" height="797"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="aUf-Na-isb"/>
+                        <outlet property="delegate" destination="-1" id="DVr-zA-Y1G"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="QLd-4G-Ajg" firstAttribute="top" secondItem="5ow-Vr-FmU" secondAttribute="bottom" constant="12" id="A1k-ty-1ev"/>
+                <constraint firstItem="VtM-g9-gkd" firstAttribute="trailing" secondItem="QLd-4G-Ajg" secondAttribute="trailing" id="CF0-aV-QZJ"/>
+                <constraint firstItem="QLd-4G-Ajg" firstAttribute="leading" secondItem="VtM-g9-gkd" secondAttribute="leading" id="GhM-ce-LVt"/>
+                <constraint firstAttribute="bottom" secondItem="QLd-4G-Ajg" secondAttribute="bottom" id="MEJ-PT-yDm"/>
+                <constraint firstItem="5ow-Vr-FmU" firstAttribute="top" secondItem="VtM-g9-gkd" secondAttribute="top" constant="12" id="PK0-9O-uhg"/>
+                <constraint firstItem="5ow-Vr-FmU" firstAttribute="leading" secondItem="VtM-g9-gkd" secondAttribute="leading" constant="14" id="TrP-SQ-oY2"/>
+                <constraint firstItem="VtM-g9-gkd" firstAttribute="trailing" secondItem="5ow-Vr-FmU" secondAttribute="trailing" constant="14" id="zVh-ji-b9P"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="VtM-g9-gkd"/>
+            <point key="canvasLocation" x="137.68115942028987" y="104.46428571428571"/>
+        </view>
+    </objects>
+</document>

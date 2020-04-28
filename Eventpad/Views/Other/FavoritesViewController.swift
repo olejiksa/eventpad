@@ -9,8 +9,12 @@
 import UIKit
 
 final class FavoritesViewController: UIViewController {
-
-   private lazy var noDataLabel: UILabel = {
+    
+    private let items: [(String, String)] = [("Защиты ВКР", "Thursday, Jun 1"), ("Предзащиты ВКР", "Tuesday, Apr 25")]
+    private let cellID = "\(SubtitleCell.self)"
+    @IBOutlet private weak var tableView: UITableView!
+    
+    private lazy var noDataLabel: UILabel = {
         let label = UILabel()
         label.text = "Нет избранного"
         label.textColor = UIColor.secondaryLabel
@@ -19,9 +23,11 @@ final class FavoritesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupNavigation()
-        setupNoDataLabel()
+        // setupNoDataLabel()
+        
+        tableView.register(SubtitleCell.self, forCellReuseIdentifier: cellID)
     }
     
     private func setupNavigation() {
@@ -36,5 +42,37 @@ final class FavoritesViewController: UIViewController {
         NSLayoutConstraint.activate([
             noDataLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             noDataLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)])
+    }
+}
+
+
+// MARK: - UITableViewDataSource
+
+extension FavoritesViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return items.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? SubtitleCell
+        else { return .init(frame: .zero) }
+        
+        let item = items[indexPath.row]
+        cell.textLabel?.text = item.0
+        cell.detailTextLabel?.text = item.1
+        cell.accessoryType = .disclosureIndicator
+        return cell
+    }
+}
+
+
+// MARK: - UITableViewDelegate
+
+extension FavoritesViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

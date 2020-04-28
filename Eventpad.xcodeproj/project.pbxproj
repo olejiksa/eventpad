@@ -83,6 +83,8 @@
 		EBDB1E0F24589AA8009316FC /* NewTariffView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBDB1E0D24589AA8009316FC /* NewTariffView.xib */; };
 		EBDB1E1224589B64009316FC /* NewEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB1E1024589B64009316FC /* NewEventViewController.swift */; };
 		EBDB1E1324589B64009316FC /* NewEventView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBDB1E1124589B64009316FC /* NewEventView.xib */; };
+		EBDB1E162458C198009316FC /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB1E142458C198009316FC /* LocationViewController.swift */; };
+		EBDB1E172458C198009316FC /* LocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBDB1E152458C198009316FC /* LocationViewController.xib */; };
 		EBE681B82454919400CB9285 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE681B72454919400CB9285 /* Global.swift */; };
 		EBF87440242F81330056623E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF8743F242F81330056623E /* AppDelegate.swift */; };
 		EBF87442242F81330056623E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF87441242F81330056623E /* SceneDelegate.swift */; };
@@ -172,6 +174,8 @@
 		EBDB1E0D24589AA8009316FC /* NewTariffView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewTariffView.xib; sourceTree = "<group>"; };
 		EBDB1E1024589B64009316FC /* NewEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventViewController.swift; sourceTree = "<group>"; };
 		EBDB1E1124589B64009316FC /* NewEventView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewEventView.xib; sourceTree = "<group>"; };
+		EBDB1E142458C198009316FC /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		EBDB1E152458C198009316FC /* LocationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationViewController.xib; sourceTree = "<group>"; };
 		EBE681B72454919400CB9285 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		EBF8743C242F81330056623E /* Eventpad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eventpad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBF8743F242F81330056623E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -242,6 +246,8 @@
 				EBDB1E0D24589AA8009316FC /* NewTariffView.xib */,
 				EBDB1E1024589B64009316FC /* NewEventViewController.swift */,
 				EBDB1E1124589B64009316FC /* NewEventView.xib */,
+				EBDB1E142458C198009316FC /* LocationViewController.swift */,
+				EBDB1E152458C198009316FC /* LocationViewController.xib */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -460,6 +466,7 @@
 				EBD451BF2435F9D800F6A4C2 /* EventDetailView.xib in Resources */,
 				EB3B31FB24501A010023E930 /* OrganizerSignUpView.xib in Resources */,
 				EBF87454242F830D0056623E /* FeedView.xib in Resources */,
+				EBDB1E172458C198009316FC /* LocationViewController.xib in Resources */,
 				EBF8744C242F81370056623E /* LaunchScreen.storyboard in Resources */,
 				EB30816B2452E59600EB7598 /* TicketsView.xib in Resources */,
 				EB3081632452E4B600EB7598 /* SearchView.xib in Resources */,
@@ -515,6 +522,7 @@
 				EBD451BE2435F9D800F6A4C2 /* EventDetailViewController.swift in Sources */,
 				EB9978182430995B00DD5663 /* FormHelper.swift in Sources */,
 				EB3B31FF24509C110023E930 /* Conference.swift in Sources */,
+				EBDB1E162458C198009316FC /* LocationViewController.swift in Sources */,
 				EB3081622452E4B600EB7598 /* SearchViewController.swift in Sources */,
 				EBB32233244843FA00942A2B /* BasePostRequest.swift in Sources */,
 				EBB3224624486F3F00942A2B /* SignUp.swift in Sources */,
