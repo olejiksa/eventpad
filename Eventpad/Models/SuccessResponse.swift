@@ -9,8 +9,5 @@
 struct SuccessResponse: Decodable {
 
     let success: Bool
-    
-    init(success: Bool) {
-        self.success = success
-    }
+    let message: String?
 }

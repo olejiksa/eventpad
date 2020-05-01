@@ -8,15 +8,15 @@
 
 import Foundation
 
-final class AddTariffsRequest: BasePostRequest {
+final class AddTariffsRequest: BaseExtendedPostRequest {
     
     init(tariffs: [Tariff], conferenceID: Int) {
         let endpoint = "\(RequestFactory.endpointRoot)org/addTariffsToConference/\(conferenceID)"
         
         do {
             let jsonEncoder = JSONEncoder()
-            let encodedJson = try jsonEncoder.encode(tariffs.first!)
-            guard let parameters = try JSONSerialization.jsonObject(with: encodedJson) as? [String: Any] else {
+            let encodedJson = try jsonEncoder.encode(tariffs)
+            guard let parameters = try JSONSerialization.jsonObject(with: encodedJson) as? [[String: Any]] else {
                 fatalError()
             }
             

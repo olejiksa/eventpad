@@ -48,8 +48,8 @@ struct RequestFactory {
         return .init(request: request, parser: parser)
     }
     
-    static func user(userID: String) -> RequestConfig<UserParser> {
-        let request = UserRequest(userID: userID)
+    static func user(userID: Int, role: Role) -> RequestConfig<UserParser> {
+        let request = UserRequest(userID: userID, role: role)
         let parser = UserParser()
         
         return .init(request: request, parser: parser)
@@ -132,6 +132,13 @@ struct RequestFactory {
         return .init(request: request, parser: parser)
     }
     
+    static func conferences(username: String, limit: Int, offset: Int) -> RequestConfig<ConferencesParser> {
+        let request = ConferencesRequest(username: username, limit: limit, offset: offset)
+        let parser = ConferencesParser()
+               
+        return .init(request: request, parser: parser)
+    }
+    
     static func conferences(limit: Int, offset: Int) -> RequestConfig<ConferencesParser> {
         let request = ConferencesRequest(limit: limit, offset: offset)
         let parser = ConferencesParser()
@@ -153,7 +160,7 @@ struct RequestFactory {
         return .init(request: request, parser: parser)
     }
     
-    static func ticket(ticketID: Int) -> RequestConfig<TicketParser> {
+    static func ticket(ticketID: String) -> RequestConfig<TicketParser> {
         let request = TicketRequest(ticketID: ticketID)
         let parser = TicketParser()
                

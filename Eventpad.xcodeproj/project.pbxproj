@@ -55,6 +55,8 @@
 		EB67D77C244C8B5C00E66B3C /* CategoriesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB67D77A244C8B5C00E66B3C /* CategoriesView.xib */; };
 		EB67D781244D74AE00E66B3C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB67D780244D74AE00E66B3C /* Event.swift */; };
 		EB67D783244D756100E66B3C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB67D782244D756100E66B3C /* Category.swift */; };
+		EB78FE42245CA1C5002DE6FC /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB78FE40245CA1C5002DE6FC /* PurchaseViewController.swift */; };
+		EB78FE43245CA1C5002DE6FC /* PurchaseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB78FE41245CA1C5002DE6FC /* PurchaseView.xib */; };
 		EB9978132430925800DD5663 /* BigButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9978122430925800DD5663 /* BigButton.swift */; };
 		EB997816243096BB00DD5663 /* KeyboardAdjuster in Frameworks */ = {isa = PBXBuildFile; productRef = EB997815243096BB00DD5663 /* KeyboardAdjuster */; };
 		EB9978182430995B00DD5663 /* FormHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9978172430995B00DD5663 /* FormHelper.swift */; };
@@ -147,6 +149,8 @@
 		EB67D77A244C8B5C00E66B3C /* CategoriesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoriesView.xib; sourceTree = "<group>"; };
 		EB67D780244D74AE00E66B3C /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		EB67D782244D756100E66B3C /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		EB78FE40245CA1C5002DE6FC /* PurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
+		EB78FE41245CA1C5002DE6FC /* PurchaseView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PurchaseView.xib; sourceTree = "<group>"; };
 		EB9978122430925800DD5663 /* BigButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigButton.swift; sourceTree = "<group>"; };
 		EB9978172430995B00DD5663 /* FormHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormHelper.swift; sourceTree = "<group>"; };
 		EB99781B24320A4200DD5663 /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
@@ -248,6 +252,8 @@
 				EBDB1E1124589B64009316FC /* NewEventView.xib */,
 				EBDB1E142458C198009316FC /* LocationViewController.swift */,
 				EBDB1E152458C198009316FC /* LocationViewController.xib */,
+				EB78FE40245CA1C5002DE6FC /* PurchaseViewController.swift */,
+				EB78FE41245CA1C5002DE6FC /* PurchaseView.xib */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -467,6 +473,7 @@
 				EB3B31FB24501A010023E930 /* OrganizerSignUpView.xib in Resources */,
 				EBF87454242F830D0056623E /* FeedView.xib in Resources */,
 				EBDB1E172458C198009316FC /* LocationViewController.xib in Resources */,
+				EB78FE43245CA1C5002DE6FC /* PurchaseView.xib in Resources */,
 				EBF8744C242F81370056623E /* LaunchScreen.storyboard in Resources */,
 				EB30816B2452E59600EB7598 /* TicketsView.xib in Resources */,
 				EB3081632452E4B600EB7598 /* SearchView.xib in Resources */,
@@ -523,6 +530,7 @@
 				EB9978182430995B00DD5663 /* FormHelper.swift in Sources */,
 				EB3B31FF24509C110023E930 /* Conference.swift in Sources */,
 				EBDB1E162458C198009316FC /* LocationViewController.swift in Sources */,
+				EB78FE42245CA1C5002DE6FC /* PurchaseViewController.swift in Sources */,
 				EB3081622452E4B600EB7598 /* SearchViewController.swift in Sources */,
 				EBB32233244843FA00942A2B /* BasePostRequest.swift in Sources */,
 				EBB3224624486F3F00942A2B /* SignUp.swift in Sources */,

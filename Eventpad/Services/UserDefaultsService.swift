@@ -66,8 +66,23 @@ final class UserDefaultsService {
         defaults.set(user.surname, forKey: "surname")
     }
     
+    func getTicketIDs() -> [String]? {
+        return defaults.stringArray(forKey: "tickets")
+    }
+    
+    func setTicketIds(_ array: [String]) {
+        defaults.set(array, forKey: "tickets")
+    }
+    
+    func appendTicketId(_ id: String) {
+        guard let ticketIds = getTicketIDs() else { return }
+        defaults.set(ticketIds + [id], forKey: "tickets")
+    }
+    
     func clear() {
         let dictionary = defaults.dictionaryRepresentation()
         dictionary.keys.forEach(defaults.removeObject)
+        Global.accessToken = nil
+        Global.role = .participant
     }
 }

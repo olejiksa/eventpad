@@ -18,9 +18,31 @@ class BasePostRequest: RequestProtocol {
         self.parameters = parameters
     }
     
+    var urlRequest: URLRequest? {
+        guard
+            let encodedString = endpoint.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed),
+            let url = URL(string: encodedString)
+        else { return nil }
+        
+        var request = URLRequest(url: url)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        
+        let jsonData = try? JSONSerialization.data(withJSONObject: parameters)
+        request.httpBody = jsonData
+        
+        return request
+    }
+}
+
+class BaseExtendedPostRequest: RequestProtocol {
+    
+    private let endpoint: String
+    private let parameters: [[String: Any]]
+    
     init(endpoint: String, parameters: [[String: Any]]) {
         self.endpoint = endpoint
-        self.parameters = parameters.first ?? [:]
+        self.parameters = parameters
     }
     
     var urlRequest: URLRequest? {

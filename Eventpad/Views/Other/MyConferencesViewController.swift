@@ -88,16 +88,15 @@ final class MyConferencesViewController: UIViewController {
     }
     
     private func loadData() {
-        //guard let user = userDefaultsService.getUser() else { return }
+        guard let user = userDefaultsService.getUser() else { return }
         
-        let config = RequestFactory.conferences(limit: 20, offset: 0)
+        let config = RequestFactory.conferences(username: user.username, limit: 20, offset: 0)
         requestSender.send(config: config) { [weak self] result in
             guard let self = self else { return }
             self.refreshControl.endRefreshing()
 
             switch result {
             case .success(let conferences):
-                //let filtered = conferences.filter { $0.organizerID == user.id }
                 self.sections = conferences.map { EventSection(conference: $0) }
                 self.noDataLabel.isHidden = !conferences.isEmpty
                 self.collectionView.reloadData()
@@ -148,7 +147,8 @@ extension MyConferencesViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        let viewController = EventDetailViewController(conference: sections[indexPath.section].conference)
+        let conference = sections[indexPath.section].conference
+        let viewController = EventDetailViewController(conference: conference, isManager: true)
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

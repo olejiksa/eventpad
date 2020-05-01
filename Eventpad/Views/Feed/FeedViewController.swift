@@ -123,7 +123,9 @@ final class FeedViewController: UIViewController {
                 switch result {
                 case .success(let conferences):
                     let results = Global.location != nil ? conferences.filter { $0.location == Global.location } : conferences
-                    self.sections = results.map { EventSection(conference: $0) }
+                    self.sections = results
+                        .sorted { $0.dateStart > $1.dateStart }
+                        .map { EventSection(conference: $0) }
                     self.noDataLabel.isHidden = !conferences.isEmpty
                     self.collectionView.reloadData()
                     
@@ -141,7 +143,9 @@ final class FeedViewController: UIViewController {
                 switch result {
                 case .success(let conferences):
                     let results = Global.location != nil ? conferences.filter { $0.location == Global.location } : conferences
-                    self.sections = results.map { EventSection(conference: $0) }
+                    self.sections = results
+                        .sorted { $0.dateStart > $1.dateStart }
+                        .map { EventSection(conference: $0) }
                     self.noDataLabel.isHidden = !conferences.isEmpty
                     self.collectionView.reloadData()
                     
@@ -155,7 +159,7 @@ final class FeedViewController: UIViewController {
     
     @objc private func userDidTap() {
         if let user = userDefaultsService.getUser() {
-            let vc = AccountViewController(user: user)
+            let vc = AccountViewController(user: user, isNotMine: false)
             navigationController?.pushViewController(vc, animated: true)
         } else {
             let vc = AuthViewController()
@@ -215,7 +219,8 @@ extension FeedViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        let viewController = EventDetailViewController(conference: sections[indexPath.section].conference)
+        let conference = sections[indexPath.section].conference
+        let viewController = EventDetailViewController(conference: conference, isManager: false)
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

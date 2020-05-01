@@ -8,7 +8,7 @@
 
 final class TicketRequest: BaseGetRequest {
     
-    init(ticketID: Int) {
+    init(ticketID: String) {
         let endpoint = "\(RequestFactory.endpointRoot)usr/ticket/\(ticketID)"
         super.init(endpoint: endpoint)
     }

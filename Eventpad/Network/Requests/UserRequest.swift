@@ -13,8 +13,16 @@ final class UserRequest: BaseGetRequest {
         super.init(endpoint: endpoint)
     }
     
-    init(userID: String) {
-        let endpoint = "\(RequestFactory.endpointRoot)usr/info/byId/\(userID)"
+    init(userID: Int, role: Role) {
+        let endpoint: String
+        switch role {
+        case .organizer:
+            endpoint = "\(RequestFactory.endpointRoot)org/info/byId/\(userID)"
+            
+        case .participant:
+            endpoint = "\(RequestFactory.endpointRoot)usr/info/byId/\(userID)"
+        }
+        
         super.init(endpoint: endpoint)
     }
 }

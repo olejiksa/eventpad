@@ -13,8 +13,9 @@ final class TicketParser: ParserProtocol {
     func parse(data: Data) -> Ticket? {
         do {
             let jsonDecorder = JSONDecoder()
-            jsonDecorder.dateDecodingStrategy = .iso8601
-            jsonDecorder.keyDecodingStrategy = .convertFromSnakeCase
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+            jsonDecorder.dateDecodingStrategy = .formatted(dateFormatter)
             return try jsonDecorder.decode(Ticket.self, from: data)
         } catch  {
             print(error)

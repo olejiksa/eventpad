@@ -121,7 +121,7 @@ private extension UITextField {
         let cancel = UIBarButtonItem(title: "Cancel",
                                      style: .plain,
                                      target: nil,
-                                     action: #selector(tapCancel))
+                                     action: #selector(cancelDidTap))
         let barButton = UIBarButtonItem(title: "Done",
                                         style: .plain,
                                         target: target,
@@ -130,7 +130,7 @@ private extension UITextField {
         inputAccessoryView = toolBar
     }
     
-    @objc func tapCancel() {
+    @objc func cancelDidTap() {
         resignFirstResponder()
     }
 }

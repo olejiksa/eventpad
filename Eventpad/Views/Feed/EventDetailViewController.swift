@@ -13,9 +13,11 @@ import EventKit
 final class EventDetailViewController: UIViewController {
     
     private let alertService = AlertService()
+    private let requestSender = RequestSender()
     private let userDefaultsService = UserDefaultsService()
     private let conference: Conference
     private let store = EKEventStore()
+    private let isManager: Bool
     
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var dateStartLabel: UILabel!
@@ -24,8 +26,14 @@ final class EventDetailViewController: UIViewController {
     @IBOutlet private weak var categoryLabel: UILabel!
     @IBOutlet private weak var locationLabel: UILabel!
     
-    init(conference: Conference) {
+    @IBOutlet private weak var contactButton: BigButton!
+    @IBOutlet private weak var addEventButton: BigButton!
+    @IBOutlet private weak var addTariffButton: BigButton!
+    @IBOutlet private weak var registerButton: BigButton!
+    
+    init(conference: Conference, isManager: Bool) {
         self.conference = conference
+        self.isManager = isManager
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -51,13 +59,13 @@ final class EventDetailViewController: UIViewController {
                                          target: self,
                                          action: #selector(shareDidTap))
         
-        let isFavorites = conference.id == 1 || conference.id == 2
-        let favoriteImage = UIImage(systemName: isFavorites ? "star.fill" : "star")
-        let favoriteButton = UIBarButtonItem(image: favoriteImage,
-                                             style: .plain,
-                                             target: self,
-                                             action: #selector(shareDidTap))
-        navigationItem.rightBarButtonItems = [shareButton, favoriteButton]
+//        let isFavorites = conference.id == 1 || conference.id == 2
+//        let favoriteImage = UIImage(systemName: isFavorites ? "star.fill" : "star")
+//        let favoriteButton = UIBarButtonItem(image: favoriteImage,
+//                                             style: .plain,
+//                                             target: self,
+//                                             action: #selector(shareDidTap))
+        navigationItem.rightBarButtonItems = [shareButton]
     }
     
     private func setupView() {
@@ -79,11 +87,20 @@ final class EventDetailViewController: UIViewController {
         descriptionLabel.text = conference.description
         categoryLabel.text = conference.category.description
         locationLabel.text = conference.location
+        
+        contactButton.isHidden = isManager
+        registerButton.isHidden = isManager || conference.tariffs!.isEmpty
+        addEventButton.isHidden = !isManager
+        addTariffButton.isHidden = !isManager
     }
     
     @IBAction private func registerDidTap() {
         if Global.accessToken == nil {
             let vc = AuthViewController()
+            let nvc = UINavigationController(rootViewController: vc)
+            present(nvc, animated: true)
+        } else if let tariffs = conference.tariffs {
+            let vc = PurchaseViewController(tariffs: tariffs)
             let nvc = UINavigationController(rootViewController: vc)
             present(nvc, animated: true)
         }
@@ -160,28 +177,28 @@ final class EventDetailViewController: UIViewController {
                                           forDate eventStartDate: Date,
                                           toDate eventEndDate: Date) {
         store.requestAccess(to: .event) { [weak self] success, error in
-            guard let strongSelf = self else { return }
+            guard let self = self else { return }
             
             guard error == nil else {
                 print("error: \(String(describing: error?.localizedDescription))")
                 return
             }
             
-            let event = EKEvent(eventStore: strongSelf.store)
+            let event = EKEvent(eventStore: self.store)
             event.title = title
-            event.calendar = strongSelf.store.defaultCalendarForNewEvents
+            event.calendar = self.store.defaultCalendarForNewEvents
             event.startDate = eventStartDate
             event.endDate = eventEndDate
-            event.notes = strongSelf.conference.description
+            event.notes = self.conference.description
             
             let alarm = EKAlarm(absoluteDate: Date(timeInterval: -3600, since: event.startDate))
             event.addAlarm(alarm)
             
             do {
-                try strongSelf.store.save(event, span: .thisEvent)
+                try self.store.save(event, span: .thisEvent)
                 DispatchQueue.main.async {
-                    let alert = strongSelf.alertService.alert("Событие добавлено в Календарь", title: .info)
-                    strongSelf.present(alert, animated: true)
+                    let alert = self.alertService.alert("Событие добавлено в Calendar", title: .info)
+                    self.present(alert, animated: true)
                 }
             } catch {
                 print("error: \(error)")
@@ -193,25 +210,25 @@ final class EventDetailViewController: UIViewController {
                                            forDate eventStartDate: Date,
                                            toDate eventEndDate: Date?) {
         store.requestAccess(to: EKEntityType.reminder, completion: { [weak self] granted, error in
-            guard let strongSelf = self else { return }
+            guard let self = self else { return }
             
             if granted && error == nil {
                 print("granted \(granted)")
                 
-                let reminder: EKReminder = EKReminder(eventStore: strongSelf.store)
+                let reminder: EKReminder = EKReminder(eventStore: self.store)
                 reminder.title = title
                 
                 let alarmTime = eventStartDate
                 let alarm = EKAlarm(absoluteDate: alarmTime)
                 reminder.addAlarm(alarm)
-                reminder.notes = strongSelf.conference.description
-                reminder.calendar = strongSelf.store.defaultCalendarForNewReminders()
+                reminder.notes = self.conference.description
+                reminder.calendar = self.store.defaultCalendarForNewReminders()
                 
                 do {
-                    try strongSelf.store.save(reminder, commit: true)
+                    try self.store.save(reminder, commit: true)
                     DispatchQueue.main.async {
-                        let alert = strongSelf.alertService.alert("Событие добавлено в Напоминание", title: .info)
-                        strongSelf.present(alert, animated: true)
+                        let alert = self.alertService.alert("Событие добавлено в Reminders", title: .info)
+                        self.present(alert, animated: true)
                     }
                 } catch {
                     print("Cannot save")
@@ -221,5 +238,25 @@ final class EventDetailViewController: UIViewController {
                 print("Reminder saved")
             }
         })
+    }
+    
+    @IBAction func contactDidTap() {
+        guard let userID = conference.organizerID else { return }
+        let config = RequestFactory.user(userID: userID, role: .organizer)
+        requestSender.send(config: config) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let user):
+                let vc = AccountViewController(user: user, isNotMine: true)
+                self.navigationController?.pushViewController(vc, animated: true)
+                break
+                
+            case .failure(let error):
+                let alert = self.alertService.alert(error.localizedDescription)
+                self.present(alert, animated: true)
+                break
+            }
+        }
     }
 }

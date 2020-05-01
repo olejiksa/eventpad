@@ -79,6 +79,7 @@ final class SearchViewController: UIViewController {
             switch result {
             case .success(let conferences):
                 self.conferences = conferences
+                self.tableView.reloadData()
         
             case .failure(let error):
                 let alert = self.alertService.alert(error.localizedDescription)
@@ -95,6 +96,7 @@ final class SearchViewController: UIViewController {
             switch result {
             case .success(let events):
                 self.events = events
+                self.tableView.reloadData()
                 
             case .failure(let error):
                 let alert = self.alertService.alert(error.localizedDescription)
@@ -111,6 +113,7 @@ final class SearchViewController: UIViewController {
             switch result {
             case .success(let users):
                 self.users = users
+                self.tableView.reloadData()
                 
             case .failure(let error):
                 let alert = self.alertService.alert(error.localizedDescription)
@@ -126,9 +129,17 @@ final class SearchViewController: UIViewController {
 extension SearchViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
-        guard let searchText = searchController.searchBar.text, !searchText.isEmpty else { return }
+        guard let searchText = searchController.searchBar.text, !searchText.isEmpty else {
+            self.users = []
+            self.events = []
+            self.conferences = []
+            tableView.reloadData()
+            tableView.isHidden = true
+            return
+        }
+        
+        tableView.isHidden = false
         loadData(for: searchText)
-        tableView.reloadData()
     }
 }
 
@@ -192,6 +203,22 @@ extension SearchViewController: UITableViewDataSource {
 extension SearchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch searchItemType {
+        case .conference:
+            let conference = conferences[indexPath.row]
+            let vc = EventDetailViewController(conference: conference, isManager: false)
+            navigationController?.pushViewController(vc, animated: true)
+        
+        case .event:
+            let event = events[indexPath.row]
+            // todo
+            
+        case .user:
+            let user = users[indexPath.row]
+            let vc = AccountViewController(user: user, isNotMine: true)
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

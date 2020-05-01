@@ -20,12 +20,14 @@ final class AccountViewController: UIViewController {
     @IBOutlet private weak var validationButton: BigButton!
     @IBOutlet private weak var statsButton: BigButton!
     
+    private let isNotMine: Bool
     private let user: User
     private let alertService = AlertService()
     private let userDefaultsService = UserDefaultsService()
     
-    init(user: User) {
+    init(user: User, isNotMine: Bool) {
         self.user = user
+        self.isNotMine = isNotMine
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -42,16 +44,26 @@ final class AccountViewController: UIViewController {
     
     private func setupNavigation() {
         navigationItem.title = "Учетная запись"
+        navigationItem.largeTitleDisplayMode = .never
+        
+        let shareImage = UIImage(systemName: "square.and.arrow.up")
+                let shareButton = UIBarButtonItem(image: shareImage,
+                                                 style: .plain,
+                                                 target: self,
+                                                 action: #selector(shareDidTap))
+        
+        navigationItem.rightBarButtonItems = [shareButton]
     }
     
     private func setupView() {
         fullNameLabel.text = "\(user.name) \(user.surname)"
         accountLabel.text = Global.role.description
-        emailButton.setTitle(user.email, for: .normal)
-        phoneButton.setTitle(user.phone, for: .normal)
-        conferencesButton.isHidden = Global.role == .participant
-        validationButton.isHidden = Global.role == .participant
-        statsButton.isHidden = Global.role == .participant
+        emailButton.setTitle(user.email ?? "Не указан", for: .normal)
+        phoneButton.setTitle(user.phone ?? "Не указан", for: .normal)
+        conferencesButton.isHidden = Global.role == .participant || isNotMine
+        validationButton.isHidden = Global.role == .participant || isNotMine
+        statsButton.isHidden = Global.role == .participant || isNotMine
+        logoutButton.isHidden = isNotMine
     }
     
     @IBAction private func logoutDidTap() {
@@ -93,6 +105,15 @@ final class AccountViewController: UIViewController {
     @IBAction private func myConferencesDidTap() {
         let vc = MyConferencesViewController()
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc private func shareDidTap() {
+        let text = user.name + " " + user.surname
+        let url = URL(string: "eventpad://user?id=\(user.id)")!
+        let sharedObjects = [url as AnyObject, text as AnyObject]
+        let activityViewController = UIActivityViewController(activityItems: sharedObjects, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        present(activityViewController, animated: true, completion: nil)
     }
 }
 

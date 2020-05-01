@@ -9,16 +9,42 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TicketsViewController" customModule="Eventpad" customModuleProvider="target">
             <connections>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="noDataLabel" destination="g9f-z5-X6i" id="2Nh-ch-S0E"/>
+                <outlet property="tableView" destination="DPM-3d-gKw" id="D1I-AB-vtO"/>
+                <outlet property="view" destination="HLI-6o-ClT" id="iqh-v6-04T"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="HLI-6o-ClT">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DPM-3d-gKw">
+                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="FId-Zw-od1"/>
+                        <outlet property="delegate" destination="-1" id="8UC-nV-yUX"/>
+                    </connections>
+                </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нет билетов" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g9f-z5-X6i">
+                    <rect key="frame" x="157.5" y="437.5" width="99" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="139" y="125"/>
+            <constraints>
+                <constraint firstItem="g9f-z5-X6i" firstAttribute="centerX" secondItem="HLI-6o-ClT" secondAttribute="centerX" id="2CX-Gd-rCK"/>
+                <constraint firstItem="cWW-yz-4lI" firstAttribute="trailing" secondItem="DPM-3d-gKw" secondAttribute="trailing" id="AOb-zI-QGX"/>
+                <constraint firstAttribute="bottom" secondItem="DPM-3d-gKw" secondAttribute="bottom" id="OQf-1i-lbV"/>
+                <constraint firstItem="DPM-3d-gKw" firstAttribute="top" secondItem="HLI-6o-ClT" secondAttribute="top" constant="44" id="TdR-Fw-Cr7"/>
+                <constraint firstItem="g9f-z5-X6i" firstAttribute="centerY" secondItem="HLI-6o-ClT" secondAttribute="centerY" id="nCo-0d-QZe"/>
+                <constraint firstItem="DPM-3d-gKw" firstAttribute="leading" secondItem="cWW-yz-4lI" secondAttribute="leading" id="rDG-6O-3er"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="cWW-yz-4lI"/>
+            <point key="canvasLocation" x="139" y="129"/>
         </view>
     </objects>
 </document>

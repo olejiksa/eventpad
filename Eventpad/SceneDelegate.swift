@@ -96,16 +96,52 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         nvc.popToRootViewController(animated: false)
         
         guard let string = parameters["id"], let id = Int(string) else { return }
-        let config = RequestFactory.conference(conferenceID: id)
-        requestSender.send(config: config) { result in
-            switch result {
-            case .success(let conference):
-                let detailViewController = EventDetailViewController(conference: conference)
-                nvc.pushViewController(detailViewController, animated: true)
-                
-            case .failure:
-                return
+        
+        switch view {
+        case "conference":
+            let config = RequestFactory.conference(conferenceID: id)
+            requestSender.send(config: config) { result in
+                switch result {
+                case .success(let conference):
+                    let detailViewController = EventDetailViewController(conference: conference, isManager: false)
+                    nvc.pushViewController(detailViewController, animated: true)
+                    
+                case .failure:
+                    return
+                }
             }
+            
+        case "user":
+            let config = RequestFactory.user(userID: id, role: .participant)
+            requestSender.send(config: config) { result in
+                switch result {
+                case .success(let user):
+                    let detailViewController = AccountViewController(user: user, isNotMine: true)
+                    nvc.pushViewController(detailViewController, animated: true)
+                    
+                case .failure:
+                    return
+                }
+            }
+            
+        case "organizer":
+            let config = RequestFactory.user(userID: id, role: .organizer)
+            requestSender.send(config: config) { result in
+                switch result {
+                case .success(let user):
+                    let detailViewController = AccountViewController(user: user, isNotMine: true)
+                    nvc.pushViewController(detailViewController, animated: true)
+                    
+                case .failure:
+                    return
+                }
+        }
+            
+        case "ticket":
+            break
+            
+        default:
+            break
         }
     }
 }

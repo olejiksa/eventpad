@@ -9,11 +9,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EventDetailViewController" customModule="Eventpad" customModuleProvider="target">
             <connections>
+                <outlet property="addEventButton" destination="bFo-KY-G8B" id="3cH-BR-W4T"/>
+                <outlet property="addTariffButton" destination="FiD-P2-gfb" id="eRO-0G-Oro"/>
                 <outlet property="categoryLabel" destination="uYa-aU-ijp" id="rub-mJ-EIN"/>
+                <outlet property="contactButton" destination="owh-EA-6Y7" id="R2i-Ia-u2k"/>
                 <outlet property="dateEndLabel" destination="uR1-HN-Wqq" id="358-NB-sov"/>
                 <outlet property="dateStartLabel" destination="N5s-np-LW5" id="nzz-sU-3zf"/>
                 <outlet property="descriptionLabel" destination="fZh-1y-yjZ" id="An5-ev-k1d"/>
                 <outlet property="locationLabel" destination="6e2-Xb-J9R" id="oxH-Co-ASV"/>
+                <outlet property="registerButton" destination="4Gb-3a-gKv" id="q7P-GW-eU1"/>
                 <outlet property="titleLabel" destination="fs1-gV-prK" id="S0K-HZ-Dgk"/>
                 <outlet property="view" destination="g8z-Ko-TQ5" id="VR0-e0-8Dw"/>
             </connections>
@@ -27,7 +31,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="duJ-Qu-ED9">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="1465.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="1432.5"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="WcP-3S-8aX">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="213.5"/>
@@ -41,16 +45,23 @@
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="md1-JZ-aXd">
-                                    <rect key="frame" x="20" y="233.5" width="280" height="842"/>
+                                    <rect key="frame" x="20" y="233.5" width="280" height="1179"/>
                                     <subviews>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EhM-L6-bfV">
+                                            <rect key="frame" x="0.0" y="0.0" width="280" height="32"/>
+                                            <segments>
+                                                <segment title="Информация"/>
+                                                <segment title="Расписание"/>
+                                            </segments>
+                                        </segmentedControl>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="День открытых дверей: программы бакалавриата и магистратуры" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fs1-gV-prK">
-                                            <rect key="frame" x="0.0" y="0.0" width="280" height="74"/>
+                                            <rect key="frame" x="0.0" y="46" width="280" height="74"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Fuj-bS-McX">
-                                            <rect key="frame" x="0.0" y="89" width="280" height="40"/>
+                                            <rect key="frame" x="0.0" y="135" width="280" height="40"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дата и время начала" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FfW-BD-hht">
                                                     <rect key="frame" x="0.0" y="0.0" width="280" height="14.5"/>
@@ -67,7 +78,7 @@
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="lNl-Pn-sts">
-                                            <rect key="frame" x="0.0" y="144" width="280" height="40"/>
+                                            <rect key="frame" x="0.0" y="190" width="280" height="40"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дата и время окончания" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eb7-tH-7Zp">
                                                     <rect key="frame" x="0.0" y="0.0" width="280" height="14.5"/>
@@ -84,7 +95,7 @@
                                             </subviews>
                                         </stackView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GNh-43-e4f" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="199" width="280" height="54"/>
+                                            <rect key="frame" x="0.0" y="245" width="280" height="54"/>
                                             <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="54" id="dCA-k0-188"/>
@@ -103,7 +114,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6i-RL-8Mp" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="268" width="280" height="54"/>
+                                            <rect key="frame" x="0.0" y="314" width="280" height="54"/>
                                             <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="54" id="ycq-g7-iPm"/>
@@ -122,7 +133,7 @@
                                             </connections>
                                         </button>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="kW8-Rd-tju">
-                                            <rect key="frame" x="0.0" y="337" width="280" height="40"/>
+                                            <rect key="frame" x="0.0" y="383" width="280" height="40"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Категория" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Fl-qM-OAO">
                                                     <rect key="frame" x="0.0" y="0.0" width="280" height="14.5"/>
@@ -139,7 +150,7 @@
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ad4-dR-uh2">
-                                            <rect key="frame" x="0.0" y="392" width="280" height="40"/>
+                                            <rect key="frame" x="0.0" y="438" width="280" height="40"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Местоположение" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Foy-Pf-Q13">
                                                     <rect key="frame" x="0.0" y="0.0" width="280" height="14.5"/>
@@ -156,7 +167,7 @@
                                             </subviews>
                                         </stackView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Sd-fE-HMP" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="447" width="280" height="54"/>
+                                            <rect key="frame" x="0.0" y="493" width="280" height="54"/>
                                             <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="54" id="YJH-Jr-y42"/>
@@ -175,7 +186,7 @@
                                             </connections>
                                         </button>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="9GD-np-a5Z">
-                                            <rect key="frame" x="0.0" y="516" width="280" height="326"/>
+                                            <rect key="frame" x="0.0" y="562" width="280" height="326"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Описание" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9o-vG-XGB">
                                                     <rect key="frame" x="0.0" y="0.0" width="280" height="14.5"/>
@@ -192,122 +203,100 @@
                                                 </label>
                                             </subviews>
                                         </stackView>
-                                    </subviews>
-                                </stackView>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="5G9-TD-Yhs">
-                                    <rect key="frame" x="20" y="1095.5" width="280" height="350"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="owh-EA-6Y7" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="280" height="54"/>
-                                            <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="54" id="VRv-F4-WJm"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                            <state key="normal" title="Связаться с организатором">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </state>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                    <real key="value" value="10"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="registerDidTap" destination="-1" eventType="touchUpInside" id="AuY-BE-g5s"/>
-                                            </connections>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dt8-R7-9fj" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="74" width="280" height="54"/>
-                                            <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="54" id="Slx-f9-Mey"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                            <state key="normal" title="Восстановить билет">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </state>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                    <real key="value" value="10"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="registerDidTap" destination="-1" eventType="touchUpInside" id="rst-Jv-fmF"/>
-                                            </connections>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Gb-3a-gKv" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="148" width="280" height="54"/>
-                                            <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="54" id="AZh-JP-gOv"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                            <state key="normal" title="Зарегистрироваться">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </state>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                    <real key="value" value="10"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="registerDidTap" destination="-1" eventType="touchUpInside" id="Dq2-JW-jS4"/>
-                                            </connections>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFo-KY-G8B" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="222" width="280" height="54"/>
-                                            <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="54" id="oRT-de-RNS"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                            <state key="normal" title="Добавить событие">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </state>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                    <real key="value" value="10"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="addEventDidTap" destination="-1" eventType="touchUpInside" id="vcZ-rO-Kyk"/>
-                                                <action selector="registerDidTap" destination="-1" eventType="touchUpInside" id="2ey-1h-aih"/>
-                                            </connections>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FiD-P2-gfb" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="296" width="280" height="54"/>
-                                            <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="54" id="tr5-Zn-GCS"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                            <state key="normal" title="Добавить тариф">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </state>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                    <real key="value" value="10"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="addTariffDidTap" destination="-1" eventType="touchUpInside" id="6e4-lL-ooa"/>
-                                                <action selector="registerDidTap" destination="-1" eventType="touchUpInside" id="Tda-U2-HDV"/>
-                                            </connections>
-                                        </button>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="5G9-TD-Yhs">
+                                            <rect key="frame" x="0.0" y="903" width="280" height="276"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="owh-EA-6Y7" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="280" height="54"/>
+                                                    <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="54" id="VRv-F4-WJm"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                    <state key="normal" title="Связаться с организатором">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="contactDidTap" destination="-1" eventType="touchUpInside" id="WWc-h3-J9r"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Gb-3a-gKv" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="74" width="280" height="54"/>
+                                                    <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="54" id="AZh-JP-gOv"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                    <state key="normal" title="Зарегистрироваться">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="registerDidTap" destination="-1" eventType="touchUpInside" id="1jz-gn-xKU"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFo-KY-G8B" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="148" width="280" height="54"/>
+                                                    <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="54" id="oRT-de-RNS"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                    <state key="normal" title="Добавить событие">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="addEventDidTap" destination="-1" eventType="touchUpInside" id="vcZ-rO-Kyk"/>
+                                                        <action selector="registerDidTap" destination="-1" eventType="touchUpInside" id="2ey-1h-aih"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FiD-P2-gfb" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="222" width="280" height="54"/>
+                                                    <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="54" id="tr5-Zn-GCS"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                    <state key="normal" title="Добавить тариф">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="addTariffDidTap" destination="-1" eventType="touchUpInside" id="6e4-lL-ooa"/>
+                                                        <action selector="registerDidTap" destination="-1" eventType="touchUpInside" id="Tda-U2-HDV"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
                                     </subviews>
                                 </stackView>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="5G9-TD-Yhs" secondAttribute="bottom" constant="20" id="3Rf-6n-vAI"/>
                                 <constraint firstAttribute="trailing" secondItem="md1-JZ-aXd" secondAttribute="trailing" constant="20" id="86a-rf-C6Z"/>
                                 <constraint firstItem="WcP-3S-8aX" firstAttribute="top" secondItem="duJ-Qu-ED9" secondAttribute="top" id="Ag0-6J-67r"/>
-                                <constraint firstItem="5G9-TD-Yhs" firstAttribute="top" secondItem="md1-JZ-aXd" secondAttribute="bottom" constant="20" id="E3P-dB-4xw"/>
                                 <constraint firstAttribute="trailing" secondItem="WcP-3S-8aX" secondAttribute="trailing" id="KZR-xE-5iy"/>
-                                <constraint firstAttribute="trailing" secondItem="5G9-TD-Yhs" secondAttribute="trailing" constant="20" id="V6s-oW-CM1"/>
+                                <constraint firstAttribute="bottom" secondItem="md1-JZ-aXd" secondAttribute="bottom" constant="20" id="kGH-1D-ZYx"/>
                                 <constraint firstItem="md1-JZ-aXd" firstAttribute="leading" secondItem="duJ-Qu-ED9" secondAttribute="leading" constant="20" id="lTf-9R-zx7"/>
                                 <constraint firstItem="md1-JZ-aXd" firstAttribute="top" secondItem="WcP-3S-8aX" secondAttribute="bottom" constant="20" id="odL-uI-ejp"/>
-                                <constraint firstItem="5G9-TD-Yhs" firstAttribute="leading" secondItem="duJ-Qu-ED9" secondAttribute="leading" constant="20" id="rPD-gM-dQr"/>
                                 <constraint firstItem="WcP-3S-8aX" firstAttribute="leading" secondItem="duJ-Qu-ED9" secondAttribute="leading" id="wnF-vy-Ifb"/>
                             </constraints>
                         </view>

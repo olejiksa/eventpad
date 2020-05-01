@@ -10,7 +10,8 @@ import UIKit
 
 final class FavoritesViewController: UIViewController {
     
-    private let items: [(String, String)] = [("Защиты ВКР", "Thursday, Jun 1"), ("Предзащиты ВКР", "Tuesday, Apr 25")]
+    private let refreshControl = UIRefreshControl()
+    private let items: [(String, String)] = []
     private let cellID = "\(SubtitleCell.self)"
     @IBOutlet private weak var tableView: UITableView!
     
@@ -25,7 +26,8 @@ final class FavoritesViewController: UIViewController {
         super.viewDidLoad()
         
         setupNavigation()
-        // setupNoDataLabel()
+        setupNoDataLabel()
+        setupRefreshControl()
         
         tableView.register(SubtitleCell.self, forCellReuseIdentifier: cellID)
     }
@@ -42,6 +44,15 @@ final class FavoritesViewController: UIViewController {
         NSLayoutConstraint.activate([
             noDataLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             noDataLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)])
+    }
+    
+    private func setupRefreshControl() {
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        tableView.refreshControl = refreshControl
+    }
+    
+    @objc private func refresh() {
+        refreshControl.endRefreshing()
     }
 }
 

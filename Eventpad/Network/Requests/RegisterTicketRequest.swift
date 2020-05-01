@@ -11,7 +11,7 @@ import Foundation
 final class RegisterTicketRequest: BasePostRequest {
 
     init(ticket: Ticket) {
-        let endpoint = "\(RequestFactory.endpointRoot)usr/registerTicker/\(ticket.buyerID)"
+        let endpoint = "\(RequestFactory.endpointRoot)usr/registerTicket/\(ticket.buyerID)"
         
         do {
             let jsonEncoder = JSONEncoder()
@@ -24,6 +24,13 @@ final class RegisterTicketRequest: BasePostRequest {
         } catch {
             fatalError()
         }
+    }
+    
+    override var urlRequest: URLRequest? {
+        var request = super.urlRequest
+        guard let accessToken = Global.accessToken else { return request }
+        request?.setValue(accessToken, forHTTPHeaderField: "token")
+        return request
     }
 }
 

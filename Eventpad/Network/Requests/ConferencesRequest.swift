@@ -29,6 +29,13 @@ final class ConferencesRequest: BaseGetRequest {
         super.init(endpoint: endpoint, parameters: parameters)
     }
     
+    init(username: String, limit: Int, offset: Int) {
+        let endpoint = "\(RequestFactory.endpointRoot)org/conferences/\(username)"
+        let parameters = ["limit": limit, "offset": offset]
+        
+        super.init(endpoint: endpoint, parameters: parameters)
+    }
+    
     init(limit: Int, offset: Int) {
         let endpoint = "\(RequestFactory.endpointRoot)usr/getAllConferences"
         let parameters = ["limit": limit, "offset": offset]

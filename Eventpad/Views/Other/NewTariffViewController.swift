@@ -89,6 +89,8 @@ final class NewTariffViewController: UIViewController {
                 switch result {
                 case .success(let response):
                     guard response.success else {
+                        let alert = self.alertService.alert(response.message ?? "Неизвестная ошибка")
+                        self.present(alert, animated: true)
                         self.doneButton.hideLoading()
                         return
                     }
