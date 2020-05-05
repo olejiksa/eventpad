@@ -48,13 +48,15 @@ final class UserDefaultsService {
         else { return nil }
         
         let id = defaults.integer(forKey: "id")
+        let description = defaults.string(forKey: "description")
         
         return .init(id: id,
                      username: username,
                      email: email,
                      phone: phone,
                      name: name,
-                     surname: surname)
+                     surname: surname,
+                     description: description)
     }
     
     func setUser(_ user: User) {
@@ -75,7 +77,7 @@ final class UserDefaultsService {
     }
     
     func appendTicketId(_ id: String) {
-        guard let ticketIds = getTicketIDs() else { return }
+        let ticketIds = getTicketIDs() ?? []
         defaults.set(ticketIds + [id], forKey: "tickets")
     }
     

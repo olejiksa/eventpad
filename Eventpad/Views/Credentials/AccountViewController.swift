@@ -19,6 +19,7 @@ final class AccountViewController: UIViewController {
     @IBOutlet private weak var conferencesButton: BigButton!
     @IBOutlet private weak var validationButton: BigButton!
     @IBOutlet private weak var statsButton: BigButton!
+    @IBOutlet private weak var descriptionLabel: UILabel!
     
     private let isNotMine: Bool
     private let user: User
@@ -47,12 +48,20 @@ final class AccountViewController: UIViewController {
         navigationItem.largeTitleDisplayMode = .never
         
         let shareImage = UIImage(systemName: "square.and.arrow.up")
-                let shareButton = UIBarButtonItem(image: shareImage,
-                                                 style: .plain,
-                                                 target: self,
-                                                 action: #selector(shareDidTap))
+        let shareButton = UIBarButtonItem(image: shareImage,
+                                          style: .plain,
+                                          target: self,
+                                          action: #selector(shareDidTap))
         
-        navigationItem.rightBarButtonItems = [shareButton]
+        let editButton = UIBarButtonItem(barButtonSystemItem: .edit,
+                                         target: self,
+                                         action: #selector(editDidTap))
+        
+        if isNotMine {
+            navigationItem.rightBarButtonItems = [shareButton]
+        } else {
+            navigationItem.rightBarButtonItems = [shareButton, editButton]
+        }
     }
     
     private func setupView() {
@@ -64,6 +73,7 @@ final class AccountViewController: UIViewController {
         validationButton.isHidden = Global.role == .participant || isNotMine
         statsButton.isHidden = Global.role == .participant || isNotMine
         logoutButton.isHidden = isNotMine
+        descriptionLabel.text = user.description ?? "Не указано"
     }
     
     @IBAction private func logoutDidTap() {
@@ -114,6 +124,10 @@ final class AccountViewController: UIViewController {
         let activityViewController = UIActivityViewController(activityItems: sharedObjects, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
         present(activityViewController, animated: true, completion: nil)
+    }
+    
+    @objc private func editDidTap() {
+        
     }
 }
 

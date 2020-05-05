@@ -16,6 +16,7 @@ struct SignUp: Encodable {
         case surname
         case email
         case phone
+        case description
     }
     
     let username: String
@@ -25,4 +26,5 @@ struct SignUp: Encodable {
     let surname: String
     let email: String
     let phone: String
+    let description: String
 }

@@ -35,9 +35,11 @@ final class TicketsViewController: UIViewController {
     }
     
     private func loadData() {
-        guard let ticketIDs = userDefaultsService.getTicketIDs(), let first = ticketIDs.first else {
+        let ticketIDs = userDefaultsService.getTicketIDs() ?? []
+        guard let first = ticketIDs.first else {
             self.refreshControl.endRefreshing()
-            return }
+            return
+        }
         let config = RequestFactory.ticket(ticketID: first)
         requestSender.send(config: config) { [weak self] result in
             guard let self = self else { return }

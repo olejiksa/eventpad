@@ -15,6 +15,7 @@ struct User: Decodable {
         case phone
         case name
         case surname
+        case description
     }
     
     let id: Int
@@ -23,4 +24,5 @@ struct User: Decodable {
     let phone: String?
     let name: String
     let surname: String
+    let description: String?
 }

@@ -16,6 +16,7 @@ final class SignUpViewController: UIViewController {
     @IBOutlet private weak var surnameField: UITextField!
     @IBOutlet private weak var emailField: UITextField!
     @IBOutlet private weak var phoneField: UITextField!
+    @IBOutlet private weak var descriptionField: UITextField!
     @IBOutlet private weak var passwordField: UITextField!
     @IBOutlet private weak var repeatPasswordField: UITextField!
     @IBOutlet private weak var acceptTextView: UITextView!
@@ -78,6 +79,7 @@ final class SignUpViewController: UIViewController {
                                          surnameField,
                                          emailField,
                                          phoneField,
+                                         descriptionField,
                                          passwordField,
                                          repeatPasswordField]
         
@@ -113,7 +115,8 @@ final class SignUpViewController: UIViewController {
                                     email: signUp.email,
                                     phone: signUp.phone,
                                     name: signUp.name,
-                                    surname: signUp.surname)
+                                    surname: signUp.surname,
+                                    description: signUp.description)
                     self.userDefaultsService.setUser(user)
                     self.signUpButton.hideLoading()
                     self.close()
@@ -135,7 +138,8 @@ final class SignUpViewController: UIViewController {
             let name = nameField.text,
             let surname = surnameField.text,
             let email = emailField.text,
-            let phone = phoneField.text
+            let phone = phoneField.text,
+            let description = descriptionField.text
         else { return }
         
         signUpButton.showLoading()
@@ -147,7 +151,8 @@ final class SignUpViewController: UIViewController {
                             name: name,
                             surname: surname,
                             email: email,
-                            phone: phone)
+                            phone: phone,
+                            description: description)
         self.signUp(signUp)
     }
     
