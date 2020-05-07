@@ -10,12 +10,12 @@ import Foundation
 
 final class EventParser: ParserProtocol {
     
-    func parse(data: Data) -> SimpleEvent? {
+    func parse(data: Data) -> Event? {
         do {
             let jsonDecorder = JSONDecoder()
             jsonDecorder.dateDecodingStrategy = .iso8601
             jsonDecorder.keyDecodingStrategy = .convertFromSnakeCase
-            return try jsonDecorder.decode(SimpleEvent.self, from: data)
+            return try jsonDecorder.decode(Event.self, from: data)
         } catch  {
             print(error)
             return nil

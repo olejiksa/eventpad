@@ -16,7 +16,7 @@ final class EventsRequest: BaseGetRequest {
     }
     
     init(conferenceID: Int, limit: Int, offset: Int) {
-        let endpoint = "\(RequestFactory.endpointRoot)usr/getConferenceEvents/\(conferenceID)"
+        let endpoint = "\(RequestFactory.endpointRoot)usr/conferenceEvents/\(conferenceID)"
         let parameters = ["limit": limit, "offset": offset]
             
         super.init(endpoint: endpoint, parameters: parameters)

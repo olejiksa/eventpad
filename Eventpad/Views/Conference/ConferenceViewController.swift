@@ -1,5 +1,5 @@
 //
-//  EventDetailViewController.swift
+//  ConferenceViewController.swift
 //  Eventpad
 //
 //  Created by Oleg Samoylov on 02.04.2020.
@@ -10,7 +10,7 @@ import MapKit
 import UIKit
 import EventKit
 
-final class EventDetailViewController: UIViewController {
+final class ConferenceViewController: UIViewController {
     
     private let alertService = AlertService()
     private let requestSender = RequestSender()
@@ -30,6 +30,7 @@ final class EventDetailViewController: UIViewController {
     @IBOutlet private weak var addEventButton: BigButton!
     @IBOutlet private weak var addTariffButton: BigButton!
     @IBOutlet private weak var registerButton: BigButton!
+    @IBOutlet private weak var scheduleButton: BigButton!
     
     init(conference: Conference, isManager: Bool) {
         self.conference = conference
@@ -131,7 +132,8 @@ final class EventDetailViewController: UIViewController {
     }
     
     @IBAction private func addEventDidTap() {
-        let vc = NewEventViewController()
+        guard let id = conference.id else { return }
+        let vc = NewEventViewController(conferenceID: id)
         let nvc = UINavigationController(rootViewController: vc)
         present(nvc, animated: true)
     }
@@ -158,7 +160,7 @@ final class EventDetailViewController: UIViewController {
                                  toDate: dateEndFinal)
     }
     
-    @IBAction func didRemindersTap() {
+    @IBAction private func didRemindersTap() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .short
@@ -171,6 +173,12 @@ final class EventDetailViewController: UIViewController {
         createEventInTheReminders(with: conference.title,
                                   forDate: dateStartFinal,
                                   toDate: dateEndFinal)
+    }
+    
+    @IBAction private func scheduleDidTap() {
+        guard let id = conference.id else { return }
+        let vc = ScheduleViewController(parentID: id)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     private func createEventInTheCalendar(with title: String,

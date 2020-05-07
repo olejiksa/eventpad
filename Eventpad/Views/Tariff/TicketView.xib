@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TicketViewController" customModule="Eventpad" customModuleProvider="target">
+            <connections>
+                <outlet property="bottomStackView" destination="3Rg-Th-fnk" id="GEX-Jh-35Q"/>
+                <outlet property="calendarButton" destination="tsd-KR-Oho" id="uJx-eW-5bR"/>
+                <outlet property="contactButton" destination="EQe-L6-I25" id="kJa-MR-O7o"/>
+                <outlet property="dateEndLabel" destination="GYv-4x-5sP" id="aMi-dL-5Ab"/>
+                <outlet property="dateStartLabel" destination="5TS-1z-AGa" id="haM-fn-QOe"/>
+                <outlet property="mapButton" destination="SC9-8r-XHx" id="Cfr-ov-cog"/>
+                <outlet property="reminderButton" destination="Urw-rD-fyK" id="iHd-L3-7AW"/>
+                <outlet property="scheduleButton" destination="i67-Or-QDc" id="yU6-t4-WwE"/>
+                <outlet property="titleLabel" destination="4pI-2z-ltP" id="2Bf-BD-6Z1"/>
+                <outlet property="view" destination="Xbn-Id-Zux" id="6md-Qf-YGC"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Xbn-Id-Zux">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pYE-hv-va2">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4w7-U2-Bz4">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="1188.5"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8OG-nL-ONi">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="276"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Warsaw" translatesAutoresizingMaskIntoConstraints="NO" id="i5t-iD-HEQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="276"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="i5t-iD-HEQ" secondAttribute="height" multiplier="3:2" id="VFB-LV-ga8"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="7hL-ra-MGo">
+                                    <rect key="frame" x="20" y="296" width="374" height="872.5"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="День открытых дверей: программы бакалавриата и магистратуры" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pI-2z-ltP">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="54.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="f4R-3V-mFy">
+                                            <rect key="frame" x="0.0" y="69.5" width="374" height="40"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дата и время начала" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ptr-tI-jwW">
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="14.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31 марта, 10:00-19:00" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5TS-1z-AGa">
+                                                    <rect key="frame" x="0.0" y="19.5" width="374" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="FbA-3e-fx0">
+                                            <rect key="frame" x="0.0" y="124.5" width="374" height="40"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дата и время окончания" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yMp-VA-AuL">
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="14.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31 марта, 10:00-19:00" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GYv-4x-5sP">
+                                                    <rect key="frame" x="0.0" y="19.5" width="374" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tsd-KR-Oho" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="179.5" width="374" height="54"/>
+                                            <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="54" id="S4M-iK-kFs"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                            <state key="normal" title="Добавить в календарь">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="calendarDidTap" destination="-1" eventType="touchUpInside" id="bCX-Ch-Sto"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Urw-rD-fyK" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="248.5" width="374" height="54"/>
+                                            <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="54" id="Uat-vv-Kx6"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                            <state key="normal" title="Добавить в напоминания">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="reminderDidTap" destination="-1" eventType="touchUpInside" id="RSu-bt-Uwh"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i67-Or-QDc" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="317.5" width="374" height="54"/>
+                                            <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="54" id="t9I-R0-txF"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                            <state key="normal" title="Расписание">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="scheduleDidTap" destination="-1" eventType="touchUpInside" id="iUE-py-H8r"/>
+                                            </connections>
+                                        </button>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="i69-U6-U5D">
+                                            <rect key="frame" x="0.0" y="386.5" width="374" height="40"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Категория" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uD8-Lq-98z">
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="14.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Образование" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="llQ-Dz-LRm">
+                                                    <rect key="frame" x="0.0" y="19.5" width="374" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="iVJ-qc-Ey8">
+                                            <rect key="frame" x="0.0" y="441.5" width="374" height="40"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Местоположение" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lD0-iD-yEy">
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="14.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Москва" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tef-NR-h90">
+                                                    <rect key="frame" x="0.0" y="19.5" width="374" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SC9-8r-XHx" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="496.5" width="374" height="54"/>
+                                            <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="54" id="DxB-RC-YaQ"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                            <state key="normal" title="Показать на карте">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="mapDidTap" destination="-1" eventType="touchUpInside" id="Jh0-3q-aa4"/>
+                                            </connections>
+                                        </button>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="6Mw-wU-pUS">
+                                            <rect key="frame" x="0.0" y="565.5" width="374" height="238"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Описание" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVb-rj-PN3">
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="14.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbL-Nq-5U3">
+                                                    <rect key="frame" x="0.0" y="19.5" width="374" height="218.5"/>
+                                                    <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="3Rg-Th-fnk">
+                                            <rect key="frame" x="0.0" y="818.5" width="374" height="54"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EQe-L6-I25" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="54"/>
+                                                    <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="54" id="gYA-th-V8X"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                    <state key="normal" title="Связаться с организатором">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="contactDidTap" destination="-1" eventType="touchUpInside" id="7eX-fB-t9M"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstItem="8OG-nL-ONi" firstAttribute="top" secondItem="4w7-U2-Bz4" secondAttribute="top" id="1r2-1J-Fvz"/>
+                                <constraint firstAttribute="trailing" secondItem="7hL-ra-MGo" secondAttribute="trailing" constant="20" id="6cA-7j-dVO"/>
+                                <constraint firstAttribute="bottom" secondItem="7hL-ra-MGo" secondAttribute="bottom" constant="20" id="BJ8-yb-n8J"/>
+                                <constraint firstItem="8OG-nL-ONi" firstAttribute="leading" secondItem="4w7-U2-Bz4" secondAttribute="leading" id="Odb-6j-mPT"/>
+                                <constraint firstItem="7hL-ra-MGo" firstAttribute="top" secondItem="8OG-nL-ONi" secondAttribute="bottom" constant="20" id="nAX-z7-k1w"/>
+                                <constraint firstItem="7hL-ra-MGo" firstAttribute="leading" secondItem="4w7-U2-Bz4" secondAttribute="leading" constant="20" id="wgV-4z-Pc2"/>
+                                <constraint firstAttribute="trailing" secondItem="8OG-nL-ONi" secondAttribute="trailing" id="xHM-AX-Ezk"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="4w7-U2-Bz4" firstAttribute="leading" secondItem="pYE-hv-va2" secondAttribute="leading" id="6g8-XE-xrv"/>
+                        <constraint firstAttribute="bottom" secondItem="4w7-U2-Bz4" secondAttribute="bottom" id="E7N-DC-iOb"/>
+                        <constraint firstItem="4w7-U2-Bz4" firstAttribute="centerX" secondItem="pYE-hv-va2" secondAttribute="centerX" id="Lcb-aS-Php"/>
+                        <constraint firstAttribute="trailing" secondItem="4w7-U2-Bz4" secondAttribute="trailing" id="dmm-Xk-ido"/>
+                        <constraint firstItem="4w7-U2-Bz4" firstAttribute="top" secondItem="pYE-hv-va2" secondAttribute="top" id="jXz-AP-0QX"/>
+                    </constraints>
+                    <viewLayoutGuide key="contentLayoutGuide" id="MTC-cD-z5V"/>
+                    <viewLayoutGuide key="frameLayoutGuide" id="UqB-1t-H1v"/>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="pYE-hv-va2" firstAttribute="leading" secondItem="Xbn-Id-Zux" secondAttribute="leading" id="Rbh-LZ-WaV"/>
+                <constraint firstAttribute="bottom" secondItem="pYE-hv-va2" secondAttribute="bottom" priority="250" id="d3S-6i-UZj"/>
+                <constraint firstAttribute="trailing" secondItem="pYE-hv-va2" secondAttribute="trailing" id="l0E-6h-iwT"/>
+                <constraint firstItem="pYE-hv-va2" firstAttribute="top" secondItem="Xbn-Id-Zux" secondAttribute="top" id="lnD-pK-1fm"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="r2W-Lc-h1Z"/>
+            <point key="canvasLocation" x="39.375" y="1425"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Warsaw" width="1699" height="1130"/>
+    </resources>
+</document>

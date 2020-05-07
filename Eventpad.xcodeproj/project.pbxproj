@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EB06F37724332D810018605E /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB06F37524332D810018605E /* EventCell.swift */; };
-		EB06F37824332D810018605E /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB06F37624332D810018605E /* EventCell.xib */; };
+		EB06F37724332D810018605E /* ConferenceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB06F37524332D810018605E /* ConferenceCell.swift */; };
+		EB06F37824332D810018605E /* ConferenceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB06F37624332D810018605E /* ConferenceCell.xib */; };
 		EB06F37A2433309A0018605E /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB06F3792433309A0018605E /* Section.swift */; };
 		EB30813124515FE500EB7598 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB30813024515FE500EB7598 /* Login.swift */; };
-		EB3081332451604100EB7598 /* SimpleEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3081322451604100EB7598 /* SimpleEvent.swift */; };
+		EB3081332451604100EB7598 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3081322451604100EB7598 /* Event.swift */; };
 		EB3081352451608A00EB7598 /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3081342451608A00EB7598 /* Role.swift */; };
 		EB3081382451631100EB7598 /* MessageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3081372451631100EB7598 /* MessageResponse.swift */; };
 		EB30813A2451689600EB7598 /* EventsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3081392451689600EB7598 /* EventsRequest.swift */; };
@@ -39,6 +39,10 @@
 		EB30816B2452E59600EB7598 /* TicketsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB3081692452E59600EB7598 /* TicketsView.xib */; };
 		EB30816E2452EBF800EB7598 /* SubtitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB30816D2452EBF800EB7598 /* SubtitleCell.swift */; };
 		EB3081702452EF2300EB7598 /* SearchItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB30816F2452EF2300EB7598 /* SearchItemType.swift */; };
+		EB32CD8E2461DC9000AC1FAB /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB32CD8C2461DC9000AC1FAB /* ScheduleViewController.swift */; };
+		EB32CD8F2461DC9000AC1FAB /* ScheduleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB32CD8D2461DC9000AC1FAB /* ScheduleView.xib */; };
+		EB32CD932461E26E00AC1FAB /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB32CD912461E26D00AC1FAB /* EventViewController.swift */; };
+		EB32CD942461E26E00AC1FAB /* EventView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB32CD922461E26D00AC1FAB /* EventView.xib */; };
 		EB3B31F0244D7A880023E930 /* Tariff.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3B31EF244D7A880023E930 /* Tariff.swift */; };
 		EB3B31F4244DA6510023E930 /* UserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3B31F3244DA6510023E930 /* UserRequest.swift */; };
 		EB3B31F6244DA6F50023E930 /* UserParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3B31F5244DA6F50023E930 /* UserParser.swift */; };
@@ -53,8 +57,9 @@
 		EB5CE490245379A40085E59B /* NewConferenceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB5CE48E245379A40085E59B /* NewConferenceView.xib */; };
 		EB67D77B244C8B5C00E66B3C /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB67D779244C8B5C00E66B3C /* CategoriesViewController.swift */; };
 		EB67D77C244C8B5C00E66B3C /* CategoriesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB67D77A244C8B5C00E66B3C /* CategoriesView.xib */; };
-		EB67D781244D74AE00E66B3C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB67D780244D74AE00E66B3C /* Event.swift */; };
 		EB67D783244D756100E66B3C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB67D782244D756100E66B3C /* Category.swift */; };
+		EB6F38A72464C83800BDEBCE /* TicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F38A52464C83800BDEBCE /* TicketViewController.swift */; };
+		EB6F38A82464C83800BDEBCE /* TicketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB6F38A62464C83800BDEBCE /* TicketView.xib */; };
 		EB78FE42245CA1C5002DE6FC /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB78FE40245CA1C5002DE6FC /* PurchaseViewController.swift */; };
 		EB78FE43245CA1C5002DE6FC /* PurchaseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB78FE41245CA1C5002DE6FC /* PurchaseView.xib */; };
 		EB9978132430925800DD5663 /* BigButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9978122430925800DD5663 /* BigButton.swift */; };
@@ -77,8 +82,8 @@
 		EBB3224624486F3F00942A2B /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3224524486F3F00942A2B /* SignUp.swift */; };
 		EBB3224824498E8C00942A2B /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3224724498E8C00942A2B /* AlertService.swift */; };
 		EBB3224A244B6E0400942A2B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB32249244B6E0400942A2B /* User.swift */; };
-		EBD451BE2435F9D800F6A4C2 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD451BC2435F9D800F6A4C2 /* EventDetailViewController.swift */; };
-		EBD451BF2435F9D800F6A4C2 /* EventDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBD451BD2435F9D800F6A4C2 /* EventDetailView.xib */; };
+		EBD451BE2435F9D800F6A4C2 /* ConferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD451BC2435F9D800F6A4C2 /* ConferenceViewController.swift */; };
+		EBD451BF2435F9D800F6A4C2 /* ConferenceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBD451BD2435F9D800F6A4C2 /* ConferenceView.xib */; };
 		EBDB1E0A245750BE009316FC /* MyConferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB1E08245750BE009316FC /* MyConferencesViewController.swift */; };
 		EBDB1E0B245750BE009316FC /* MyConferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBDB1E09245750BE009316FC /* MyConferencesView.xib */; };
 		EBDB1E0E24589AA8009316FC /* NewTariffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB1E0C24589AA8009316FC /* NewTariffViewController.swift */; };
@@ -86,7 +91,7 @@
 		EBDB1E1224589B64009316FC /* NewEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB1E1024589B64009316FC /* NewEventViewController.swift */; };
 		EBDB1E1324589B64009316FC /* NewEventView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBDB1E1124589B64009316FC /* NewEventView.xib */; };
 		EBDB1E162458C198009316FC /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB1E142458C198009316FC /* LocationViewController.swift */; };
-		EBDB1E172458C198009316FC /* LocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBDB1E152458C198009316FC /* LocationViewController.xib */; };
+		EBDB1E172458C198009316FC /* LocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBDB1E152458C198009316FC /* LocationView.xib */; };
 		EBE681B82454919400CB9285 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE681B72454919400CB9285 /* Global.swift */; };
 		EBF87440242F81330056623E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF8743F242F81330056623E /* AppDelegate.swift */; };
 		EBF87442242F81330056623E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF87441242F81330056623E /* SceneDelegate.swift */; };
@@ -101,11 +106,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		EB06F37524332D810018605E /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
-		EB06F37624332D810018605E /* EventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
+		EB06F37524332D810018605E /* ConferenceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceCell.swift; sourceTree = "<group>"; };
+		EB06F37624332D810018605E /* ConferenceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConferenceCell.xib; sourceTree = "<group>"; };
 		EB06F3792433309A0018605E /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		EB30813024515FE500EB7598 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
-		EB3081322451604100EB7598 /* SimpleEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEvent.swift; sourceTree = "<group>"; };
+		EB3081322451604100EB7598 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		EB3081342451608A00EB7598 /* Role.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
 		EB3081372451631100EB7598 /* MessageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageResponse.swift; sourceTree = "<group>"; };
 		EB3081392451689600EB7598 /* EventsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsRequest.swift; sourceTree = "<group>"; };
@@ -133,6 +138,10 @@
 		EB3081692452E59600EB7598 /* TicketsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TicketsView.xib; sourceTree = "<group>"; };
 		EB30816D2452EBF800EB7598 /* SubtitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleCell.swift; sourceTree = "<group>"; };
 		EB30816F2452EF2300EB7598 /* SearchItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemType.swift; sourceTree = "<group>"; };
+		EB32CD8C2461DC9000AC1FAB /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
+		EB32CD8D2461DC9000AC1FAB /* ScheduleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleView.xib; sourceTree = "<group>"; };
+		EB32CD912461E26D00AC1FAB /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		EB32CD922461E26D00AC1FAB /* EventView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventView.xib; sourceTree = "<group>"; };
 		EB3B31EF244D7A880023E930 /* Tariff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tariff.swift; sourceTree = "<group>"; };
 		EB3B31F3244DA6510023E930 /* UserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequest.swift; sourceTree = "<group>"; };
 		EB3B31F5244DA6F50023E930 /* UserParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserParser.swift; sourceTree = "<group>"; };
@@ -147,8 +156,9 @@
 		EB5CE48E245379A40085E59B /* NewConferenceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewConferenceView.xib; sourceTree = "<group>"; };
 		EB67D779244C8B5C00E66B3C /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		EB67D77A244C8B5C00E66B3C /* CategoriesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoriesView.xib; sourceTree = "<group>"; };
-		EB67D780244D74AE00E66B3C /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		EB67D782244D756100E66B3C /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		EB6F38A52464C83800BDEBCE /* TicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketViewController.swift; sourceTree = "<group>"; };
+		EB6F38A62464C83800BDEBCE /* TicketView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TicketView.xib; sourceTree = "<group>"; };
 		EB78FE40245CA1C5002DE6FC /* PurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
 		EB78FE41245CA1C5002DE6FC /* PurchaseView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PurchaseView.xib; sourceTree = "<group>"; };
 		EB9978122430925800DD5663 /* BigButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigButton.swift; sourceTree = "<group>"; };
@@ -170,8 +180,8 @@
 		EBB3224524486F3F00942A2B /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		EBB3224724498E8C00942A2B /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
 		EBB32249244B6E0400942A2B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		EBD451BC2435F9D800F6A4C2 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
-		EBD451BD2435F9D800F6A4C2 /* EventDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventDetailView.xib; sourceTree = "<group>"; };
+		EBD451BC2435F9D800F6A4C2 /* ConferenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceViewController.swift; sourceTree = "<group>"; };
+		EBD451BD2435F9D800F6A4C2 /* ConferenceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConferenceView.xib; sourceTree = "<group>"; };
 		EBDB1E08245750BE009316FC /* MyConferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyConferencesViewController.swift; sourceTree = "<group>"; };
 		EBDB1E09245750BE009316FC /* MyConferencesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyConferencesView.xib; sourceTree = "<group>"; };
 		EBDB1E0C24589AA8009316FC /* NewTariffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTariffViewController.swift; sourceTree = "<group>"; };
@@ -179,7 +189,7 @@
 		EBDB1E1024589B64009316FC /* NewEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventViewController.swift; sourceTree = "<group>"; };
 		EBDB1E1124589B64009316FC /* NewEventView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewEventView.xib; sourceTree = "<group>"; };
 		EBDB1E142458C198009316FC /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
-		EBDB1E152458C198009316FC /* LocationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationViewController.xib; sourceTree = "<group>"; };
+		EBDB1E152458C198009316FC /* LocationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationView.xib; sourceTree = "<group>"; };
 		EBE681B72454919400CB9285 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		EBF8743C242F81330056623E /* Eventpad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eventpad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBF8743F242F81330056623E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -214,8 +224,6 @@
 				EB99781E2432890300DD5663 /* AccountViewController.swift */,
 				EBF87456242F84FA0056623E /* AuthView.xib */,
 				EBF87455242F84FA0056623E /* AuthViewController.swift */,
-				EB67D77A244C8B5C00E66B3C /* CategoriesView.xib */,
-				EB67D779244C8B5C00E66B3C /* CategoriesViewController.swift */,
 				EBF8745A242F85B00056623E /* SignUpView.xib */,
 				EBF87459242F85B00056623E /* SignUpViewController.swift */,
 			);
@@ -238,24 +246,36 @@
 				EB3081612452E4B600EB7598 /* SearchView.xib */,
 				EB3081642452E4DE00EB7598 /* FavoritesViewController.swift */,
 				EB3081652452E4DE00EB7598 /* FavoritesView.xib */,
-				EB3081682452E59600EB7598 /* TicketsViewController.swift */,
-				EB3081692452E59600EB7598 /* TicketsView.xib */,
-				EB5CE48D245379A40085E59B /* NewConferenceViewController.swift */,
-				EB5CE48E245379A40085E59B /* NewConferenceView.xib */,
 				EB3B31F824501A010023E930 /* OrganizerSignUpViewController.swift */,
 				EB3B31F924501A010023E930 /* OrganizerSignUpView.xib */,
-				EBDB1E08245750BE009316FC /* MyConferencesViewController.swift */,
-				EBDB1E09245750BE009316FC /* MyConferencesView.xib */,
-				EBDB1E0C24589AA8009316FC /* NewTariffViewController.swift */,
-				EBDB1E0D24589AA8009316FC /* NewTariffView.xib */,
-				EBDB1E1024589B64009316FC /* NewEventViewController.swift */,
-				EBDB1E1124589B64009316FC /* NewEventView.xib */,
-				EBDB1E142458C198009316FC /* LocationViewController.swift */,
-				EBDB1E152458C198009316FC /* LocationViewController.xib */,
-				EB78FE40245CA1C5002DE6FC /* PurchaseViewController.swift */,
-				EB78FE41245CA1C5002DE6FC /* PurchaseView.xib */,
+				EB32CD8C2461DC9000AC1FAB /* ScheduleViewController.swift */,
+				EB32CD8D2461DC9000AC1FAB /* ScheduleView.xib */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		EB32CD8B2461DC2000AC1FAB /* Tariff */ = {
+			isa = PBXGroup;
+			children = (
+				EB3081682452E59600EB7598 /* TicketsViewController.swift */,
+				EB3081692452E59600EB7598 /* TicketsView.xib */,
+				EBDB1E0C24589AA8009316FC /* NewTariffViewController.swift */,
+				EBDB1E0D24589AA8009316FC /* NewTariffView.xib */,
+				EB6F38A52464C83800BDEBCE /* TicketViewController.swift */,
+				EB6F38A62464C83800BDEBCE /* TicketView.xib */,
+			);
+			path = Tariff;
+			sourceTree = "<group>";
+		};
+		EB32CD902461E1B800AC1FAB /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				EB32CD912461E26D00AC1FAB /* EventViewController.swift */,
+				EB32CD922461E26D00AC1FAB /* EventView.xib */,
+				EBDB1E1024589B64009316FC /* NewEventViewController.swift */,
+				EBDB1E1124589B64009316FC /* NewEventView.xib */,
+			);
+			path = Event;
 			sourceTree = "<group>";
 		};
 		EB3B31F7244DA6F80023E930 /* Base */ = {
@@ -270,12 +290,12 @@
 		EB67D77F244D73EF00E66B3C /* Feed */ = {
 			isa = PBXGroup;
 			children = (
-				EB06F37624332D810018605E /* EventCell.xib */,
-				EB06F37524332D810018605E /* EventCell.swift */,
-				EBD451BD2435F9D800F6A4C2 /* EventDetailView.xib */,
-				EBD451BC2435F9D800F6A4C2 /* EventDetailViewController.swift */,
 				EBF87453242F830D0056623E /* FeedView.xib */,
 				EBF87443242F81330056623E /* FeedViewController.swift */,
+				EBDB1E152458C198009316FC /* LocationView.xib */,
+				EBDB1E142458C198009316FC /* LocationViewController.swift */,
+				EB67D77A244C8B5C00E66B3C /* CategoriesView.xib */,
+				EB67D779244C8B5C00E66B3C /* CategoriesViewController.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -283,6 +303,9 @@
 		EB99781D243244A400DD5663 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EB32CD902461E1B800AC1FAB /* Event */,
+				EB32CD8B2461DC2000AC1FAB /* Tariff */,
+				EBD201102461D42E009D539F /* Conference */,
 				EB30815F2452E4A700EB7598 /* Other */,
 				EB30815B2451F23400EB7598 /* Credentials */,
 				EB67D77F244D73EF00E66B3C /* Feed */,
@@ -353,19 +376,35 @@
 			children = (
 				EB67D782244D756100E66B3C /* Category.swift */,
 				EB3B31FE24509C110023E930 /* Conference.swift */,
-				EB67D780244D74AE00E66B3C /* Event.swift */,
 				EB30813024515FE500EB7598 /* Login.swift */,
 				EB3081372451631100EB7598 /* MessageResponse.swift */,
 				EB3081342451608A00EB7598 /* Role.swift */,
 				EB30816F2452EF2300EB7598 /* SearchItemType.swift */,
 				EBB3224524486F3F00942A2B /* SignUp.swift */,
-				EB3081322451604100EB7598 /* SimpleEvent.swift */,
+				EB3081322451604100EB7598 /* Event.swift */,
 				EBB3224324486D9300942A2B /* SuccessResponse.swift */,
 				EB3B31EF244D7A880023E930 /* Tariff.swift */,
 				EB3081552451EF4800EB7598 /* Ticket.swift */,
 				EBB32249244B6E0400942A2B /* User.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		EBD201102461D42E009D539F /* Conference */ = {
+			isa = PBXGroup;
+			children = (
+				EB5CE48D245379A40085E59B /* NewConferenceViewController.swift */,
+				EB5CE48E245379A40085E59B /* NewConferenceView.xib */,
+				EBDB1E08245750BE009316FC /* MyConferencesViewController.swift */,
+				EBDB1E09245750BE009316FC /* MyConferencesView.xib */,
+				EB78FE40245CA1C5002DE6FC /* PurchaseViewController.swift */,
+				EB78FE41245CA1C5002DE6FC /* PurchaseView.xib */,
+				EB06F37524332D810018605E /* ConferenceCell.swift */,
+				EB06F37624332D810018605E /* ConferenceCell.xib */,
+				EBD451BC2435F9D800F6A4C2 /* ConferenceViewController.swift */,
+				EBD451BD2435F9D800F6A4C2 /* ConferenceView.xib */,
+			);
+			path = Conference;
 			sourceTree = "<group>";
 		};
 		EBF87433242F81330056623E = {
@@ -469,10 +508,12 @@
 				EBDB1E0F24589AA8009316FC /* NewTariffView.xib in Resources */,
 				EBF87458242F84FA0056623E /* AuthView.xib in Resources */,
 				EB67D77C244C8B5C00E66B3C /* CategoriesView.xib in Resources */,
-				EBD451BF2435F9D800F6A4C2 /* EventDetailView.xib in Resources */,
+				EBD451BF2435F9D800F6A4C2 /* ConferenceView.xib in Resources */,
 				EB3B31FB24501A010023E930 /* OrganizerSignUpView.xib in Resources */,
 				EBF87454242F830D0056623E /* FeedView.xib in Resources */,
-				EBDB1E172458C198009316FC /* LocationViewController.xib in Resources */,
+				EB32CD8F2461DC9000AC1FAB /* ScheduleView.xib in Resources */,
+				EB6F38A82464C83800BDEBCE /* TicketView.xib in Resources */,
+				EBDB1E172458C198009316FC /* LocationView.xib in Resources */,
 				EB78FE43245CA1C5002DE6FC /* PurchaseView.xib in Resources */,
 				EBF8744C242F81370056623E /* LaunchScreen.storyboard in Resources */,
 				EB30816B2452E59600EB7598 /* TicketsView.xib in Resources */,
@@ -483,7 +524,8 @@
 				EBDB1E1324589B64009316FC /* NewEventView.xib in Resources */,
 				EB3081672452E4DE00EB7598 /* FavoritesView.xib in Resources */,
 				EBDB1E0B245750BE009316FC /* MyConferencesView.xib in Resources */,
-				EB06F37824332D810018605E /* EventCell.xib in Resources */,
+				EB32CD942461E26E00AC1FAB /* EventView.xib in Resources */,
+				EB06F37824332D810018605E /* ConferenceCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,16 +536,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB3081332451604100EB7598 /* SimpleEvent.swift in Sources */,
+				EB3081332451604100EB7598 /* Event.swift in Sources */,
 				EBB3224A244B6E0400942A2B /* User.swift in Sources */,
 				EBF87457242F84FA0056623E /* AuthViewController.swift in Sources */,
+				EB32CD8E2461DC9000AC1FAB /* ScheduleViewController.swift in Sources */,
 				EB308140245172BC00EB7598 /* ConferenceParser.swift in Sources */,
 				EB3B31FA24501A010023E930 /* OrganizerSignUpViewController.swift in Sources */,
 				EBF87444242F81330056623E /* FeedViewController.swift in Sources */,
 				EB3081352451608A00EB7598 /* Role.swift in Sources */,
 				EBB3223B24486A5100942A2B /* MessageParser.swift in Sources */,
 				EBB3222F2448431100942A2B /* RequestSender.swift in Sources */,
-				EB06F37724332D810018605E /* EventCell.swift in Sources */,
+				EB06F37724332D810018605E /* ConferenceCell.swift in Sources */,
 				EB3081582451F05700EB7598 /* TicketRequest.swift in Sources */,
 				EB3B31FD24509B300023E930 /* CreateConferenceRequest.swift in Sources */,
 				EB30816E2452EBF800EB7598 /* SubtitleCell.swift in Sources */,
@@ -523,10 +566,9 @@
 				EB3081482451753000EB7598 /* ConferencesRequest.swift in Sources */,
 				EB3081522451EBD900EB7598 /* FavoriteEventRequest.swift in Sources */,
 				EB67D77B244C8B5C00E66B3C /* CategoriesViewController.swift in Sources */,
-				EB67D781244D74AE00E66B3C /* Event.swift in Sources */,
 				EB3081542451EE8E00EB7598 /* UnfavoriteEventRequest.swift in Sources */,
 				EB30813124515FE500EB7598 /* Login.swift in Sources */,
-				EBD451BE2435F9D800F6A4C2 /* EventDetailViewController.swift in Sources */,
+				EBD451BE2435F9D800F6A4C2 /* ConferenceViewController.swift in Sources */,
 				EB9978182430995B00DD5663 /* FormHelper.swift in Sources */,
 				EB3B31FF24509C110023E930 /* Conference.swift in Sources */,
 				EBDB1E162458C198009316FC /* LocationViewController.swift in Sources */,
@@ -549,6 +591,7 @@
 				EB30815E2452E3C800EB7598 /* TabBarFactory.swift in Sources */,
 				EB3B31F4244DA6510023E930 /* UserRequest.swift in Sources */,
 				EB3B31F6244DA6F50023E930 /* UserParser.swift in Sources */,
+				EB6F38A72464C83800BDEBCE /* TicketViewController.swift in Sources */,
 				EBE681B82454919400CB9285 /* Global.swift in Sources */,
 				EBB3224424486D9300942A2B /* SuccessResponse.swift in Sources */,
 				EBB3224824498E8C00942A2B /* AlertService.swift in Sources */,
@@ -558,6 +601,7 @@
 				EB30816A2452E59600EB7598 /* TicketsViewController.swift in Sources */,
 				EB3B320524509E4A0023E930 /* AddTariffsRequest.swift in Sources */,
 				EB30814C2451799700EB7598 /* UsersParser.swift in Sources */,
+				EB32CD932461E26E00AC1FAB /* EventViewController.swift in Sources */,
 				EB67D783244D756100E66B3C /* Category.swift in Sources */,
 				EB3081462451742E00EB7598 /* EventParser.swift in Sources */,
 				EBB3223F24486AEC00942A2B /* SignUpRequest.swift in Sources */,

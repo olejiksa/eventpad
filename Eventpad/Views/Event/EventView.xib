@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EventViewController" customModule="Eventpad" customModuleProvider="target">
+            <connections>
+                <outlet property="dateEndLabel" destination="uR1-HN-Wqq" id="L9B-Pl-x3f"/>
+                <outlet property="dateStartLabel" destination="N5s-np-LW5" id="J6c-Oh-odr"/>
+                <outlet property="descriptionLabel" destination="fZh-1y-yjZ" id="ZjA-PW-Fxl"/>
+                <outlet property="titleLabel" destination="fs1-gV-prK" id="AoC-4G-X16"/>
+                <outlet property="view" destination="g8z-Ko-TQ5" id="VR0-e0-8Dw"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="g8z-Ko-TQ5">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YgC-pQ-IHw">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="duJ-Qu-ED9">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="1123.5"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="WcP-3S-8aX">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="213.5"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Warsaw" translatesAutoresizingMaskIntoConstraints="NO" id="4Bl-k4-NkU">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="213.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="4Bl-k4-NkU" secondAttribute="height" multiplier="3:2" id="ItP-Oh-txE"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="md1-JZ-aXd">
+                                    <rect key="frame" x="20" y="233.5" width="280" height="870"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="День открытых дверей: программы бакалавриата и магистратуры" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fs1-gV-prK">
+                                            <rect key="frame" x="0.0" y="0.0" width="280" height="74"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Fuj-bS-McX">
+                                            <rect key="frame" x="0.0" y="89" width="280" height="40"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дата и время начала" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FfW-BD-hht">
+                                                    <rect key="frame" x="0.0" y="0.0" width="280" height="14.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31 марта, 10:00-19:00" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N5s-np-LW5">
+                                                    <rect key="frame" x="0.0" y="19.5" width="280" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="lNl-Pn-sts">
+                                            <rect key="frame" x="0.0" y="144" width="280" height="40"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дата и время окончания" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eb7-tH-7Zp">
+                                                    <rect key="frame" x="0.0" y="0.0" width="280" height="14.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31 марта, 10:00-19:00" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uR1-HN-Wqq">
+                                                    <rect key="frame" x="0.0" y="19.5" width="280" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GNh-43-e4f" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="199" width="280" height="54"/>
+                                            <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="54" id="dCA-k0-188"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                            <state key="normal" title="Добавить в календарь">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="calendarDidTap" destination="-1" eventType="touchUpInside" id="6Es-PJ-mzB"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6i-RL-8Mp" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="268" width="280" height="54"/>
+                                            <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="54" id="ycq-g7-iPm"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                            <state key="normal" title="Добавить в напоминания">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="remindersDidTap" destination="-1" eventType="touchUpInside" id="CxS-E5-Ayw"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cb4-OL-Na8" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="337" width="280" height="54"/>
+                                            <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="54" id="ca2-FG-Thb"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                            <state key="normal" title="Расписание">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="scheduleDidTap" destination="-1" eventType="touchUpInside" id="Gj7-aw-idl"/>
+                                            </connections>
+                                        </button>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="9GD-np-a5Z">
+                                            <rect key="frame" x="0.0" y="406" width="280" height="326"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Описание" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9o-vG-XGB">
+                                                    <rect key="frame" x="0.0" y="0.0" width="280" height="14.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZh-1y-yjZ">
+                                                    <rect key="frame" x="0.0" y="19.5" width="280" height="306.5"/>
+                                                    <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="5G9-TD-Yhs">
+                                            <rect key="frame" x="0.0" y="747" width="280" height="123"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="owh-EA-6Y7" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="280" height="54"/>
+                                                    <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="54" id="VRv-F4-WJm"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                    <state key="normal" title="Связаться со спикером">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="contactDidTap" destination="-1" eventType="touchUpInside" id="ICq-2S-QhA"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFo-KY-G8B" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="69" width="280" height="54"/>
+                                                    <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="54" id="oRT-de-RNS"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                    <state key="normal" title="Добавить событие">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="md1-JZ-aXd" secondAttribute="trailing" constant="20" id="86a-rf-C6Z"/>
+                                <constraint firstItem="WcP-3S-8aX" firstAttribute="top" secondItem="duJ-Qu-ED9" secondAttribute="top" id="Ag0-6J-67r"/>
+                                <constraint firstAttribute="trailing" secondItem="WcP-3S-8aX" secondAttribute="trailing" id="KZR-xE-5iy"/>
+                                <constraint firstItem="md1-JZ-aXd" firstAttribute="leading" secondItem="duJ-Qu-ED9" secondAttribute="leading" constant="20" id="lTf-9R-zx7"/>
+                                <constraint firstItem="md1-JZ-aXd" firstAttribute="top" secondItem="WcP-3S-8aX" secondAttribute="bottom" constant="20" id="odL-uI-ejp"/>
+                                <constraint firstItem="WcP-3S-8aX" firstAttribute="leading" secondItem="duJ-Qu-ED9" secondAttribute="leading" id="wnF-vy-Ifb"/>
+                                <constraint firstAttribute="bottom" secondItem="md1-JZ-aXd" secondAttribute="bottom" constant="20" id="yhc-74-WrD"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="duJ-Qu-ED9" firstAttribute="centerX" secondItem="YgC-pQ-IHw" secondAttribute="centerX" id="3kT-VQ-zeG"/>
+                        <constraint firstItem="duJ-Qu-ED9" firstAttribute="top" secondItem="YgC-pQ-IHw" secondAttribute="top" id="7SO-CY-iBU"/>
+                        <constraint firstItem="duJ-Qu-ED9" firstAttribute="leading" secondItem="YgC-pQ-IHw" secondAttribute="leading" id="AUP-vT-yCV"/>
+                        <constraint firstAttribute="bottom" secondItem="duJ-Qu-ED9" secondAttribute="bottom" id="Hub-cE-w0T"/>
+                        <constraint firstAttribute="trailing" secondItem="duJ-Qu-ED9" secondAttribute="trailing" id="e3A-6p-HFj"/>
+                    </constraints>
+                    <viewLayoutGuide key="contentLayoutGuide" id="sBh-He-nxv"/>
+                    <viewLayoutGuide key="frameLayoutGuide" id="abM-hE-hhe"/>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="YgC-pQ-IHw" secondAttribute="bottom" priority="250" id="1e7-UV-hCF"/>
+                <constraint firstItem="YgC-pQ-IHw" firstAttribute="leading" secondItem="g8z-Ko-TQ5" secondAttribute="leading" id="2n0-0n-cvP"/>
+                <constraint firstAttribute="trailing" secondItem="YgC-pQ-IHw" secondAttribute="trailing" id="pLo-l8-1Yk"/>
+                <constraint firstItem="YgC-pQ-IHw" firstAttribute="top" secondItem="g8z-Ko-TQ5" secondAttribute="top" id="yhm-AT-ScG"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="K9S-VC-OqY"/>
+            <point key="canvasLocation" x="39.375" y="1425"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Warsaw" width="1699" height="1130"/>
+    </resources>
+</document>

@@ -103,7 +103,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             requestSender.send(config: config) { result in
                 switch result {
                 case .success(let conference):
-                    let detailViewController = EventDetailViewController(conference: conference, isManager: false)
+                    let detailViewController = ConferenceViewController(conference: conference, isManager: false)
                     nvc.pushViewController(detailViewController, animated: true)
                     
                 case .failure:
@@ -135,7 +135,20 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 case .failure:
                     return
                 }
-        }
+            }
+            
+        case "event":
+            let config = RequestFactory.event(eventID: id)
+            requestSender.send(config: config) { result in
+                switch result {
+                case .success(let event):
+                    let detailViewController = EventViewController(event: event, isManager: false)
+                    nvc.pushViewController(detailViewController, animated: true)
+                    
+                case .failure:
+                    return
+                }
+            }
             
         case "ticket":
             break

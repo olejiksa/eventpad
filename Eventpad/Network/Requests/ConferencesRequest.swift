@@ -6,6 +6,8 @@
 //  Copyright © 2020 Oleg Samoylov. All rights reserved.
 //
 
+import Foundation
+
 final class ConferencesRequest: BaseGetRequest {
     
     init(text: String, limit: Int, offset: Int) {
@@ -41,5 +43,12 @@ final class ConferencesRequest: BaseGetRequest {
         let parameters = ["limit": limit, "offset": offset]
         
         super.init(endpoint: endpoint, parameters: parameters)
+    }
+    
+    override var urlRequest: URLRequest? {
+        var request = super.urlRequest
+        guard let accessToken = Global.accessToken else { return request }
+        request?.setValue(accessToken, forHTTPHeaderField: "token")
+        return request
     }
 }

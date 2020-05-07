@@ -144,6 +144,9 @@
                                                             <real key="value" value="10"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="doneDidTap" destination="-1" eventType="touchUpInside" id="MHI-bi-v8V"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </stackView>

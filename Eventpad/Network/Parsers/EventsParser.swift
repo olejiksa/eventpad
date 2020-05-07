@@ -10,15 +10,24 @@ import Foundation
 
 final class EventsParser: ParserProtocol {
     
-    func parse(data: Data) -> [SimpleEvent]? {
+    func parse(data: Data) -> [Event]? {
         do {
             let jsonDecorder = JSONDecoder()
-            jsonDecorder.dateDecodingStrategy = .iso8601
-            jsonDecorder.keyDecodingStrategy = .convertFromSnakeCase
-            return try jsonDecorder.decode([SimpleEvent].self, from: data)
+            jsonDecorder.dateDecodingStrategy = .custom(customDateDecoder)
+            return try jsonDecorder.decode([Event].self, from: data)
         } catch  {
             print(error)
             return nil
         }
+    }
+    
+    private func customDateDecoder(decoder: Decoder) throws -> Date {
+        let container = try decoder.singleValueContainer()
+        let str = try container.decode(String.self)
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        let date = dateFormatter.date(from: str)
+        return date ?? Date()
     }
 }

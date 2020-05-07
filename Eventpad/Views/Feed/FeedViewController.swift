@@ -10,7 +10,7 @@ import UIKit
 
 final class FeedViewController: UIViewController {
     
-    private let cellID = "\(EventCell.self)"
+    private let cellID = "\(ConferenceCell.self)"
     private let requestSender = RequestSender()
     private let alertService = AlertService()
     private let userDefaultsService = UserDefaultsService()
@@ -86,8 +86,8 @@ final class FeedViewController: UIViewController {
         collectionView.delegate = self
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
 
-        let nib = UINib(nibName: String(describing: EventCell.self), bundle: nil)
-        collectionView.register(nib, forCellWithReuseIdentifier: String(describing: EventCell.self))
+        let nib = UINib(nibName: cellID, bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: cellID)
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(collectionView)
@@ -220,7 +220,7 @@ extension FeedViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         let conference = sections[indexPath.section].conference
-        let viewController = EventDetailViewController(conference: conference, isManager: false)
+        let viewController = ConferenceViewController(conference: conference, isManager: false)
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

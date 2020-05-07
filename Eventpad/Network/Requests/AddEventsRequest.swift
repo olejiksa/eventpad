@@ -8,15 +8,15 @@
 
 import Foundation
 
-final class AddEventsRequest: BasePostRequest {
+final class AddEventsRequest: BaseExtendedPostRequest {
     
-    init(events: [SimpleEvent], conferenceID: Int) {
+    init(events: [Event], conferenceID: Int) {
         let endpoint = "\(RequestFactory.endpointRoot)org/addEventsToConference/\(conferenceID)"
         
         do {
             let jsonEncoder = JSONEncoder()
             let encodedJson = try jsonEncoder.encode(events)
-            guard let parameters = try JSONSerialization.jsonObject(with: encodedJson) as? [String: Any] else {
+            guard let parameters = try JSONSerialization.jsonObject(with: encodedJson) as? [[String: Any]] else {
                 fatalError()
             }
             

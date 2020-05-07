@@ -18,12 +18,23 @@ final class NewEventViewController: UIViewController {
     @IBOutlet private weak var doneButton: BigButton!
     @IBOutlet private weak var scrollView: UIScrollView!
     
+    private let conferenceID: Int
     private let alertService = AlertService()
     private let userDefaultsService = UserDefaultsService()
     private let requestSender = RequestSender()
     private var formHelper: FormHelper?
     private var dateStart: Date?
     private var dateEnd: Date?
+    
+    init(conferenceID: Int) {
+        self.conferenceID = conferenceID
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,6 +108,42 @@ final class NewEventViewController: UIViewController {
     
     @objc private func pickerDidEndEditing() {
         view.endEditing(true)
+    }
+    
+    @IBAction private func doneDidTap() {
+        guard
+            let title = titleField.text,
+            let description = descriptionField.text,
+            let speakerName = speakerField.text,
+            let dateStart = dateStart,
+            let dateEnd = dateEnd else { return }
+        
+        let event = Event(id: nil,
+                          dateStart: dateStart,
+                          dateEnd: dateEnd,
+                          isLeaf: true,
+                          conferenceID: conferenceID,
+                          speakerName: speakerName,
+                          speakerID: nil,
+                          title: title,
+                          description: description)
+        let config = RequestFactory.addToConference(events: [event],
+                                                    conferenceID: conferenceID)
+        requestSender.send(config: config) { result in
+            switch result {
+            case .success(let success):
+                guard success.success else {
+                    let alert = self.alertService.alert(success.message!)
+                    self.present(alert, animated: true)
+                    return
+                }
+                break
+                
+            case .failure(let error):
+                let alert = self.alertService.alert(error.localizedDescription)
+                self.present(alert, animated: true)
+            }
+        }
     }
 }
 

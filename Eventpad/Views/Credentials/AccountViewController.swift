@@ -119,7 +119,8 @@ final class AccountViewController: UIViewController {
     
     @objc private func shareDidTap() {
         let text = user.name + " " + user.surname
-        let url = URL(string: "eventpad://user?id=\(user.id)")!
+        let entityName = Global.role.name
+        let url = URL(string: "eventpad://\(entityName)?id=\(user.id)")!
         let sharedObjects = [url as AnyObject, text as AnyObject]
         let activityViewController = UIActivityViewController(activityItems: sharedObjects, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view

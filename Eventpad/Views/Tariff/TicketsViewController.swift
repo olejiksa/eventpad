@@ -16,6 +16,7 @@ final class TicketsViewController: UIViewController {
     private let cellID = "\(SubtitleCell.self)"
     private let refreshControl = UIRefreshControl()
     private var tickets: [Ticket] = []
+    private var conferences: [Conference] = []
     
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var noDataLabel: UILabel!
@@ -25,6 +26,7 @@ final class TicketsViewController: UIViewController {
 
         setupNavigation()
         setupRefreshControl()
+        loadData()
     }
     
     private func setupNavigation() {
@@ -35,20 +37,16 @@ final class TicketsViewController: UIViewController {
     }
     
     private func loadData() {
-        let ticketIDs = userDefaultsService.getTicketIDs() ?? []
-        guard let first = ticketIDs.first else {
-            self.refreshControl.endRefreshing()
-            return
-        }
-        let config = RequestFactory.ticket(ticketID: first)
+        guard let user = userDefaultsService.getUser() else { return }
+        let config = RequestFactory.conferences(userID: user.id, limit: 20, offset: 0)
         requestSender.send(config: config) { [weak self] result in
             guard let self = self else { return }
             
             self.refreshControl.endRefreshing()
             
             switch result {
-            case .success(let ticket):
-                self.tickets = [ticket]
+            case .success(let conferences):
+                self.conferences = conferences
                 self.tableView.separatorStyle = .singleLine
                 self.noDataLabel.isHidden = true
                 self.tableView.reloadData()
@@ -77,16 +75,27 @@ extension TicketsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        return tickets.count
+        return conferences.count
     }
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? SubtitleCell else { return .init(frame: .zero) }
-            
-        let ticket = tickets[indexPath.row]
-        cell.textLabel?.text = ticket.released.description
-        cell.detailTextLabel?.text = ticket.tariffID.description
+        
+        let conference = conferences[indexPath.row]
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .short
+        
+        var dateComponent = DateComponents()
+        dateComponent.year = 31
+        let dateStartFinal = Calendar.current.date(byAdding: dateComponent, to: conference.dateStart)!
+        
+        let dateStart = dateFormatter.string(from: dateStartFinal)
+        
+        cell.textLabel?.text = conference.title
+        cell.detailTextLabel?.text = dateStart
         cell.accessoryType = .disclosureIndicator
         return cell
     }
@@ -99,6 +108,9 @@ extension TicketsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
+        let vc = TicketViewController(conference: conferences[indexPath.row])
+        navigationController?.pushViewController(vc, animated: true)
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

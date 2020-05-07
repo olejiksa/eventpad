@@ -33,4 +33,3 @@ final class RegisterTicketRequest: BasePostRequest {
         return request
     }
 }
-

@@ -10,6 +10,16 @@ enum Role {
     
     case organizer
     case participant
+    
+    var name: String {
+        switch self {
+        case .organizer:
+            return "organizer"
+            
+        case .participant:
+            return "participant"
+        }
+    }
 }
 
 

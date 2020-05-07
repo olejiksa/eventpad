@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EventDetailViewController" customModule="Eventpad" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ConferenceViewController" customModule="Eventpad" customModuleProvider="target">
             <connections>
                 <outlet property="addEventButton" destination="bFo-KY-G8B" id="3cH-BR-W4T"/>
                 <outlet property="addTariffButton" destination="FiD-P2-gfb" id="eRO-0G-Oro"/>
@@ -18,6 +18,7 @@
                 <outlet property="descriptionLabel" destination="fZh-1y-yjZ" id="An5-ev-k1d"/>
                 <outlet property="locationLabel" destination="6e2-Xb-J9R" id="oxH-Co-ASV"/>
                 <outlet property="registerButton" destination="4Gb-3a-gKv" id="q7P-GW-eU1"/>
+                <outlet property="scheduleButton" destination="Cb4-OL-Na8" id="8Uz-Ru-tgB"/>
                 <outlet property="titleLabel" destination="fs1-gV-prK" id="S0K-HZ-Dgk"/>
                 <outlet property="view" destination="g8z-Ko-TQ5" id="VR0-e0-8Dw"/>
             </connections>
@@ -31,7 +32,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="duJ-Qu-ED9">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="1432.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="1440.5"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="WcP-3S-8aX">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="213.5"/>
@@ -45,23 +46,16 @@
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="md1-JZ-aXd">
-                                    <rect key="frame" x="20" y="233.5" width="280" height="1179"/>
+                                    <rect key="frame" x="20" y="233.5" width="280" height="1187"/>
                                     <subviews>
-                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EhM-L6-bfV">
-                                            <rect key="frame" x="0.0" y="0.0" width="280" height="32"/>
-                                            <segments>
-                                                <segment title="Информация"/>
-                                                <segment title="Расписание"/>
-                                            </segments>
-                                        </segmentedControl>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="День открытых дверей: программы бакалавриата и магистратуры" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fs1-gV-prK">
-                                            <rect key="frame" x="0.0" y="46" width="280" height="74"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="280" height="74"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Fuj-bS-McX">
-                                            <rect key="frame" x="0.0" y="135" width="280" height="40"/>
+                                            <rect key="frame" x="0.0" y="89" width="280" height="40"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дата и время начала" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FfW-BD-hht">
                                                     <rect key="frame" x="0.0" y="0.0" width="280" height="14.5"/>
@@ -78,7 +72,7 @@
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="lNl-Pn-sts">
-                                            <rect key="frame" x="0.0" y="190" width="280" height="40"/>
+                                            <rect key="frame" x="0.0" y="144" width="280" height="40"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дата и время окончания" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eb7-tH-7Zp">
                                                     <rect key="frame" x="0.0" y="0.0" width="280" height="14.5"/>
@@ -95,7 +89,7 @@
                                             </subviews>
                                         </stackView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GNh-43-e4f" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="245" width="280" height="54"/>
+                                            <rect key="frame" x="0.0" y="199" width="280" height="54"/>
                                             <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="54" id="dCA-k0-188"/>
@@ -114,7 +108,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6i-RL-8Mp" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="314" width="280" height="54"/>
+                                            <rect key="frame" x="0.0" y="268" width="280" height="54"/>
                                             <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="54" id="ycq-g7-iPm"/>
@@ -132,8 +126,27 @@
                                                 <action selector="didRemindersTap" destination="-1" eventType="touchUpInside" id="fcU-Ic-fDE"/>
                                             </connections>
                                         </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cb4-OL-Na8" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="337" width="280" height="54"/>
+                                            <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="54" id="ca2-FG-Thb"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                            <state key="normal" title="Расписание">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="scheduleDidTap" destination="-1" eventType="touchUpInside" id="pjh-Nn-8Cy"/>
+                                            </connections>
+                                        </button>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="kW8-Rd-tju">
-                                            <rect key="frame" x="0.0" y="383" width="280" height="40"/>
+                                            <rect key="frame" x="0.0" y="406" width="280" height="40"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Категория" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Fl-qM-OAO">
                                                     <rect key="frame" x="0.0" y="0.0" width="280" height="14.5"/>
@@ -150,7 +163,7 @@
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ad4-dR-uh2">
-                                            <rect key="frame" x="0.0" y="438" width="280" height="40"/>
+                                            <rect key="frame" x="0.0" y="461" width="280" height="40"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Местоположение" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Foy-Pf-Q13">
                                                     <rect key="frame" x="0.0" y="0.0" width="280" height="14.5"/>
@@ -167,7 +180,7 @@
                                             </subviews>
                                         </stackView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Sd-fE-HMP" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="493" width="280" height="54"/>
+                                            <rect key="frame" x="0.0" y="516" width="280" height="54"/>
                                             <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="54" id="YJH-Jr-y42"/>
@@ -186,7 +199,7 @@
                                             </connections>
                                         </button>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="9GD-np-a5Z">
-                                            <rect key="frame" x="0.0" y="562" width="280" height="326"/>
+                                            <rect key="frame" x="0.0" y="585" width="280" height="326"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Описание" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9o-vG-XGB">
                                                     <rect key="frame" x="0.0" y="0.0" width="280" height="14.5"/>
@@ -203,8 +216,8 @@
                                                 </label>
                                             </subviews>
                                         </stackView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="5G9-TD-Yhs">
-                                            <rect key="frame" x="0.0" y="903" width="280" height="276"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="5G9-TD-Yhs">
+                                            <rect key="frame" x="0.0" y="926" width="280" height="261"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="owh-EA-6Y7" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="280" height="54"/>
@@ -226,7 +239,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Gb-3a-gKv" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="74" width="280" height="54"/>
+                                                    <rect key="frame" x="0.0" y="69" width="280" height="54"/>
                                                     <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="54" id="AZh-JP-gOv"/>
@@ -245,7 +258,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFo-KY-G8B" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="148" width="280" height="54"/>
+                                                    <rect key="frame" x="0.0" y="138" width="280" height="54"/>
                                                     <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="54" id="oRT-de-RNS"/>
@@ -265,7 +278,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FiD-P2-gfb" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="222" width="280" height="54"/>
+                                                    <rect key="frame" x="0.0" y="207" width="280" height="54"/>
                                                     <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="54" id="tr5-Zn-GCS"/>
@@ -294,10 +307,10 @@
                                 <constraint firstAttribute="trailing" secondItem="md1-JZ-aXd" secondAttribute="trailing" constant="20" id="86a-rf-C6Z"/>
                                 <constraint firstItem="WcP-3S-8aX" firstAttribute="top" secondItem="duJ-Qu-ED9" secondAttribute="top" id="Ag0-6J-67r"/>
                                 <constraint firstAttribute="trailing" secondItem="WcP-3S-8aX" secondAttribute="trailing" id="KZR-xE-5iy"/>
-                                <constraint firstAttribute="bottom" secondItem="md1-JZ-aXd" secondAttribute="bottom" constant="20" id="kGH-1D-ZYx"/>
                                 <constraint firstItem="md1-JZ-aXd" firstAttribute="leading" secondItem="duJ-Qu-ED9" secondAttribute="leading" constant="20" id="lTf-9R-zx7"/>
                                 <constraint firstItem="md1-JZ-aXd" firstAttribute="top" secondItem="WcP-3S-8aX" secondAttribute="bottom" constant="20" id="odL-uI-ejp"/>
                                 <constraint firstItem="WcP-3S-8aX" firstAttribute="leading" secondItem="duJ-Qu-ED9" secondAttribute="leading" id="wnF-vy-Ifb"/>
+                                <constraint firstAttribute="bottom" secondItem="md1-JZ-aXd" secondAttribute="bottom" constant="20" id="yhc-74-WrD"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -320,7 +333,7 @@
                 <constraint firstItem="YgC-pQ-IHw" firstAttribute="top" secondItem="g8z-Ko-TQ5" secondAttribute="top" id="yhm-AT-ScG"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="K9S-VC-OqY"/>
-            <point key="canvasLocation" x="41" y="1426"/>
+            <point key="canvasLocation" x="39.375" y="1425"/>
         </view>
     </objects>
     <resources>

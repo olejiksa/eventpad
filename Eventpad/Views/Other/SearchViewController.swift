@@ -17,7 +17,7 @@ final class SearchViewController: UIViewController {
     
     private var searchItemType: SearchItemType = .conference
     private var conferences: [Conference] = []
-    private var events: [SimpleEvent] = []
+    private var events: [Event] = []
     private var users: [User] = []
     
     @IBOutlet private weak var tableView: UITableView!
@@ -206,12 +206,13 @@ extension SearchViewController: UITableViewDelegate {
         switch searchItemType {
         case .conference:
             let conference = conferences[indexPath.row]
-            let vc = EventDetailViewController(conference: conference, isManager: false)
+            let vc = ConferenceViewController(conference: conference, isManager: false)
             navigationController?.pushViewController(vc, animated: true)
         
         case .event:
             let event = events[indexPath.row]
-            // todo
+            let vc = EventViewController(event: event, isManager: false)
+            navigationController?.pushViewController(vc, animated: true)
             
         case .user:
             let user = users[indexPath.row]

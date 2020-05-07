@@ -1,5 +1,5 @@
 //
-//  EventCell.swift
+//  ConferenceCell.swift
 //  Eventpad
 //
 //  Created by Oleg Samoylov on 31.03.2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class EventCell: UICollectionViewCell {
+final class ConferenceCell: UICollectionViewCell {
     
     @IBOutlet private weak var view: UIView!
     @IBOutlet private weak var imageView: UIImageView!

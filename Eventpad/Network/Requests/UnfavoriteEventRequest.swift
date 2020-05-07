@@ -6,6 +6,8 @@
 //  Copyright © 2020 Oleg Samoylov. All rights reserved.
 //
 
+import Foundation
+
 final class UnfavoriteEventRequest: BasePostRequest {
     
     init(eventID: Int, userID: Int) {
@@ -13,5 +15,12 @@ final class UnfavoriteEventRequest: BasePostRequest {
         let parameters = ["eventId": eventID]
         
         super.init(endpoint: endpoint, parameters: parameters)
+    }
+    
+    override var urlRequest: URLRequest? {
+        var request = super.urlRequest
+        guard let accessToken = Global.accessToken else { return request }
+        request?.setValue(accessToken, forHTTPHeaderField: "token")
+        return request
     }
 }
