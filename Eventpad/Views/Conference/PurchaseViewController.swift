@@ -15,11 +15,13 @@ final class PurchaseViewController: UIViewController {
     private let requestSender = RequestSender()
     private let cellID = "\(SubtitleCell.self)"
     private let tariffs: [Tariff]
+    private let conferenceID: Int
     
     @IBOutlet private weak var tableView: UITableView!
     
-    init(tariffs: [Tariff]) {
+    init(tariffs: [Tariff], conferenceID: Int) {
         self.tariffs = tariffs
+        self.conferenceID = conferenceID
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -97,7 +99,7 @@ extension PurchaseViewController: UITableViewDelegate {
                     return
                 }
                 
-                self.userDefaultsService.appendTicketId(message.message)
+                self.userDefaultsService.appendTicketId([String(self.conferenceID): message.message])
                 let alert = self.alertService.alert("Вы успешно приобрели билет!", title: .info)
                 self.present(alert, animated: true)
                 

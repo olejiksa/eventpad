@@ -68,17 +68,18 @@ final class UserDefaultsService {
         defaults.set(user.surname, forKey: "surname")
     }
     
-    func getTicketIDs() -> [String]? {
-        return defaults.stringArray(forKey: "tickets")
+    func getTicketIDs() -> [String: String]? {
+        return defaults.dictionary(forKey: "tickets") as? [String: String]
     }
     
-    func setTicketIds(_ array: [String]) {
+    func setTicketIds(_ array: [String: String]) {
         defaults.set(array, forKey: "tickets")
     }
     
-    func appendTicketId(_ id: String) {
-        let ticketIds = getTicketIDs() ?? []
-        defaults.set(ticketIds + [id], forKey: "tickets")
+    func appendTicketId(_ id: [String: String]) {
+        var ticketIds = getTicketIDs() ?? [:]
+        ticketIds.merge(dict: id)
+        defaults.set(ticketIds, forKey: "tickets")
     }
     
     func clear() {
@@ -86,5 +87,15 @@ final class UserDefaultsService {
         dictionary.keys.forEach(defaults.removeObject)
         Global.accessToken = nil
         Global.role = .participant
+    }
+}
+
+
+private extension Dictionary {
+    
+    mutating func merge(dict: [Key: Value]) {
+        for (k, v) in dict {
+            updateValue(v, forKey: k)
+        }
     }
 }

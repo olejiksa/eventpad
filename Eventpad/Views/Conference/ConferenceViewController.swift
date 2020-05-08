@@ -101,7 +101,7 @@ final class ConferenceViewController: UIViewController {
             let nvc = UINavigationController(rootViewController: vc)
             present(nvc, animated: true)
         } else if let tariffs = conference.tariffs {
-            let vc = PurchaseViewController(tariffs: tariffs)
+            let vc = PurchaseViewController(tariffs: tariffs, conferenceID: conference.id!)
             let nvc = UINavigationController(rootViewController: vc)
             present(nvc, animated: true)
         }

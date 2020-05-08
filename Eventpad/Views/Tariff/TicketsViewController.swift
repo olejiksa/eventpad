@@ -15,7 +15,7 @@ final class TicketsViewController: UIViewController {
     private let requestSender = RequestSender()
     private let cellID = "\(SubtitleCell.self)"
     private let refreshControl = UIRefreshControl()
-    private var tickets: [Ticket] = []
+    private var tickets: [String: String] = [:]
     private var conferences: [Conference] = []
     
     @IBOutlet private weak var tableView: UITableView!
@@ -31,9 +31,12 @@ final class TicketsViewController: UIViewController {
     
     private func setupNavigation() {
         navigationItem.title = "Билеты"
-        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.prefersLargeTitles = false
         
         tableView.register(SubtitleCell.self, forCellReuseIdentifier: cellID)
+        
+        guard let tickets = userDefaultsService.getTicketIDs() else { return }
+        self.tickets = tickets
     }
     
     private func loadData() {
@@ -91,7 +94,6 @@ extension TicketsViewController: UITableViewDataSource {
         var dateComponent = DateComponents()
         dateComponent.year = 31
         let dateStartFinal = Calendar.current.date(byAdding: dateComponent, to: conference.dateStart)!
-        
         let dateStart = dateFormatter.string(from: dateStartFinal)
         
         cell.textLabel?.text = conference.title
@@ -108,9 +110,25 @@ extension TicketsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
-        let vc = TicketViewController(conference: conferences[indexPath.row])
-        navigationController?.pushViewController(vc, animated: true)
-        
-        tableView.deselectRow(at: indexPath, animated: true)
+        let conference = conferences[indexPath.row]
+        guard let ticket = tickets[String(conference.id!)] else { return }
+        let config = RequestFactory.ticket(ticketID: ticket)
+        requestSender.send(config: config) { [weak self] result in
+            guard let self = self else { return }
+            
+            self.refreshControl.endRefreshing()
+            
+            switch result {
+            case .success(let ticket):
+                let vc = TicketViewController(conference: conference, ticket: ticket)
+                self.navigationController?.pushViewController(vc, animated: true)
+                tableView.deselectRow(at: indexPath, animated: true)
+                
+            case .failure(let error):
+                let alert = self.alertService.alert(error.localizedDescription)
+                self.present(alert, animated: true)
+                tableView.deselectRow(at: indexPath, animated: true)
+            }
+        }
     }
 }
