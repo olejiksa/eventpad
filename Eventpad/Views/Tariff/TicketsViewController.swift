@@ -69,6 +69,40 @@ final class TicketsViewController: UIViewController {
     @objc private func refresh() {
         loadData()
     }
+    
+    private func searchTicket(i: Int = 0, completion: @escaping ((Ticket) -> ())) {
+        let config = RequestFactory.ticket(ticketID: String(i))
+        requestSender.send(config: config) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let ticket):
+                completion(ticket)
+                
+            case .failure:
+                self.searchTicket(i: i + 1, completion: completion)
+            }
+        }
+    }
+    
+    private func getTicket(ticketID: String, conference: Conference) {
+        let config = RequestFactory.ticket(ticketID: ticketID)
+        requestSender.send(config: config) { [weak self] result in
+            guard let self = self else { return }
+            
+            self.refreshControl.endRefreshing()
+            
+            switch result {
+            case .success(let ticket):
+                let vc = TicketViewController(conference: conference, ticket: ticket)
+                self.navigationController?.pushViewController(vc, animated: true)
+                
+            case .failure(let error):
+                let alert = self.alertService.alert(error.localizedDescription)
+                self.present(alert, animated: true)
+            }
+        }
+    }
 }
 
 
@@ -110,25 +144,15 @@ extension TicketsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let conference = conferences[indexPath.row]
-        guard let ticket = tickets[String(conference.id!)] else { return }
-        let config = RequestFactory.ticket(ticketID: ticket)
-        requestSender.send(config: config) { [weak self] result in
-            guard let self = self else { return }
-            
-            self.refreshControl.endRefreshing()
-            
-            switch result {
-            case .success(let ticket):
-                let vc = TicketViewController(conference: conference, ticket: ticket)
-                self.navigationController?.pushViewController(vc, animated: true)
-                tableView.deselectRow(at: indexPath, animated: true)
-                
-            case .failure(let error):
-                let alert = self.alertService.alert(error.localizedDescription)
-                self.present(alert, animated: true)
-                tableView.deselectRow(at: indexPath, animated: true)
+        let ticket = tickets[String(conference.id!)]
+        if ticket == nil {
+            searchTicket { [weak self] ticket in
+                self?.getTicket(ticketID: String(ticket.id!), conference: conference)
             }
+        } else {
+            getTicket(ticketID: ticket!, conference: conference)
         }
     }
 }

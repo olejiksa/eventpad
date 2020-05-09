@@ -227,7 +227,17 @@ final class TicketViewController: UIViewController {
     }
     
     @objc private func printDidTap() {
+        let printController = UIPrintInteractionController.shared
+
+        let printInfo = UIPrintInfo(dictionary: nil)
+        printInfo.outputType = UIPrintInfo.OutputType.general
+        printController.printInfo = printInfo
         
+        let formatter = UIMarkupTextPrintFormatter(markupText: "<h1>Test</h1>")
+        formatter.perPageContentInsets = UIEdgeInsets(top: 72, left: 72, bottom: 72, right: 72)
+        printController.printFormatter = formatter
+        
+        printController.present(animated: true, completionHandler: nil)
     }
     
     @objc private func passButtonDidTap() {
