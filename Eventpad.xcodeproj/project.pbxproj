@@ -82,6 +82,8 @@
 		EBB3224624486F3F00942A2B /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3224524486F3F00942A2B /* SignUp.swift */; };
 		EBB3224824498E8C00942A2B /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3224724498E8C00942A2B /* AlertService.swift */; };
 		EBB3224A244B6E0400942A2B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB32249244B6E0400942A2B /* User.swift */; };
+		EBCD8EE324672C5000DBDD62 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCD8EE124672C5000DBDD62 /* EventsViewController.swift */; };
+		EBCD8EE424672C5000DBDD62 /* EventsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBCD8EE224672C5000DBDD62 /* EventsViewController.xib */; };
 		EBD451BE2435F9D800F6A4C2 /* ConferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD451BC2435F9D800F6A4C2 /* ConferenceViewController.swift */; };
 		EBD451BF2435F9D800F6A4C2 /* ConferenceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBD451BD2435F9D800F6A4C2 /* ConferenceView.xib */; };
 		EBDB1E0A245750BE009316FC /* MyConferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB1E08245750BE009316FC /* MyConferencesViewController.swift */; };
@@ -180,6 +182,8 @@
 		EBB3224524486F3F00942A2B /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		EBB3224724498E8C00942A2B /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
 		EBB32249244B6E0400942A2B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		EBCD8EE124672C5000DBDD62 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
+		EBCD8EE224672C5000DBDD62 /* EventsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventsViewController.xib; sourceTree = "<group>"; };
 		EBD451BC2435F9D800F6A4C2 /* ConferenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceViewController.swift; sourceTree = "<group>"; };
 		EBD451BD2435F9D800F6A4C2 /* ConferenceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConferenceView.xib; sourceTree = "<group>"; };
 		EBDB1E08245750BE009316FC /* MyConferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyConferencesViewController.swift; sourceTree = "<group>"; };
@@ -274,6 +278,8 @@
 				EB32CD922461E26D00AC1FAB /* EventView.xib */,
 				EBDB1E1024589B64009316FC /* NewEventViewController.swift */,
 				EBDB1E1124589B64009316FC /* NewEventView.xib */,
+				EBCD8EE124672C5000DBDD62 /* EventsViewController.swift */,
+				EBCD8EE224672C5000DBDD62 /* EventsViewController.xib */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -523,6 +529,7 @@
 				EBF87449242F81370056623E /* Assets.xcassets in Resources */,
 				EBDB1E1324589B64009316FC /* NewEventView.xib in Resources */,
 				EB3081672452E4DE00EB7598 /* FavoritesView.xib in Resources */,
+				EBCD8EE424672C5000DBDD62 /* EventsViewController.xib in Resources */,
 				EBDB1E0B245750BE009316FC /* MyConferencesView.xib in Resources */,
 				EB32CD942461E26E00AC1FAB /* EventView.xib in Resources */,
 				EB06F37824332D810018605E /* ConferenceCell.xib in Resources */,
@@ -571,6 +578,7 @@
 				EBD451BE2435F9D800F6A4C2 /* ConferenceViewController.swift in Sources */,
 				EB9978182430995B00DD5663 /* FormHelper.swift in Sources */,
 				EB3B31FF24509C110023E930 /* Conference.swift in Sources */,
+				EBCD8EE324672C5000DBDD62 /* EventsViewController.swift in Sources */,
 				EBDB1E162458C198009316FC /* LocationViewController.swift in Sources */,
 				EB78FE42245CA1C5002DE6FC /* PurchaseViewController.swift in Sources */,
 				EB3081622452E4B600EB7598 /* SearchViewController.swift in Sources */,

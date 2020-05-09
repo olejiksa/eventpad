@@ -17,6 +17,7 @@ final class TicketViewController: UIViewController {
     private let alertService = AlertService()
     private let requestSender = RequestSender()
     
+    @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var dateEndLabel: UILabel!
     @IBOutlet private weak var dateStartLabel: UILabel!
@@ -32,6 +33,10 @@ final class TicketViewController: UIViewController {
     
     private let conference: Conference
     private let ticket: Ticket
+    
+    var isDarkMode: Bool {
+        return self.traitCollection.userInterfaceStyle == .dark
+    }
     
     init(conference: Conference, ticket: Ticket) {
         self.conference = conference
@@ -49,6 +54,13 @@ final class TicketViewController: UIViewController {
 
         setupNavigation()
         setupView()
+        imageView.image = generateQR(isDarkMode: isDarkMode)
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        imageView.image = generateQR(isDarkMode: isDarkMode)
     }
     
     private func setupNavigation() {
@@ -225,13 +237,48 @@ final class TicketViewController: UIViewController {
     }
     
     @objc private func printDidTap() {
+        guard let userID = conference.organizerID else { return }
+        let config = RequestFactory.user(userID: userID, role: .organizer)
+        requestSender.send(config: config) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let user):
+                self.printTicket(user)
+                
+            case .failure(let error):
+                let alert = self.alertService.alert(error.localizedDescription)
+                self.present(alert, animated: true)
+            }
+        }
+    }
+    
+    private func printTicket(_ user: User) {
         let printController = UIPrintInteractionController.shared
 
         let printInfo = UIPrintInfo(dictionary: nil)
         printInfo.outputType = UIPrintInfo.OutputType.general
         printController.printInfo = printInfo
         
-        let formatter = UIMarkupTextPrintFormatter(markupText: "<h1>Test</h1>")
+        let image = generateQR(isDarkMode: false)
+        let imageData = image!.pngData() ?? nil
+        let base64String = imageData?.base64EncodedString() ?? ""
+        var htmlString = ""
+        htmlString += "<h2>\(conference.title)</h2>"
+        htmlString += "<img src='data:image/png;base64,\(String(describing: base64String))'>"
+        htmlString += "<p>\(conference.description)<p>"
+        htmlString += "<p><b>Категория</b>: \(conference.category)<p>"
+        htmlString += "<p><b>Дата и время начала</b>: \(dateStartLabel.text!)</p>"
+        htmlString += "<p><b>Дата и время окончания</b>: \(dateEndLabel.text!)</p>"
+        htmlString += "<p><b>Местоположение</b>: \(conference.location)</p>"
+        htmlString += "<p><b>Дата и время покупки</b>: \(datePurchaseLabel.text!)</p>"
+        htmlString += "<p><b>Тариф</b>: \(tariffLabel.text ?? "")</p>"
+        htmlString += "<h4>Контакты организатора</h4>"
+        htmlString += "<p><b>Имя и фамилия</b>: \(user.name) \(user.surname)</p>"
+        htmlString += "<p><b>Телефон</b>: \(user.phone ?? "отсутствует")</p>"
+        htmlString += "<p><b>Адрес электронной почты</b>: \(user.email ?? "отсутствует")</p>"
+
+        let formatter = UIMarkupTextPrintFormatter(markupText: htmlString)
         formatter.perPageContentInsets = UIEdgeInsets(top: 72, left: 72, bottom: 72, right: 72)
         printController.printFormatter = formatter
         
@@ -240,5 +287,37 @@ final class TicketViewController: UIViewController {
     
     @objc private func passButtonDidTap() {
         
+    }
+    
+    private func generateQR(isDarkMode: Bool) -> UIImage? {
+        if isDarkMode {
+            let string = "eventpad://ticket?id=\(ticket.id!)"
+            let data = string.data(using: String.Encoding.ascii)
+            guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else { return nil }
+            qrFilter.setValue(data, forKey: "inputMessage")
+            guard let qrImage = qrFilter.outputImage else { return nil }
+            let transform = CGAffineTransform(scaleX: 10, y: 10)
+            let scaledQrImage = qrImage.transformed(by: transform)
+            guard let colorInvertFilter = CIFilter(name: "CIColorInvert") else { return nil }
+            colorInvertFilter.setValue(scaledQrImage, forKey: "inputImage")
+            guard let outputInvertedImage = colorInvertFilter.outputImage else { return nil }
+            guard let maskToAlphaFilter = CIFilter(name: "CIMaskToAlpha") else { return nil }
+            maskToAlphaFilter.setValue(outputInvertedImage, forKey: "inputImage")
+            guard let outputCIImage = maskToAlphaFilter.outputImage else { return nil }
+            let context = CIContext()
+            guard let cgImage = context.createCGImage(outputCIImage, from: outputCIImage.extent) else { return nil }
+            return UIImage(cgImage: cgImage)
+        } else {
+            let string = "eventpad://ticket?id=\(ticket.id!)"
+            let data = string.data(using: String.Encoding.ascii)
+            guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else { return nil }
+            qrFilter.setValue(data, forKey: "inputMessage")
+            guard let qrImage = qrFilter.outputImage else { return nil }
+            let transform = CGAffineTransform(scaleX: 10, y: 10)
+            let scaledQrImage = qrImage.transformed(by: transform)
+            let context = CIContext()
+            guard let cgImage = context.createCGImage(scaledQrImage, from: scaledQrImage.extent) else { return nil }
+            return UIImage(cgImage: cgImage)
+        }
     }
 }

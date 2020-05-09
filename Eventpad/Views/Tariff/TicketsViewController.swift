@@ -70,17 +70,28 @@ final class TicketsViewController: UIViewController {
         loadData()
     }
     
-    private func searchTicket(i: Int = 0, completion: @escaping ((Ticket) -> ())) {
+    private func searchTicket(i: Int = 0,
+                              conference: Conference,
+                              completion: @escaping ((Ticket) -> ())) {
         let config = RequestFactory.ticket(ticketID: String(i))
         requestSender.send(config: config) { [weak self] result in
             guard let self = self else { return }
             
             switch result {
             case .success(let ticket):
-                completion(ticket)
+                guard let tariffs = conference.tariffs else { return }
+                if tariffs.contains(where: { $0.id == ticket.tariffID }) {
+                    completion(ticket)
+                } else {
+                    self.searchTicket(i: i + 1,
+                                      conference: conference,
+                                      completion: completion)
+                }
                 
             case .failure:
-                self.searchTicket(i: i + 1, completion: completion)
+                self.searchTicket(i: i + 1,
+                                  conference: conference,
+                                  completion: completion)
             }
         }
     }
@@ -148,7 +159,7 @@ extension TicketsViewController: UITableViewDelegate {
         let conference = conferences[indexPath.row]
         let ticket = tickets[String(conference.id!)]
         if ticket == nil {
-            searchTicket { [weak self] ticket in
+            searchTicket(conference: conference) { [weak self] ticket in
                 self?.getTicket(ticketID: String(ticket.id!), conference: conference)
             }
         } else {
