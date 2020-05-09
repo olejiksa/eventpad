@@ -84,6 +84,7 @@
 		EBB3224A244B6E0400942A2B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB32249244B6E0400942A2B /* User.swift */; };
 		EBCD8EE324672C5000DBDD62 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCD8EE124672C5000DBDD62 /* EventsViewController.swift */; };
 		EBCD8EE424672C5000DBDD62 /* EventsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBCD8EE224672C5000DBDD62 /* EventsViewController.xib */; };
+		EBCD8EE624674F3500DBDD62 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCD8EE524674F3500DBDD62 /* ScannerViewController.swift */; };
 		EBD451BE2435F9D800F6A4C2 /* ConferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD451BC2435F9D800F6A4C2 /* ConferenceViewController.swift */; };
 		EBD451BF2435F9D800F6A4C2 /* ConferenceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBD451BD2435F9D800F6A4C2 /* ConferenceView.xib */; };
 		EBDB1E0A245750BE009316FC /* MyConferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDB1E08245750BE009316FC /* MyConferencesViewController.swift */; };
@@ -184,6 +185,7 @@
 		EBB32249244B6E0400942A2B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EBCD8EE124672C5000DBDD62 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		EBCD8EE224672C5000DBDD62 /* EventsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventsViewController.xib; sourceTree = "<group>"; };
+		EBCD8EE524674F3500DBDD62 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		EBD451BC2435F9D800F6A4C2 /* ConferenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceViewController.swift; sourceTree = "<group>"; };
 		EBD451BD2435F9D800F6A4C2 /* ConferenceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConferenceView.xib; sourceTree = "<group>"; };
 		EBDB1E08245750BE009316FC /* MyConferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyConferencesViewController.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				EB3B31F924501A010023E930 /* OrganizerSignUpView.xib */,
 				EB32CD8C2461DC9000AC1FAB /* ScheduleViewController.swift */,
 				EB32CD8D2461DC9000AC1FAB /* ScheduleView.xib */,
+				EBCD8EE524674F3500DBDD62 /* ScannerViewController.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -556,6 +559,7 @@
 				EB06F37724332D810018605E /* ConferenceCell.swift in Sources */,
 				EB3081582451F05700EB7598 /* TicketRequest.swift in Sources */,
 				EB3B31FD24509B300023E930 /* CreateConferenceRequest.swift in Sources */,
+				EBCD8EE624674F3500DBDD62 /* ScannerViewController.swift in Sources */,
 				EB30816E2452EBF800EB7598 /* SubtitleCell.swift in Sources */,
 				EBDB1E0E24589AA8009316FC /* NewTariffViewController.swift in Sources */,
 				EB30813C245168A000EB7598 /* EventsParser.swift in Sources */,

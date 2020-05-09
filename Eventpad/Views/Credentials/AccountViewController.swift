@@ -139,6 +139,11 @@ final class AccountViewController: UIViewController {
     @objc private func editDidTap() {
         
     }
+    
+    @IBAction private func scannerDidTap() {
+        let vc = ScannerViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 
