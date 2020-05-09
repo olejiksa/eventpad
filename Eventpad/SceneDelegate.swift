@@ -116,7 +116,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             requestSender.send(config: config) { result in
                 switch result {
                 case .success(let user):
-                    let detailViewController = AccountViewController(user: user, isNotMine: true)
+                    let detailViewController = AccountViewController(user: user, role: .participant, isNotMine: true)
                     nvc.pushViewController(detailViewController, animated: true)
                     
                 case .failure:
@@ -129,7 +129,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             requestSender.send(config: config) { result in
                 switch result {
                 case .success(let user):
-                    let detailViewController = AccountViewController(user: user, isNotMine: true)
+                    let detailViewController = AccountViewController(user: user, role: .organizer, isNotMine: true)
                     nvc.pushViewController(detailViewController, animated: true)
                     
                 case .failure:

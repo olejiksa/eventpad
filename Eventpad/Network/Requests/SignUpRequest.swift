@@ -18,6 +18,9 @@ final class SignUpRequest: BasePostRequest {
             
         case .participant:
             endpoint = "\(RequestFactory.endpointRoot)reg/user"
+            
+        default:
+            fatalError()
         }
         
         do {

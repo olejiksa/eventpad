@@ -23,11 +23,13 @@ final class AccountViewController: UIViewController {
     
     private let isNotMine: Bool
     private let user: User
+    private let role: Role
     private let alertService = AlertService()
     private let userDefaultsService = UserDefaultsService()
     
-    init(user: User, isNotMine: Bool) {
+    init(user: User, role: Role, isNotMine: Bool) {
         self.user = user
+        self.role = role
         self.isNotMine = isNotMine
         super.init(nibName: nil, bundle: nil)
     }
@@ -66,12 +68,12 @@ final class AccountViewController: UIViewController {
     
     private func setupView() {
         fullNameLabel.text = "\(user.name) \(user.surname)"
-        accountLabel.text = Global.role.description
+        accountLabel.text = role.description
         emailButton.setTitle(user.email ?? "Не указан", for: .normal)
         phoneButton.setTitle(user.phone ?? "Не указан", for: .normal)
-        conferencesButton.isHidden = Global.role == .participant || isNotMine
-        validationButton.isHidden = Global.role == .participant || isNotMine
-        statsButton.isHidden = Global.role == .participant || isNotMine
+        conferencesButton.isHidden = role != .organizer || isNotMine
+        validationButton.isHidden = role != .organizer || isNotMine
+        statsButton.isHidden = role != .organizer || isNotMine
         logoutButton.isHidden = isNotMine
         descriptionLabel.text = user.description ?? "Не указано"
     }
@@ -119,8 +121,15 @@ final class AccountViewController: UIViewController {
     
     @objc private func shareDidTap() {
         let text = user.name + " " + user.surname
-        let entityName = Global.role.name
-        let url = URL(string: "eventpad://\(entityName)?id=\(user.id)")!
+        let url: URL
+        switch role {
+        case .organizer:
+            url = URL(string: "eventpad://\(Role.organizer.name)?id=\(user.id)")!
+            
+        default:
+            url = URL(string: "eventpad://user?id=\(user.id)")!
+        }
+        
         let sharedObjects = [url as AnyObject, text as AnyObject]
         let activityViewController = UIActivityViewController(activityItems: sharedObjects, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view

@@ -137,7 +137,6 @@ final class NewEventViewController: UIViewController {
                     self.present(alert, animated: true)
                     return
                 }
-                break
                 
             case .failure(let error):
                 let alert = self.alertService.alert(error.localizedDescription)

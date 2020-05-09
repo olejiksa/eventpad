@@ -223,14 +223,39 @@ final class EventViewController: UIViewController {
             
             switch result {
             case .success(let user):
-                let vc = AccountViewController(user: user, isNotMine: true)
+                let vc = AccountViewController(user: user, role: .speaker, isNotMine: true)
                 self.navigationController?.pushViewController(vc, animated: true)
-                break
                 
             case .failure(let error):
                 let alert = self.alertService.alert(error.localizedDescription)
                 self.present(alert, animated: true)
-                break
+            }
+        }
+    }
+    
+    @IBAction private func allEventsDidTap() {
+        guard let userID = event.speakerID else { return }
+        let config = RequestFactory.user(userID: userID, role: .participant)
+        requestSender.send(config: config) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let user):
+                let subconfig = RequestFactory.events(username: user.username, limit: 20, offset: 0)
+                self.requestSender.send(config: subconfig) { [weak self] result in
+                    switch result {
+                    case .success(let events):
+                        let vc = EventsViewController(events: events)
+                        self?.navigationController?.pushViewController(vc, animated: true)
+                    
+                    case .failure:
+                        break
+                    }
+                }
+                
+            case .failure(let error):
+                let alert = self.alertService.alert(error.localizedDescription)
+                self.present(alert, animated: true)
             }
         }
     }

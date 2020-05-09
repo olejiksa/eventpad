@@ -18,6 +18,9 @@ final class LoginRequest: BasePostRequest {
             
         case .participant:
             endpoint = "\(RequestFactory.endpointRoot)login/user"
+            
+        default:
+            fatalError()
         }
         
         do {

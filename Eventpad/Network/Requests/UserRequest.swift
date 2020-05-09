@@ -21,6 +21,9 @@ final class UserRequest: BaseGetRequest {
             
         case .participant:
             endpoint = "\(RequestFactory.endpointRoot)usr/info/byId/\(userID)"
+            
+        default:
+            fatalError()
         }
         
         super.init(endpoint: endpoint)

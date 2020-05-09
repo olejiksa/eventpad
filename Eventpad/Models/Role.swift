@@ -10,6 +10,8 @@ enum Role {
     
     case organizer
     case participant
+    case speaker
+    case moderator
     
     var name: String {
         switch self {
@@ -18,10 +20,18 @@ enum Role {
             
         case .participant:
             return "participant"
+            
+        case .speaker:
+            return "speaker"
+        
+        case .moderator:
+            return "moderator"
         }
     }
 }
 
+
+// MARK: - CustomStringConvertible
 
 extension Role: CustomStringConvertible {
     
@@ -32,6 +42,12 @@ extension Role: CustomStringConvertible {
             
         case .participant:
             return "Гость"
+            
+        case .speaker:
+            return "Спикер"
+            
+        case .moderator:
+            return "Модератор"
         }
     }
 }

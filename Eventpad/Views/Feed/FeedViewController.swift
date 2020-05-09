@@ -48,16 +48,7 @@ final class FeedViewController: UIViewController {
                                          target: self,
                                          action: #selector(userDidTap))
         
-        if Global.role == .organizer {
-            let addImage = UIImage(systemName: "plus")
-            let addButton = UIBarButtonItem(image: addImage,
-                                            style: .plain,
-                                            target: self,
-                                            action: #selector(addDidTap))
-            navigationItem.rightBarButtonItems = [userButton, addButton]
-        } else {
-            navigationItem.rightBarButtonItems = [userButton]
-        }
+        navigationItem.rightBarButtonItems = [userButton]
         
         let filterImage = UIImage(systemName: "line.horizontal.3.decrease.circle")
         let filterButton = UIBarButtonItem(image: filterImage,
@@ -159,7 +150,7 @@ final class FeedViewController: UIViewController {
     
     @objc private func userDidTap() {
         if let user = userDefaultsService.getUser() {
-            let vc = AccountViewController(user: user, isNotMine: false)
+            let vc = AccountViewController(user: user, role: Global.role, isNotMine: false)
             navigationController?.pushViewController(vc, animated: true)
         } else {
             let vc = AuthViewController()

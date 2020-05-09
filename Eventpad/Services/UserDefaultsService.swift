@@ -35,6 +35,9 @@ final class UserDefaultsService {
             
         case .participant:
             defaults.set(false, forKey: "is_organizer")
+            
+        default:
+            fatalError()
         }
     }
     

@@ -216,7 +216,7 @@ extension SearchViewController: UITableViewDelegate {
             
         case .user:
             let user = users[indexPath.row]
-            let vc = AccountViewController(user: user, isNotMine: true)
+            let vc = AccountViewController(user: user, role: .participant, isNotMine: true)
             navigationController?.pushViewController(vc, animated: true)
         }
         

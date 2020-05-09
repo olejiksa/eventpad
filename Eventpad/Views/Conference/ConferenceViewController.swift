@@ -256,14 +256,12 @@ final class ConferenceViewController: UIViewController {
             
             switch result {
             case .success(let user):
-                let vc = AccountViewController(user: user, isNotMine: true)
+                let vc = AccountViewController(user: user, role: .organizer, isNotMine: true)
                 self.navigationController?.pushViewController(vc, animated: true)
-                break
                 
             case .failure(let error):
                 let alert = self.alertService.alert(error.localizedDescription)
                 self.present(alert, animated: true)
-                break
             }
         }
     }
