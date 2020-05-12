@@ -9,7 +9,7 @@
 import AVFoundation
 import UIKit
 
-final class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+final class ScannerViewController: UIViewController {
     
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
@@ -83,7 +83,9 @@ final class ScannerViewController: UIViewController, AVCaptureMetadataOutputObje
         }
     }
 
-    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+    func metadataOutput(_ output: AVCaptureMetadataOutput,
+                        didOutput metadataObjects: [AVMetadataObject],
+                        from connection: AVCaptureConnection) {
         captureSession.stopRunning()
 
         if let metadataObject = metadataObjects.first {
@@ -110,4 +112,9 @@ final class ScannerViewController: UIViewController, AVCaptureMetadataOutputObje
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
     }
+}
+
+
+extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
+    
 }

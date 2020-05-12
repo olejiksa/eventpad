@@ -53,6 +53,8 @@
 		EB3B320124509D130023E930 /* SuccessParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3B320024509D130023E930 /* SuccessParser.swift */; };
 		EB3B320324509E3C0023E930 /* AddEventsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3B320224509E3C0023E930 /* AddEventsRequest.swift */; };
 		EB3B320524509E4A0023E930 /* AddTariffsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3B320424509E4A0023E930 /* AddTariffsRequest.swift */; };
+		EB549C0F2469D85700CD1951 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB549C0D2469D85700CD1951 /* StatisticsViewController.swift */; };
+		EB549C102469D85700CD1951 /* StatisticsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB549C0E2469D85700CD1951 /* StatisticsView.xib */; };
 		EB5CE48F245379A40085E59B /* NewConferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5CE48D245379A40085E59B /* NewConferenceViewController.swift */; };
 		EB5CE490245379A40085E59B /* NewConferenceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB5CE48E245379A40085E59B /* NewConferenceView.xib */; };
 		EB67D77B244C8B5C00E66B3C /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB67D779244C8B5C00E66B3C /* CategoriesViewController.swift */; };
@@ -62,6 +64,10 @@
 		EB6F38A82464C83800BDEBCE /* TicketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB6F38A62464C83800BDEBCE /* TicketView.xib */; };
 		EB78FE42245CA1C5002DE6FC /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB78FE40245CA1C5002DE6FC /* PurchaseViewController.swift */; };
 		EB78FE43245CA1C5002DE6FC /* PurchaseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB78FE41245CA1C5002DE6FC /* PurchaseView.xib */; };
+		EB8309B9246AF9A100A6D47E /* StatisticsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8309B7246AF9A100A6D47E /* StatisticsCell.swift */; };
+		EB8309BA246AF9A100A6D47E /* StatisticsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB8309B8246AF9A100A6D47E /* StatisticsCell.xib */; };
+		EB8309BD246AFEBA00A6D47E /* TariffDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8309BB246AFEBA00A6D47E /* TariffDataViewController.swift */; };
+		EB8309BE246AFEBA00A6D47E /* TariffDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB8309BC246AFEBA00A6D47E /* TariffDataView.xib */; };
 		EB9978132430925800DD5663 /* BigButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9978122430925800DD5663 /* BigButton.swift */; };
 		EB997816243096BB00DD5663 /* KeyboardAdjuster in Frameworks */ = {isa = PBXBuildFile; productRef = EB997815243096BB00DD5663 /* KeyboardAdjuster */; };
 		EB9978182430995B00DD5663 /* FormHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9978172430995B00DD5663 /* FormHelper.swift */; };
@@ -83,7 +89,7 @@
 		EBB3224824498E8C00942A2B /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3224724498E8C00942A2B /* AlertService.swift */; };
 		EBB3224A244B6E0400942A2B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB32249244B6E0400942A2B /* User.swift */; };
 		EBCD8EE324672C5000DBDD62 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCD8EE124672C5000DBDD62 /* EventsViewController.swift */; };
-		EBCD8EE424672C5000DBDD62 /* EventsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBCD8EE224672C5000DBDD62 /* EventsViewController.xib */; };
+		EBCD8EE424672C5000DBDD62 /* EventsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBCD8EE224672C5000DBDD62 /* EventsView.xib */; };
 		EBCD8EE624674F3500DBDD62 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCD8EE524674F3500DBDD62 /* ScannerViewController.swift */; };
 		EBD451BE2435F9D800F6A4C2 /* ConferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD451BC2435F9D800F6A4C2 /* ConferenceViewController.swift */; };
 		EBD451BF2435F9D800F6A4C2 /* ConferenceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBD451BD2435F9D800F6A4C2 /* ConferenceView.xib */; };
@@ -155,6 +161,8 @@
 		EB3B320024509D130023E930 /* SuccessParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessParser.swift; sourceTree = "<group>"; };
 		EB3B320224509E3C0023E930 /* AddEventsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventsRequest.swift; sourceTree = "<group>"; };
 		EB3B320424509E4A0023E930 /* AddTariffsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTariffsRequest.swift; sourceTree = "<group>"; };
+		EB549C0D2469D85700CD1951 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
+		EB549C0E2469D85700CD1951 /* StatisticsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatisticsView.xib; sourceTree = "<group>"; };
 		EB5CE48D245379A40085E59B /* NewConferenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConferenceViewController.swift; sourceTree = "<group>"; };
 		EB5CE48E245379A40085E59B /* NewConferenceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewConferenceView.xib; sourceTree = "<group>"; };
 		EB67D779244C8B5C00E66B3C /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +172,10 @@
 		EB6F38A62464C83800BDEBCE /* TicketView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TicketView.xib; sourceTree = "<group>"; };
 		EB78FE40245CA1C5002DE6FC /* PurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
 		EB78FE41245CA1C5002DE6FC /* PurchaseView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PurchaseView.xib; sourceTree = "<group>"; };
+		EB8309B7246AF9A100A6D47E /* StatisticsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsCell.swift; sourceTree = "<group>"; };
+		EB8309B8246AF9A100A6D47E /* StatisticsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatisticsCell.xib; sourceTree = "<group>"; };
+		EB8309BB246AFEBA00A6D47E /* TariffDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffDataViewController.swift; sourceTree = "<group>"; };
+		EB8309BC246AFEBA00A6D47E /* TariffDataView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TariffDataView.xib; sourceTree = "<group>"; };
 		EB9978122430925800DD5663 /* BigButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigButton.swift; sourceTree = "<group>"; };
 		EB9978172430995B00DD5663 /* FormHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormHelper.swift; sourceTree = "<group>"; };
 		EB99781B24320A4200DD5663 /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
@@ -184,7 +196,7 @@
 		EBB3224724498E8C00942A2B /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
 		EBB32249244B6E0400942A2B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EBCD8EE124672C5000DBDD62 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
-		EBCD8EE224672C5000DBDD62 /* EventsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventsViewController.xib; sourceTree = "<group>"; };
+		EBCD8EE224672C5000DBDD62 /* EventsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventsView.xib; sourceTree = "<group>"; };
 		EBCD8EE524674F3500DBDD62 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		EBD451BC2435F9D800F6A4C2 /* ConferenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceViewController.swift; sourceTree = "<group>"; };
 		EBD451BD2435F9D800F6A4C2 /* ConferenceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConferenceView.xib; sourceTree = "<group>"; };
@@ -248,15 +260,6 @@
 		EB30815F2452E4A700EB7598 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				EB3081602452E4B600EB7598 /* SearchViewController.swift */,
-				EB3081612452E4B600EB7598 /* SearchView.xib */,
-				EB3081642452E4DE00EB7598 /* FavoritesViewController.swift */,
-				EB3081652452E4DE00EB7598 /* FavoritesView.xib */,
-				EB3B31F824501A010023E930 /* OrganizerSignUpViewController.swift */,
-				EB3B31F924501A010023E930 /* OrganizerSignUpView.xib */,
-				EB32CD8C2461DC9000AC1FAB /* ScheduleViewController.swift */,
-				EB32CD8D2461DC9000AC1FAB /* ScheduleView.xib */,
-				EBCD8EE524674F3500DBDD62 /* ScannerViewController.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -282,7 +285,11 @@
 				EBDB1E1024589B64009316FC /* NewEventViewController.swift */,
 				EBDB1E1124589B64009316FC /* NewEventView.xib */,
 				EBCD8EE124672C5000DBDD62 /* EventsViewController.swift */,
-				EBCD8EE224672C5000DBDD62 /* EventsViewController.xib */,
+				EBCD8EE224672C5000DBDD62 /* EventsView.xib */,
+				EB3081642452E4DE00EB7598 /* FavoritesViewController.swift */,
+				EB3081652452E4DE00EB7598 /* FavoritesView.xib */,
+				EB32CD8C2461DC9000AC1FAB /* ScheduleViewController.swift */,
+				EB32CD8D2461DC9000AC1FAB /* ScheduleView.xib */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -294,6 +301,32 @@
 				EBB32232244843FA00942A2B /* BasePostRequest.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		EB549C112469D8F300CD1951 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				EB3081602452E4B600EB7598 /* SearchViewController.swift */,
+				EB3081612452E4B600EB7598 /* SearchView.xib */,
+				EBCD8EE524674F3500DBDD62 /* ScannerViewController.swift */,
+				EB549C0D2469D85700CD1951 /* StatisticsViewController.swift */,
+				EB549C0E2469D85700CD1951 /* StatisticsView.xib */,
+				EB8309B7246AF9A100A6D47E /* StatisticsCell.swift */,
+				EB8309B8246AF9A100A6D47E /* StatisticsCell.xib */,
+				EB8309BB246AFEBA00A6D47E /* TariffDataViewController.swift */,
+				EB8309BC246AFEBA00A6D47E /* TariffDataView.xib */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		EB549C122469D92200CD1951 /* Legacy */ = {
+			isa = PBXGroup;
+			children = (
+				EBD451BC2435F9D800F6A4C2 /* ConferenceViewController.swift */,
+				EB3B31F824501A010023E930 /* OrganizerSignUpViewController.swift */,
+				EB3B31F924501A010023E930 /* OrganizerSignUpView.xib */,
+			);
+			path = Legacy;
 			sourceTree = "<group>";
 		};
 		EB67D77F244D73EF00E66B3C /* Feed */ = {
@@ -312,6 +345,8 @@
 		EB99781D243244A400DD5663 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EB549C122469D92200CD1951 /* Legacy */,
+				EB549C112469D8F300CD1951 /* Common */,
 				EB32CD902461E1B800AC1FAB /* Event */,
 				EB32CD8B2461DC2000AC1FAB /* Tariff */,
 				EBD201102461D42E009D539F /* Conference */,
@@ -410,7 +445,6 @@
 				EB78FE41245CA1C5002DE6FC /* PurchaseView.xib */,
 				EB06F37524332D810018605E /* ConferenceCell.swift */,
 				EB06F37624332D810018605E /* ConferenceCell.xib */,
-				EBD451BC2435F9D800F6A4C2 /* ConferenceViewController.swift */,
 				EBD451BD2435F9D800F6A4C2 /* ConferenceView.xib */,
 			);
 			path = Conference;
@@ -517,9 +551,11 @@
 				EBDB1E0F24589AA8009316FC /* NewTariffView.xib in Resources */,
 				EBF87458242F84FA0056623E /* AuthView.xib in Resources */,
 				EB67D77C244C8B5C00E66B3C /* CategoriesView.xib in Resources */,
+				EB8309BE246AFEBA00A6D47E /* TariffDataView.xib in Resources */,
 				EBD451BF2435F9D800F6A4C2 /* ConferenceView.xib in Resources */,
 				EB3B31FB24501A010023E930 /* OrganizerSignUpView.xib in Resources */,
 				EBF87454242F830D0056623E /* FeedView.xib in Resources */,
+				EB8309BA246AF9A100A6D47E /* StatisticsCell.xib in Resources */,
 				EB32CD8F2461DC9000AC1FAB /* ScheduleView.xib in Resources */,
 				EB6F38A82464C83800BDEBCE /* TicketView.xib in Resources */,
 				EBDB1E172458C198009316FC /* LocationView.xib in Resources */,
@@ -528,11 +564,12 @@
 				EB30816B2452E59600EB7598 /* TicketsView.xib in Resources */,
 				EB3081632452E4B600EB7598 /* SearchView.xib in Resources */,
 				EB5CE490245379A40085E59B /* NewConferenceView.xib in Resources */,
+				EB549C102469D85700CD1951 /* StatisticsView.xib in Resources */,
 				EB9978212432890300DD5663 /* AccountView.xib in Resources */,
 				EBF87449242F81370056623E /* Assets.xcassets in Resources */,
 				EBDB1E1324589B64009316FC /* NewEventView.xib in Resources */,
 				EB3081672452E4DE00EB7598 /* FavoritesView.xib in Resources */,
-				EBCD8EE424672C5000DBDD62 /* EventsViewController.xib in Resources */,
+				EBCD8EE424672C5000DBDD62 /* EventsView.xib in Resources */,
 				EBDB1E0B245750BE009316FC /* MyConferencesView.xib in Resources */,
 				EB32CD942461E26E00AC1FAB /* EventView.xib in Resources */,
 				EB06F37824332D810018605E /* ConferenceCell.xib in Resources */,
@@ -549,8 +586,10 @@
 				EB3081332451604100EB7598 /* Event.swift in Sources */,
 				EBB3224A244B6E0400942A2B /* User.swift in Sources */,
 				EBF87457242F84FA0056623E /* AuthViewController.swift in Sources */,
+				EB8309B9246AF9A100A6D47E /* StatisticsCell.swift in Sources */,
 				EB32CD8E2461DC9000AC1FAB /* ScheduleViewController.swift in Sources */,
 				EB308140245172BC00EB7598 /* ConferenceParser.swift in Sources */,
+				EB8309BD246AFEBA00A6D47E /* TariffDataViewController.swift in Sources */,
 				EB3B31FA24501A010023E930 /* OrganizerSignUpViewController.swift in Sources */,
 				EBF87444242F81330056623E /* FeedViewController.swift in Sources */,
 				EB3081352451608A00EB7598 /* Role.swift in Sources */,
@@ -589,6 +628,7 @@
 				EBB32233244843FA00942A2B /* BasePostRequest.swift in Sources */,
 				EBB3224624486F3F00942A2B /* SignUp.swift in Sources */,
 				EB3B320124509D130023E930 /* SuccessParser.swift in Sources */,
+				EB549C0F2469D85700CD1951 /* StatisticsViewController.swift in Sources */,
 				EBB32231244843DB00942A2B /* BaseGetRequest.swift in Sources */,
 				EB3081662452E4DE00EB7598 /* FavoritesViewController.swift in Sources */,
 				EBDB1E0A245750BE009316FC /* MyConferencesViewController.swift in Sources */,
@@ -764,11 +804,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.olejiksa.Eventpad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -784,11 +824,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.olejiksa.Eventpad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

@@ -144,6 +144,11 @@ final class AccountViewController: UIViewController {
         let vc = ScannerViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    @IBAction private func statsDidTap() {
+        let vc = StatisticsViewController(username: user.username)
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 
