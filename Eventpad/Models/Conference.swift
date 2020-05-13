@@ -22,6 +22,7 @@ struct Conference: Codable, Hashable {
         case isCancelled = "is_cancelled"
         case organizerName = "organizer_login"
         case organizerID = "organizer_id"
+        case photoUrl
     }
     
     let id: Int?
@@ -35,4 +36,5 @@ struct Conference: Codable, Hashable {
     let isCancelled: Bool
     let organizerName: String?
     let organizerID: Int?
+    let photoUrl: String?
 }

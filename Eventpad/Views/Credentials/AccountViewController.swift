@@ -152,7 +152,9 @@ final class AccountViewController: UIViewController {
     }
     
     @objc private func editDidTap() {
-        
+        let vc = SignUpViewController()
+        let nvc = UINavigationController(rootViewController: vc)
+        self.present(nvc, animated: true)
     }
     
     @IBAction private func scannerDidTap() {

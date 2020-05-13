@@ -126,7 +126,8 @@ final class NewEventViewController: UIViewController {
                           speakerName: speakerName,
                           speakerID: nil,
                           title: title,
-                          description: description)
+                          description: description,
+                          photoUrl: nil)
         let config = RequestFactory.addToConference(events: [event],
                                                     conferenceID: conferenceID)
         requestSender.send(config: config) { result in

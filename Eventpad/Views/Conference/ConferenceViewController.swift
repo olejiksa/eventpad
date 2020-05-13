@@ -63,13 +63,19 @@ final class ConferenceViewController: UIViewController {
 
         let editButton = UIBarButtonItem(barButtonSystemItem: .edit,
                                          target: self,
-                                         action: nil)
+                                         action: #selector(didEditTap))
         
         if !isManager {
             navigationItem.rightBarButtonItems = [shareButton]
         } else {
             navigationItem.rightBarButtonItems = [shareButton, editButton]
         }
+    }
+    
+    @objc private func didEditTap() {
+        let vc = NewConferenceViewController()
+        let nvc = UINavigationController(rootViewController: vc)
+        present(nvc, animated: true)
     }
     
     private func setupView() {

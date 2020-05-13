@@ -78,7 +78,7 @@ final class EventViewController: UIViewController {
         
         let editButton = UIBarButtonItem(barButtonSystemItem: .edit,
                                          target: self,
-                                         action: nil)
+                                         action: #selector(didEditTap))
         
         if isManager {
             navigationItem.rightBarButtonItems?.append(editButton)
@@ -342,6 +342,12 @@ final class EventViewController: UIViewController {
                 self.present(alert, animated: true)
             }
         }
+    }
+    
+    @objc private func didEditTap() {
+        let vc = NewEventViewController(conferenceID: 0)
+        let nvc = UINavigationController(rootViewController: vc)
+        present(nvc, animated: true)
     }
     
     @IBAction private func pushDidTap() {

@@ -79,7 +79,6 @@ final class SignUpViewController: UIViewController {
                                          surnameField,
                                          emailField,
                                          phoneField,
-                                         descriptionField,
                                          passwordField,
                                          repeatPasswordField]
         
@@ -116,7 +115,8 @@ final class SignUpViewController: UIViewController {
                                     phone: signUp.phone,
                                     name: signUp.name,
                                     surname: signUp.surname,
-                                    description: signUp.description)
+                                    description: signUp.description,
+                                    photoUrl: nil)
                     self.userDefaultsService.setUser(user)
                     self.signUpButton.hideLoading()
                     self.close()
@@ -152,7 +152,8 @@ final class SignUpViewController: UIViewController {
                             surname: surname,
                             email: email,
                             phone: phone,
-                            description: description)
+                            description: description,
+                            photoUrl: nil)
         self.signUp(signUp)
     }
     

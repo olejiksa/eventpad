@@ -52,6 +52,7 @@ final class UserDefaultsService {
         
         let id = defaults.integer(forKey: "id")
         let description = defaults.string(forKey: "description")
+        let photoUrl = defaults.string(forKey: "photoUrl")
         
         return .init(id: id,
                      username: username,
@@ -59,7 +60,8 @@ final class UserDefaultsService {
                      phone: phone,
                      name: name,
                      surname: surname,
-                     description: description)
+                     description: description,
+                     photoUrl: photoUrl)
     }
     
     func setUser(_ user: User) {
@@ -69,6 +71,7 @@ final class UserDefaultsService {
         defaults.set(user.phone, forKey: "phone")
         defaults.set(user.name, forKey: "name")
         defaults.set(user.surname, forKey: "surname")
+        defaults.set(user.photoUrl, forKey: "photoUrl")
     }
     
     func getTicketIDs() -> [String: String]? {

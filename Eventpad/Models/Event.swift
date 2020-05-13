@@ -20,6 +20,7 @@ struct Event: Codable, Hashable {
         case speakerID = "speaker_id"
         case title = "name"
         case description
+        case photoUrl
     }
     
     let id: Int?
@@ -31,6 +32,7 @@ struct Event: Codable, Hashable {
     let speakerID: Int?
     let title: String
     let description: String
+    let photoUrl: String?
     
     var dateStartFormatted: String {
         let dateFormatter = DateFormatter()
