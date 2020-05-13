@@ -16,9 +16,11 @@ final class EventsViewController: UIViewController {
     private let userDefaultsService = UserDefaultsService()
     
     private let events: [Event]
+    private let username: String
     
-    init(events: [Event]) {
+    init(events: [Event], username: String) {
         self.events = events
+        self.username = username
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -37,7 +39,7 @@ final class EventsViewController: UIViewController {
     }
 
     private func setupNavigation() {
-        navigationItem.title = "События"
+        navigationItem.title = username
     }
     
     private func setupTableView() {
@@ -83,7 +85,7 @@ extension EventsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
         let event = events[indexPath.section]
-        let vc = EventViewController(event: event, isManager: false)
+        let vc = EventViewController(event: event, isManager: false, isFavorite: nil)
         navigationController?.pushViewController(vc, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }

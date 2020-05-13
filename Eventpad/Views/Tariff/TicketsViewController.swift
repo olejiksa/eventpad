@@ -73,6 +73,7 @@ final class TicketsViewController: UIViewController {
     private func searchTicket(i: Int = 0,
                               conference: Conference,
                               completion: @escaping ((Ticket) -> ())) {
+        guard let user = userDefaultsService.getUser() else { return }
         let config = RequestFactory.ticket(ticketID: String(i))
         requestSender.send(config: config) { [weak self] result in
             guard let self = self else { return }
@@ -80,7 +81,7 @@ final class TicketsViewController: UIViewController {
             switch result {
             case .success(let ticket):
                 guard let tariffs = conference.tariffs else { return }
-                if tariffs.contains(where: { $0.id == ticket.tariffID }) {
+                if tariffs.contains(where: { $0.id == ticket.tariffID && ticket.buyerID == user.id }) {
                     completion(ticket)
                 } else {
                     self.searchTicket(i: i + 1,

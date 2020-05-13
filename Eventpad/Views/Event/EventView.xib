@@ -9,9 +9,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EventViewController" customModule="Eventpad" customModuleProvider="target">
             <connections>
+                <outlet property="addEventButton" destination="bFo-KY-G8B" id="VsW-Nu-tiX"/>
                 <outlet property="dateEndLabel" destination="uR1-HN-Wqq" id="L9B-Pl-x3f"/>
                 <outlet property="dateStartLabel" destination="N5s-np-LW5" id="J6c-Oh-odr"/>
+                <outlet property="deleteButton" destination="ZhP-v4-9Xq" id="fRP-LK-Jn0"/>
                 <outlet property="descriptionLabel" destination="fZh-1y-yjZ" id="ZjA-PW-Fxl"/>
+                <outlet property="pushButton" destination="Att-RW-F88" id="MrH-Sa-Z4V"/>
                 <outlet property="titleLabel" destination="fs1-gV-prK" id="AoC-4G-X16"/>
                 <outlet property="view" destination="g8z-Ko-TQ5" id="VR0-e0-8Dw"/>
             </connections>
@@ -25,7 +28,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="duJ-Qu-ED9">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="1192.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="1330.5"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="WcP-3S-8aX">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="213.5"/>
@@ -39,7 +42,7 @@
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="md1-JZ-aXd">
-                                    <rect key="frame" x="20" y="233.5" width="280" height="939"/>
+                                    <rect key="frame" x="20" y="233.5" width="280" height="1077"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="День открытых дверей: программы бакалавриата и магистратуры" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fs1-gV-prK">
                                             <rect key="frame" x="0.0" y="0.0" width="280" height="74"/>
@@ -157,7 +160,7 @@
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="5G9-TD-Yhs">
-                                            <rect key="frame" x="0.0" y="747" width="280" height="192"/>
+                                            <rect key="frame" x="0.0" y="747" width="280" height="330"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="owh-EA-6Y7" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="280" height="54"/>
@@ -197,8 +200,28 @@
                                                         <action selector="allEventsDidTap" destination="-1" eventType="touchUpInside" id="1io-V1-7Y6"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFo-KY-G8B" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Att-RW-F88" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="138" width="280" height="54"/>
+                                                    <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="54" id="Ywi-Wl-yLH"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                    <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                                                    <state key="normal" title="Отправить Push-уведомление">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="pushDidTap" destination="-1" eventType="touchUpInside" id="ZFf-NM-voE"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFo-KY-G8B" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="207" width="280" height="54"/>
                                                     <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="54" id="oRT-de-RNS"/>
@@ -212,6 +235,26 @@
                                                             <real key="value" value="10"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZhP-v4-9Xq" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="276" width="280" height="54"/>
+                                                    <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="54" id="fwb-dW-OxU"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                    <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                                                    <state key="normal" title="Удалить">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="deleteDidTap" destination="-1" eventType="touchUpInside" id="LQ0-TG-IM9"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </stackView>

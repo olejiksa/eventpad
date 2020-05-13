@@ -74,6 +74,12 @@
 		EB99781C24320A4200DD5663 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB99781B24320A4200DD5663 /* UserDefaultsService.swift */; };
 		EB9978202432890300DD5663 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB99781E2432890300DD5663 /* AccountViewController.swift */; };
 		EB9978212432890300DD5663 /* AccountView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB99781F2432890300DD5663 /* AccountView.xib */; };
+		EBA3F1E8246B830B0065A28B /* BaseDeleteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA3F1E7246B830B0065A28B /* BaseDeleteRequest.swift */; };
+		EBA3F1EA246B85AE0065A28B /* DeleteEventRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA3F1E9246B85AE0065A28B /* DeleteEventRequest.swift */; };
+		EBA3F1EC246B86280065A28B /* DeleteConferenceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA3F1EB246B86280065A28B /* DeleteConferenceRequest.swift */; };
+		EBA3F1EE246B87260065A28B /* DeleteTariffRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA3F1ED246B87260065A28B /* DeleteTariffRequest.swift */; };
+		EBA3F1F1246B91030065A28B /* SendPushNotificationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA3F1F0246B91030065A28B /* SendPushNotificationRequest.swift */; };
+		EBA3F1F3246B91B80065A28B /* PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA3F1F2246B91B80065A28B /* PushNotification.swift */; };
 		EBB3222D2448427F00942A2B /* RequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3222C2448427F00942A2B /* RequestFactory.swift */; };
 		EBB3222F2448431100942A2B /* RequestSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3222E2448431100942A2B /* RequestSender.swift */; };
 		EBB32231244843DB00942A2B /* BaseGetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB32230244843DB00942A2B /* BaseGetRequest.swift */; };
@@ -181,6 +187,13 @@
 		EB99781B24320A4200DD5663 /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
 		EB99781E2432890300DD5663 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		EB99781F2432890300DD5663 /* AccountView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountView.xib; sourceTree = "<group>"; };
+		EBA3F1E7246B830B0065A28B /* BaseDeleteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDeleteRequest.swift; sourceTree = "<group>"; };
+		EBA3F1E9246B85AE0065A28B /* DeleteEventRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteEventRequest.swift; sourceTree = "<group>"; };
+		EBA3F1EB246B86280065A28B /* DeleteConferenceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteConferenceRequest.swift; sourceTree = "<group>"; };
+		EBA3F1ED246B87260065A28B /* DeleteTariffRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTariffRequest.swift; sourceTree = "<group>"; };
+		EBA3F1EF246B8C9B0065A28B /* Eventpad.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Eventpad.entitlements; sourceTree = "<group>"; };
+		EBA3F1F0246B91030065A28B /* SendPushNotificationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendPushNotificationRequest.swift; sourceTree = "<group>"; };
+		EBA3F1F2246B91B80065A28B /* PushNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotification.swift; sourceTree = "<group>"; };
 		EBB3222C2448427F00942A2B /* RequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFactory.swift; sourceTree = "<group>"; };
 		EBB3222E2448431100942A2B /* RequestSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSender.swift; sourceTree = "<group>"; };
 		EBB32230244843DB00942A2B /* BaseGetRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseGetRequest.swift; sourceTree = "<group>"; };
@@ -257,13 +270,6 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		EB30815F2452E4A700EB7598 /* Other */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Other;
-			sourceTree = "<group>";
-		};
 		EB32CD8B2461DC2000AC1FAB /* Tariff */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,6 +305,7 @@
 			children = (
 				EBB32230244843DB00942A2B /* BaseGetRequest.swift */,
 				EBB32232244843FA00942A2B /* BasePostRequest.swift */,
+				EBA3F1E7246B830B0065A28B /* BaseDeleteRequest.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -322,7 +329,6 @@
 		EB549C122469D92200CD1951 /* Legacy */ = {
 			isa = PBXGroup;
 			children = (
-				EBD451BC2435F9D800F6A4C2 /* ConferenceViewController.swift */,
 				EB3B31F824501A010023E930 /* OrganizerSignUpViewController.swift */,
 				EB3B31F924501A010023E930 /* OrganizerSignUpView.xib */,
 			);
@@ -350,7 +356,6 @@
 				EB32CD902461E1B800AC1FAB /* Event */,
 				EB32CD8B2461DC2000AC1FAB /* Tariff */,
 				EBD201102461D42E009D539F /* Conference */,
-				EB30815F2452E4A700EB7598 /* Other */,
 				EB30815B2451F23400EB7598 /* Credentials */,
 				EB67D77F244D73EF00E66B3C /* Feed */,
 				EB9978122430925800DD5663 /* BigButton.swift */,
@@ -401,11 +406,15 @@
 				EB3081412451735200EB7598 /* ConferenceRequest.swift */,
 				EB3081472451753000EB7598 /* ConferencesRequest.swift */,
 				EB3B31FC24509B300023E930 /* CreateConferenceRequest.swift */,
+				EBA3F1EB246B86280065A28B /* DeleteConferenceRequest.swift */,
+				EBA3F1E9246B85AE0065A28B /* DeleteEventRequest.swift */,
+				EBA3F1ED246B87260065A28B /* DeleteTariffRequest.swift */,
 				EB3081432451742100EB7598 /* EventRequest.swift */,
 				EB3081392451689600EB7598 /* EventsRequest.swift */,
 				EB3081512451EBD900EB7598 /* FavoriteEventRequest.swift */,
 				EBB3224024486AF500942A2B /* LoginRequest.swift */,
 				EB30814F2451E7FE00EB7598 /* RegisterTicketRequest.swift */,
+				EBA3F1F0246B91030065A28B /* SendPushNotificationRequest.swift */,
 				EBB3223E24486AEC00942A2B /* SignUpRequest.swift */,
 				EB3081572451F05700EB7598 /* TicketRequest.swift */,
 				EB3081532451EE8E00EB7598 /* UnfavoriteEventRequest.swift */,
@@ -420,12 +429,13 @@
 			children = (
 				EB67D782244D756100E66B3C /* Category.swift */,
 				EB3B31FE24509C110023E930 /* Conference.swift */,
+				EB3081322451604100EB7598 /* Event.swift */,
 				EB30813024515FE500EB7598 /* Login.swift */,
 				EB3081372451631100EB7598 /* MessageResponse.swift */,
+				EBA3F1F2246B91B80065A28B /* PushNotification.swift */,
 				EB3081342451608A00EB7598 /* Role.swift */,
 				EB30816F2452EF2300EB7598 /* SearchItemType.swift */,
 				EBB3224524486F3F00942A2B /* SignUp.swift */,
-				EB3081322451604100EB7598 /* Event.swift */,
 				EBB3224324486D9300942A2B /* SuccessResponse.swift */,
 				EB3B31EF244D7A880023E930 /* Tariff.swift */,
 				EB3081552451EF4800EB7598 /* Ticket.swift */,
@@ -445,6 +455,7 @@
 				EB78FE41245CA1C5002DE6FC /* PurchaseView.xib */,
 				EB06F37524332D810018605E /* ConferenceCell.swift */,
 				EB06F37624332D810018605E /* ConferenceCell.xib */,
+				EBD451BC2435F9D800F6A4C2 /* ConferenceViewController.swift */,
 				EBD451BD2435F9D800F6A4C2 /* ConferenceView.xib */,
 			);
 			path = Conference;
@@ -469,6 +480,7 @@
 		EBF8743E242F81330056623E /* Eventpad */ = {
 			isa = PBXGroup;
 			children = (
+				EBA3F1EF246B8C9B0065A28B /* Eventpad.entitlements */,
 				EBB3224224486D8C00942A2B /* Models */,
 				EBA2AF6F2442668A00AF59EE /* Network */,
 				EB30815C2452B6EB00EB7598 /* Services */,
@@ -583,6 +595,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBA3F1F3246B91B80065A28B /* PushNotification.swift in Sources */,
 				EB3081332451604100EB7598 /* Event.swift in Sources */,
 				EBB3224A244B6E0400942A2B /* User.swift in Sources */,
 				EBF87457242F84FA0056623E /* AuthViewController.swift in Sources */,
@@ -600,9 +613,11 @@
 				EB3B31FD24509B300023E930 /* CreateConferenceRequest.swift in Sources */,
 				EBCD8EE624674F3500DBDD62 /* ScannerViewController.swift in Sources */,
 				EB30816E2452EBF800EB7598 /* SubtitleCell.swift in Sources */,
+				EBA3F1EA246B85AE0065A28B /* DeleteEventRequest.swift in Sources */,
 				EBDB1E0E24589AA8009316FC /* NewTariffViewController.swift in Sources */,
 				EB30813C245168A000EB7598 /* EventsParser.swift in Sources */,
 				EB30814E245179A600EB7598 /* UsersRequest.swift in Sources */,
+				EBA3F1F1246B91030065A28B /* SendPushNotificationRequest.swift in Sources */,
 				EBB3222D2448427F00942A2B /* RequestFactory.swift in Sources */,
 				EB3081702452EF2300EB7598 /* SearchItemType.swift in Sources */,
 				EB3081422451735200EB7598 /* ConferenceRequest.swift in Sources */,
@@ -622,6 +637,7 @@
 				EB9978182430995B00DD5663 /* FormHelper.swift in Sources */,
 				EB3B31FF24509C110023E930 /* Conference.swift in Sources */,
 				EBCD8EE324672C5000DBDD62 /* EventsViewController.swift in Sources */,
+				EBA3F1EE246B87260065A28B /* DeleteTariffRequest.swift in Sources */,
 				EBDB1E162458C198009316FC /* LocationViewController.swift in Sources */,
 				EB78FE42245CA1C5002DE6FC /* PurchaseViewController.swift in Sources */,
 				EB3081622452E4B600EB7598 /* SearchViewController.swift in Sources */,
@@ -634,6 +650,7 @@
 				EBDB1E0A245750BE009316FC /* MyConferencesViewController.swift in Sources */,
 				EB99781C24320A4200DD5663 /* UserDefaultsService.swift in Sources */,
 				EB30814A2451763B00EB7598 /* ConferencesParser.swift in Sources */,
+				EBA3F1EC246B86280065A28B /* DeleteConferenceRequest.swift in Sources */,
 				EB3081442451742100EB7598 /* EventRequest.swift in Sources */,
 				EB9978202432890300DD5663 /* AccountViewController.swift in Sources */,
 				EBF87442242F81330056623E /* SceneDelegate.swift in Sources */,
@@ -642,6 +659,7 @@
 				EB3B320324509E3C0023E930 /* AddEventsRequest.swift in Sources */,
 				EB30815E2452E3C800EB7598 /* TabBarFactory.swift in Sources */,
 				EB3B31F4244DA6510023E930 /* UserRequest.swift in Sources */,
+				EBA3F1E8246B830B0065A28B /* BaseDeleteRequest.swift in Sources */,
 				EB3B31F6244DA6F50023E930 /* UserParser.swift in Sources */,
 				EB6F38A72464C83800BDEBCE /* TicketViewController.swift in Sources */,
 				EBE681B82454919400CB9285 /* Global.swift in Sources */,
@@ -796,6 +814,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Eventpad/Eventpad.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B2FMGUSH44;
 				INFOPLIST_FILE = Eventpad/Info.plist;
@@ -816,6 +835,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Eventpad/Eventpad.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B2FMGUSH44;
 				INFOPLIST_FILE = Eventpad/Info.plist;

@@ -12,4 +12,5 @@ struct Global {
     static var accessToken: String?
     static var categoryInUse: Category?
     static var location: String?
+    static var deviceToken: String?
 }

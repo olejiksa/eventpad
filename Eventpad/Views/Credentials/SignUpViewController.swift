@@ -144,7 +144,7 @@ final class SignUpViewController: UIViewController {
         
         signUpButton.showLoading()
 
-        let deviceName = UIDevice.current.name
+        let deviceName = Global.deviceToken ?? UIDevice.current.name
         let signUp = SignUp(username: username,
                             password: password,
                             deviceName: deviceName,

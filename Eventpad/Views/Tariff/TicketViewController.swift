@@ -133,8 +133,8 @@ final class TicketViewController: UIViewController {
     
     @IBAction func scheduleDidTap() {
         guard let id = conference.id else { return }
-               let vc = ScheduleViewController(parentID: id)
-               navigationController?.pushViewController(vc, animated: true)
+        let vc = ScheduleViewController(parentID: id, isManager: false)
+        navigationController?.pushViewController(vc, animated: true)
     }
 
     @IBAction func mapDidTap() {

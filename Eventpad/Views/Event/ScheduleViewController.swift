@@ -20,9 +20,11 @@ final class ScheduleViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     private let parentID: Int
+    private let isManager: Bool
 
-    init(parentID: Int) {
+    init(parentID: Int, isManager: Bool) {
         self.parentID = parentID
+        self.isManager = isManager
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -114,7 +116,7 @@ extension ScheduleViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
         let event = items[indexPath.section][indexPath.row]
-        let vc = EventViewController(event: event, isManager: false)
+        let vc = EventViewController(event: event, isManager: isManager, isFavorite: nil)
         navigationController?.pushViewController(vc, animated: true)
         
         tableView.deselectRow(at: indexPath, animated: true)

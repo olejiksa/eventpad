@@ -211,7 +211,7 @@ extension SearchViewController: UITableViewDelegate {
         
         case .event:
             let event = events[indexPath.row]
-            let vc = EventViewController(event: event, isManager: false)
+            let vc = EventViewController(event: event, isManager: false, isFavorite: nil)
             navigationController?.pushViewController(vc, animated: true)
             
         case .user:

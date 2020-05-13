@@ -55,7 +55,7 @@ final class AuthViewController: UIViewController {
     }
     
     private func login(username: String, password: String) {
-        let deviceName = UIDevice.current.name
+        let deviceName = Global.deviceToken ?? UIDevice.current.name
         let login = Login(username: username, password: password, deviceName: deviceName)
         let role: Role = organizerSwitch.isOn ? .organizer : .participant
         let loginConfig = RequestFactory.login(login: login, role: role)

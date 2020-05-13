@@ -31,6 +31,8 @@ final class ConferenceViewController: UIViewController {
     @IBOutlet private weak var addTariffButton: BigButton!
     @IBOutlet private weak var registerButton: BigButton!
     @IBOutlet private weak var scheduleButton: BigButton!
+    @IBOutlet private weak var pushButton: BigButton!
+    @IBOutlet private weak var deleteButton: BigButton!
     
     init(conference: Conference, isManager: Bool) {
         self.conference = conference
@@ -59,14 +61,16 @@ final class ConferenceViewController: UIViewController {
                                          style: .plain,
                                          target: self,
                                          action: #selector(shareDidTap))
+
+        let editButton = UIBarButtonItem(barButtonSystemItem: .edit,
+                                         target: self,
+                                         action: nil)
         
-//        let isFavorites = conference.id == 1 || conference.id == 2
-//        let favoriteImage = UIImage(systemName: isFavorites ? "star.fill" : "star")
-//        let favoriteButton = UIBarButtonItem(image: favoriteImage,
-//                                             style: .plain,
-//                                             target: self,
-//                                             action: #selector(shareDidTap))
-        navigationItem.rightBarButtonItems = [shareButton]
+        if !isManager {
+            navigationItem.rightBarButtonItems = [shareButton]
+        } else {
+            navigationItem.rightBarButtonItems = [shareButton, editButton]
+        }
     }
     
     private func setupView() {
@@ -93,6 +97,8 @@ final class ConferenceViewController: UIViewController {
         registerButton.isHidden = isManager || conference.tariffs!.isEmpty
         addEventButton.isHidden = !isManager
         addTariffButton.isHidden = !isManager
+        pushButton.isHidden = !isManager
+        deleteButton.isHidden = !isManager
     }
     
     @IBAction private func registerDidTap() {
@@ -177,7 +183,7 @@ final class ConferenceViewController: UIViewController {
     
     @IBAction private func scheduleDidTap() {
         guard let id = conference.id else { return }
-        let vc = ScheduleViewController(parentID: id)
+        let vc = ScheduleViewController(parentID: id, isManager: isManager)
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -248,7 +254,7 @@ final class ConferenceViewController: UIViewController {
         })
     }
     
-    @IBAction func contactDidTap() {
+    @IBAction private func contactDidTap() {
         guard let userID = conference.organizerID else { return }
         let config = RequestFactory.user(userID: userID, role: .organizer)
         requestSender.send(config: config) { [weak self] result in
@@ -258,6 +264,56 @@ final class ConferenceViewController: UIViewController {
             case .success(let user):
                 let vc = AccountViewController(user: user, role: .organizer, isNotMine: true)
                 self.navigationController?.pushViewController(vc, animated: true)
+                
+            case .failure(let error):
+                let alert = self.alertService.alert(error.localizedDescription)
+                self.present(alert, animated: true)
+            }
+        }
+    }
+    
+    @IBAction private func pushDidTap() {
+        guard let id = conference.id else { return }
+        let pushNotification = PushNotification(title: "Test", text: "Test message")
+        let config = RequestFactory.sendPushNotification(conferenceID: id, pushNotification: pushNotification)
+        requestSender.send(config: config) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let success):
+                guard success.success else {
+                    let alert = self.alertService.alert(success.message!)
+                    self.present(alert, animated: true)
+                    return
+                }
+                
+                let alert = self.alertService.alert(success.success.description, title: .info)
+                self.present(alert, animated: true)
+                
+            case .failure(let error):
+                let alert = self.alertService.alert(error.localizedDescription)
+                self.present(alert, animated: true)
+            }
+        }
+    }
+    
+    @IBAction private func deleteDidTap() {
+        deleteButton.showLoading()
+        let config = RequestFactory.deleteConference(conferenceID: conference.id!)
+        requestSender.send(config: config) { [weak self] result in
+            guard let self = self else { return }
+            
+            self.deleteButton.hideLoading()
+            
+            switch result {
+            case .success(let success):
+                guard success.success else {
+                    let alert = self.alertService.alert(success.message!)
+                    self.present(alert, animated: true)
+                    return
+                }
+                
+                self.navigationController?.popViewController(animated: true)
                 
             case .failure(let error):
                 let alert = self.alertService.alert(error.localizedDescription)

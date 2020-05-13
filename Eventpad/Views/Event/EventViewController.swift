@@ -17,15 +17,20 @@ final class EventViewController: UIViewController {
     private let requestSender = RequestSender()
     private let event: Event
     private let isManager: Bool
+    private var isFavorite: Bool?
 
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var dateStartLabel: UILabel!
     @IBOutlet private weak var dateEndLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var pushButton: BigButton!
+    @IBOutlet private weak var addEventButton: BigButton!
+    @IBOutlet private weak var deleteButton: BigButton!
     
-    init(event: Event, isManager: Bool) {
+    init(event: Event, isManager: Bool, isFavorite: Bool?) {
         self.event = event
         self.isManager = isManager
+        self.isFavorite = isFavorite
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -44,19 +49,41 @@ final class EventViewController: UIViewController {
     private func setupNavigation() {
         navigationItem.title = "Событие"
         navigationItem.largeTitleDisplayMode = .never
-        
+        updateButtons()
+    }
+    
+    private func updateButtons() {
         let shareImage = UIImage(systemName: "square.and.arrow.up")
         let shareButton = UIBarButtonItem(image: shareImage,
                                           style: .plain,
                                           target: self,
                                           action: #selector(shareDidTap))
         
-        let favoriteImage = UIImage(systemName: "star")
-        let favoriteButton = UIBarButtonItem(image: favoriteImage,
-                                             style: .plain,
-                                             target: self,
-                                             action: #selector(starDidTap))
-        navigationItem.rightBarButtonItems = [shareButton, favoriteButton]
+        if isFavorite == true {
+            let favoriteImage = UIImage(systemName: "star.fill")
+            let favoriteButton = UIBarButtonItem(image: favoriteImage,
+                                                 style: .plain,
+                                                 target: self,
+                                                 action: #selector(unstarDidTap))
+            navigationItem.rightBarButtonItems = [shareButton, favoriteButton]
+        } else if isFavorite == false {
+            let favoriteImage = UIImage(systemName: "star")
+            let favoriteButton = UIBarButtonItem(image: favoriteImage,
+                                                 style: .plain,
+                                                 target: self,
+                                                 action: #selector(starDidTap))
+            navigationItem.rightBarButtonItems = [shareButton, favoriteButton]
+        } else {
+            navigationItem.rightBarButtonItem = shareButton
+        }
+        
+        let editButton = UIBarButtonItem(barButtonSystemItem: .edit,
+                                         target: self,
+                                         action: nil)
+        
+        if isManager {
+            navigationItem.rightBarButtonItems?.append(editButton)
+        }
     }
     
     private func setupView() {
@@ -76,6 +103,10 @@ final class EventViewController: UIViewController {
         dateStartLabel.text = dateStart
         dateEndLabel.text = dateEnd
         descriptionLabel.text = event.description
+        
+        addEventButton.isHidden = !isManager
+        pushButton.isHidden = !isManager
+        deleteButton.isHidden = !isManager
     }
     
     @objc private func shareDidTap() {
@@ -104,6 +135,36 @@ final class EventViewController: UIViewController {
                 
                 let alert = self.alertService.alert(success.success.description, title: .info)
                 self.present(alert, animated: true)
+                
+                self.isFavorite = true
+                self.updateButtons()
+                
+            case .failure(let error):
+                let alert = self.alertService.alert(error.localizedDescription)
+                self.present(alert, animated: true)
+            }
+        }
+    }
+    
+    @objc private func unstarDidTap() {
+        guard let id = event.id, let userID = userDefaultsService.getUser()?.id else { return }
+        let config = RequestFactory.unfavoriteEvent(eventID: id, userID: userID)
+        requestSender.send(config: config) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let success):
+                guard success.success else {
+                    let alert = self.alertService.alert(success.message!)
+                    self.present(alert, animated: true)
+                    return
+                }
+                
+                let alert = self.alertService.alert(success.success.description, title: .info)
+                self.present(alert, animated: true)
+                
+                self.isFavorite = false
+                self.updateButtons()
                 
             case .failure(let error):
                 let alert = self.alertService.alert(error.localizedDescription)
@@ -144,7 +205,7 @@ final class EventViewController: UIViewController {
     
     @IBAction private func scheduleDidTap() {
         guard let id = event.id else { return }
-        let vc = ScheduleViewController(parentID: id)
+        let vc = ScheduleViewController(parentID: id, isManager: false)
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -245,13 +306,63 @@ final class EventViewController: UIViewController {
                 self.requestSender.send(config: subconfig) { [weak self] result in
                     switch result {
                     case .success(let events):
-                        let vc = EventsViewController(events: events)
+                        let vc = EventsViewController(events: events, username: user.username)
                         self?.navigationController?.pushViewController(vc, animated: true)
                     
                     case .failure:
                         break
                     }
                 }
+                
+            case .failure(let error):
+                let alert = self.alertService.alert(error.localizedDescription)
+                self.present(alert, animated: true)
+            }
+        }
+    }
+    
+    @IBAction private func deleteDidTap() {
+        deleteButton.showLoading()
+        let config = RequestFactory.deleteEvent(eventID: event.id!)
+        requestSender.send(config: config) { [weak self] result in
+            guard let self = self else { return }
+            
+            self.deleteButton.hideLoading()
+            
+            switch result {
+            case .success(let success):
+                guard success.success else {
+                    let alert = self.alertService.alert(success.message!)
+                    self.present(alert, animated: true)
+                    return
+                }
+                
+                self.navigationController?.popViewController(animated: true)
+                
+            case .failure(let error):
+                let alert = self.alertService.alert(error.localizedDescription)
+                self.present(alert, animated: true)
+            }
+        }
+    }
+    
+    @IBAction private func pushDidTap() {
+        guard let eventID = event.id else { return }
+        let pushNotification = PushNotification(title: "Title", text: "Text")
+        let config = RequestFactory.sendPushNotification(eventID: eventID, pushNotification: pushNotification)
+        requestSender.send(config: config) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let success):
+                guard success.success else {
+                    let alert = self.alertService.alert(success.message!)
+                    self.present(alert, animated: true)
+                    return
+                }
+                
+                let alert = self.alertService.alert(success.success.description, title: .info)
+                self.present(alert, animated: true)
                 
             case .failure(let error):
                 let alert = self.alertService.alert(error.localizedDescription)

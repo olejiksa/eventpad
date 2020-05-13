@@ -142,7 +142,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             requestSender.send(config: config) { result in
                 switch result {
                 case .success(let event):
-                    let detailViewController = EventViewController(event: event, isManager: false)
+                    let detailViewController = EventViewController(event: event, isManager: false, isFavorite: nil)
                     nvc.pushViewController(detailViewController, animated: true)
                     
                 case .failure:

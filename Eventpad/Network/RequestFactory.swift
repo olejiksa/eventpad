@@ -168,6 +168,30 @@ struct RequestFactory {
     }
     
     
+    // MARK: - Deletion
+    
+    static func deleteEvent(eventID: Int) -> RequestConfig<SuccessParser> {
+        let request = DeleteEventRequest(eventID: eventID)
+        let parser = SuccessParser()
+               
+        return .init(request: request, parser: parser)
+    }
+    
+    static func deleteConference(conferenceID: Int) -> RequestConfig<SuccessParser> {
+        let request = DeleteConferencetRequest(conferenceID: conferenceID)
+        let parser = SuccessParser()
+               
+        return .init(request: request, parser: parser)
+    }
+    
+    static func deleteTariff(tariffID: Int) -> RequestConfig<SuccessParser> {
+        let request = DeleteTariffRequest(tariffID: tariffID)
+        let parser = SuccessParser()
+               
+        return .init(request: request, parser: parser)
+    }
+    
+    
     // MARK: Organizer
     
     static func createConference(_ conference: Conference) -> RequestConfig<SuccessParser> {
@@ -186,6 +210,30 @@ struct RequestFactory {
     
     static func addToConference(tariffs: [Tariff], conferenceID: Int) -> RequestConfig<SuccessParser> {
         let request = AddTariffsRequest(tariffs: tariffs, conferenceID: conferenceID)
+        let parser = SuccessParser()
+        
+        return .init(request: request, parser: parser)
+    }
+    
+    static func sendPushNotification(tariffID: Int,
+                                     pushNotification: PushNotification) -> RequestConfig<SuccessParser> {
+        let request = SendPushNotificationRequest(tariffID: tariffID, pushNotification: pushNotification)
+        let parser = SuccessParser()
+        
+        return .init(request: request, parser: parser)
+    }
+    
+    static func sendPushNotification(conferenceID: Int,
+                                     pushNotification: PushNotification) -> RequestConfig<SuccessParser> {
+        let request = SendPushNotificationRequest(conferenceID: conferenceID, pushNotification: pushNotification)
+        let parser = SuccessParser()
+        
+        return .init(request: request, parser: parser)
+    }
+    
+    static func sendPushNotification(eventID: Int,
+                                     pushNotification: PushNotification) -> RequestConfig<SuccessParser> {
+        let request = SendPushNotificationRequest(eventID: eventID, pushNotification: pushNotification)
         let parser = SuccessParser()
         
         return .init(request: request, parser: parser)

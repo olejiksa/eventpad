@@ -25,6 +25,7 @@ final class AccountViewController: UIViewController {
     private let user: User
     private let role: Role
     private let alertService = AlertService()
+    private let requestSender = RequestSender()
     private let userDefaultsService = UserDefaultsService()
     
     init(user: User, role: Role, isNotMine: Bool) {
@@ -115,8 +116,22 @@ final class AccountViewController: UIViewController {
     }
     
     @IBAction private func myConferencesDidTap() {
-        let vc = MyConferencesViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        self.conferencesButton.showLoading()
+        let config = RequestFactory.conferences(username: user.username, limit: 20, offset: 0)
+        requestSender.send(config: config) { [weak self] result in
+            guard let self = self else { return }
+            self.conferencesButton.hideLoading()
+
+            switch result {
+            case .success(let conferences):
+                let vc = MyConferencesViewController(sections: conferences.map { EventSection(conference: $0) })
+                self.navigationController?.pushViewController(vc, animated: true)
+                
+            case .failure(let error):
+                let alert = self.alertService.alert(error.localizedDescription)
+                self.present(alert, animated: true)
+            }
+        }
     }
     
     @objc private func shareDidTap() {

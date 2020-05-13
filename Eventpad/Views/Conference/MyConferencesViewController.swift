@@ -16,7 +16,17 @@ final class MyConferencesViewController: UIViewController {
     private let userDefaultsService = UserDefaultsService()
     
     private let refreshControl = UIRefreshControl()
-    private var sections = [EventSection]()
+    private var sections: [EventSection]
+    
+    init(sections: [EventSection]) {
+        self.sections = sections
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     private lazy var noDataLabel: UILabel = {
         let label = UILabel()
