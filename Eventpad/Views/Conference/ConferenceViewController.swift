@@ -27,12 +27,11 @@ final class ConferenceViewController: UIViewController {
     @IBOutlet private weak var locationLabel: UILabel!
     
     @IBOutlet private weak var contactButton: BigButton!
-    @IBOutlet private weak var addEventButton: BigButton!
-    @IBOutlet private weak var addTariffButton: BigButton!
     @IBOutlet private weak var registerButton: BigButton!
     @IBOutlet private weak var scheduleButton: BigButton!
     @IBOutlet private weak var pushButton: BigButton!
     @IBOutlet private weak var deleteButton: BigButton!
+    @IBOutlet private weak var tariffsButton: BigButton!
     
     init(conference: Conference, isManager: Bool) {
         self.conference = conference
@@ -95,8 +94,7 @@ final class ConferenceViewController: UIViewController {
         
         contactButton.isHidden = isManager
         registerButton.isHidden = isManager || conference.tariffs!.isEmpty
-        addEventButton.isHidden = !isManager
-        addTariffButton.isHidden = !isManager
+        tariffsButton.isHidden = !isManager
         pushButton.isHidden = !isManager
         deleteButton.isHidden = !isManager
     }
@@ -135,20 +133,6 @@ final class ConferenceViewController: UIViewController {
         let activityViewController = UIActivityViewController(activityItems: sharedObjects, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
         present(activityViewController, animated: true, completion: nil)
-    }
-    
-    @IBAction private func addEventDidTap() {
-        guard let id = conference.id else { return }
-        let vc = NewEventViewController(conferenceID: id)
-        let nvc = UINavigationController(rootViewController: vc)
-        present(nvc, animated: true)
-    }
-    
-    @IBAction private func addTariffDidTap() {
-        let vc = NewTariffViewController()
-        vc.conferenceID = conference.id
-        let nvc = UINavigationController(rootViewController: vc)
-        present(nvc, animated: true)
     }
     
     @IBAction private func didCalendarTap() {
@@ -320,5 +304,10 @@ final class ConferenceViewController: UIViewController {
                 self.present(alert, animated: true)
             }
         }
+    }
+    
+    @IBAction private func tariffsDidTap(_ sender: Any) {
+        let vc = TariffsViewController(tariffs: conference.tariffs!, conferenceID: conference.id!)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

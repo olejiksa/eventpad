@@ -60,6 +60,8 @@
 		EB67D77B244C8B5C00E66B3C /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB67D779244C8B5C00E66B3C /* CategoriesViewController.swift */; };
 		EB67D77C244C8B5C00E66B3C /* CategoriesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB67D77A244C8B5C00E66B3C /* CategoriesView.xib */; };
 		EB67D783244D756100E66B3C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB67D782244D756100E66B3C /* Category.swift */; };
+		EB6E6AFC246BB6E000F1077F /* TariffsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6E6AFA246BB6E000F1077F /* TariffsViewController.swift */; };
+		EB6E6AFD246BB6E000F1077F /* TariffsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB6E6AFB246BB6E000F1077F /* TariffsView.xib */; };
 		EB6F38A72464C83800BDEBCE /* TicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6F38A52464C83800BDEBCE /* TicketViewController.swift */; };
 		EB6F38A82464C83800BDEBCE /* TicketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB6F38A62464C83800BDEBCE /* TicketView.xib */; };
 		EB78FE42245CA1C5002DE6FC /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB78FE40245CA1C5002DE6FC /* PurchaseViewController.swift */; };
@@ -174,6 +176,8 @@
 		EB67D779244C8B5C00E66B3C /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		EB67D77A244C8B5C00E66B3C /* CategoriesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoriesView.xib; sourceTree = "<group>"; };
 		EB67D782244D756100E66B3C /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		EB6E6AFA246BB6E000F1077F /* TariffsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TariffsViewController.swift; sourceTree = "<group>"; };
+		EB6E6AFB246BB6E000F1077F /* TariffsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TariffsView.xib; sourceTree = "<group>"; };
 		EB6F38A52464C83800BDEBCE /* TicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketViewController.swift; sourceTree = "<group>"; };
 		EB6F38A62464C83800BDEBCE /* TicketView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TicketView.xib; sourceTree = "<group>"; };
 		EB78FE40245CA1C5002DE6FC /* PurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
@@ -279,6 +283,8 @@
 				EBDB1E0D24589AA8009316FC /* NewTariffView.xib */,
 				EB6F38A52464C83800BDEBCE /* TicketViewController.swift */,
 				EB6F38A62464C83800BDEBCE /* TicketView.xib */,
+				EB6E6AFA246BB6E000F1077F /* TariffsViewController.swift */,
+				EB6E6AFB246BB6E000F1077F /* TariffsView.xib */,
 			);
 			path = Tariff;
 			sourceTree = "<group>";
@@ -447,12 +453,12 @@
 		EBD201102461D42E009D539F /* Conference */ = {
 			isa = PBXGroup;
 			children = (
+				EB78FE40245CA1C5002DE6FC /* PurchaseViewController.swift */,
+				EB78FE41245CA1C5002DE6FC /* PurchaseView.xib */,
 				EB5CE48D245379A40085E59B /* NewConferenceViewController.swift */,
 				EB5CE48E245379A40085E59B /* NewConferenceView.xib */,
 				EBDB1E08245750BE009316FC /* MyConferencesViewController.swift */,
 				EBDB1E09245750BE009316FC /* MyConferencesView.xib */,
-				EB78FE40245CA1C5002DE6FC /* PurchaseViewController.swift */,
-				EB78FE41245CA1C5002DE6FC /* PurchaseView.xib */,
 				EB06F37524332D810018605E /* ConferenceCell.swift */,
 				EB06F37624332D810018605E /* ConferenceCell.xib */,
 				EBD451BC2435F9D800F6A4C2 /* ConferenceViewController.swift */,
@@ -562,6 +568,7 @@
 				EBF8745C242F85B00056623E /* SignUpView.xib in Resources */,
 				EBDB1E0F24589AA8009316FC /* NewTariffView.xib in Resources */,
 				EBF87458242F84FA0056623E /* AuthView.xib in Resources */,
+				EB6E6AFD246BB6E000F1077F /* TariffsView.xib in Resources */,
 				EB67D77C244C8B5C00E66B3C /* CategoriesView.xib in Resources */,
 				EB8309BE246AFEBA00A6D47E /* TariffDataView.xib in Resources */,
 				EBD451BF2435F9D800F6A4C2 /* ConferenceView.xib in Resources */,
@@ -677,6 +684,7 @@
 				EBB3223F24486AEC00942A2B /* SignUpRequest.swift in Sources */,
 				EBB322352448441900942A2B /* RequestConfig.swift in Sources */,
 				EB3081382451631100EB7598 /* MessageResponse.swift in Sources */,
+				EB6E6AFC246BB6E000F1077F /* TariffsViewController.swift in Sources */,
 				EB30815A2451F0AD00EB7598 /* TicketParser.swift in Sources */,
 				EBB32239244846A800942A2B /* Error.swift in Sources */,
 			);

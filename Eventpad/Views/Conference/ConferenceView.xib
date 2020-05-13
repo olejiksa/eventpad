@@ -9,8 +9,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ConferenceViewController" customModule="Eventpad" customModuleProvider="target">
             <connections>
-                <outlet property="addEventButton" destination="bFo-KY-G8B" id="3cH-BR-W4T"/>
-                <outlet property="addTariffButton" destination="FiD-P2-gfb" id="eRO-0G-Oro"/>
                 <outlet property="categoryLabel" destination="uYa-aU-ijp" id="rub-mJ-EIN"/>
                 <outlet property="contactButton" destination="owh-EA-6Y7" id="R2i-Ia-u2k"/>
                 <outlet property="dateEndLabel" destination="uR1-HN-Wqq" id="358-NB-sov"/>
@@ -21,6 +19,7 @@
                 <outlet property="pushButton" destination="YTo-Ri-7O9" id="amA-l4-na7"/>
                 <outlet property="registerButton" destination="4Gb-3a-gKv" id="q7P-GW-eU1"/>
                 <outlet property="scheduleButton" destination="Cb4-OL-Na8" id="8Uz-Ru-tgB"/>
+                <outlet property="tariffsButton" destination="v4e-wJ-dHb" id="aRB-bU-g0B"/>
                 <outlet property="titleLabel" destination="fs1-gV-prK" id="S0K-HZ-Dgk"/>
                 <outlet property="view" destination="g8z-Ko-TQ5" id="VR0-e0-8Dw"/>
             </connections>
@@ -34,7 +33,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="duJ-Qu-ED9">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="1578.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="1509.5"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="WcP-3S-8aX">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="213.5"/>
@@ -48,7 +47,7 @@
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="md1-JZ-aXd">
-                                    <rect key="frame" x="20" y="233.5" width="280" height="1325"/>
+                                    <rect key="frame" x="20" y="233.5" width="280" height="1256"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="День открытых дверей: программы бакалавриата и магистратуры" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fs1-gV-prK">
                                             <rect key="frame" x="0.0" y="0.0" width="280" height="74"/>
@@ -219,7 +218,7 @@
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="5G9-TD-Yhs">
-                                            <rect key="frame" x="0.0" y="926" width="280" height="399"/>
+                                            <rect key="frame" x="0.0" y="926" width="280" height="330"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="owh-EA-6Y7" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="280" height="54"/>
@@ -259,8 +258,27 @@
                                                         <action selector="registerDidTap" destination="-1" eventType="touchUpInside" id="1jz-gn-xKU"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YTo-Ri-7O9" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v4e-wJ-dHb" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="138" width="280" height="54"/>
+                                                    <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="54" id="H0B-YX-i1A"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                    <state key="normal" title="Тарифы">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="tariffsDidTap:" destination="-1" eventType="touchUpInside" id="zY0-b6-8cb"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YTo-Ri-7O9" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="207" width="280" height="54"/>
                                                     <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="54" id="IAq-AL-5CG"/>
@@ -279,46 +297,8 @@
                                                         <action selector="pushDidTap" destination="-1" eventType="touchUpInside" id="JV0-kf-ac7"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFo-KY-G8B" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="207" width="280" height="54"/>
-                                                    <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="54" id="oRT-de-RNS"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                    <state key="normal" title="Добавить событие">
-                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </state>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="10"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                    <connections>
-                                                        <action selector="addEventDidTap" destination="-1" eventType="touchUpInside" id="vcZ-rO-Kyk"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FiD-P2-gfb" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="276" width="280" height="54"/>
-                                                    <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="54" id="tr5-Zn-GCS"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                    <state key="normal" title="Добавить тариф">
-                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </state>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="10"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                    <connections>
-                                                        <action selector="addTariffDidTap" destination="-1" eventType="touchUpInside" id="6e4-lL-ooa"/>
-                                                    </connections>
-                                                </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y0z-b2-Lcj" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="345" width="280" height="54"/>
+                                                    <rect key="frame" x="0.0" y="276" width="280" height="54"/>
                                                     <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="54" id="5Hu-ju-GXo"/>

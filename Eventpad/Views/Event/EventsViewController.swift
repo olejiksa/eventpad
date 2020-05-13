@@ -45,12 +45,6 @@ final class EventsViewController: UIViewController {
     private func setupTableView() {
         tableView.register(SubtitleCell.self, forCellReuseIdentifier: cellID)
     }
-    
-    @objc private func addDidTap() {
-        let vc = NewConferenceViewController()
-        let nvc = UINavigationController(rootViewController: vc)
-        present(nvc, animated: true)
-    }
 }
 
 

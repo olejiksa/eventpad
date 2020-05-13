@@ -44,6 +44,13 @@ final class ScheduleViewController: UIViewController {
     
     private func setupNavigation() {
         navigationItem.title = "Расписание"
+        
+        if isManager {
+            let addButton = UIBarButtonItem(barButtonSystemItem: .add,
+                                            target: self,
+                                            action: #selector(addDidTap))
+            navigationItem.rightBarButtonItem = addButton
+        }
     }
     
     private func setupTableView() {
@@ -65,6 +72,12 @@ final class ScheduleViewController: UIViewController {
                 self.present(alert, animated: true)
             }
         }
+    }
+    
+    @objc private func addDidTap() {
+        let vc = NewEventViewController(conferenceID: parentID)
+        let nvc = UINavigationController(rootViewController: vc)
+        present(nvc, animated: true)
     }
 }
 

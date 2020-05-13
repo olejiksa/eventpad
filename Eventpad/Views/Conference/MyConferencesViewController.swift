@@ -52,10 +52,10 @@ final class MyConferencesViewController: UIViewController {
     private func setupNavigation() {
         navigationItem.title = "Мои конференции"
         
-        let closeButton = UIBarButtonItem(barButtonSystemItem: .add,
-                                          target: self,
-                                          action: #selector(addDidTap))
-        navigationItem.rightBarButtonItem = closeButton
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add,
+                                        target: self,
+                                        action: #selector(addDidTap))
+        navigationItem.rightBarButtonItem = addButton
     }
     
     private func setupCollectionView() {
