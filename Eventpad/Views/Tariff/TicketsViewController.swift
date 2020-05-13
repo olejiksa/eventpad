@@ -49,7 +49,7 @@ final class TicketsViewController: UIViewController {
             
             switch result {
             case .success(let conferences):
-                self.conferences = conferences
+                self.conferences = Array(Set(conferences)).sorted(by: { $0.dateStart > $1.dateStart })
                 self.tableView.separatorStyle = .singleLine
                 self.noDataLabel.isHidden = true
                 self.tableView.reloadData()

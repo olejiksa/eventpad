@@ -24,7 +24,6 @@ final class EventViewController: UIViewController {
     @IBOutlet private weak var dateEndLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var pushButton: BigButton!
-    @IBOutlet private weak var addEventButton: BigButton!
     @IBOutlet private weak var deleteButton: BigButton!
     
     init(event: Event, isManager: Bool, isFavorite: Bool?) {
@@ -104,7 +103,6 @@ final class EventViewController: UIViewController {
         dateEndLabel.text = dateEnd
         descriptionLabel.text = event.description
         
-        addEventButton.isHidden = !isManager
         pushButton.isHidden = !isManager
         deleteButton.isHidden = !isManager
     }
@@ -205,7 +203,7 @@ final class EventViewController: UIViewController {
     
     @IBAction private func scheduleDidTap() {
         guard let id = event.id else { return }
-        let vc = ScheduleViewController(parentID: id, isManager: false)
+        let vc = ScheduleViewController(parentID: id, isManager: isManager)
         navigationController?.pushViewController(vc, animated: true)
     }
     

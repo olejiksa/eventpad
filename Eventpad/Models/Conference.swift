@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Conference: Codable {
+struct Conference: Codable, Hashable {
     
     private enum CodingKeys: String, CodingKey {
         case id

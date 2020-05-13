@@ -11,9 +11,10 @@ import UIKit
 final class ScheduleViewController: UIViewController {
 
     private let cellID = "\(SubtitleCell.self)"
-    private let titles = ["6 May", "5 May"]
+    private var titles: [String] = []
     private var items: [[Event]] = []
     
+    @IBOutlet private weak var noDataLabel: UILabel!
     private let alertService = AlertService()
     private let requestSender = RequestSender()
     
@@ -64,7 +65,11 @@ final class ScheduleViewController: UIViewController {
             
             switch result {
             case .success(let events):
-                self.items = [events]
+                self.noDataLabel.isHidden = !events.isEmpty
+                self.tableView.separatorStyle = events.isEmpty ? .none : .singleLine
+                let groupSorted = events.groupSort(byDate: { $0.dateStart })
+                self.items = groupSorted
+                self.titles = events.sorted { $0.dateStart > $1.dateStart }.map { $0.dateStartFormatted }
                 self.tableView.reloadData()
                 
             case .failure(let error):
@@ -95,6 +100,7 @@ extension ScheduleViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard section < titles.count else { return nil }
         return titles[section]
     }
     
@@ -133,5 +139,32 @@ extension ScheduleViewController: UITableViewDelegate {
         navigationController?.pushViewController(vc, animated: true)
         
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+
+extension Sequence {
+    
+    func groupSort(ascending: Bool = false,
+                   byDate dateKey: (Iterator.Element) -> Date) -> [[Iterator.Element]] {
+        var categories: [[Iterator.Element]] = []
+        for element in self {
+            let key = dateKey(element)
+            guard let dayIndex = categories.firstIndex(where: { $0.contains(where: { Calendar.current.isDate(dateKey($0), inSameDayAs: key) }) }) else {
+                guard let nextIndex = categories.firstIndex(where: { $0.contains(where: { dateKey($0).compare(key) == (ascending ? .orderedDescending : .orderedAscending) }) }) else {
+                    categories.append([element])
+                    continue
+                }
+                categories.insert([element], at: nextIndex)
+                continue
+            }
+
+            guard let nextIndex = categories[dayIndex].firstIndex(where: { dateKey($0).compare(key) == (ascending ? .orderedDescending : .orderedAscending) }) else {
+                categories[dayIndex].append(element)
+                continue
+            }
+            categories[dayIndex].insert(element, at: nextIndex)
+        }
+        return categories
     }
 }

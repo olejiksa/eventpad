@@ -6,7 +6,7 @@
 //  Copyright © 2020 Oleg Samoylov. All rights reserved.
 //
 
-struct Tariff: Codable {
+struct Tariff: Codable, Hashable {
     
     private enum CodingKeys: String, CodingKey {
         case id

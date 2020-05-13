@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Event: Codable {
+struct Event: Codable, Hashable {
     
     private enum CodingKeys: String, CodingKey {
         case id
@@ -31,4 +31,20 @@ struct Event: Codable {
     let speakerID: Int?
     let title: String
     let description: String
+    
+    var dateStartFormatted: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .short
+        
+        var dateComponent = DateComponents()
+        dateComponent.year = 31
+        let dateStartFinal = Calendar.current.date(byAdding: dateComponent, to: dateStart)!
+        
+        let dateformatter = DateFormatter()
+        dateformatter.dateStyle = .medium
+        dateformatter.timeStyle = .none
+        
+        return dateformatter.string(from: dateStartFinal)
+    }
 }

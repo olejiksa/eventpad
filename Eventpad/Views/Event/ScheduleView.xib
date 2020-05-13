@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScheduleViewController" customModule="Eventpad" customModuleProvider="target">
             <connections>
+                <outlet property="noDataLabel" destination="b1f-b3-Fou" id="9ef-rQ-P3p"/>
                 <outlet property="tableView" destination="xGn-6k-0Ol" id="Hd0-9y-7Ya"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -26,10 +27,18 @@
                         <outlet property="delegate" destination="-1" id="uMS-Sz-UMm"/>
                     </connections>
                 </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нет событий" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1f-b3-Fou">
+                    <rect key="frame" x="155.5" y="437.5" width="103" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
+                <constraint firstItem="b1f-b3-Fou" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="0Ks-9v-blX"/>
                 <constraint firstItem="xGn-6k-0Ol" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="JtT-iD-HKx"/>
+                <constraint firstItem="b1f-b3-Fou" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Uyy-5b-6ae"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xGn-6k-0Ol" secondAttribute="trailing" id="WOR-Z1-WAe"/>
                 <constraint firstAttribute="bottom" secondItem="xGn-6k-0Ol" secondAttribute="bottom" id="mOE-9R-L9P"/>
                 <constraint firstItem="xGn-6k-0Ol" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="sc2-vQ-1tO"/>
