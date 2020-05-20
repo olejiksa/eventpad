@@ -10,6 +10,10 @@ import UIKit
 
 final class NewConferenceViewController: UIViewController {
 
+    enum Mode: Equatable {
+        case new, edit(Conference)
+    }
+    
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var titleTextField: UITextField!
     @IBOutlet private weak var descriptionTextField: UITextField!
@@ -18,7 +22,9 @@ final class NewConferenceViewController: UIViewController {
     @IBOutlet private weak var dateStartTextField: UITextField!
     @IBOutlet private weak var dateEndTextField: UITextField!
     @IBOutlet private weak var doneButton: BigButton!
+    @IBOutlet private weak var urlTextField: UITextField!
     
+    private var conference: Conference?
     private let alertService = AlertService()
     private let userDefaultsService = UserDefaultsService()
     private let requestSender = RequestSender()
@@ -26,6 +32,17 @@ final class NewConferenceViewController: UIViewController {
     private var formHelper: FormHelper?
     private var dateStart: Date?
     private var dateEnd: Date?
+    private let mode: Mode
+    
+    init(mode: Mode) {
+        self.mode = mode
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,10 +53,11 @@ final class NewConferenceViewController: UIViewController {
         setupFormHelper()
         setupKeyboard()
         setupPicker()
+        setupView()
     }
     
     private func setupNavigation() {
-        navigationItem.title = "Новая конференция"
+        navigationItem.title = mode == .new ? "Новая конференция" : "Изменение конференции"
         
         let closeButton = UIBarButtonItem(barButtonSystemItem: .close,
                                           target: self,
@@ -73,24 +91,41 @@ final class NewConferenceViewController: UIViewController {
             let category = Category(string: categoryName),
             let location = locationTextField.text,
             let dateStart = dateStart,
-            let dateEnd = dateEnd
+            let dateEnd = dateEnd,
+            let photoUrl = urlTextField.text
         else { return }
         
         doneButton.showLoading()
-
-        let conference = Conference(id: nil,
-                                    title: title,
-                                    description: description,
-                                    category: category,
-                                    tariffs: nil,
-                                    location: location,
-                                    dateStart: dateStart,
-                                    dateEnd: dateEnd,
-                                    isCancelled: false,
-                                    organizerName: user.username,
-                                    organizerID: nil,
-                                    photoUrl: nil)
-        create(conference)
+        
+        if let conference = conference {
+            let conference = Conference(id: conference.id,
+                                        title: title,
+                                        description: description,
+                                        category: category,
+                                        tariffs: nil,
+                                        location: location,
+                                        dateStart: dateStart,
+                                        dateEnd: dateEnd,
+                                        isCancelled: false,
+                                        organizerName: user.username,
+                                        organizerID: nil,
+                                        photoUrl: photoUrl)
+            update(conference)
+        } else {
+            let conference = Conference(id: nil,
+                                        title: title,
+                                        description: description,
+                                        category: category,
+                                        tariffs: nil,
+                                        location: location,
+                                        dateStart: dateStart,
+                                        dateEnd: dateEnd,
+                                        isCancelled: false,
+                                        organizerName: user.username,
+                                        organizerID: nil,
+                                        photoUrl: photoUrl)
+            create(conference)
+        }
     }
     
     private func setupPicker() {
@@ -127,8 +162,61 @@ final class NewConferenceViewController: UIViewController {
         scrollView.bottomAnchor.constraint(lessThanOrEqualTo: keyboardLayoutGuide.topAnchor).isActive = true
     }
     
+    private func setupView() {
+        switch mode {
+        case .edit(let conference):
+            self.conference = conference
+            titleTextField.text = conference.title
+            descriptionTextField.text = conference.description
+            urlTextField.text = conference.photoUrl
+            categoryTextField.text = conference.category.description
+            locationTextField.text = conference.location
+            
+            var dateComponent = DateComponents()
+            dateComponent.year = 31
+            dateStart = Calendar.current.date(byAdding: dateComponent, to: conference.dateStart)!
+            dateEnd = Calendar.current.date(byAdding: dateComponent, to: conference.dateEnd)!
+            
+            let dateformatter = DateFormatter()
+            dateformatter.dateStyle = .medium
+            dateformatter.timeStyle = .medium
+            dateStartTextField.text = dateformatter.string(from: dateStart!)
+            dateEndTextField.text = dateformatter.string(from: dateEnd!)
+            
+        case .new:
+            break
+        }
+    }
+    
     private func create(_ conference: Conference) {
         let config = RequestFactory.createConference(conference)
+        
+        requestSender.send(config: config) { [weak self] result in
+            guard let self = self else { return }
+            
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let response):
+                    guard response.success else {
+                        self.doneButton.hideLoading()
+                        return
+                    }
+                    
+                    self.doneButton.hideLoading()
+                    self.close()
+                    
+                case .failure(let error):
+                    self.doneButton.hideLoading()
+                    
+                    let alert = self.alertService.alert(error.localizedDescription)
+                    self.present(alert, animated: true)
+                }
+            }
+        }
+    }
+    
+    private func update(_ conference: Conference) {
+        let config = RequestFactory.changeConference(conference)
         
         requestSender.send(config: config) { [weak self] result in
             guard let self = self else { return }
@@ -180,6 +268,10 @@ final class NewConferenceViewController: UIViewController {
     
     @objc private func pickerDidEndEditing() {
         view.endEditing(true)
+    }
+    
+    @IBAction func pasteDidTap(_ sender: Any) {
+        urlTextField.text = UIPasteboard.general.string
     }
 }
 

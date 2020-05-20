@@ -73,7 +73,7 @@ final class ConferenceViewController: UIViewController {
     }
     
     @objc private func didEditTap() {
-        let vc = NewConferenceViewController()
+        let vc = NewConferenceViewController(mode: .edit(conference))
         let nvc = UINavigationController(rootViewController: vc)
         present(nvc, animated: true)
     }
@@ -102,7 +102,6 @@ final class ConferenceViewController: UIViewController {
         registerButton.isHidden = isManager || conference.tariffs!.isEmpty
         tariffsButton.isHidden = !isManager
         pushButton.isHidden = !isManager
-        deleteButton.isHidden = !isManager
     }
     
     @IBAction private func registerDidTap() {

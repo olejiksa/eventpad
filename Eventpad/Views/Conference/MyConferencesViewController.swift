@@ -107,7 +107,7 @@ final class MyConferencesViewController: UIViewController {
 
             switch result {
             case .success(let conferences):
-                self.sections = conferences.map { EventSection(conference: $0) }
+                self.sections = conferences.sorted(by: { $0.dateStart > $1.dateStart}).map { EventSection(conference: $0) }
                 self.noDataLabel.isHidden = !conferences.isEmpty
                 self.collectionView.reloadData()
                 
@@ -119,7 +119,7 @@ final class MyConferencesViewController: UIViewController {
     }
     
     @objc private func addDidTap() {
-        let vc = NewConferenceViewController()
+        let vc = NewConferenceViewController(mode: .new)
         let nvc = UINavigationController(rootViewController: vc)
         present(nvc, animated: true)
     }

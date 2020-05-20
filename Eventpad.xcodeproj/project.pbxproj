@@ -57,6 +57,7 @@
 		EB549C102469D85700CD1951 /* StatisticsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB549C0E2469D85700CD1951 /* StatisticsView.xib */; };
 		EB5CE48F245379A40085E59B /* NewConferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5CE48D245379A40085E59B /* NewConferenceViewController.swift */; };
 		EB5CE490245379A40085E59B /* NewConferenceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB5CE48E245379A40085E59B /* NewConferenceView.xib */; };
+		EB5D02382474BC2700FE43B2 /* ChangeConferenceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5D02372474BC2700FE43B2 /* ChangeConferenceRequest.swift */; };
 		EB67D77B244C8B5C00E66B3C /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB67D779244C8B5C00E66B3C /* CategoriesViewController.swift */; };
 		EB67D77C244C8B5C00E66B3C /* CategoriesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB67D77A244C8B5C00E66B3C /* CategoriesView.xib */; };
 		EB67D783244D756100E66B3C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB67D782244D756100E66B3C /* Category.swift */; };
@@ -173,6 +174,7 @@
 		EB549C0E2469D85700CD1951 /* StatisticsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatisticsView.xib; sourceTree = "<group>"; };
 		EB5CE48D245379A40085E59B /* NewConferenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConferenceViewController.swift; sourceTree = "<group>"; };
 		EB5CE48E245379A40085E59B /* NewConferenceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewConferenceView.xib; sourceTree = "<group>"; };
+		EB5D02372474BC2700FE43B2 /* ChangeConferenceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeConferenceRequest.swift; sourceTree = "<group>"; };
 		EB67D779244C8B5C00E66B3C /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		EB67D77A244C8B5C00E66B3C /* CategoriesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoriesView.xib; sourceTree = "<group>"; };
 		EB67D782244D756100E66B3C /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -412,6 +414,7 @@
 				EB3081412451735200EB7598 /* ConferenceRequest.swift */,
 				EB3081472451753000EB7598 /* ConferencesRequest.swift */,
 				EB3B31FC24509B300023E930 /* CreateConferenceRequest.swift */,
+				EB5D02372474BC2700FE43B2 /* ChangeConferenceRequest.swift */,
 				EBA3F1EB246B86280065A28B /* DeleteConferenceRequest.swift */,
 				EBA3F1E9246B85AE0065A28B /* DeleteEventRequest.swift */,
 				EBA3F1ED246B87260065A28B /* DeleteTariffRequest.swift */,
@@ -667,6 +670,7 @@
 				EB30815E2452E3C800EB7598 /* TabBarFactory.swift in Sources */,
 				EB3B31F4244DA6510023E930 /* UserRequest.swift in Sources */,
 				EBA3F1E8246B830B0065A28B /* BaseDeleteRequest.swift in Sources */,
+				EB5D02382474BC2700FE43B2 /* ChangeConferenceRequest.swift in Sources */,
 				EB3B31F6244DA6F50023E930 /* UserParser.swift in Sources */,
 				EB6F38A72464C83800BDEBCE /* TicketViewController.swift in Sources */,
 				EBE681B82454919400CB9285 /* Global.swift in Sources */,

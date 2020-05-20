@@ -124,7 +124,7 @@ final class AccountViewController: UIViewController {
 
             switch result {
             case .success(let conferences):
-                let vc = MyConferencesViewController(sections: conferences.map { EventSection(conference: $0) })
+                let vc = MyConferencesViewController(sections: conferences.sorted(by: { $0.dateStart > $1.dateStart}).map { EventSection(conference: $0) })
                 self.navigationController?.pushViewController(vc, animated: true)
                 
             case .failure(let error):

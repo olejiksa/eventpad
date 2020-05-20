@@ -30,6 +30,8 @@ final class TicketViewController: UIViewController {
     @IBOutlet private weak var tariffLabel: UILabel!
     @IBOutlet private weak var datePurchaseLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var categoryLabel: UILabel!
+    @IBOutlet private weak var locationLabel: UILabel!
     
     private let conference: Conference
     private let ticket: Ticket
@@ -99,6 +101,8 @@ final class TicketViewController: UIViewController {
         descriptionLabel.text = conference.description
         tariffLabel.text = conference.tariffs?.first { $0.id == ticket.tariffID }?.title
         datePurchaseLabel.text = datePurchase
+        categoryLabel.text = conference.category.description
+        locationLabel.text = conference.location
     }
     
     @IBAction func calendarDidTap() {

@@ -11,12 +11,14 @@
             <connections>
                 <outlet property="bottomStackView" destination="3Rg-Th-fnk" id="GEX-Jh-35Q"/>
                 <outlet property="calendarButton" destination="tsd-KR-Oho" id="uJx-eW-5bR"/>
+                <outlet property="categoryLabel" destination="llQ-Dz-LRm" id="0sk-Kz-xYA"/>
                 <outlet property="contactButton" destination="EQe-L6-I25" id="kJa-MR-O7o"/>
                 <outlet property="dateEndLabel" destination="GYv-4x-5sP" id="aMi-dL-5Ab"/>
                 <outlet property="datePurchaseLabel" destination="tkf-nW-m7F" id="Wab-f9-3ya"/>
                 <outlet property="dateStartLabel" destination="5TS-1z-AGa" id="haM-fn-QOe"/>
                 <outlet property="descriptionLabel" destination="xbL-Nq-5U3" id="sWs-tm-LVe"/>
                 <outlet property="imageView" destination="MiE-KP-VgN" id="b4N-pn-ODa"/>
+                <outlet property="locationLabel" destination="Tef-NR-h90" id="jbR-qR-9H9"/>
                 <outlet property="mapButton" destination="SC9-8r-XHx" id="Cfr-ov-cog"/>
                 <outlet property="reminderButton" destination="Urw-rD-fyK" id="iHd-L3-7AW"/>
                 <outlet property="scheduleButton" destination="i67-Or-QDc" id="yU6-t4-WwE"/>

@@ -201,6 +201,13 @@ struct RequestFactory {
         return .init(request: request, parser: parser)
     }
     
+    static func changeConference(_ conference: Conference) -> RequestConfig<SuccessParser> {
+        let request = ChangeConferenceRequest(conference: conference)
+        let parser = SuccessParser()
+        
+        return .init(request: request, parser: parser)
+    }
+    
     static func addToConference(events: [Event], conferenceID: Int) -> RequestConfig<SuccessParser> {
         let request = AddEventsRequest(events: events, conferenceID: conferenceID)
         let parser = SuccessParser()

@@ -22,7 +22,7 @@ struct Conference: Codable, Hashable {
         case isCancelled = "is_cancelled"
         case organizerName = "organizer_login"
         case organizerID = "organizer_id"
-        case photoUrl
+        case photoUrl = "photo_url"
     }
     
     let id: Int?
