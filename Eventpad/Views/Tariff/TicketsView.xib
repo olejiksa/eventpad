@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DPM-3d-gKw">
-                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="FId-Zw-od1"/>
@@ -39,7 +39,7 @@
                 <constraint firstItem="g9f-z5-X6i" firstAttribute="centerX" secondItem="HLI-6o-ClT" secondAttribute="centerX" id="2CX-Gd-rCK"/>
                 <constraint firstItem="cWW-yz-4lI" firstAttribute="trailing" secondItem="DPM-3d-gKw" secondAttribute="trailing" id="AOb-zI-QGX"/>
                 <constraint firstAttribute="bottom" secondItem="DPM-3d-gKw" secondAttribute="bottom" id="OQf-1i-lbV"/>
-                <constraint firstItem="DPM-3d-gKw" firstAttribute="top" secondItem="HLI-6o-ClT" secondAttribute="top" constant="44" id="TdR-Fw-Cr7"/>
+                <constraint firstItem="DPM-3d-gKw" firstAttribute="top" secondItem="HLI-6o-ClT" secondAttribute="top" id="TdR-Fw-Cr7"/>
                 <constraint firstItem="g9f-z5-X6i" firstAttribute="centerY" secondItem="HLI-6o-ClT" secondAttribute="centerY" id="nCo-0d-QZe"/>
                 <constraint firstItem="DPM-3d-gKw" firstAttribute="leading" secondItem="cWW-yz-4lI" secondAttribute="leading" id="rDG-6O-3er"/>
             </constraints>

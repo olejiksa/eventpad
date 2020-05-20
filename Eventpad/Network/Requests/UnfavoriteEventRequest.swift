@@ -11,10 +11,8 @@ import Foundation
 final class UnfavoriteEventRequest: BasePostRequest {
     
     init(eventID: Int, userID: Int) {
-        let endpoint = "\(RequestFactory.endpointRoot)usr/deleteEvent/\(userID)"
-        let parameters = ["eventId": eventID]
-        
-        super.init(endpoint: endpoint, parameters: parameters)
+        let endpoint = "\(RequestFactory.endpointRoot)usr/deleteEvent/\(userID)?eventId=\(eventID)"
+        super.init(endpoint: endpoint)
     }
     
     override var urlRequest: URLRequest? {

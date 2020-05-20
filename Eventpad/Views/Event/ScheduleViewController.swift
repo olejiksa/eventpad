@@ -135,7 +135,7 @@ extension ScheduleViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
         let event = items[indexPath.section][indexPath.row]
-        let vc = EventViewController(event: event, isManager: isManager, isFavorite: nil)
+        let vc = EventViewController(event: event, isManager: isManager, fromFavorites: false)
         navigationController?.pushViewController(vc, animated: true)
         
         tableView.deselectRow(at: indexPath, animated: true)

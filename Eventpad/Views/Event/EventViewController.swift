@@ -17,7 +17,7 @@ final class EventViewController: UIViewController {
     private let requestSender = RequestSender()
     private let event: Event
     private let isManager: Bool
-    private var isFavorite: Bool?
+    private let fromFavorites: Bool
 
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var dateStartLabel: UILabel!
@@ -26,10 +26,10 @@ final class EventViewController: UIViewController {
     @IBOutlet private weak var pushButton: BigButton!
     @IBOutlet private weak var deleteButton: BigButton!
     
-    init(event: Event, isManager: Bool, isFavorite: Bool?) {
+    init(event: Event, isManager: Bool, fromFavorites: Bool) {
         self.event = event
         self.isManager = isManager
-        self.isFavorite = isFavorite
+        self.fromFavorites = fromFavorites
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -58,23 +58,12 @@ final class EventViewController: UIViewController {
                                           target: self,
                                           action: #selector(shareDidTap))
         
-        if isFavorite == true {
-            let favoriteImage = UIImage(systemName: "star.fill")
-            let favoriteButton = UIBarButtonItem(image: favoriteImage,
-                                                 style: .plain,
-                                                 target: self,
-                                                 action: #selector(unstarDidTap))
-            navigationItem.rightBarButtonItems = [shareButton, favoriteButton]
-        } else if isFavorite == false {
-            let favoriteImage = UIImage(systemName: "star")
-            let favoriteButton = UIBarButtonItem(image: favoriteImage,
-                                                 style: .plain,
-                                                 target: self,
-                                                 action: #selector(starDidTap))
-            navigationItem.rightBarButtonItems = [shareButton, favoriteButton]
-        } else {
-            navigationItem.rightBarButtonItem = shareButton
-        }
+        let favoriteImage = UIImage(systemName: fromFavorites ? "star.fill" : "star")
+        let favoriteButton = UIBarButtonItem(image: favoriteImage,
+                                             style: .plain,
+                                             target: self,
+                                             action: fromFavorites ? #selector(unstarDidTap) : #selector(starDidTap))
+        navigationItem.rightBarButtonItems = [shareButton, favoriteButton]
         
         let editButton = UIBarButtonItem(barButtonSystemItem: .edit,
                                          target: self,
@@ -134,7 +123,6 @@ final class EventViewController: UIViewController {
                 let alert = self.alertService.alert(success.success.description, title: .info)
                 self.present(alert, animated: true)
                 
-                self.isFavorite = true
                 self.updateButtons()
                 
             case .failure(let error):
@@ -161,7 +149,6 @@ final class EventViewController: UIViewController {
                 let alert = self.alertService.alert(success.success.description, title: .info)
                 self.present(alert, animated: true)
                 
-                self.isFavorite = false
                 self.updateButtons()
                 
             case .failure(let error):

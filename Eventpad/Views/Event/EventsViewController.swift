@@ -79,7 +79,7 @@ extension EventsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
         let event = events[indexPath.section]
-        let vc = EventViewController(event: event, isManager: false, isFavorite: nil)
+        let vc = EventViewController(event: event, isManager: false, fromFavorites: false)
         navigationController?.pushViewController(vc, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }

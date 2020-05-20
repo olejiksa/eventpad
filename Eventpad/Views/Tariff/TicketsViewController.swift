@@ -11,12 +11,14 @@ import UIKit
 final class TicketsViewController: UIViewController {
     
     private let userDefaultsService = UserDefaultsService()
+    private let searchController = UISearchController(searchResultsController: nil)
     private let alertService = AlertService()
     private let requestSender = RequestSender()
     private let cellID = "\(SubtitleCell.self)"
     private let refreshControl = UIRefreshControl()
     private var tickets: [String: String] = [:]
     private var conferences: [Conference] = []
+    private var searchedConferences: [Conference] = []
     
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var noDataLabel: UILabel!
@@ -25,13 +27,20 @@ final class TicketsViewController: UIViewController {
         super.viewDidLoad()
 
         setupNavigation()
+        setupSearchController()
         setupRefreshControl()
         loadData()
     }
     
+    private func setupSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        navigationItem.searchController = searchController
+    }
+    
     private func setupNavigation() {
         navigationItem.title = "Билеты"
-        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.navigationBar.prefersLargeTitles = true
         
         tableView.register(SubtitleCell.self, forCellReuseIdentifier: cellID)
         
@@ -115,6 +124,13 @@ final class TicketsViewController: UIViewController {
             }
         }
     }
+    
+    private func filterContent(for searchText: String) {
+        searchedConferences = conferences.filter {
+            $0.title.localizedCaseInsensitiveContains(searchText) ||
+            $0.description.localizedCaseInsensitiveContains(searchText)
+        }
+    }
 }
 
 
@@ -124,14 +140,14 @@ extension TicketsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        return conferences.count
+        return searchController.isActive ? searchedConferences.count : conferences.count
     }
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? SubtitleCell else { return .init(frame: .zero) }
         
-        let conference = conferences[indexPath.row]
+        let conference = searchController.isActive ? searchedConferences[indexPath.row] : conferences[indexPath.row]
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
@@ -157,7 +173,7 @@ extension TicketsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let conference = conferences[indexPath.row]
+        let conference = searchController.isActive ? searchedConferences[indexPath.row] : conferences[indexPath.row]
         let ticket = tickets[String(conference.id!)]
         if ticket == nil {
             searchTicket(conference: conference) { [weak self] ticket in
@@ -166,5 +182,17 @@ extension TicketsViewController: UITableViewDelegate {
         } else {
             getTicket(ticketID: ticket!, conference: conference)
         }
+    }
+}
+
+
+// MARK: - UISearchResultsUpdating
+
+extension TicketsViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let searchText = searchController.searchBar.text else { return }
+        filterContent(for: searchText)
+        tableView.reloadData()
     }
 }
