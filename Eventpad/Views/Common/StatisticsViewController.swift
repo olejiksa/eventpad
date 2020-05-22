@@ -39,7 +39,7 @@ final class StatisticsViewController: UIViewController {
     }
 
     private func setupNavigation() {
-        navigationItem.title = "Статистика по конференциям"
+        navigationItem.title = "Статистика"
     }
     
     private func setupTableView() {
@@ -82,6 +82,14 @@ final class StatisticsViewController: UIViewController {
 
 extension StatisticsViewController: UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return section == 0 ? "Число регистраций" : "Продано билетов"
+    }
+    
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
         return conferences.count
@@ -91,19 +99,49 @@ extension StatisticsViewController: UITableViewDataSource {
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID,
                                                        for: indexPath) as? StatisticsCell else { return .init(frame: .zero) }
-        let conference = conferences[indexPath.row]
-        cell.titleLabel?.text = conference.title
-        let ticketsLeft = conference.tariffs?.reduce(into: 0, { $0 += $1.ticketsLeftCount }) ?? 0
-        let ticketsTotal = conference.tariffs?.reduce(into: 0, { $0 += $1.ticketsTotalCount }) ?? 0
-        let ticketsSold = ticketsTotal - ticketsLeft
-        if ticketsTotal > 0 {
-            cell.progressView.progress = Float(ticketsSold) / Float(ticketsTotal)
-            cell.statLabel.text = "\(ticketsSold)/\(ticketsTotal)"
-        } else {
-            cell.progressView.progress = 0
-            cell.statLabel.text = "Нет тарифов"
+        
+        switch indexPath.section {
+        case 0:
+            let conference = conferences[indexPath.row]
+            cell.titleLabel?.text = conference.title
+            let ticketsLeft = conference.tariffs?.reduce(into: 0, { sum, item in
+                sum = item.price == 0 ? sum + item.ticketsLeftCount : sum
+            }) ?? 0
+            let ticketsTotal = conference.tariffs?.reduce(into: 0, { sum, item in
+                sum = item.price == 0 ? sum + item.ticketsTotalCount : sum
+            }) ?? 0
+            let ticketsSold = ticketsTotal - ticketsLeft
+            if ticketsTotal > 0 {
+                cell.progressView.progress = Float(ticketsSold) / Float(ticketsTotal)
+                cell.statLabel.text = "\(ticketsSold)/\(ticketsTotal)"
+            } else {
+                cell.progressView.progress = 0
+                cell.statLabel.text = "Нет бесплатных тарифов"
+            }
+            return cell
+            
+        case 1:
+            let conference = conferences[indexPath.row]
+            cell.titleLabel?.text = conference.title
+            let ticketsLeft = conference.tariffs?.reduce(into: 0, { sum, item in
+                sum = item.price > 0 ? sum + item.ticketsLeftCount : sum
+            }) ?? 0
+            let ticketsTotal = conference.tariffs?.reduce(into: 0, { sum, item in
+                sum = item.price > 0 ? sum + item.ticketsTotalCount : sum
+            }) ?? 0
+            let ticketsSold = ticketsTotal - ticketsLeft
+            if ticketsTotal > 0 {
+                cell.progressView.progress = Float(ticketsSold) / Float(ticketsTotal)
+                cell.statLabel.text = "\(ticketsSold)/\(ticketsTotal)"
+            } else {
+                cell.progressView.progress = 0
+                cell.statLabel.text = "Нет платных тарифов"
+            }
+            return cell
+            
+        default:
+            return .init(frame: .zero)
         }
-        return cell
     }
 }
 
@@ -117,7 +155,14 @@ extension StatisticsViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let conference = conferences[indexPath.row]
         guard let tariffs = conference.tariffs, !tariffs.isEmpty else { return }
-        let vc = TariffDataViewController(tariffs: tariffs)
-        navigationController?.pushViewController(vc, animated: true)
+        if indexPath.section == 0 {
+            guard tariffs.first(where: { $0.price == 0 }) != nil else { return }
+            let vc = TariffDataViewController(tariffs: tariffs, free: true)
+            navigationController?.pushViewController(vc, animated: true)
+        } else {
+            guard tariffs.first(where: { $0.price > 0 }) != nil else { return }
+            let vc = TariffDataViewController(tariffs: tariffs, free: false)
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }

@@ -14,9 +14,11 @@ final class TariffDataViewController: UIViewController {
     
     private let cellID = "\(StatisticsCell.self)"
     private let tariffs: [Tariff]
+    private let free: Bool
     
-    init(tariffs: [Tariff]) {
+    init(tariffs: [Tariff], free: Bool) {
         self.tariffs = tariffs
+        self.free = free
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -51,14 +53,15 @@ extension TariffDataViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        return tariffs.count
+        return free ? tariffs.filter { $0.price == 0 }.count : tariffs.filter { $0.price > 0 }.count
     }
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID,
                                                        for: indexPath) as? StatisticsCell else { return .init(frame: .zero) }
-        let tariff = tariffs[indexPath.row]
+        let filteredTariffs = free ? tariffs.filter { $0.price == 0 } : tariffs.filter { $0.price > 0 }
+        let tariff = filteredTariffs[indexPath.row]
         cell.titleLabel?.text = tariff.title
         let ticketsLeft = tariff.ticketsLeftCount
         let ticketsTotal = tariff.ticketsTotalCount

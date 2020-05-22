@@ -60,7 +60,19 @@ final class TicketsViewController: UIViewController {
     }
     
     private func loadData() {
-        guard let user = userDefaultsService.getUser() else { return }
+        guard let user = userDefaultsService.getUser() else {
+            let alert = self.alertService.alert("Выполните вход под своей учетной записью для просмотра билетов")
+            self.present(alert, animated: true)
+            self.refreshControl.endRefreshing()
+            self.spinner.stopAnimating()
+            self.noDataLabel.isHidden = false
+            self.conferences = []
+            self.searchedConferences = []
+            self.tableView.separatorStyle = .none
+            self.tableView.reloadData()
+            return
+        }
+        
         let config = RequestFactory.conferences(userID: user.id, limit: 20, offset: 0)
         requestSender.send(config: config) { [weak self] result in
             guard let self = self else { return }

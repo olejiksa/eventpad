@@ -356,7 +356,7 @@ final class EventViewController: UIViewController {
         guard let eventID = event.id else { return }
         let pushNotification = PushNotification(title: "Title", text: "Text")
         let config = RequestFactory.sendPushNotification(eventID: eventID, pushNotification: pushNotification)
-        pushButton.showLoading()()
+        pushButton.showLoading()
         requestSender.send(config: config) { [weak self] result in
             guard let self = self else { return }
             

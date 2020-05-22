@@ -86,7 +86,19 @@ final class FavoritesViewController: UIViewController {
     }
     
     private func loadData() {
-        guard let userID = userDefaultsService.getUser()?.id else { return }
+        guard let userID = userDefaultsService.getUser()?.id else {
+            let alert = self.alertService.alert("Выполните вход под своей учетной записью для просмотра избранных событий")
+            self.present(alert, animated: true)
+            self.refreshControl.endRefreshing()
+            self.spinner.stopAnimating()
+            self.noDataLabel.isHidden = false
+            self.events = []
+            self.searchedEvents = []
+            self.tableView.separatorStyle = .none
+            self.tableView.reloadData()
+            return
+        }
+        
         let config = RequestFactory.events(userID: userID, limit: 20, offset: 0, areActual: false)
         requestSender.send(config: config) { [weak self] result in
             guard let self = self else { return }

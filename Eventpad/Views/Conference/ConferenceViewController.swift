@@ -257,7 +257,7 @@ final class ConferenceViewController: UIViewController {
         requestSender.send(config: config) { [weak self] result in
             guard let self = self else { return }
             
-            self.contactButton.showLoading()
+            self.contactButton.hideLoading()
             
             switch result {
             case .success(let user):
