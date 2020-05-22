@@ -20,6 +20,7 @@
                 <outlet property="imageView" destination="MiE-KP-VgN" id="b4N-pn-ODa"/>
                 <outlet property="locationLabel" destination="Tef-NR-h90" id="jbR-qR-9H9"/>
                 <outlet property="mapButton" destination="SC9-8r-XHx" id="Cfr-ov-cog"/>
+                <outlet property="photoView" destination="i5t-iD-HEQ" id="eZo-SW-Xpz"/>
                 <outlet property="reminderButton" destination="Urw-rD-fyK" id="iHd-L3-7AW"/>
                 <outlet property="scheduleButton" destination="i67-Or-QDc" id="yU6-t4-WwE"/>
                 <outlet property="tariffLabel" destination="g7l-st-AAn" id="AXZ-3M-D9I"/>

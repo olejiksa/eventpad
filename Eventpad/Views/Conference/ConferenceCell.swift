@@ -6,18 +6,20 @@
 //  Copyright © 2020 Oleg Samoylov. All rights reserved.
 //
 
+import Kingfisher
 import UIKit
 
 final class ConferenceCell: UICollectionViewCell {
     
     @IBOutlet private weak var view: UIView!
-    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var subtitleLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        imageView.image = UIImage(named: "Warsaw")
         view.layer.cornerRadius = 10
         imageView.layer.cornerRadius = 10
     }

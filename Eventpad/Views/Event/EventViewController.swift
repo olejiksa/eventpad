@@ -6,6 +6,7 @@
 //  Copyright © 2020 Oleg Samoylov. All rights reserved.
 //
 
+import Kingfisher
 import EventKit
 import UIKit
 
@@ -19,6 +20,9 @@ final class EventViewController: UIViewController {
     private let isManager: Bool
     private let fromFavorites: Bool
 
+    @IBOutlet private weak var contactButton: BigButton!
+    @IBOutlet private weak var allEventsButton: BigButton!
+    @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var dateStartLabel: UILabel!
     @IBOutlet private weak var dateEndLabel: UILabel!
@@ -78,6 +82,11 @@ final class EventViewController: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .short
+        
+        if let url = event.photoUrl {
+            let url = URL(string: url)
+            imageView.kf.setImage(with: url)
+        }
         
         var dateComponent = DateComponents()
         dateComponent.year = 31
@@ -263,9 +272,12 @@ final class EventViewController: UIViewController {
     
     @IBAction private func contactDidTap() {
         guard let userID = event.speakerID else { return }
+        contactButton.showLoading()
         let config = RequestFactory.user(userID: userID, role: .participant)
         requestSender.send(config: config) { [weak self] result in
             guard let self = self else { return }
+            
+            self.contactButton.showLoading()
             
             switch result {
             case .success(let user):
@@ -281,6 +293,7 @@ final class EventViewController: UIViewController {
     
     @IBAction private func allEventsDidTap() {
         guard let userID = event.speakerID else { return }
+        allEventsButton.showLoading()
         let config = RequestFactory.user(userID: userID, role: .participant)
         requestSender.send(config: config) { [weak self] result in
             guard let self = self else { return }
@@ -291,6 +304,7 @@ final class EventViewController: UIViewController {
                 self.requestSender.send(config: subconfig) { [weak self] result in
                     switch result {
                     case .success(let events):
+                        self?.allEventsButton.hideLoading()
                         let vc = EventsViewController(events: events, username: user.username)
                         self?.navigationController?.pushViewController(vc, animated: true)
                     
@@ -300,6 +314,7 @@ final class EventViewController: UIViewController {
                 }
                 
             case .failure(let error):
+                self.allEventsButton.hideLoading()
                 let alert = self.alertService.alert(error.localizedDescription)
                 self.present(alert, animated: true)
             }
@@ -341,8 +356,11 @@ final class EventViewController: UIViewController {
         guard let eventID = event.id else { return }
         let pushNotification = PushNotification(title: "Title", text: "Text")
         let config = RequestFactory.sendPushNotification(eventID: eventID, pushNotification: pushNotification)
+        pushButton.showLoading()()
         requestSender.send(config: config) { [weak self] result in
             guard let self = self else { return }
+            
+            self.pushButton.hideLoading()
             
             switch result {
             case .success(let success):

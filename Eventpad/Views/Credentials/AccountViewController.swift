@@ -11,6 +11,7 @@ import UIKit
 
 final class AccountViewController: UIViewController {
 
+    @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var fullNameLabel: UILabel!
     @IBOutlet private weak var accountLabel: UILabel!
     @IBOutlet private weak var emailButton: UIButton!
@@ -77,6 +78,11 @@ final class AccountViewController: UIViewController {
         statsButton.isHidden = role != .organizer || isNotMine
         logoutButton.isHidden = isNotMine
         descriptionLabel.text = user.description ?? "Не указано"
+        
+        if let url = user.photoUrl {
+            let url = URL(string: url)
+            imageView.kf.setImage(with: url)
+        }
     }
     
     @IBAction private func logoutDidTap() {

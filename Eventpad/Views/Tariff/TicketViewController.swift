@@ -17,6 +17,7 @@ final class TicketViewController: UIViewController {
     private let alertService = AlertService()
     private let requestSender = RequestSender()
     
+    @IBOutlet private weak var photoView: UIImageView!
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var dateEndLabel: UILabel!
@@ -94,6 +95,11 @@ final class TicketViewController: UIViewController {
         let dateStart = dateFormatter.string(from: dateStartFinal)
         let dateEnd = dateFormatter.string(from: dateEndFinal)
         let datePurchase = dateFormatter.string(from: ticket.released)
+        
+        if let url = conference.photoUrl {
+            let url = URL(string: url)
+            photoView.kf.setImage(with: url)
+        }
         
         titleLabel.text = conference.title
         dateStartLabel.text = dateStart

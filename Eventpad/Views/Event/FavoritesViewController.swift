@@ -19,6 +19,8 @@ final class FavoritesViewController: UIViewController {
     private var searchedEvents: [Event] = []
     private let cellID = "\(SubtitleCell.self)"
     private var titles: [String] = []
+    private var spinner = UIActivityIndicatorView(style: .medium)
+    
     @IBOutlet private weak var tableView: UITableView!
     
     private lazy var noDataLabel: UILabel = {
@@ -36,6 +38,7 @@ final class FavoritesViewController: UIViewController {
         setupTableView()
         setupNoDataLabel()
         setupRefreshControl()
+        setupSpinner()
         loadData()
     }
     
@@ -54,8 +57,18 @@ final class FavoritesViewController: UIViewController {
         tableView.register(SubtitleCell.self, forCellReuseIdentifier: cellID)
     }
     
+    private func setupSpinner() {
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        spinner.startAnimating()
+        view.addSubview(spinner)
+
+        spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
+    
     private func setupNoDataLabel() {
         noDataLabel.translatesAutoresizingMaskIntoConstraints = false
+        noDataLabel.isHidden = true
         view.addSubview(noDataLabel)
         
         NSLayoutConstraint.activate([
@@ -82,6 +95,7 @@ final class FavoritesViewController: UIViewController {
             
             switch result {
             case .success(let events):
+                self.spinner.stopAnimating()
                 self.noDataLabel.isHidden = !events.isEmpty
                 self.tableView.separatorStyle = events.isEmpty ? .none : .singleLine
                 let groupSorted = events.groupSort(byDate: { $0.dateStart })

@@ -9,6 +9,7 @@
 import MapKit
 import UIKit
 import EventKit
+import Kingfisher
 
 final class ConferenceViewController: UIViewController {
     
@@ -19,6 +20,7 @@ final class ConferenceViewController: UIViewController {
     private let store = EKEventStore()
     private let isManager: Bool
     
+    @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var dateStartLabel: UILabel!
     @IBOutlet private weak var dateEndLabel: UILabel!
@@ -97,6 +99,11 @@ final class ConferenceViewController: UIViewController {
         descriptionLabel.text = conference.description
         categoryLabel.text = conference.category.description
         locationLabel.text = conference.location
+        
+        if let url = conference.photoUrl {
+            let url = URL(string: url)
+            imageView.kf.setImage(with: url)
+        }
         
         contactButton.isHidden = isManager
         registerButton.isHidden = isManager || conference.tariffs!.isEmpty
@@ -245,9 +252,12 @@ final class ConferenceViewController: UIViewController {
     
     @IBAction private func contactDidTap() {
         guard let userID = conference.organizerID else { return }
+        contactButton.showLoading()
         let config = RequestFactory.user(userID: userID, role: .organizer)
         requestSender.send(config: config) { [weak self] result in
             guard let self = self else { return }
+            
+            self.contactButton.showLoading()
             
             switch result {
             case .success(let user):
@@ -263,10 +273,13 @@ final class ConferenceViewController: UIViewController {
     
     @IBAction private func pushDidTap() {
         guard let id = conference.id else { return }
+        pushButton.showLoading()
         let pushNotification = PushNotification(title: "Test", text: "Test message")
         let config = RequestFactory.sendPushNotification(conferenceID: id, pushNotification: pushNotification)
         requestSender.send(config: config) { [weak self] result in
             guard let self = self else { return }
+            
+            self.pushButton.hideLoading()
             
             switch result {
             case .success(let success):

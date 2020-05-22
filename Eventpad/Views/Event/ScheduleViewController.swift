@@ -13,11 +13,12 @@ final class ScheduleViewController: UIViewController {
     private let cellID = "\(SubtitleCell.self)"
     private var titles: [String] = []
     private var items: [[Event]] = []
+    private var spinner = UIActivityIndicatorView(style: .medium)
     
-    @IBOutlet private weak var noDataLabel: UILabel!
     private let alertService = AlertService()
     private let requestSender = RequestSender()
     
+    @IBOutlet private weak var noDataLabel: UILabel!
     @IBOutlet private weak var tableView: UITableView!
     
     private let parentID: Int
@@ -39,7 +40,7 @@ final class ScheduleViewController: UIViewController {
 
         setupNavigation()
         setupTableView()
-        
+        setupSpinner()
         loadData()
     }
     
@@ -54,6 +55,15 @@ final class ScheduleViewController: UIViewController {
         }
     }
     
+    private func setupSpinner() {
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        spinner.startAnimating()
+        view.addSubview(spinner)
+
+        spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
+    
     private func setupTableView() {
         tableView.register(SubtitleCell.self, forCellReuseIdentifier: cellID)
     }
@@ -65,6 +75,7 @@ final class ScheduleViewController: UIViewController {
             
             switch result {
             case .success(let events):
+                self.spinner.stopAnimating()
                 self.noDataLabel.isHidden = !events.isEmpty
                 self.tableView.separatorStyle = events.isEmpty ? .none : .singleLine
                 let groupSorted = events.groupSort(byDate: { $0.dateStart })

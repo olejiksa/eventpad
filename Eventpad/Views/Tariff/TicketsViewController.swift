@@ -19,6 +19,7 @@ final class TicketsViewController: UIViewController {
     private var tickets: [String: String] = [:]
     private var conferences: [Conference] = []
     private var searchedConferences: [Conference] = []
+    private var spinner = UIActivityIndicatorView(style: .medium)
     
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var noDataLabel: UILabel!
@@ -29,6 +30,7 @@ final class TicketsViewController: UIViewController {
         setupNavigation()
         setupSearchController()
         setupRefreshControl()
+        setupSpinner()
         loadData()
     }
     
@@ -48,6 +50,15 @@ final class TicketsViewController: UIViewController {
         self.tickets = tickets
     }
     
+    private func setupSpinner() {
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        spinner.startAnimating()
+        view.addSubview(spinner)
+
+        spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
+    
     private func loadData() {
         guard let user = userDefaultsService.getUser() else { return }
         let config = RequestFactory.conferences(userID: user.id, limit: 20, offset: 0)
@@ -60,7 +71,8 @@ final class TicketsViewController: UIViewController {
             case .success(let conferences):
                 self.conferences = Array(Set(conferences)).sorted(by: { $0.dateStart > $1.dateStart })
                 self.tableView.separatorStyle = .singleLine
-                self.noDataLabel.isHidden = true
+                self.noDataLabel.isHidden = !conferences.isEmpty
+                self.spinner.stopAnimating()
                 self.tableView.reloadData()
                 
             case .failure(let error):
@@ -115,6 +127,7 @@ final class TicketsViewController: UIViewController {
             
             switch result {
             case .success(let ticket):
+                self.dismiss(animated: false, completion: nil)
                 let vc = TicketViewController(conference: conference, ticket: ticket)
                 self.navigationController?.pushViewController(vc, animated: true)
                 
@@ -145,7 +158,8 @@ extension TicketsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? SubtitleCell else { return .init(frame: .zero) }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID,
+                                                       for: indexPath) as? SubtitleCell else { return .init(frame: .zero) }
         
         let conference = searchController.isActive ? searchedConferences[indexPath.row] : conferences[indexPath.row]
         
@@ -176,6 +190,15 @@ extension TicketsViewController: UITableViewDelegate {
         let conference = searchController.isActive ? searchedConferences[indexPath.row] : conferences[indexPath.row]
         let ticket = tickets[String(conference.id!)]
         if ticket == nil {
+            let alert = UIAlertController(title: nil, message: "Идет загрузка...", preferredStyle: .alert)
+            let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+            loadingIndicator.hidesWhenStopped = true
+            loadingIndicator.style = .medium
+            loadingIndicator.startAnimating()
+
+            alert.view.addSubview(loadingIndicator)
+            present(alert, animated: true, completion: nil)
+            
             searchTicket(conference: conference) { [weak self] ticket in
                 self?.getTicket(ticketID: String(ticket.id!), conference: conference)
             }

@@ -44,6 +44,11 @@ struct EventSection: Section {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? ConferenceCell else { return .init() }
         
         cell.configure(with: conference)
+        
+        if let url = conference.photoUrl {
+            let url = URL(string: url)
+            cell.imageView.kf.setImage(with: url)
+        }
         return cell
     }
 }

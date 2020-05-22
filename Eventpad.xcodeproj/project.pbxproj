@@ -58,6 +58,7 @@
 		EB5CE48F245379A40085E59B /* NewConferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5CE48D245379A40085E59B /* NewConferenceViewController.swift */; };
 		EB5CE490245379A40085E59B /* NewConferenceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB5CE48E245379A40085E59B /* NewConferenceView.xib */; };
 		EB5D02382474BC2700FE43B2 /* ChangeConferenceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5D02372474BC2700FE43B2 /* ChangeConferenceRequest.swift */; };
+		EB5D023E2474FA9600FE43B2 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EB5D023D2474FA9600FE43B2 /* Kingfisher */; };
 		EB67D77B244C8B5C00E66B3C /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB67D779244C8B5C00E66B3C /* CategoriesViewController.swift */; };
 		EB67D77C244C8B5C00E66B3C /* CategoriesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB67D77A244C8B5C00E66B3C /* CategoriesView.xib */; };
 		EB67D783244D756100E66B3C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB67D782244D756100E66B3C /* Category.swift */; };
@@ -247,6 +248,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB5D023E2474FA9600FE43B2 /* Kingfisher in Frameworks */,
 				EB997816243096BB00DD5663 /* KeyboardAdjuster in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -522,6 +524,7 @@
 			name = Eventpad;
 			packageProductDependencies = (
 				EB997815243096BB00DD5663 /* KeyboardAdjuster */,
+				EB5D023D2474FA9600FE43B2 /* Kingfisher */,
 			);
 			productName = Eventpad;
 			productReference = EBF8743C242F81330056623E /* Eventpad.app */;
@@ -553,6 +556,7 @@
 			mainGroup = EBF87433242F81330056623E;
 			packageReferences = (
 				EB997814243096BB00DD5663 /* XCRemoteSwiftPackageReference "KeyboardAdjuster" */,
+				EB5D023C2474FA9600FE43B2 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = EBF8743D242F81330056623E /* Products */;
 			projectDirPath = "";
@@ -888,6 +892,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		EB5D023C2474FA9600FE43B2 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.14.0;
+			};
+		};
 		EB997814243096BB00DD5663 /* XCRemoteSwiftPackageReference "KeyboardAdjuster" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/lionheart/KeyboardAdjuster.git";
@@ -899,6 +911,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		EB5D023D2474FA9600FE43B2 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EB5D023C2474FA9600FE43B2 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		EB997815243096BB00DD5663 /* KeyboardAdjuster */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = EB997814243096BB00DD5663 /* XCRemoteSwiftPackageReference "KeyboardAdjuster" */;

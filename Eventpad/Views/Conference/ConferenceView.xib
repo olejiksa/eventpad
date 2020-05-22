@@ -14,6 +14,7 @@
                 <outlet property="dateEndLabel" destination="uR1-HN-Wqq" id="358-NB-sov"/>
                 <outlet property="dateStartLabel" destination="N5s-np-LW5" id="nzz-sU-3zf"/>
                 <outlet property="descriptionLabel" destination="fZh-1y-yjZ" id="An5-ev-k1d"/>
+                <outlet property="imageView" destination="4Bl-k4-NkU" id="ucZ-zZ-CAw"/>
                 <outlet property="locationLabel" destination="6e2-Xb-J9R" id="oxH-Co-ASV"/>
                 <outlet property="pushButton" destination="YTo-Ri-7O9" id="amA-l4-na7"/>
                 <outlet property="registerButton" destination="4Gb-3a-gKv" id="q7P-GW-eU1"/>

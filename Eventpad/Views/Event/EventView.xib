@@ -9,10 +9,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EventViewController" customModule="Eventpad" customModuleProvider="target">
             <connections>
+                <outlet property="allEventsButton" destination="IvD-ce-g54" id="sd0-iD-2Tj"/>
+                <outlet property="contactButton" destination="owh-EA-6Y7" id="Kxa-od-qFS"/>
                 <outlet property="dateEndLabel" destination="uR1-HN-Wqq" id="L9B-Pl-x3f"/>
                 <outlet property="dateStartLabel" destination="N5s-np-LW5" id="J6c-Oh-odr"/>
                 <outlet property="deleteButton" destination="ZhP-v4-9Xq" id="fRP-LK-Jn0"/>
                 <outlet property="descriptionLabel" destination="fZh-1y-yjZ" id="ZjA-PW-Fxl"/>
+                <outlet property="imageView" destination="4Bl-k4-NkU" id="qEu-2E-p8A"/>
                 <outlet property="pushButton" destination="Att-RW-F88" id="MrH-Sa-Z4V"/>
                 <outlet property="titleLabel" destination="fs1-gV-prK" id="AoC-4G-X16"/>
                 <outlet property="view" destination="g8z-Ko-TQ5" id="VR0-e0-8Dw"/>

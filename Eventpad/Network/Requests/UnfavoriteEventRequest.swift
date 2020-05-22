@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class UnfavoriteEventRequest: BasePostRequest {
+final class UnfavoriteEventRequest: BaseDeleteRequest {
     
     init(eventID: Int, userID: Int) {
         let endpoint = "\(RequestFactory.endpointRoot)usr/deleteEvent/\(userID)?eventId=\(eventID)"
