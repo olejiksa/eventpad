@@ -18,6 +18,7 @@ final class StatisticsViewController: UIViewController {
     private var conferences: [Conference] = []
     private let username: String
     private let refreshControl = UIRefreshControl()
+    private var spinner = UIActivityIndicatorView(style: .medium)
     
     init(username: String) {
         self.username = username
@@ -35,6 +36,7 @@ final class StatisticsViewController: UIViewController {
         setupNavigation()
         setupTableView()
         setupRefreshControl()
+        setupSpinner()
         loadData()
     }
 
@@ -63,6 +65,8 @@ final class StatisticsViewController: UIViewController {
             switch result {
             case .success(let conferences):
                 self.conferences = conferences
+                self.spinner.stopAnimating()
+                self.tableView.separatorStyle = .singleLine
                 self.tableView.reloadData()
                 
             case .failure(let error):
@@ -75,6 +79,15 @@ final class StatisticsViewController: UIViewController {
     @objc private func refresh() {
         loadData()
     }
+    
+    private func setupSpinner() {
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        spinner.startAnimating()
+        view.addSubview(spinner)
+
+        spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
 }
 
 
@@ -83,7 +96,7 @@ final class StatisticsViewController: UIViewController {
 extension StatisticsViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return conferences.isEmpty ? 0 : 2
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

@@ -163,9 +163,12 @@ final class TicketViewController: UIViewController {
     
     @IBAction func contactDidTap() {
         guard let userID = conference.organizerID else { return }
+        contactButton.showLoading()
         let config = RequestFactory.user(userID: userID, role: .organizer)
         requestSender.send(config: config) { [weak self] result in
             guard let self = self else { return }
+            
+            self.contactButton.hideLoading()
             
             switch result {
             case .success(let user):
@@ -288,15 +291,25 @@ final class TicketViewController: UIViewController {
         htmlString += "<p><b>Телефон</b>: \(user.phone ?? "отсутствует")</p>"
         htmlString += "<p><b>Адрес электронной почты</b>: \(user.email ?? "отсутствует")</p>"
 
-        let formatter = UIMarkupTextPrintFormatter(markupText: htmlString)
-        formatter.perPageContentInsets = UIEdgeInsets(top: 72, left: 72, bottom: 72, right: 72)
-        printController.printFormatter = formatter
-        
-        printController.present(animated: true, completionHandler: nil)
+        #if targetEnvironment(macCatalyst)
+             
+        #else
+            guard let printData = htmlString.data(using: .utf8) else { return }
+            let printText = try! NSAttributedString(data: printData, options: [.documentType: NSAttributedString.DocumentType.html,  .characterEncoding: String.Encoding.utf8.rawValue],  documentAttributes: nil)
+            let formatter = UIMarkupTextPrintFormatter(markupText: htmlString)
+            formatter.perPageContentInsets = UIEdgeInsets(top: 72, left: 72, bottom: 72, right: 72)
+            printController.printFormatter = formatter
+            
+            printController.present(animated: true, completionHandler: nil)
+        #endif
     }
     
     @objc private func passButtonDidTap() {
-        
+        let filePath = Bundle.main.url(forResource: "Event", withExtension: "pkpass")!
+        let data = try! Data(contentsOf: filePath)
+        let pass = try! PKPass(data: data)
+        let vc = PKAddPassesViewController(pass: pass)!
+        present(vc, animated: true)
     }
     
     private func generateQR(isDarkMode: Bool) -> UIImage? {

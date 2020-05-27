@@ -59,6 +59,8 @@
 		EB5CE490245379A40085E59B /* NewConferenceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB5CE48E245379A40085E59B /* NewConferenceView.xib */; };
 		EB5D02382474BC2700FE43B2 /* ChangeConferenceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5D02372474BC2700FE43B2 /* ChangeConferenceRequest.swift */; };
 		EB5D023E2474FA9600FE43B2 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EB5D023D2474FA9600FE43B2 /* Kingfisher */; };
+		EB5D02422477BB5100FE43B2 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5D02412477BB5100FE43B2 /* ImagePicker.swift */; };
+		EB5D02442477CAEB00FE43B2 /* Event.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = EB5D02432477CAEB00FE43B2 /* Event.pkpass */; };
 		EB67D77B244C8B5C00E66B3C /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB67D779244C8B5C00E66B3C /* CategoriesViewController.swift */; };
 		EB67D77C244C8B5C00E66B3C /* CategoriesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB67D77A244C8B5C00E66B3C /* CategoriesView.xib */; };
 		EB67D783244D756100E66B3C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB67D782244D756100E66B3C /* Category.swift */; };
@@ -176,6 +178,8 @@
 		EB5CE48D245379A40085E59B /* NewConferenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConferenceViewController.swift; sourceTree = "<group>"; };
 		EB5CE48E245379A40085E59B /* NewConferenceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewConferenceView.xib; sourceTree = "<group>"; };
 		EB5D02372474BC2700FE43B2 /* ChangeConferenceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeConferenceRequest.swift; sourceTree = "<group>"; };
+		EB5D02412477BB5100FE43B2 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		EB5D02432477CAEB00FE43B2 /* Event.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = Event.pkpass; sourceTree = "<group>"; };
 		EB67D779244C8B5C00E66B3C /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		EB67D77A244C8B5C00E66B3C /* CategoriesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoriesView.xib; sourceTree = "<group>"; };
 		EB67D782244D756100E66B3C /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -281,14 +285,14 @@
 		EB32CD8B2461DC2000AC1FAB /* Tariff */ = {
 			isa = PBXGroup;
 			children = (
-				EB3081682452E59600EB7598 /* TicketsViewController.swift */,
-				EB3081692452E59600EB7598 /* TicketsView.xib */,
-				EBDB1E0C24589AA8009316FC /* NewTariffViewController.swift */,
 				EBDB1E0D24589AA8009316FC /* NewTariffView.xib */,
-				EB6F38A52464C83800BDEBCE /* TicketViewController.swift */,
-				EB6F38A62464C83800BDEBCE /* TicketView.xib */,
-				EB6E6AFA246BB6E000F1077F /* TariffsViewController.swift */,
+				EBDB1E0C24589AA8009316FC /* NewTariffViewController.swift */,
 				EB6E6AFB246BB6E000F1077F /* TariffsView.xib */,
+				EB6E6AFA246BB6E000F1077F /* TariffsViewController.swift */,
+				EB6F38A62464C83800BDEBCE /* TicketView.xib */,
+				EB6F38A52464C83800BDEBCE /* TicketViewController.swift */,
+				EB3081692452E59600EB7598 /* TicketsView.xib */,
+				EB3081682452E59600EB7598 /* TicketsViewController.swift */,
 			);
 			path = Tariff;
 			sourceTree = "<group>";
@@ -296,16 +300,16 @@
 		EB32CD902461E1B800AC1FAB /* Event */ = {
 			isa = PBXGroup;
 			children = (
-				EB32CD912461E26D00AC1FAB /* EventViewController.swift */,
 				EB32CD922461E26D00AC1FAB /* EventView.xib */,
-				EBDB1E1024589B64009316FC /* NewEventViewController.swift */,
-				EBDB1E1124589B64009316FC /* NewEventView.xib */,
-				EBCD8EE124672C5000DBDD62 /* EventsViewController.swift */,
+				EB32CD912461E26D00AC1FAB /* EventViewController.swift */,
 				EBCD8EE224672C5000DBDD62 /* EventsView.xib */,
-				EB3081642452E4DE00EB7598 /* FavoritesViewController.swift */,
+				EBCD8EE124672C5000DBDD62 /* EventsViewController.swift */,
 				EB3081652452E4DE00EB7598 /* FavoritesView.xib */,
-				EB32CD8C2461DC9000AC1FAB /* ScheduleViewController.swift */,
+				EB3081642452E4DE00EB7598 /* FavoritesViewController.swift */,
+				EBDB1E1124589B64009316FC /* NewEventView.xib */,
+				EBDB1E1024589B64009316FC /* NewEventViewController.swift */,
 				EB32CD8D2461DC9000AC1FAB /* ScheduleView.xib */,
+				EB32CD8C2461DC9000AC1FAB /* ScheduleViewController.swift */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -313,9 +317,9 @@
 		EB3B31F7244DA6F80023E930 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				EBA3F1E7246B830B0065A28B /* BaseDeleteRequest.swift */,
 				EBB32230244843DB00942A2B /* BaseGetRequest.swift */,
 				EBB32232244843FA00942A2B /* BasePostRequest.swift */,
-				EBA3F1E7246B830B0065A28B /* BaseDeleteRequest.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -323,15 +327,15 @@
 		EB549C112469D8F300CD1951 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				EB3081602452E4B600EB7598 /* SearchViewController.swift */,
-				EB3081612452E4B600EB7598 /* SearchView.xib */,
 				EBCD8EE524674F3500DBDD62 /* ScannerViewController.swift */,
-				EB549C0D2469D85700CD1951 /* StatisticsViewController.swift */,
-				EB549C0E2469D85700CD1951 /* StatisticsView.xib */,
+				EB3081612452E4B600EB7598 /* SearchView.xib */,
+				EB3081602452E4B600EB7598 /* SearchViewController.swift */,
 				EB8309B7246AF9A100A6D47E /* StatisticsCell.swift */,
 				EB8309B8246AF9A100A6D47E /* StatisticsCell.xib */,
-				EB8309BB246AFEBA00A6D47E /* TariffDataViewController.swift */,
+				EB549C0E2469D85700CD1951 /* StatisticsView.xib */,
+				EB549C0D2469D85700CD1951 /* StatisticsViewController.swift */,
 				EB8309BC246AFEBA00A6D47E /* TariffDataView.xib */,
+				EB8309BB246AFEBA00A6D47E /* TariffDataViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -339,8 +343,8 @@
 		EB549C122469D92200CD1951 /* Legacy */ = {
 			isa = PBXGroup;
 			children = (
-				EB3B31F824501A010023E930 /* OrganizerSignUpViewController.swift */,
 				EB3B31F924501A010023E930 /* OrganizerSignUpView.xib */,
+				EB3B31F824501A010023E930 /* OrganizerSignUpViewController.swift */,
 			);
 			path = Legacy;
 			sourceTree = "<group>";
@@ -348,12 +352,12 @@
 		EB67D77F244D73EF00E66B3C /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				EB67D77A244C8B5C00E66B3C /* CategoriesView.xib */,
+				EB67D779244C8B5C00E66B3C /* CategoriesViewController.swift */,
 				EBF87453242F830D0056623E /* FeedView.xib */,
 				EBF87443242F81330056623E /* FeedViewController.swift */,
 				EBDB1E152458C198009316FC /* LocationView.xib */,
 				EBDB1E142458C198009316FC /* LocationViewController.swift */,
-				EB67D77A244C8B5C00E66B3C /* CategoriesView.xib */,
-				EB67D779244C8B5C00E66B3C /* CategoriesViewController.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -361,18 +365,18 @@
 		EB99781D243244A400DD5663 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				EB549C122469D92200CD1951 /* Legacy */,
 				EB549C112469D8F300CD1951 /* Common */,
-				EB32CD902461E1B800AC1FAB /* Event */,
-				EB32CD8B2461DC2000AC1FAB /* Tariff */,
 				EBD201102461D42E009D539F /* Conference */,
 				EB30815B2451F23400EB7598 /* Credentials */,
+				EB32CD902461E1B800AC1FAB /* Event */,
 				EB67D77F244D73EF00E66B3C /* Feed */,
+				EB549C122469D92200CD1951 /* Legacy */,
+				EB32CD8B2461DC2000AC1FAB /* Tariff */,
 				EB9978122430925800DD5663 /* BigButton.swift */,
 				EB9978172430995B00DD5663 /* FormHelper.swift */,
 				EB06F3792433309A0018605E /* Section.swift */,
-				EB30815D2452E3C800EB7598 /* TabBarFactory.swift */,
 				EB30816D2452EBF800EB7598 /* SubtitleCell.swift */,
+				EB30815D2452E3C800EB7598 /* TabBarFactory.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -380,8 +384,8 @@
 		EBA2AF6F2442668A00AF59EE /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				EBB3222B2448420700942A2B /* Requests */,
 				EBB3222A244841FE00942A2B /* Parsers */,
+				EBB3222B2448420700942A2B /* Requests */,
 				EBB32238244846A800942A2B /* Error.swift */,
 				EBB322362448466400942A2B /* HttpStatusCode.swift */,
 				EBB322342448441900942A2B /* RequestConfig.swift */,
@@ -413,10 +417,10 @@
 				EB3B31F7244DA6F80023E930 /* Base */,
 				EB3B320224509E3C0023E930 /* AddEventsRequest.swift */,
 				EB3B320424509E4A0023E930 /* AddTariffsRequest.swift */,
+				EB5D02372474BC2700FE43B2 /* ChangeConferenceRequest.swift */,
 				EB3081412451735200EB7598 /* ConferenceRequest.swift */,
 				EB3081472451753000EB7598 /* ConferencesRequest.swift */,
 				EB3B31FC24509B300023E930 /* CreateConferenceRequest.swift */,
-				EB5D02372474BC2700FE43B2 /* ChangeConferenceRequest.swift */,
 				EBA3F1EB246B86280065A28B /* DeleteConferenceRequest.swift */,
 				EBA3F1E9246B85AE0065A28B /* DeleteEventRequest.swift */,
 				EBA3F1ED246B87260065A28B /* DeleteTariffRequest.swift */,
@@ -458,16 +462,16 @@
 		EBD201102461D42E009D539F /* Conference */ = {
 			isa = PBXGroup;
 			children = (
-				EB78FE40245CA1C5002DE6FC /* PurchaseViewController.swift */,
-				EB78FE41245CA1C5002DE6FC /* PurchaseView.xib */,
-				EB5CE48D245379A40085E59B /* NewConferenceViewController.swift */,
-				EB5CE48E245379A40085E59B /* NewConferenceView.xib */,
-				EBDB1E08245750BE009316FC /* MyConferencesViewController.swift */,
-				EBDB1E09245750BE009316FC /* MyConferencesView.xib */,
 				EB06F37524332D810018605E /* ConferenceCell.swift */,
 				EB06F37624332D810018605E /* ConferenceCell.xib */,
-				EBD451BC2435F9D800F6A4C2 /* ConferenceViewController.swift */,
 				EBD451BD2435F9D800F6A4C2 /* ConferenceView.xib */,
+				EBD451BC2435F9D800F6A4C2 /* ConferenceViewController.swift */,
+				EBDB1E09245750BE009316FC /* MyConferencesView.xib */,
+				EBDB1E08245750BE009316FC /* MyConferencesViewController.swift */,
+				EB5CE48E245379A40085E59B /* NewConferenceView.xib */,
+				EB5CE48D245379A40085E59B /* NewConferenceViewController.swift */,
+				EB78FE41245CA1C5002DE6FC /* PurchaseView.xib */,
+				EB78FE40245CA1C5002DE6FC /* PurchaseViewController.swift */,
 			);
 			path = Conference;
 			sourceTree = "<group>";
@@ -491,17 +495,19 @@
 		EBF8743E242F81330056623E /* Eventpad */ = {
 			isa = PBXGroup;
 			children = (
-				EBA3F1EF246B8C9B0065A28B /* Eventpad.entitlements */,
 				EBB3224224486D8C00942A2B /* Models */,
 				EBA2AF6F2442668A00AF59EE /* Network */,
 				EB30815C2452B6EB00EB7598 /* Services */,
 				EB99781D243244A400DD5663 /* Views */,
 				EBF8743F242F81330056623E /* AppDelegate.swift */,
-				EBF87441242F81330056623E /* SceneDelegate.swift */,
-				EBE681B72454919400CB9285 /* Global.swift */,
 				EBF87448242F81370056623E /* Assets.xcassets */,
-				EBF8744A242F81370056623E /* LaunchScreen.storyboard */,
+				EB5D02432477CAEB00FE43B2 /* Event.pkpass */,
+				EBA3F1EF246B8C9B0065A28B /* Eventpad.entitlements */,
+				EBE681B72454919400CB9285 /* Global.swift */,
+				EB5D02412477BB5100FE43B2 /* ImagePicker.swift */,
 				EBF8744D242F81370056623E /* Info.plist */,
+				EBF8744A242F81370056623E /* LaunchScreen.storyboard */,
+				EBF87441242F81330056623E /* SceneDelegate.swift */,
 			);
 			path = Eventpad;
 			sourceTree = "<group>";
@@ -582,6 +588,7 @@
 				EB3B31FB24501A010023E930 /* OrganizerSignUpView.xib in Resources */,
 				EBF87454242F830D0056623E /* FeedView.xib in Resources */,
 				EB8309BA246AF9A100A6D47E /* StatisticsCell.xib in Resources */,
+				EB5D02442477CAEB00FE43B2 /* Event.pkpass in Resources */,
 				EB32CD8F2461DC9000AC1FAB /* ScheduleView.xib in Resources */,
 				EB6F38A82464C83800BDEBCE /* TicketView.xib in Resources */,
 				EBDB1E172458C198009316FC /* LocationView.xib in Resources */,
@@ -684,6 +691,7 @@
 				EBF8745B242F85B00056623E /* SignUpViewController.swift in Sources */,
 				EBB322372448466400942A2B /* HttpStatusCode.swift in Sources */,
 				EB30816A2452E59600EB7598 /* TicketsViewController.swift in Sources */,
+				EB5D02422477BB5100FE43B2 /* ImagePicker.swift in Sources */,
 				EB3B320524509E4A0023E930 /* AddTariffsRequest.swift in Sources */,
 				EB30814C2451799700EB7598 /* UsersParser.swift in Sources */,
 				EB32CD932461E26E00AC1FAB /* EventViewController.swift in Sources */,
@@ -707,6 +715,7 @@
 				EBF8744B242F81370056623E /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -842,6 +851,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.olejiksa.Eventpad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -863,6 +873,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.olejiksa.Eventpad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

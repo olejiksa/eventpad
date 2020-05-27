@@ -175,17 +175,17 @@ extension TicketsViewController: UITableViewDataSource {
         
         let conference = searchController.isActive ? searchedConferences[indexPath.row] : conferences[indexPath.row]
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .short
-        
-        var dateComponent = DateComponents()
-        dateComponent.year = 31
-        let dateStartFinal = Calendar.current.date(byAdding: dateComponent, to: conference.dateStart)!
-        let dateStart = dateFormatter.string(from: dateStartFinal)
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateStyle = .medium
+//        dateFormatter.timeStyle = .short
+//
+//        var dateComponent = DateComponents()
+//        dateComponent.year = 31
+//        let dateStartFinal = Calendar.current.date(byAdding: dateComponent, to: conference.dateStart)!
+//        let dateStart = dateFormatter.string(from: dateStartFinal)
         
         cell.textLabel?.text = conference.title
-        cell.detailTextLabel?.text = dateStart
+        cell.detailTextLabel?.text = conference.description
         cell.accessoryType = .disclosureIndicator
         return cell
     }

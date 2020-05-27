@@ -30,6 +30,21 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = TabBarFactory.tabBarController()
         window?.makeKeyAndVisible()
         window?.windowScene = windowScene
+        
+        #if targetEnvironment(macCatalyst)
+            if let windowScene = scene as? UIWindowScene {
+                if let titlebar = windowScene.titlebar {
+                    let toolbar = NSToolbar(identifier: "testToolbar")
+                    
+                    titlebar.toolbar = toolbar
+                }
+                
+                if let titlebar = windowScene.titlebar {
+                    titlebar.titleVisibility = .hidden
+                    titlebar.toolbar = nil
+                }
+            }
+        #endif
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -151,6 +166,23 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
             
         case "ticket":
+            let config = RequestFactory.ticket(ticketID: String(id))
+            requestSender.send(config: config) { result in
+                switch result {
+                case .success(let ticket):
+                    let string = """
+                    Данный билет успешно проверен на подлинность, участник имеет право на посещение конференции
+                    Выпущен: \(ticket.released)
+                    ID участника: \(ticket.buyerID)
+                    ID тарифа: \(ticket.tariffID)
+                    """
+                    let alert = AlertService().alert(string, title: .info)
+                    nvc.present(alert, animated: true)
+                    
+                case .failure:
+                    return
+                }
+            }
             break
             
         default:

@@ -25,11 +25,13 @@ final class SignUpViewController: UIViewController {
     @IBOutlet private weak var stackView: UIStackView!
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var signUpButton: BigButton!
+    @IBOutlet private weak var imageNameLabel: UILabel!
     
     private let alertService = AlertService()
     private let requestSender = RequestSender()
     private let userDefaultsService = UserDefaultsService()
     private var formHelper: FormHelper?
+    var imagePicker: ImagePicker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +40,7 @@ final class SignUpViewController: UIViewController {
         setupTextViews()
         setupKeyboard()
         setupFormHelper()
+        setupImagePicker()
     }
     
     private func setupNavigation() {
@@ -86,6 +89,14 @@ final class SignUpViewController: UIViewController {
                                 switches: [acceptSwitch],
                                 button: signUpButton,
                                 stackView: stackView)
+    }
+    
+    private func setupImagePicker() {
+        self.imagePicker = ImagePicker(presentationController: self, delegate: self)
+    }
+    
+    @IBAction func showImagePicker(_ sender: UIButton) {
+        self.imagePicker.present(from: sender)
     }
     
     private func signUp(_ signUp: SignUp) {
@@ -178,5 +189,15 @@ extension SignUpViewController: UITextViewDelegate {
         present(vc, animated: true)
         
         return false
+    }
+}
+
+
+// MARK: - UITextViewDelegate
+
+extension SignUpViewController: ImagePickerDelegate {
+
+    func didSelect(image: UIImage?) {
+        self.imageNameLabel.text = image?.description
     }
 }

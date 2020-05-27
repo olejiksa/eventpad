@@ -11,6 +11,7 @@ import UIKit
 
 final class ScannerViewController: UIViewController {
     
+    private let requestSender = RequestSender()
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
 
@@ -100,7 +101,28 @@ final class ScannerViewController: UIViewController {
 
     func found(code: String) {
         if code.starts(with: "eventpad://ticket?id=") {
-            let alert = AlertService().alert("Данный билет успешно проверен на подлинность, участник имеет право на посещение конференции", title: .info)
+            let id = code.split(separator: "=")[1]
+            let config = RequestFactory.ticket(ticketID: String(id))
+            requestSender.send(config: config) { [weak self] result in
+                guard let self = self else { return }
+                
+                switch result {
+                case .success(let ticket):
+                    let string = """
+                    Данный билет успешно проверен на подлинность, участник имеет право на посещение конференции
+                    Выпущен: \(ticket.released)
+                    ID участника: \(ticket.buyerID)
+                    ID тарифа: \(ticket.tariffID)
+                    """
+                    let alert = AlertService().alert(string, title: .info)
+                    self.present(alert, animated: true)
+                    
+                case .failure:
+                    return
+                }
+            }
+        } else {
+            let alert = AlertService().alert("Участник мог оказаться жертвой мошенничества: его копия билета не является подлинной", title: .attention)
             self.present(alert, animated: true)
         }
     }
@@ -114,6 +136,8 @@ final class ScannerViewController: UIViewController {
     }
 }
 
+
+// MARK: - AVCaptureMetadataOutputObjectsDelegate
 
 extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
     
