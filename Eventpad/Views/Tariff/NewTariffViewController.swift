@@ -10,11 +10,16 @@ import UIKit
 
 final class NewTariffViewController: UIViewController {
 
+    enum Mode: Equatable {
+        case new, edit(Tariff)
+    }
+    
     @IBOutlet private weak var doneButton: BigButton!
     @IBOutlet private weak var scrollView: UIScrollView!
-    @IBOutlet weak var titleField: UITextField!
-    @IBOutlet weak var ticketCountField: UITextField!
-    @IBOutlet weak var priceField: UITextField!
+    @IBOutlet private weak var titleField: UITextField!
+    @IBOutlet private weak var ticketCountField: UITextField!
+    @IBOutlet private weak var priceField: UITextField!
+    @IBOutlet private weak var deleteButton: BigButton!
     
     var conferenceID: Int?
     private let alertService = AlertService()
@@ -22,16 +27,35 @@ final class NewTariffViewController: UIViewController {
     private let requestSender = RequestSender()
     private var formHelper: FormHelper?
     
+    private let mode: Mode
+    
+    init(mode: Mode) {
+        self.mode = mode
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupNavigation()
         setupKeyboard()
         setupFormHelper()
+        setupView()
     }
 
     private func setupNavigation() {
-        navigationItem.title = "Новый тариф"
+        switch mode {
+        case .new:
+            navigationItem.title = "Новый тариф"
+
+        case .edit:
+            navigationItem.title = "Изменение тарифа"
+        }
         
         let closeButton = UIBarButtonItem(barButtonSystemItem: .close,
                                           target: self,
@@ -57,30 +81,118 @@ final class NewTariffViewController: UIViewController {
                                 stackView: UIStackView())
     }
     
+    private func setupView() {
+        switch mode {
+        case .new:
+            deleteButton.isHidden = true
+
+        case .edit(let tariff):
+            titleField.text = tariff.title
+            priceField.text = String(Int(tariff.price))
+            ticketCountField.text = String(tariff.ticketsTotalCount)
+        }
+    }
+    
+    @IBAction private func deleteDidTap() {
+        guard case Mode.edit(let tariff) = mode else { return }
+        let config = RequestFactory.deleteTariff(tariffID: tariff.id!)
+        
+        deleteButton.showLoading()
+        
+        requestSender.send(config: config) { [weak self] result in
+            guard let self = self else { return }
+            
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let response):
+                    guard response.success else {
+                        let alert = self.alertService.alert(response.message ?? "Неизвестная ошибка")
+                        self.present(alert, animated: true)
+                        self.deleteButton.hideLoading()
+                        return
+                    }
+                    
+                    self.deleteButton.hideLoading()
+                    self.close()
+                    
+                case .failure(let error):
+                    self.deleteButton.hideLoading()
+                    
+                    let alert = self.alertService.alert(error.localizedDescription)
+                    self.present(alert, animated: true)
+                }
+            }
+        }
+    }
+    
     @IBAction private func createDidTap() {
         guard
             let conferenceID = conferenceID,
             let title = titleField.text,
             let priceString = priceField.text,
-            let price = Double(priceString),
+            let price = Int(priceString),
             let ticketCountString = ticketCountField.text,
             let ticketCount = Int(ticketCountString)
         else { return }
         
-        doneButton.showLoading()
+        switch mode {
+        case .new:
+            let tariff = Tariff(id: nil,
+                                title: title,
+                                price: Double(price),
+                                conferenceID: conferenceID,
+                                ticketsLeftCount: ticketCount,
+                                ticketsTotalCount: ticketCount)
+            create(tariff)
 
-        let tariff = Tariff(id: nil,
-                            title: title,
-                            price: price,
-                            conferenceID: conferenceID,
-                            ticketsLeftCount: ticketCount,
-                            ticketsTotalCount: ticketCount)
-        create(tariff)
+        case .edit(let oldTariff):
+            let tariff = Tariff(id: oldTariff.id,
+                                title: title,
+                                price: Double(price),
+                                conferenceID: conferenceID,
+                                ticketsLeftCount: ticketCount,
+                                ticketsTotalCount: ticketCount)
+            change(tariff)
+        }
     }
     
     private func create(_ tariff: Tariff) {
         guard let conferenceID = conferenceID else { return }
         let config = RequestFactory.addToConference(tariffs: [tariff], conferenceID: conferenceID)
+        
+        doneButton.showLoading()
+        
+        requestSender.send(config: config) { [weak self] result in
+            guard let self = self else { return }
+            
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let response):
+                    guard response.success else {
+                        let alert = self.alertService.alert(response.message ?? "Неизвестная ошибка")
+                        self.present(alert, animated: true)
+                        self.doneButton.hideLoading()
+                        return
+                    }
+                    
+                    self.doneButton.hideLoading()
+                    self.close()
+                    
+                case .failure(let error):
+                    self.doneButton.hideLoading()
+                    
+                    let alert = self.alertService.alert(error.localizedDescription)
+                    self.present(alert, animated: true)
+                }
+            }
+        }
+    }
+    
+    private func change(_ tariff: Tariff) {
+        guard case Mode.edit(let tariff) = mode else { return }
+        let config = RequestFactory.changeTariff(tariff: tariff)
+        
+        doneButton.showLoading()
         
         requestSender.send(config: config) { [weak self] result in
             guard let self = self else { return }

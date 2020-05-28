@@ -108,6 +108,7 @@ final class ConferenceViewController: UIViewController {
         registerButton.isHidden = isManager || conference.tariffs!.isEmpty
         tariffsButton.isHidden = !isManager
         pushButton.isHidden = !isManager
+        deleteButton.isHidden = !isManager
     }
     
     @IBAction private func registerDidTap() {

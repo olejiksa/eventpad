@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TariffsViewController" customModule="Eventpad" customModuleProvider="target">
             <connections>
+                <outlet property="noDataLabel" destination="eik-l6-8Xe" id="HUB-Rn-lid"/>
                 <outlet property="tableView" destination="7JD-aR-XQ9" id="8wF-df-qwb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -26,12 +27,20 @@
                         <outlet property="delegate" destination="-1" id="jVS-7m-VdR"/>
                     </connections>
                 </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нет тарифов" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eik-l6-8Xe">
+                    <rect key="frame" x="156" y="442.5" width="102" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7JD-aR-XQ9" secondAttribute="trailing" id="9dM-at-ddV"/>
+                <constraint firstItem="eik-l6-8Xe" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Hi3-ka-7Og"/>
                 <constraint firstItem="7JD-aR-XQ9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Uqu-Wa-tat"/>
                 <constraint firstItem="7JD-aR-XQ9" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="W2y-SG-5vq"/>
+                <constraint firstItem="eik-l6-8Xe" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="lP7-9D-eIj"/>
                 <constraint firstAttribute="bottom" secondItem="7JD-aR-XQ9" secondAttribute="bottom" id="vgQ-8m-PsV"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

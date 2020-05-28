@@ -146,10 +146,10 @@ final class AccountViewController: UIViewController {
         let url: URL
         switch role {
         case .organizer:
-            url = URL(string: "eventpad://\(Role.organizer.name)?id=\(user.id)")!
+            url = URL(string: "eventpad://\(Role.organizer.name)?id=\(user.id!)")!
             
         default:
-            url = URL(string: "eventpad://user?id=\(user.id)")!
+            url = URL(string: "eventpad://user?id=\(user.id!)")!
         }
         
         let sharedObjects = [url as AnyObject, text as AnyObject]

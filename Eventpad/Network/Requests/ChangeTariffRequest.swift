@@ -1,21 +1,21 @@
 //
-//  ChangeUserRequest.swift
+//  ChangeTariffRequest.swift
 //  Eventpad
 //
-//  Created by Oleg Samoylov on 28.05.2020.
+//  Created by Oleg Samoylov on 29.05.2020.
 //  Copyright © 2020 Oleg Samoylov. All rights reserved.
 //
 
 import Foundation
 
-final class ChangeUserRequest: BasePostRequest {
+final class ChangeTariffRequest: BasePostRequest {
     
-    init(user: User) {
-        let endpoint = "\(RequestFactory.endpointRoot)usr/change/\(user.username)"
+    init(tariff: Tariff) {
+        let endpoint = "\(RequestFactory.endpointRoot)org/changeTariff/\(tariff.id!)"
         
         do {
             let jsonEncoder = JSONEncoder()
-            let encodedJson = try jsonEncoder.encode(user)
+            let encodedJson = try jsonEncoder.encode(tariff)
             guard let parameters = try JSONSerialization.jsonObject(with: encodedJson) as? [String: Any] else {
                 fatalError()
             }

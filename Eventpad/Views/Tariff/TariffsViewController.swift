@@ -17,6 +17,7 @@ final class TariffsViewController: UIViewController {
     private let tariffs: [Tariff]
     private let conferenceID: Int
     
+    @IBOutlet private weak var noDataLabel: UILabel!
     @IBOutlet private weak var tableView: UITableView!
     
     init(tariffs: [Tariff], conferenceID: Int) {
@@ -46,10 +47,13 @@ final class TariffsViewController: UIViewController {
     
     private func setupTableView() {
         tableView.register(SubtitleCell.self, forCellReuseIdentifier: cellID)
+        
+        noDataLabel.isHidden = !tariffs.isEmpty
+        tableView.separatorStyle = tariffs.isEmpty ? .none : .singleLine
     }
     
     @objc private func addDidTap() {
-        let vc = NewTariffViewController()
+        let vc = NewTariffViewController(mode: .new)
         vc.conferenceID = conferenceID
         let nvc = UINavigationController(rootViewController: vc)
         present(nvc, animated: true)
@@ -69,10 +73,13 @@ extension TariffsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? SubtitleCell else { return .init(frame: .zero) }
+        guard
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? SubtitleCell
+        else { return .init(frame: .zero) }
+        
         let tariff = tariffs[indexPath.row]
         cell.textLabel?.text = tariff.title
-        cell.detailTextLabel?.text = "Цена: \(tariff.price) ₽, осталось билетов: \(tariff.ticketsLeftCount)"
+        cell.detailTextLabel?.text = "Цена: \(Int(tariff.price)) y.e., осталось билетов: \(tariff.ticketsLeftCount)"
         return cell
     }
 }
@@ -84,7 +91,11 @@ extension TariffsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
-        // todo
         tableView.deselectRow(at: indexPath, animated: true)
+        let tariff = tariffs[indexPath.row]
+        let vc = NewTariffViewController(mode: .edit(tariff))
+        vc.conferenceID = conferenceID
+        let nvc = UINavigationController(rootViewController: vc)
+        present(nvc, animated: true)
     }
 }

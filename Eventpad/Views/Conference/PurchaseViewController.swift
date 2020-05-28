@@ -71,7 +71,7 @@ extension PurchaseViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? SubtitleCell else { return .init(frame: .zero) }
         let tariff = tariffs[indexPath.row]
         cell.textLabel?.text = tariff.title
-        cell.detailTextLabel?.text = "Цена: \(tariff.price) ₽, осталось билетов: \(tariff.ticketsLeftCount)"
+        cell.detailTextLabel?.text = "Цена: \(tariff.price) y.e., осталось билетов: \(tariff.ticketsLeftCount)"
         cell.accessoryType = .disclosureIndicator
         return cell
     }

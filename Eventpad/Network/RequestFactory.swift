@@ -38,6 +38,13 @@ struct RequestFactory {
         return .init(request: request, parser: parser)
     }
     
+    static func changeTariff(tariff: Tariff) -> RequestConfig<SuccessParser> {
+        let request = ChangeTariffRequest(tariff: tariff)
+        let parser = SuccessParser()
+        
+        return .init(request: request, parser: parser)
+    }
+    
     
     // MARK: Main
     

@@ -125,6 +125,7 @@
 		EBF8745B242F85B00056623E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF87459242F85B00056623E /* SignUpViewController.swift */; };
 		EBF8745C242F85B00056623E /* SignUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBF8745A242F85B00056623E /* SignUpView.xib */; };
 		EBFE6EC2247FE2AE00EE9B87 /* ChangeUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFE6EC1247FE2AE00EE9B87 /* ChangeUserRequest.swift */; };
+		EBFE6EC424801C3800EE9B87 /* ChangeTariffRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFE6EC324801C3800EE9B87 /* ChangeTariffRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -247,6 +248,7 @@
 		EBF87459242F85B00056623E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		EBF8745A242F85B00056623E /* SignUpView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpView.xib; sourceTree = "<group>"; };
 		EBFE6EC1247FE2AE00EE9B87 /* ChangeUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUserRequest.swift; sourceTree = "<group>"; };
+		EBFE6EC324801C3800EE9B87 /* ChangeTariffRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeTariffRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -438,6 +440,7 @@
 				EB3B31F3244DA6510023E930 /* UserRequest.swift */,
 				EB30814D245179A600EB7598 /* UsersRequest.swift */,
 				EBFE6EC1247FE2AE00EE9B87 /* ChangeUserRequest.swift */,
+				EBFE6EC324801C3800EE9B87 /* ChangeTariffRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -636,6 +639,7 @@
 				EB3081582451F05700EB7598 /* TicketRequest.swift in Sources */,
 				EB3B31FD24509B300023E930 /* CreateConferenceRequest.swift in Sources */,
 				EBCD8EE624674F3500DBDD62 /* ScannerViewController.swift in Sources */,
+				EBFE6EC424801C3800EE9B87 /* ChangeTariffRequest.swift in Sources */,
 				EB30816E2452EBF800EB7598 /* SubtitleCell.swift in Sources */,
 				EBA3F1EA246B85AE0065A28B /* DeleteEventRequest.swift in Sources */,
 				EBDB1E0E24589AA8009316FC /* NewTariffViewController.swift in Sources */,

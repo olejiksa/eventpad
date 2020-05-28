@@ -13,6 +13,7 @@
                 <outlet property="contactButton" destination="owh-EA-6Y7" id="R2i-Ia-u2k"/>
                 <outlet property="dateEndLabel" destination="uR1-HN-Wqq" id="358-NB-sov"/>
                 <outlet property="dateStartLabel" destination="N5s-np-LW5" id="nzz-sU-3zf"/>
+                <outlet property="deleteButton" destination="Q1E-0T-g9Z" id="MBe-zD-YuW"/>
                 <outlet property="descriptionLabel" destination="fZh-1y-yjZ" id="An5-ev-k1d"/>
                 <outlet property="imageView" destination="4Bl-k4-NkU" id="ucZ-zZ-CAw"/>
                 <outlet property="locationLabel" destination="6e2-Xb-J9R" id="oxH-Co-ASV"/>
@@ -33,7 +34,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="duJ-Qu-ED9">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="1440.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="1509.5"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="WcP-3S-8aX">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="213.5"/>
@@ -47,7 +48,7 @@
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="md1-JZ-aXd">
-                                    <rect key="frame" x="20" y="233.5" width="280" height="1187"/>
+                                    <rect key="frame" x="20" y="233.5" width="280" height="1256"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="День открытых дверей: программы бакалавриата и магистратуры" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fs1-gV-prK">
                                             <rect key="frame" x="0.0" y="0.0" width="280" height="74"/>
@@ -218,7 +219,7 @@
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="5G9-TD-Yhs">
-                                            <rect key="frame" x="0.0" y="926" width="280" height="261"/>
+                                            <rect key="frame" x="0.0" y="926" width="280" height="330"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="owh-EA-6Y7" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="280" height="54"/>
@@ -297,6 +298,26 @@
                                                         <action selector="pushDidTap" destination="-1" eventType="touchUpInside" id="JV0-kf-ac7"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q1E-0T-g9Z" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="276" width="280" height="54"/>
+                                                    <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="54" id="7lM-la-NZV"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                    <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                                                    <state key="normal" title="Удалить">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="pushDidTap" destination="-1" eventType="touchUpInside" id="cwf-po-tYr"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </stackView>
                                     </subviews>
@@ -337,6 +358,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Warsaw" width="1699" height="1130"/>
+        <image name="Warsaw" width="1200" height="800"/>
     </resources>
 </document>

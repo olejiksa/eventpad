@@ -30,10 +30,9 @@ final class SignUpViewController: UIViewController {
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var signUpButton: BigButton!
     @IBOutlet private weak var doneButton: BigButton!
-    @IBOutlet private weak var repeatPasswordLabel: UILabel!
-    @IBOutlet private weak var passwordLabel: UILabel!
     @IBOutlet private weak var stackView1: UIStackView!
     @IBOutlet private weak var stackView2: UIStackView!
+    @IBOutlet private weak var stackView3: UIStackView!
     
     private let alertService = AlertService()
     private let requestSender = RequestSender()
@@ -90,10 +89,9 @@ final class SignUpViewController: UIViewController {
             acceptTextView.isHidden = true
             acceptSwitch.isHidden = true
             organizerSwitch.isHidden = true
-            passwordLabel.isHidden = true
             stackView1.isHidden = true
             stackView2.isHidden = true
-            repeatPasswordLabel.isHidden = true
+            stackView3.isHidden = true
             signUpButton.isHidden = true
             doneButton.isHidden = false
             
@@ -255,7 +253,7 @@ final class SignUpViewController: UIViewController {
                 photoUrl = ""
             }
             
-            let user = User(id: nil, username: oldUser.username, email: email, phone: phone, name: name, surname: surname, description: description, photoUrl: photoUrl)
+            let user = User(id: oldUser.id, username: oldUser.username, email: email, phone: phone, name: name, surname: surname, description: description, photoUrl: photoUrl)
             
             let config = RequestFactory.changeUser(user: user)
             

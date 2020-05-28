@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewTariffViewController" customModule="Eventpad" customModuleProvider="target">
             <connections>
+                <outlet property="deleteButton" destination="qJJ-7e-aug" id="1a7-3p-mhw"/>
                 <outlet property="doneButton" destination="V4z-BV-Vow" id="kWA-u3-kO9"/>
                 <outlet property="priceField" destination="tIM-fd-tLZ" id="8Cd-Gv-jFC"/>
                 <outlet property="scrollView" destination="AdC-qh-VOo" id="QwX-xb-ts6"/>
@@ -26,16 +27,10 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hEd-6K-871">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="406"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="416.5"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Мастер создания тарифа" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ese-Ui-ZdU">
-                                    <rect key="frame" x="20" y="20" width="374" height="33.5"/>
-                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="dMH-ag-gkA">
-                                    <rect key="frame" x="20" y="73.5" width="374" height="312.5"/>
+                                    <rect key="frame" x="20" y="20" width="374" height="376.5"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="LdR-6m-tZ8">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="64.5"/>
@@ -65,7 +60,7 @@
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tIM-fd-tLZ">
                                                     <rect key="frame" x="0.0" y="30.5" width="374" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                 </textField>
                                             </subviews>
                                         </stackView>
@@ -85,24 +80,17 @@
                                                 </textField>
                                             </subviews>
                                         </stackView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="htt-Al-tTg">
-                                            <rect key="frame" x="0.0" y="253.5" width="374" height="59"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="htt-Al-tTg">
+                                            <rect key="frame" x="0.0" y="253.5" width="374" height="123"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lxG-Ib-2eb">
-                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="5"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="5" id="iDA-fc-aKc"/>
-                                                    </constraints>
-                                                </view>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V4z-BV-Vow" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="5" width="374" height="54"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="54"/>
                                                     <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="54" id="S32-DY-eE2"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                    <state key="normal" title="Добавить тариф">
+                                                    <state key="normal" title="Сохранить">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                     <userDefinedRuntimeAttributes>
@@ -114,6 +102,25 @@
                                                         <action selector="createDidTap" destination="-1" eventType="touchUpInside" id="g7i-rX-rO0"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qJJ-7e-aug" customClass="BigButton" customModule="Eventpad" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="69" width="374" height="54"/>
+                                                    <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="54" id="SPd-cz-odp"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                    <state key="normal" title="Удалить">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="deleteDidTap" destination="-1" eventType="touchUpInside" id="1kq-4W-DaH"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </stackView>
                                     </subviews>
@@ -121,12 +128,9 @@
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="ese-Ui-ZdU" secondAttribute="trailing" constant="20" id="7FE-W7-lwb"/>
+                                <constraint firstItem="dMH-ag-gkA" firstAttribute="top" secondItem="hEd-6K-871" secondAttribute="top" constant="20" id="8pF-JE-jBB"/>
                                 <constraint firstItem="dMH-ag-gkA" firstAttribute="leading" secondItem="hEd-6K-871" secondAttribute="leading" constant="20" id="I57-fI-xax"/>
-                                <constraint firstItem="ese-Ui-ZdU" firstAttribute="top" secondItem="hEd-6K-871" secondAttribute="top" constant="20" id="Jgq-hE-2hm"/>
-                                <constraint firstItem="ese-Ui-ZdU" firstAttribute="leading" secondItem="hEd-6K-871" secondAttribute="leading" constant="20" id="hhO-kF-rhO"/>
                                 <constraint firstAttribute="bottom" secondItem="dMH-ag-gkA" secondAttribute="bottom" constant="20" id="phv-8y-Cqr"/>
-                                <constraint firstItem="dMH-ag-gkA" firstAttribute="top" secondItem="ese-Ui-ZdU" secondAttribute="bottom" constant="20" id="rPw-J2-wch"/>
                                 <constraint firstAttribute="trailing" secondItem="dMH-ag-gkA" secondAttribute="trailing" constant="20" id="t1v-hH-G41"/>
                             </constraints>
                         </view>
