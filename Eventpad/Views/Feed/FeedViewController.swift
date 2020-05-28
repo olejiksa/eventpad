@@ -28,6 +28,7 @@ final class FeedViewController: UIViewController {
     
     private var collectionView: UICollectionView!
     private var collectionViewLayout: UICollectionViewLayout!
+    private var spinner = UIActivityIndicatorView(style: .medium)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,7 @@ final class FeedViewController: UIViewController {
         setupNoDataLabel()
         setupRefreshControl()
         loadData()
+        setupSpinner()
     }
     
     private func setupNavigation() {
@@ -104,12 +106,24 @@ final class FeedViewController: UIViewController {
         collectionView.refreshControl = refreshControl
     }
     
+    private func setupSpinner() {
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        spinner.startAnimating()
+        view.addSubview(spinner)
+
+        spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
+    
     private func loadData() {
+        spinner.startAnimating()
+
         if let category = Global.categoryInUse {
             let config = RequestFactory.conferences(categoryID: category.rawValue, limit: 20, offset: 0)
             requestSender.send(config: config) { [weak self] result in
                 guard let self = self else { return }
                 self.refreshControl.endRefreshing()
+                self.spinner.stopAnimating()
 
                 switch result {
                 case .success(let conferences):
@@ -130,7 +144,8 @@ final class FeedViewController: UIViewController {
             requestSender.send(config: config) { [weak self] result in
                 guard let self = self else { return }
                 self.refreshControl.endRefreshing()
-
+                self.spinner.stopAnimating()
+                
                 switch result {
                 case .success(let conferences):
                     let results = Global.location != nil ? conferences.filter { $0.location == Global.location } : conferences

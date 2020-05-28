@@ -45,10 +45,6 @@ struct EventSection: Section {
         
         cell.configure(with: conference)
         
-        if let url = conference.photoUrl {
-            let url = URL(string: url)
-            cell.imageView.kf.setImage(with: url)
-        }
         return cell
     }
 }

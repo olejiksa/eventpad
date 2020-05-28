@@ -9,7 +9,6 @@
 import MapKit
 import UIKit
 import EventKit
-import Kingfisher
 
 final class ConferenceViewController: UIViewController {
     
@@ -63,7 +62,8 @@ final class ConferenceViewController: UIViewController {
                                          target: self,
                                          action: #selector(shareDidTap))
 
-        let editButton = UIBarButtonItem(barButtonSystemItem: .edit,
+        let editButton = UIBarButtonItem(image: UIImage(systemName: "pencil"),
+                                         style: .plain,
                                          target: self,
                                          action: #selector(didEditTap))
         
@@ -100,9 +100,8 @@ final class ConferenceViewController: UIViewController {
         categoryLabel.text = conference.category.description
         locationLabel.text = conference.location
         
-        if let url = conference.photoUrl {
-            let url = URL(string: url)
-            imageView.kf.setImage(with: url)
+        if let url = conference.photoUrl, let image = convertBase64ToImage(url) {
+            imageView.image = image
         }
         
         contactButton.isHidden = isManager

@@ -67,9 +67,9 @@ final class RequestSender: RequestSenderProtocol {
                     return
                 }
                 
-                if let data = data {
-                    print(String(data: data, encoding: .utf8) ?? "")
-                }
+//                if let data = data {
+//                    print(String(data: data, encoding: .utf8) ?? "")
+//                }
                 
                 guard
                     let data = data,

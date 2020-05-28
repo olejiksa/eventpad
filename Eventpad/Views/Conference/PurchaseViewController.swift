@@ -86,7 +86,7 @@ extension PurchaseViewController: UITableViewDelegate {
                    didSelectRowAt indexPath: IndexPath) {
         let tariff = tariffs[indexPath.row]
         guard let id = tariff.id, let user = userDefaultsService.getUser() else { return }
-        let ticket = Ticket(id: nil, released: Date(), tariffID: id, buyerID: user.id)
+        let ticket = Ticket(id: nil, released: Date(), tariffID: id, buyerID: user.id!)
         let config = RequestFactory.registerTicket(ticket)
         requestSender.send(config: config) { [weak self] result in
             guard let self = self else { return }

@@ -22,7 +22,11 @@ final class NewConferenceViewController: UIViewController {
     @IBOutlet private weak var dateStartTextField: UITextField!
     @IBOutlet private weak var dateEndTextField: UITextField!
     @IBOutlet private weak var doneButton: BigButton!
-    @IBOutlet private weak var urlTextField: UITextField!
+    
+    @IBOutlet private weak var noAvatarLabel: UILabel!
+    @IBOutlet private weak var avatarView: UIView!
+    @IBOutlet private weak var avatarImageView: UIImageView!
+    var imagePicker: ImagePicker!
     
     private var conference: Conference?
     private let alertService = AlertService()
@@ -53,7 +57,18 @@ final class NewConferenceViewController: UIViewController {
         setupFormHelper()
         setupKeyboard()
         setupPicker()
+        setupImagePicker()
         setupView()
+    }
+    
+    private func setupImagePicker() {
+        imagePicker = ImagePicker(presentationController: self, delegate: self)
+        avatarView.layer.cornerRadius = 10
+        avatarImageView.layer.cornerRadius = 10
+    }
+    
+    @IBAction func showImagePicker(_ sender: UIButton) {
+        self.imagePicker.present(from: sender)
     }
     
     private func setupNavigation() {
@@ -91,11 +106,17 @@ final class NewConferenceViewController: UIViewController {
             let category = Category(string: categoryName),
             let location = locationTextField.text,
             let dateStart = dateStart,
-            let dateEnd = dateEnd,
-            let photoUrl = urlTextField.text
+            let dateEnd = dateEnd
         else { return }
         
         doneButton.showLoading()
+        
+        let photoUrl: String
+        if let image = avatarImageView.image {
+            photoUrl = convertImageToBase64(image)
+        } else {
+            photoUrl = ""
+        }
         
         if let conference = conference {
             let conference = Conference(id: conference.id,
@@ -168,7 +189,11 @@ final class NewConferenceViewController: UIViewController {
             self.conference = conference
             titleTextField.text = conference.title
             descriptionTextField.text = conference.description
-            urlTextField.text = conference.photoUrl
+            if let photoUrl = conference.photoUrl {
+                avatarImageView.image = convertBase64ToImage(photoUrl)
+                avatarView.isHidden = avatarImageView.image == nil
+                noAvatarLabel.isHidden = avatarImageView.image != nil
+            }
             categoryTextField.text = conference.category.description
             locationTextField.text = conference.location
             
@@ -251,7 +276,8 @@ final class NewConferenceViewController: UIViewController {
             dateStart = datePicker.date
         }
         
-       dateStartTextField.resignFirstResponder()
+        dateStartTextField.resignFirstResponder()
+        doneButton.isEnabled = true
     }
     
     @objc private func tapDoneEnd() {
@@ -264,14 +290,12 @@ final class NewConferenceViewController: UIViewController {
         }
         
         dateEndTextField.resignFirstResponder()
+        doneButton.isEnabled = true
     }
     
     @objc private func pickerDidEndEditing() {
         view.endEditing(true)
-    }
-    
-    @IBAction func pasteDidTap(_ sender: Any) {
-        urlTextField.text = UIPasteboard.general.string
+        doneButton.isEnabled = true
     }
 }
 
@@ -337,7 +361,22 @@ private extension UITextField {
         inputAccessoryView = toolBar
     }
     
-    @objc func tapCancel() {
+    @objc private func tapCancel() {
         resignFirstResponder()
+    }
+}
+
+
+// MARK: - ImagePickerDelegate
+
+extension NewConferenceViewController: ImagePickerDelegate {
+
+    func didSelect(image: UIImage?) {
+        avatarImageView.image = image
+        
+        avatarView.isHidden = image == nil
+        noAvatarLabel.isHidden = image != nil
+        
+        doneButton.isEnabled = true
     }
 }

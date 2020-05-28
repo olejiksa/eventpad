@@ -128,7 +128,7 @@ final class AuthViewController: UIViewController {
     }
     
     @IBAction private func signUpDidTap() {
-        let vc = SignUpViewController()
+        let vc = SignUpViewController(mode: .new)
         navigationController?.pushViewController(vc, animated: true)
     }
     

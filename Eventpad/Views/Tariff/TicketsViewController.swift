@@ -73,7 +73,7 @@ final class TicketsViewController: UIViewController {
             return
         }
         
-        let config = RequestFactory.conferences(userID: user.id, limit: 20, offset: 0)
+        let config = RequestFactory.conferences(userID: user.id!, limit: 20, offset: 0)
         requestSender.send(config: config) { [weak self] result in
             guard let self = self else { return }
             

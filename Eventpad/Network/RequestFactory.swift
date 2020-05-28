@@ -31,6 +31,13 @@ struct RequestFactory {
         return .init(request: request, parser: parser)
     }
     
+    static func changeUser(user: User) -> RequestConfig<SuccessParser> {
+        let request = ChangeUserRequest(user: user)
+        let parser = SuccessParser()
+        
+        return .init(request: request, parser: parser)
+    }
+    
     
     // MARK: Main
     

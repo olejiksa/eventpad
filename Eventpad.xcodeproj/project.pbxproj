@@ -124,6 +124,7 @@
 		EBF87458242F84FA0056623E /* AuthView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBF87456242F84FA0056623E /* AuthView.xib */; };
 		EBF8745B242F85B00056623E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF87459242F85B00056623E /* SignUpViewController.swift */; };
 		EBF8745C242F85B00056623E /* SignUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBF8745A242F85B00056623E /* SignUpView.xib */; };
+		EBFE6EC2247FE2AE00EE9B87 /* ChangeUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFE6EC1247FE2AE00EE9B87 /* ChangeUserRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -245,6 +246,7 @@
 		EBF87456242F84FA0056623E /* AuthView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthView.xib; sourceTree = "<group>"; };
 		EBF87459242F85B00056623E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		EBF8745A242F85B00056623E /* SignUpView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpView.xib; sourceTree = "<group>"; };
+		EBFE6EC1247FE2AE00EE9B87 /* ChangeUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUserRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -435,6 +437,7 @@
 				EB3081532451EE8E00EB7598 /* UnfavoriteEventRequest.swift */,
 				EB3B31F3244DA6510023E930 /* UserRequest.swift */,
 				EB30814D245179A600EB7598 /* UsersRequest.swift */,
+				EBFE6EC1247FE2AE00EE9B87 /* ChangeUserRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -640,6 +643,7 @@
 				EB30814E245179A600EB7598 /* UsersRequest.swift in Sources */,
 				EBA3F1F1246B91030065A28B /* SendPushNotificationRequest.swift in Sources */,
 				EBB3222D2448427F00942A2B /* RequestFactory.swift in Sources */,
+				EBFE6EC2247FE2AE00EE9B87 /* ChangeUserRequest.swift in Sources */,
 				EB3081702452EF2300EB7598 /* SearchItemType.swift in Sources */,
 				EB3081422451735200EB7598 /* ConferenceRequest.swift in Sources */,
 				EB9978132430925800DD5663 /* BigButton.swift in Sources */,

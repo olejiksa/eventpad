@@ -6,7 +6,7 @@
 //  Copyright © 2020 Oleg Samoylov. All rights reserved.
 //
 
-struct User: Decodable {
+struct User: Codable, Equatable {
     
     private enum CodingKeys: String, CodingKey {
         case id
@@ -19,7 +19,7 @@ struct User: Decodable {
         case photoUrl
     }
     
-    let id: Int
+    let id: Int?
     let username: String
     let email: String?
     let phone: String?

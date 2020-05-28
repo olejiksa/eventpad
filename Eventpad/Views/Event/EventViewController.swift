@@ -6,7 +6,6 @@
 //  Copyright © 2020 Oleg Samoylov. All rights reserved.
 //
 
-import Kingfisher
 import EventKit
 import UIKit
 
@@ -69,7 +68,8 @@ final class EventViewController: UIViewController {
                                              action: fromFavorites ? #selector(unstarDidTap) : #selector(starDidTap))
         navigationItem.rightBarButtonItems = [shareButton, favoriteButton]
         
-        let editButton = UIBarButtonItem(barButtonSystemItem: .edit,
+        let editButton = UIBarButtonItem(image: UIImage(systemName: "pencil"),
+                                         style: .plain,
                                          target: self,
                                          action: #selector(didEditTap))
         
@@ -83,9 +83,8 @@ final class EventViewController: UIViewController {
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .short
         
-        if let url = event.photoUrl {
-            let url = URL(string: url)
-            imageView.kf.setImage(with: url)
+        if let url = event.photoUrl, let image = convertBase64ToImage(url) {
+            imageView.image = image
         }
         
         var dateComponent = DateComponents()

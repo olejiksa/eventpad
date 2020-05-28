@@ -57,7 +57,8 @@ final class AccountViewController: UIViewController {
                                           target: self,
                                           action: #selector(shareDidTap))
         
-        let editButton = UIBarButtonItem(barButtonSystemItem: .edit,
+        let editButton = UIBarButtonItem(image: UIImage(systemName: "pencil"),
+                                         style: .plain,
                                          target: self,
                                          action: #selector(editDidTap))
         
@@ -78,10 +79,10 @@ final class AccountViewController: UIViewController {
         statsButton.isHidden = role != .organizer || isNotMine
         logoutButton.isHidden = isNotMine
         descriptionLabel.text = user.description ?? "Не указано"
-        
-        if let url = user.photoUrl {
-            let url = URL(string: url)
-            imageView.kf.setImage(with: url)
+        imageView.layer.cornerRadius = 50
+
+        if let url = user.photoUrl, let image = convertBase64ToImage(url) {
+            imageView.image = image
         }
     }
     
@@ -158,7 +159,7 @@ final class AccountViewController: UIViewController {
     }
     
     @objc private func editDidTap() {
-        let vc = SignUpViewController()
+        let vc = SignUpViewController(mode: .edit(user))
         let nvc = UINavigationController(rootViewController: vc)
         self.present(nvc, animated: true)
     }

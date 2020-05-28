@@ -6,20 +6,19 @@
 //  Copyright © 2020 Oleg Samoylov. All rights reserved.
 //
 
-import Kingfisher
 import UIKit
 
 final class ConferenceCell: UICollectionViewCell {
     
     @IBOutlet private weak var view: UIView!
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var subtitleLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        imageView.image = UIImage(named: "Warsaw")
+        imageView.image = nil
         view.layer.cornerRadius = 10
         imageView.layer.cornerRadius = 10
     }
@@ -31,5 +30,11 @@ final class ConferenceCell: UICollectionViewCell {
         
         titleLabel.text = conference.title
         subtitleLabel.text = "\(date) | \(conference.location) | \(conference.category.description)"
+        
+        if let url = conference.photoUrl, let image = convertBase64ToImage(url) {
+            imageView.image = image
+        } else {
+            imageView.image = UIImage(named: "Warsaw")
+        }
     }
 }

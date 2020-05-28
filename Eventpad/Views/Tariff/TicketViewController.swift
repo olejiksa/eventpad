@@ -96,9 +96,8 @@ final class TicketViewController: UIViewController {
         let dateEnd = dateFormatter.string(from: dateEndFinal)
         let datePurchase = dateFormatter.string(from: ticket.released)
         
-        if let url = conference.photoUrl {
-            let url = URL(string: url)
-            photoView.kf.setImage(with: url)
+        if let url = conference.photoUrl, let image = convertBase64ToImage(url) {
+            photoView.image = image
         }
         
         titleLabel.text = conference.title
@@ -294,8 +293,6 @@ final class TicketViewController: UIViewController {
         #if targetEnvironment(macCatalyst)
              
         #else
-            guard let printData = htmlString.data(using: .utf8) else { return }
-            let printText = try! NSAttributedString(data: printData, options: [.documentType: NSAttributedString.DocumentType.html,  .characterEncoding: String.Encoding.utf8.rawValue],  documentAttributes: nil)
             let formatter = UIMarkupTextPrintFormatter(markupText: htmlString)
             formatter.perPageContentInsets = UIEdgeInsets(top: 72, left: 72, bottom: 72, right: 72)
             printController.printFormatter = formatter
