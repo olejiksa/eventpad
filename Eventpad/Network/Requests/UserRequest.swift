@@ -8,8 +8,19 @@
 
 final class UserRequest: BaseGetRequest {
     
-    init(username: String) {
-        let endpoint = "\(RequestFactory.endpointRoot)usr/info/\(username)"
+    init(username: String, role: Role) {
+        let endpoint: String
+        switch role {
+        case .organizer:
+            endpoint = "\(RequestFactory.endpointRoot)org/info/\(username)"
+            
+        case .participant:
+            endpoint = "\(RequestFactory.endpointRoot)usr/info/\(username)"
+            
+        default:
+            fatalError()
+        }
+        
         super.init(endpoint: endpoint)
     }
     

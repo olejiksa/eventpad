@@ -77,7 +77,6 @@ final class ConferenceViewController: UIViewController {
     @objc private func didEditTap() {
         let vc = NewConferenceViewController(mode: .edit(conference))
         let nvc = UINavigationController(rootViewController: vc)
-        nvc.modalPresentationStyle = .formSheet
         present(nvc, animated: true)
     }
     
@@ -187,7 +186,11 @@ final class ConferenceViewController: UIViewController {
     @IBAction private func scheduleDidTap() {
         guard let id = conference.id else { return }
         let vc = ScheduleViewController(parentID: id, isManager: isManager)
-        navigationController?.pushViewController(vc, animated: true)
+        if let splitVc = splitViewController, !splitVc.isCollapsed {
+            (splitVc.viewControllers.last as? UINavigationController)?.pushViewController(vc, animated: true)
+        } else {
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     private func createEventInTheCalendar(with title: String,

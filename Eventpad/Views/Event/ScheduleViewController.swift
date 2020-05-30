@@ -93,7 +93,6 @@ final class ScheduleViewController: UIViewController {
     @objc private func addDidTap() {
         let vc = NewEventViewController(conferenceID: parentID)
         let nvc = UINavigationController(rootViewController: vc)
-        nvc.modalPresentationStyle = .formSheet
         present(nvc, animated: true)
     }
 }
@@ -148,7 +147,11 @@ extension ScheduleViewController: UITableViewDelegate {
                    didSelectRowAt indexPath: IndexPath) {
         let event = items[indexPath.section][indexPath.row]
         let vc = EventViewController(event: event, isManager: isManager, fromFavorites: false)
-        navigationController?.pushViewController(vc, animated: true)
+        if let splitVc = splitViewController, !splitVc.isCollapsed {
+            (splitVc.viewControllers.last as? UINavigationController)?.pushViewController(vc, animated: true)
+        } else {
+            navigationController?.pushViewController(vc, animated: true)
+        }
         
         tableView.deselectRow(at: indexPath, animated: true)
     }

@@ -31,8 +31,8 @@ struct RequestFactory {
         return .init(request: request, parser: parser)
     }
     
-    static func changeUser(user: User) -> RequestConfig<SuccessParser> {
-        let request = ChangeUserRequest(user: user)
+    static func changeUser(user: User, role: Role) -> RequestConfig<SuccessParser> {
+        let request = ChangeUserRequest(user: user, role: role)
         let parser = SuccessParser()
         
         return .init(request: request, parser: parser)
@@ -55,8 +55,8 @@ struct RequestFactory {
         return .init(request: request, parser: parser)
     }
     
-    static func user(username: String) -> RequestConfig<UserParser> {
-        let request = UserRequest(username: username)
+    static func user(username: String, role: Role) -> RequestConfig<UserParser> {
+        let request = UserRequest(username: username, role: role)
         let parser = UserParser()
         
         return .init(request: request, parser: parser)

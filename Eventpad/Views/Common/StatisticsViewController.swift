@@ -11,7 +11,8 @@ import UIKit
 final class StatisticsViewController: UIViewController {
 
     @IBOutlet private weak var tableView: UITableView!
-    
+    @IBOutlet private weak var noDataLabel: UILabel!
+
     private let alertService = AlertService()
     private let requestSender = RequestSender()
     private let cellID = "\(StatisticsCell.self)"
@@ -66,8 +67,15 @@ final class StatisticsViewController: UIViewController {
             case .success(let conferences):
                 self.conferences = conferences
                 self.spinner.stopAnimating()
-                self.tableView.separatorStyle = .singleLine
                 self.tableView.reloadData()
+                
+                if conferences.isEmpty {
+                    self.tableView.separatorStyle = .none
+                    self.noDataLabel.isHidden = false
+                } else {
+                    self.tableView.separatorStyle = .singleLine
+                    self.noDataLabel.isHidden = true
+                }
                 
             case .failure(let error):
                 let alert = self.alertService.alert(error.localizedDescription)
@@ -171,11 +179,19 @@ extension StatisticsViewController: UITableViewDelegate {
         if indexPath.section == 0 {
             guard tariffs.first(where: { $0.price == 0 }) != nil else { return }
             let vc = TariffDataViewController(tariffs: tariffs, free: true)
-            navigationController?.pushViewController(vc, animated: true)
+            if let splitVc = splitViewController, !splitVc.isCollapsed {
+                (splitVc.viewControllers.last as? UINavigationController)?.pushViewController(vc, animated: true)
+            } else {
+                navigationController?.pushViewController(vc, animated: true)
+            }
         } else {
             guard tariffs.first(where: { $0.price > 0 }) != nil else { return }
             let vc = TariffDataViewController(tariffs: tariffs, free: false)
-            navigationController?.pushViewController(vc, animated: true)
+            if let splitVc = splitViewController, !splitVc.isCollapsed {
+                (splitVc.viewControllers.last as? UINavigationController)?.pushViewController(vc, animated: true)
+            } else {
+                navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
 }

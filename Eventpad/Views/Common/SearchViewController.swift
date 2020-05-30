@@ -20,6 +20,7 @@ final class SearchViewController: UIViewController {
     private var events: [Event] = []
     private var users: [User] = []
     
+    @IBOutlet private weak var noDataLabel: UILabel!
     @IBOutlet private weak var tableView: UITableView!
    
     override func viewDidLoad() {
@@ -81,6 +82,8 @@ final class SearchViewController: UIViewController {
             switch result {
             case .success(let conferences):
                 self.conferences = conferences
+                self.tableView.separatorStyle = conferences.isEmpty ? .none : .singleLine
+                self.noDataLabel.isHidden = !conferences.isEmpty
                 self.tableView.reloadData()
         
             case .failure(let error):
@@ -98,6 +101,8 @@ final class SearchViewController: UIViewController {
             switch result {
             case .success(let events):
                 self.events = events
+                self.tableView.separatorStyle = events.isEmpty ? .none : .singleLine
+                self.noDataLabel.isHidden = !events.isEmpty
                 self.tableView.reloadData()
                 
             case .failure(let error):
@@ -115,6 +120,8 @@ final class SearchViewController: UIViewController {
             switch result {
             case .success(let users):
                 self.users = users
+                self.tableView.separatorStyle = users.isEmpty ? .none : .singleLine
+                self.noDataLabel.isHidden = !users.isEmpty
                 self.tableView.reloadData()
                 
             case .failure(let error):
@@ -132,9 +139,10 @@ extension SearchViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchText = searchController.searchBar.text, !searchText.isEmpty else {
-            self.users = []
-            self.events = []
-            self.conferences = []
+            users = []
+            events = []
+            conferences = []
+            noDataLabel.isHidden = false
             tableView.reloadData()
             tableView.isHidden = true
             return
@@ -209,17 +217,29 @@ extension SearchViewController: UITableViewDelegate {
         case .conference:
             let conference = conferences[indexPath.row]
             let vc = ConferenceViewController(conference: conference, isManager: false)
-            navigationController?.pushViewController(vc, animated: true)
+            if let splitVc = splitViewController, !splitVc.isCollapsed {
+                (splitVc.viewControllers.last as? UINavigationController)?.pushViewController(vc, animated: true)
+            } else {
+                navigationController?.pushViewController(vc, animated: true)
+            }
         
         case .event:
             let event = events[indexPath.row]
             let vc = EventViewController(event: event, isManager: false, fromFavorites: false)
-            navigationController?.pushViewController(vc, animated: true)
+            if let splitVc = splitViewController, !splitVc.isCollapsed {
+                (splitVc.viewControllers.last as? UINavigationController)?.pushViewController(vc, animated: true)
+            } else {
+                navigationController?.pushViewController(vc, animated: true)
+            }
             
         case .user:
             let user = users[indexPath.row]
             let vc = AccountViewController(user: user, role: .participant, isNotMine: true)
-            navigationController?.pushViewController(vc, animated: true)
+            if let splitVc = splitViewController, !splitVc.isCollapsed {
+                (splitVc.viewControllers.last as? UINavigationController)?.pushViewController(vc, animated: true)
+            } else {
+                navigationController?.pushViewController(vc, animated: true)
+            }
         }
         
         tableView.deselectRow(at: indexPath, animated: true)

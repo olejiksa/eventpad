@@ -167,7 +167,11 @@ final class FeedViewController: UIViewController {
     @objc private func userDidTap() {
         if let user = userDefaultsService.getUser() {
             let vc = AccountViewController(user: user, role: Global.role, isNotMine: false)
-            navigationController?.pushViewController(vc, animated: true)
+            if let splitVc = splitViewController, !splitVc.isCollapsed {
+                (splitVc.viewControllers.last as? UINavigationController)?.pushViewController(vc, animated: true)
+            } else {
+                navigationController?.pushViewController(vc, animated: true)
+            }
         } else {
             let vc = AuthViewController()
             let nvc = UINavigationController(rootViewController: vc)
@@ -178,13 +182,6 @@ final class FeedViewController: UIViewController {
     
     @objc private func filterDidTap() {
         let vc = CategoriesViewController()
-        let nvc = UINavigationController(rootViewController: vc)
-        nvc.modalPresentationStyle = .formSheet
-        present(nvc, animated: true)
-    }
-    
-    @objc private func addDidTap() {
-        let vc = OrganizerSignUpViewController()
         let nvc = UINavigationController(rootViewController: vc)
         nvc.modalPresentationStyle = .formSheet
         present(nvc, animated: true)
@@ -231,8 +228,12 @@ extension FeedViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         let conference = sections[indexPath.section].conference
-        let viewController = ConferenceViewController(conference: conference, isManager: false)
-        navigationController?.pushViewController(viewController, animated: true)
+        let vc = ConferenceViewController(conference: conference, isManager: false)
+        if let splitVc = splitViewController, !splitVc.isCollapsed {
+            (splitVc.viewControllers.last as? UINavigationController)?.pushViewController(vc, animated: true)
+        } else {
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 

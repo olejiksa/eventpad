@@ -195,14 +195,14 @@ final class SignUpViewController: UIViewController {
                     self.userDefaultsService.setRole(role)
                     self.userDefaultsService.setToken(response.message)
                     
-                    let user = User(id: 0,
+                    let user = User(id: nil,
                                     username: signUp.username,
                                     email: signUp.email,
                                     phone: signUp.phone,
                                     name: signUp.name,
                                     surname: signUp.surname,
                                     description: signUp.description,
-                                    photoUrl: nil)
+                                    photoUrl: signUp.photoUrl)
                     self.userDefaultsService.setUser(user)
                     self.signUpButton.hideLoading()
                     self.doneButton.hideLoading()
@@ -235,6 +235,13 @@ final class SignUpViewController: UIViewController {
 
         switch mode {
         case .new:
+            let photoUrl: String
+            if let image = avatarImageView.image {
+                photoUrl = convertImageToBase64(image)
+            } else {
+                photoUrl = ""
+            }
+            
             let deviceName = Global.deviceToken ?? UIDevice.current.name
             let signUp = SignUp(username: username,
                                 password: password,
@@ -244,7 +251,7 @@ final class SignUpViewController: UIViewController {
                                 email: email,
                                 phone: phone,
                                 description: description,
-                                photoUrl: nil)
+                                photoUrl: photoUrl)
             self.signUp(signUp)
             
         case .edit(let oldUser):
@@ -257,7 +264,8 @@ final class SignUpViewController: UIViewController {
             
             let user = User(id: oldUser.id, username: oldUser.username, email: email, phone: phone, name: name, surname: surname, description: description, photoUrl: photoUrl)
             
-            let config = RequestFactory.changeUser(user: user)
+            let role: Role = organizerSwitch.isOn ? .organizer : .participant
+            let config = RequestFactory.changeUser(user: user, role: role)
             
             requestSender.send(config: config) { [weak self] result in
                 guard let self = self else { return }

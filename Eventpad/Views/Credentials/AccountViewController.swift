@@ -6,6 +6,7 @@
 //  Copyright © 2020 Oleg Samoylov. All rights reserved.
 //
 
+import AVFoundation
 import MessageUI
 import UIKit
 
@@ -78,7 +79,11 @@ final class AccountViewController: UIViewController {
         validationButton.isHidden = role != .organizer || isNotMine
         statsButton.isHidden = role != .organizer || isNotMine
         logoutButton.isHidden = isNotMine
-        descriptionLabel.text = user.description ?? "Не указано"
+        if let description = user.description, description != "" {
+            descriptionLabel.text = user.description
+        } else {
+            descriptionLabel.text = "Не указано"
+        }
         imageView.layer.cornerRadius = 50
 
         if let url = user.photoUrl, let image = convertBase64ToImage(url) {
@@ -132,7 +137,11 @@ final class AccountViewController: UIViewController {
             switch result {
             case .success(let conferences):
                 let vc = MyConferencesViewController(sections: conferences.sorted(by: { $0.dateStart > $1.dateStart}).map { EventSection(conference: $0) })
-                self.navigationController?.pushViewController(vc, animated: true)
+                if let splitVc = self.splitViewController, !splitVc.isCollapsed {
+                    (splitVc.viewControllers.last as? UINavigationController)?.pushViewController(vc, animated: true)
+                } else {
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
                 
             case .failure(let error):
                 let alert = self.alertService.alert(error.localizedDescription)
@@ -170,6 +179,11 @@ final class AccountViewController: UIViewController {
     }
     
     @IBAction private func scannerDidTap() {
+        guard AVCaptureDevice.default(for: .video) != nil else {
+            failed()
+            return
+        }
+        
         let vc = ScannerViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -177,6 +191,12 @@ final class AccountViewController: UIViewController {
     @IBAction private func statsDidTap() {
         let vc = StatisticsViewController(username: user.username)
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func failed() {
+        let ac = UIAlertController(title: "Scanning not supported", message: "Your device does not support scanning a code from an item. Please use a device with a camera.", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        present(ac, animated: true)
     }
 }
 

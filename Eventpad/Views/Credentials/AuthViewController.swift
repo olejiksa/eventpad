@@ -61,7 +61,7 @@ final class AuthViewController: UIViewController {
         let login = Login(username: username, password: password, deviceName: deviceName)
         let role: Role = organizerSwitch.isOn ? .organizer : .participant
         let loginConfig = RequestFactory.login(login: login, role: role)
-        let userConfig = RequestFactory.user(username: username)
+        let userConfig = RequestFactory.user(username: username, role: role)
         
         requestSender.send(config: loginConfig) { [weak self] result in
             guard let self = self else { return }

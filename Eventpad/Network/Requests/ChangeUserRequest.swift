@@ -10,8 +10,18 @@ import Foundation
 
 final class ChangeUserRequest: BasePostRequest {
     
-    init(user: User) {
-        let endpoint = "\(RequestFactory.endpointRoot)usr/change/\(user.username)"
+    init(user: User, role: Role) {
+        let endpoint: String
+        switch role {
+        case .organizer:
+            endpoint = "\(RequestFactory.endpointRoot)org/change/\(user.username)"
+            
+        case .participant:
+            endpoint = "\(RequestFactory.endpointRoot)usr/change/\(user.username)"
+            
+        default:
+            fatalError()
+        }
         
         do {
             let jsonEncoder = JSONEncoder()

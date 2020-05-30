@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StatisticsViewController" customModule="Eventpad" customModuleProvider="target">
             <connections>
+                <outlet property="noDataLabel" destination="ga8-Gj-Cir" id="ysW-MP-P8v"/>
                 <outlet property="tableView" destination="BR5-jp-B4V" id="Mxi-CN-2ng"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -26,13 +27,22 @@
                         <outlet property="delegate" destination="-1" id="GnF-wc-XZD"/>
                     </connections>
                 </tableView>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Нет конференций, статистику по которым можно было бы посмотреть" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ga8-Gj-Cir">
+                    <rect key="frame" x="69" y="417.5" width="276" height="61"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstItem="BR5-jp-B4V" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="1bg-7b-I0u"/>
+                <constraint firstItem="ga8-Gj-Cir" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="KDX-ef-6Ku"/>
                 <constraint firstAttribute="bottom" secondItem="BR5-jp-B4V" secondAttribute="bottom" id="LXL-vN-jRi"/>
                 <constraint firstItem="BR5-jp-B4V" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="UkG-hw-CS0"/>
+                <constraint firstItem="ga8-Gj-Cir" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="ko2-Oq-3IE"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="BR5-jp-B4V" secondAttribute="trailing" id="qlN-lN-Fk7"/>
+                <constraint firstItem="ga8-Gj-Cir" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="2:3" id="sgR-SB-cLr"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="139" y="125"/>

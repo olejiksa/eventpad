@@ -115,9 +115,10 @@ final class FavoritesViewController: UIViewController {
                 self.titles = events.sorted { $0.dateStart > $1.dateStart }.map { $0.dateStartFormatted }
                 self.tableView.reloadData()
                 
-            case .failure(let error):
-                let alert = self.alertService.alert(error.localizedDescription)
-                self.present(alert, animated: true)
+            case .failure:
+                self.spinner.stopAnimating()
+                self.noDataLabel.isHidden = false
+                self.tableView.separatorStyle = .none
             }
         }
     }
@@ -172,7 +173,11 @@ extension FavoritesViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let event = searchController.isActive ? searchedEvents[indexPath.row] : events[indexPath.section][indexPath.row]
         let vc = EventViewController(event: event, isManager: false, fromFavorites: true)
-        navigationController?.pushViewController(vc, animated: true)
+        if let splitVc = splitViewController, !splitVc.isCollapsed {
+            (splitVc.viewControllers.last as? UINavigationController)?.pushViewController(vc, animated: true)
+        } else {
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 

@@ -121,7 +121,6 @@ final class MyConferencesViewController: UIViewController {
     @objc private func addDidTap() {
         let vc = NewConferenceViewController(mode: .new)
         let nvc = UINavigationController(rootViewController: vc)
-        nvc.modalPresentationStyle = .formSheet
         present(nvc, animated: true)
     }
     

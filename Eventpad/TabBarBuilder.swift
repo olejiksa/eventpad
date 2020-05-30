@@ -33,11 +33,12 @@ final class TabBarBuilder: UISplitViewControllerDelegate {
         let nvc = UINavigationController(rootViewController: vc)
         
         let emptyVc = EmptyViewController("Для просмотра информации о конференции нажмите на нее в левой части экрана")
-        
+        let emptyNvc = UINavigationController(rootViewController: emptyVc)
+
         let svc = UISplitViewController()
         svc.delegate = vc
         svc.preferredDisplayMode = .allVisible
-        svc.viewControllers = [nvc, emptyVc]
+        svc.viewControllers = [nvc, emptyNvc]
         
         svc.tabBarItem = UITabBarItem(title: "Афиша",
                                       image: UIImage(systemName: "house"),
@@ -51,11 +52,12 @@ final class TabBarBuilder: UISplitViewControllerDelegate {
         let nvc = UINavigationController(rootViewController: vc)
         
         let emptyVc = EmptyViewController("Для просмотра информации о найденном элементе нажмите на него в левой части экрана")
+        let emptyNvc = UINavigationController(rootViewController: emptyVc)
         
         let svc = UISplitViewController()
         svc.delegate = vc
         svc.preferredDisplayMode = .allVisible
-        svc.viewControllers = [nvc, emptyVc]
+        svc.viewControllers = [nvc, emptyNvc]
         
         svc.tabBarItem = UITabBarItem(title: "Поиск",
                                       image: UIImage(systemName: "magnifyingglass"),
@@ -69,11 +71,12 @@ final class TabBarBuilder: UISplitViewControllerDelegate {
         let nvc = UINavigationController(rootViewController: vc)
         
         let emptyVc = EmptyViewController("Для просмотра информации о билете нажмите на него в левой части экрана")
+        let emptyNvc = UINavigationController(rootViewController: emptyVc)
         
         let svc = UISplitViewController()
         svc.delegate = vc
         svc.preferredDisplayMode = .allVisible
-        svc.viewControllers = [nvc, emptyVc]
+        svc.viewControllers = [nvc, emptyNvc]
         
         svc.tabBarItem = UITabBarItem(title: "Билеты",
                                       image: UIImage(systemName: "doc.plaintext"),
@@ -87,11 +90,12 @@ final class TabBarBuilder: UISplitViewControllerDelegate {
         let nvc = UINavigationController(rootViewController: vc)
         
         let emptyVc = EmptyViewController("Для просмотра информации об элементе в \"Избранном\" нажмите на него в левой части экрана")
-        
+        let emptyNvc = UINavigationController(rootViewController: emptyVc)
+
         let svc = UISplitViewController()
         svc.delegate = vc
         svc.preferredDisplayMode = .allVisible
-        svc.viewControllers = [nvc, emptyVc]
+        svc.viewControllers = [nvc, emptyNvc]
         
         svc.tabBarItem = UITabBarItem(title: "Избранное",
                                       image: UIImage(systemName: "star"),

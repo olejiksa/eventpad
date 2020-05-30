@@ -87,9 +87,10 @@ final class TicketsViewController: UIViewController {
                 self.spinner.stopAnimating()
                 self.tableView.reloadData()
                 
-            case .failure(let error):
-                let alert = self.alertService.alert(error.localizedDescription)
-                self.present(alert, animated: true)
+            case .failure:
+                self.spinner.stopAnimating()
+                self.noDataLabel.isHidden = false
+                self.tableView.separatorStyle = .none
             }
         }
     }
@@ -141,7 +142,11 @@ final class TicketsViewController: UIViewController {
             case .success(let ticket):
                 self.dismiss(animated: false, completion: nil)
                 let vc = TicketViewController(conference: conference, ticket: ticket)
-                self.navigationController?.pushViewController(vc, animated: true)
+                if let splitVc = self.splitViewController, !splitVc.isCollapsed {
+                    (splitVc.viewControllers.last as? UINavigationController)?.pushViewController(vc, animated: true)
+                } else {
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
                 
             case .failure(let error):
                 let alert = self.alertService.alert(error.localizedDescription)

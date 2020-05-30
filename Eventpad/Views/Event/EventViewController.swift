@@ -352,7 +352,6 @@ final class EventViewController: UIViewController {
     @objc private func didEditTap() {
         let vc = NewEventViewController(conferenceID: 0)
         let nvc = UINavigationController(rootViewController: vc)
-        nvc.modalPresentationStyle = .formSheet
         present(nvc, animated: true)
     }
     

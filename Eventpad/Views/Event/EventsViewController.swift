@@ -80,7 +80,11 @@ extension EventsViewController: UITableViewDelegate {
                    didSelectRowAt indexPath: IndexPath) {
         let event = events[indexPath.section]
         let vc = EventViewController(event: event, isManager: false, fromFavorites: false)
-        navigationController?.pushViewController(vc, animated: true)
+        if let splitVc = splitViewController, !splitVc.isCollapsed {
+            (splitVc.viewControllers.last as? UINavigationController)?.pushViewController(vc, animated: true)
+        } else {
+            navigationController?.pushViewController(vc, animated: true)
+        }
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

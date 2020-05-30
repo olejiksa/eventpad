@@ -56,7 +56,6 @@ final class TariffsViewController: UIViewController {
         let vc = NewTariffViewController(mode: .new)
         vc.conferenceID = conferenceID
         let nvc = UINavigationController(rootViewController: vc)
-        nvc.modalPresentationStyle = .formSheet
         present(nvc, animated: true)
     }
 }
@@ -97,7 +96,6 @@ extension TariffsViewController: UITableViewDelegate {
         let vc = NewTariffViewController(mode: .edit(tariff))
         vc.conferenceID = conferenceID
         let nvc = UINavigationController(rootViewController: vc)
-        nvc.modalPresentationStyle = .formSheet
         present(nvc, animated: true)
     }
 }

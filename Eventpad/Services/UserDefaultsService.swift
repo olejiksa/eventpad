@@ -71,6 +71,7 @@ final class UserDefaultsService {
         defaults.set(user.phone, forKey: "phone")
         defaults.set(user.name, forKey: "name")
         defaults.set(user.surname, forKey: "surname")
+        defaults.set(user.description, forKey: "description")
         defaults.set(user.photoUrl, forKey: "photoUrl")
     }
     

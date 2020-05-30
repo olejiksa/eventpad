@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModule="Eventpad" customModuleProvider="target">
             <connections>
+                <outlet property="noDataLabel" destination="Mac-LL-475" id="D20-wU-dy2"/>
                 <outlet property="tableView" destination="egK-ff-8Su" id="vB5-Am-8l3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -26,13 +27,21 @@
                         <outlet property="delegate" destination="-1" id="wn4-mV-FQc"/>
                     </connections>
                 </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ничего не найдено" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mac-LL-475">
+                    <rect key="frame" x="129.5" y="437.5" width="155" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="egK-ff-8Su" secondAttribute="bottom" id="JfL-Lj-U1y"/>
                 <constraint firstItem="egK-ff-8Su" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="UT2-TE-AiO"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="egK-ff-8Su" secondAttribute="trailing" id="ZZU-Po-exM"/>
+                <constraint firstItem="Mac-LL-475" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="cPf-Ko-1Zt"/>
                 <constraint firstItem="egK-ff-8Su" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="gaY-W9-7Oq"/>
+                <constraint firstItem="Mac-LL-475" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="iAL-bw-XYU"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="139" y="129"/>
