@@ -105,7 +105,8 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // 2
         tbc.selectedIndex = 0
-        guard let nvc = tbc.viewControllers?.first as? UINavigationController else { return }
+        guard let svc = tbc.viewControllers?.first as? UISplitViewController else { return }
+        guard let nvc = svc.children.first as? UINavigationController else { return }
 
         // 3
         nvc.popToRootViewController(animated: false)
@@ -118,8 +119,12 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             requestSender.send(config: config) { result in
                 switch result {
                 case .success(let conference):
-                    let detailViewController = ConferenceViewController(conference: conference, isManager: false)
-                    nvc.pushViewController(detailViewController, animated: true)
+                    let vc = ConferenceViewController(conference: conference, isManager: false)
+                    if !svc.isCollapsed {
+                        (svc.viewControllers.last as? UINavigationController)?.pushViewController(vc, animated: true)
+                    } else {
+                        nvc.pushViewController(vc, animated: true)
+                    }
                     
                 case .failure:
                     return
@@ -131,8 +136,12 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             requestSender.send(config: config) { result in
                 switch result {
                 case .success(let user):
-                    let detailViewController = AccountViewController(user: user, role: .participant, isNotMine: true)
-                    nvc.pushViewController(detailViewController, animated: true)
+                    let vc = AccountViewController(user: user, role: .participant, isNotMine: true)
+                    if !svc.isCollapsed {
+                        (svc.viewControllers.last as? UINavigationController)?.pushViewController(vc, animated: true)
+                    } else {
+                        nvc.pushViewController(vc, animated: true)
+                    }
                     
                 case .failure:
                     return
@@ -144,8 +153,12 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             requestSender.send(config: config) { result in
                 switch result {
                 case .success(let user):
-                    let detailViewController = AccountViewController(user: user, role: .organizer, isNotMine: true)
-                    nvc.pushViewController(detailViewController, animated: true)
+                    let vc = AccountViewController(user: user, role: .organizer, isNotMine: true)
+                    if !svc.isCollapsed {
+                        (svc.viewControllers.last as? UINavigationController)?.pushViewController(vc, animated: true)
+                    } else {
+                        nvc.pushViewController(vc, animated: true)
+                    }
                     
                 case .failure:
                     return
@@ -157,8 +170,12 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             requestSender.send(config: config) { result in
                 switch result {
                 case .success(let event):
-                    let detailViewController = EventViewController(event: event, isManager: false, fromFavorites: false)
-                    nvc.pushViewController(detailViewController, animated: true)
+                    let vc = EventViewController(event: event, isManager: false, fromFavorites: false)
+                    if !svc.isCollapsed {
+                        (svc.viewControllers.last as? UINavigationController)?.pushViewController(vc, animated: true)
+                    } else {
+                        nvc.pushViewController(vc, animated: true)
+                    }
                     
                 case .failure:
                     return

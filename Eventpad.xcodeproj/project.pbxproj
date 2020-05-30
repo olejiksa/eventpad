@@ -554,7 +554,6 @@
 				EBA2AF6F2442668A00AF59EE /* Network */,
 				EB30815C2452B6EB00EB7598 /* Services */,
 				EB99781D243244A400DD5663 /* Views */,
-				EBF8743F242F81330056623E /* AppDelegate.swift */,
 				EBF87448242F81370056623E /* Assets.xcassets */,
 				EB5D02432477CAEB00FE43B2 /* Event.pkpass */,
 				EBA3F1EF246B8C9B0065A28B /* Eventpad.entitlements */,
@@ -562,6 +561,7 @@
 				EB5D02412477BB5100FE43B2 /* ImagePicker.swift */,
 				EBF8744D242F81370056623E /* Info.plist */,
 				EBF8744A242F81370056623E /* LaunchScreen.storyboard */,
+				EBF8743F242F81330056623E /* AppDelegate.swift */,
 				EBF87441242F81330056623E /* SceneDelegate.swift */,
 				EBFE6EDB24823AA500EE9B87 /* TabBarBuilder.swift */,
 			);
