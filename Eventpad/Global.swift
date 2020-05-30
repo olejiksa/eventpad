@@ -20,7 +20,7 @@ struct Global {
 
 
 func convertImageToBase64(_ image: UIImage) -> String {
-    let imageData = image.jpegData(compressionQuality: 0.4)! as Data
+    let imageData = image.jpegData(compressionQuality: 0.1)! as Data
     let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
     return strBase64
 }

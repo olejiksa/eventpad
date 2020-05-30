@@ -66,7 +66,12 @@ final class EventViewController: UIViewController {
                                              style: .plain,
                                              target: self,
                                              action: fromFavorites ? #selector(unstarDidTap) : #selector(starDidTap))
-        navigationItem.rightBarButtonItems = [shareButton, favoriteButton]
+        
+        navigationItem.rightBarButtonItems = [shareButton]
+        
+        if Global.role == .participant {
+            navigationItem.rightBarButtonItems?.append(favoriteButton)
+        }
         
         let editButton = UIBarButtonItem(image: UIImage(systemName: "pencil"),
                                          style: .plain,
@@ -93,9 +98,9 @@ final class EventViewController: UIViewController {
         titleLabel.text = event.title
         dateStartLabel.text = dateStart
         dateEndLabel.text = dateEnd
-        descriptionLabel.text = event.description
+        descriptionLabel.text = event.description.isEmpty ? "(отсутствует)" : event.description
         
-        pushButton.isHidden = !isManager
+        pushButton.isHidden = true
         deleteButton.isHidden = !isManager
     }
     
@@ -335,7 +340,7 @@ final class EventViewController: UIViewController {
     }
     
     @objc private func didEditTap() {
-        let vc = NewEventViewController(conferenceID: 0)
+        let vc = NewEventViewController(conferenceID: 0, mode: .edit(event))
         let nvc = UINavigationController(rootViewController: vc)
         present(nvc, animated: true)
     }

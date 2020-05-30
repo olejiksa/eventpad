@@ -99,10 +99,10 @@ final class ConferenceViewController: UIViewController {
             imageView.image = image
         }
         
-        contactButton.isHidden = isManager
-        registerButton.isHidden = isManager || conference.tariffs!.isEmpty
+        contactButton.isHidden = isManager || Global.role == .organizer
+        registerButton.isHidden = isManager || conference.tariffs!.isEmpty || Global.role == .organizer
         tariffsButton.isHidden = !isManager
-        pushButton.isHidden = !isManager
+        pushButton.isHidden = true
         deleteButton.isHidden = !isManager
     }
     

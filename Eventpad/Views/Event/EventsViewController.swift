@@ -78,7 +78,7 @@ extension EventsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
-        let event = events[indexPath.section]
+        let event = events[indexPath.row]
         let vc = EventViewController(event: event, isManager: false, fromFavorites: false)
         if let splitVc = splitViewController, !splitVc.isCollapsed {
             (splitVc.viewControllers.last as? UINavigationController)?.pushViewController(vc, animated: true)

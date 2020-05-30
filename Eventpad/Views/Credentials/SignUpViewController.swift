@@ -264,8 +264,7 @@ final class SignUpViewController: UIViewController {
             
             let user = User(id: oldUser.id, username: oldUser.username, email: email, phone: phone, name: name, surname: surname, description: description, photoUrl: photoUrl)
             
-            let role: Role = organizerSwitch.isOn ? .organizer : .participant
-            let config = RequestFactory.changeUser(user: user, role: role)
+            let config = RequestFactory.changeUser(user: user, role: Global.role)
             
             requestSender.send(config: config) { [weak self] result in
                 guard let self = self else { return }

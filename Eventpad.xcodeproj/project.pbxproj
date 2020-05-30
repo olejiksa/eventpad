@@ -56,7 +56,7 @@
 		EB549C102469D85700CD1951 /* StatisticsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB549C0E2469D85700CD1951 /* StatisticsView.xib */; };
 		EB5CE48F245379A40085E59B /* NewConferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5CE48D245379A40085E59B /* NewConferenceViewController.swift */; };
 		EB5CE490245379A40085E59B /* NewConferenceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB5CE48E245379A40085E59B /* NewConferenceView.xib */; };
-		EB5D02382474BC2700FE43B2 /* ChangeConferenceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5D02372474BC2700FE43B2 /* ChangeConferenceRequest.swift */; };
+		EB5D02382474BC2700FE43B2 /* ChangeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5D02372474BC2700FE43B2 /* ChangeRequest.swift */; };
 		EB5D023E2474FA9600FE43B2 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EB5D023D2474FA9600FE43B2 /* Kingfisher */; };
 		EB5D02422477BB5100FE43B2 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5D02412477BB5100FE43B2 /* ImagePicker.swift */; };
 		EB5D02442477CAEB00FE43B2 /* Event.pkpass in Resources */ = {isa = PBXBuildFile; fileRef = EB5D02432477CAEB00FE43B2 /* Event.pkpass */; };
@@ -80,9 +80,7 @@
 		EB9978202432890300DD5663 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB99781E2432890300DD5663 /* AccountViewController.swift */; };
 		EB9978212432890300DD5663 /* AccountView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB99781F2432890300DD5663 /* AccountView.xib */; };
 		EBA3F1E8246B830B0065A28B /* BaseDeleteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA3F1E7246B830B0065A28B /* BaseDeleteRequest.swift */; };
-		EBA3F1EA246B85AE0065A28B /* DeleteEventRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA3F1E9246B85AE0065A28B /* DeleteEventRequest.swift */; };
-		EBA3F1EC246B86280065A28B /* DeleteConferenceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA3F1EB246B86280065A28B /* DeleteConferenceRequest.swift */; };
-		EBA3F1EE246B87260065A28B /* DeleteTariffRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA3F1ED246B87260065A28B /* DeleteTariffRequest.swift */; };
+		EBA3F1EC246B86280065A28B /* DeleteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA3F1EB246B86280065A28B /* DeleteRequest.swift */; };
 		EBA3F1F1246B91030065A28B /* SendPushNotificationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA3F1F0246B91030065A28B /* SendPushNotificationRequest.swift */; };
 		EBA3F1F3246B91B80065A28B /* PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA3F1F2246B91B80065A28B /* PushNotification.swift */; };
 		EBB3222D2448427F00942A2B /* RequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB3222C2448427F00942A2B /* RequestFactory.swift */; };
@@ -123,8 +121,6 @@
 		EBF87458242F84FA0056623E /* AuthView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBF87456242F84FA0056623E /* AuthView.xib */; };
 		EBF8745B242F85B00056623E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF87459242F85B00056623E /* SignUpViewController.swift */; };
 		EBF8745C242F85B00056623E /* SignUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBF8745A242F85B00056623E /* SignUpView.xib */; };
-		EBFE6EC2247FE2AE00EE9B87 /* ChangeUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFE6EC1247FE2AE00EE9B87 /* ChangeUserRequest.swift */; };
-		EBFE6EC424801C3800EE9B87 /* ChangeTariffRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFE6EC324801C3800EE9B87 /* ChangeTariffRequest.swift */; };
 		EBFE6ECC248238AA00EE9B87 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBFE6ECB248238AA00EE9B87 /* NotificationCenter.framework */; };
 		EBFE6ECF248238AA00EE9B87 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFE6ECE248238AA00EE9B87 /* TodayViewController.swift */; };
 		EBFE6ED2248238AA00EE9B87 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBFE6ED0248238AA00EE9B87 /* MainInterface.storyboard */; };
@@ -208,7 +204,7 @@
 		EB549C0E2469D85700CD1951 /* StatisticsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatisticsView.xib; sourceTree = "<group>"; };
 		EB5CE48D245379A40085E59B /* NewConferenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConferenceViewController.swift; sourceTree = "<group>"; };
 		EB5CE48E245379A40085E59B /* NewConferenceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewConferenceView.xib; sourceTree = "<group>"; };
-		EB5D02372474BC2700FE43B2 /* ChangeConferenceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeConferenceRequest.swift; sourceTree = "<group>"; };
+		EB5D02372474BC2700FE43B2 /* ChangeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeRequest.swift; sourceTree = "<group>"; };
 		EB5D02412477BB5100FE43B2 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		EB5D02432477CAEB00FE43B2 /* Event.pkpass */ = {isa = PBXFileReference; lastKnownFileType = file; path = Event.pkpass; sourceTree = "<group>"; };
 		EB67D779244C8B5C00E66B3C /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
@@ -230,9 +226,7 @@
 		EB99781E2432890300DD5663 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		EB99781F2432890300DD5663 /* AccountView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountView.xib; sourceTree = "<group>"; };
 		EBA3F1E7246B830B0065A28B /* BaseDeleteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDeleteRequest.swift; sourceTree = "<group>"; };
-		EBA3F1E9246B85AE0065A28B /* DeleteEventRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteEventRequest.swift; sourceTree = "<group>"; };
-		EBA3F1EB246B86280065A28B /* DeleteConferenceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteConferenceRequest.swift; sourceTree = "<group>"; };
-		EBA3F1ED246B87260065A28B /* DeleteTariffRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTariffRequest.swift; sourceTree = "<group>"; };
+		EBA3F1EB246B86280065A28B /* DeleteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteRequest.swift; sourceTree = "<group>"; };
 		EBA3F1EF246B8C9B0065A28B /* Eventpad.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Eventpad.entitlements; sourceTree = "<group>"; };
 		EBA3F1F0246B91030065A28B /* SendPushNotificationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendPushNotificationRequest.swift; sourceTree = "<group>"; };
 		EBA3F1F2246B91B80065A28B /* PushNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotification.swift; sourceTree = "<group>"; };
@@ -276,8 +270,6 @@
 		EBF87456242F84FA0056623E /* AuthView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthView.xib; sourceTree = "<group>"; };
 		EBF87459242F85B00056623E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		EBF8745A242F85B00056623E /* SignUpView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpView.xib; sourceTree = "<group>"; };
-		EBFE6EC1247FE2AE00EE9B87 /* ChangeUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUserRequest.swift; sourceTree = "<group>"; };
-		EBFE6EC324801C3800EE9B87 /* ChangeTariffRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeTariffRequest.swift; sourceTree = "<group>"; };
 		EBFE6EC9248238AA00EE9B87 /* EventpadToday.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EventpadToday.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBFE6ECB248238AA00EE9B87 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		EBFE6ECE248238AA00EE9B87 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -467,13 +459,11 @@
 				EB3B31F7244DA6F80023E930 /* Base */,
 				EB3B320224509E3C0023E930 /* AddEventsRequest.swift */,
 				EB3B320424509E4A0023E930 /* AddTariffsRequest.swift */,
-				EB5D02372474BC2700FE43B2 /* ChangeConferenceRequest.swift */,
+				EB5D02372474BC2700FE43B2 /* ChangeRequest.swift */,
 				EB3081412451735200EB7598 /* ConferenceRequest.swift */,
 				EB3081472451753000EB7598 /* ConferencesRequest.swift */,
 				EB3B31FC24509B300023E930 /* CreateConferenceRequest.swift */,
-				EBA3F1EB246B86280065A28B /* DeleteConferenceRequest.swift */,
-				EBA3F1E9246B85AE0065A28B /* DeleteEventRequest.swift */,
-				EBA3F1ED246B87260065A28B /* DeleteTariffRequest.swift */,
+				EBA3F1EB246B86280065A28B /* DeleteRequest.swift */,
 				EB3081432451742100EB7598 /* EventRequest.swift */,
 				EB3081392451689600EB7598 /* EventsRequest.swift */,
 				EB3081512451EBD900EB7598 /* FavoriteEventRequest.swift */,
@@ -485,8 +475,6 @@
 				EB3081532451EE8E00EB7598 /* UnfavoriteEventRequest.swift */,
 				EB3B31F3244DA6510023E930 /* UserRequest.swift */,
 				EB30814D245179A600EB7598 /* UsersRequest.swift */,
-				EBFE6EC1247FE2AE00EE9B87 /* ChangeUserRequest.swift */,
-				EBFE6EC324801C3800EE9B87 /* ChangeTariffRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -739,15 +727,12 @@
 				EB3081582451F05700EB7598 /* TicketRequest.swift in Sources */,
 				EB3B31FD24509B300023E930 /* CreateConferenceRequest.swift in Sources */,
 				EBCD8EE624674F3500DBDD62 /* ScannerViewController.swift in Sources */,
-				EBFE6EC424801C3800EE9B87 /* ChangeTariffRequest.swift in Sources */,
 				EB30816E2452EBF800EB7598 /* SubtitleCell.swift in Sources */,
-				EBA3F1EA246B85AE0065A28B /* DeleteEventRequest.swift in Sources */,
 				EBDB1E0E24589AA8009316FC /* NewTariffViewController.swift in Sources */,
 				EB30813C245168A000EB7598 /* EventsParser.swift in Sources */,
 				EB30814E245179A600EB7598 /* UsersRequest.swift in Sources */,
 				EBA3F1F1246B91030065A28B /* SendPushNotificationRequest.swift in Sources */,
 				EBB3222D2448427F00942A2B /* RequestFactory.swift in Sources */,
-				EBFE6EC2247FE2AE00EE9B87 /* ChangeUserRequest.swift in Sources */,
 				EB3081702452EF2300EB7598 /* SearchItemType.swift in Sources */,
 				EB3081422451735200EB7598 /* ConferenceRequest.swift in Sources */,
 				EB9978132430925800DD5663 /* BigButton.swift in Sources */,
@@ -767,7 +752,6 @@
 				EB9978182430995B00DD5663 /* FormHelper.swift in Sources */,
 				EB3B31FF24509C110023E930 /* Conference.swift in Sources */,
 				EBCD8EE324672C5000DBDD62 /* EventsViewController.swift in Sources */,
-				EBA3F1EE246B87260065A28B /* DeleteTariffRequest.swift in Sources */,
 				EBDB1E162458C198009316FC /* LocationViewController.swift in Sources */,
 				EB78FE42245CA1C5002DE6FC /* PurchaseViewController.swift in Sources */,
 				EB3081622452E4B600EB7598 /* SearchViewController.swift in Sources */,
@@ -780,7 +764,7 @@
 				EBDB1E0A245750BE009316FC /* MyConferencesViewController.swift in Sources */,
 				EB99781C24320A4200DD5663 /* UserDefaultsService.swift in Sources */,
 				EB30814A2451763B00EB7598 /* ConferencesParser.swift in Sources */,
-				EBA3F1EC246B86280065A28B /* DeleteConferenceRequest.swift in Sources */,
+				EBA3F1EC246B86280065A28B /* DeleteRequest.swift in Sources */,
 				EB3081442451742100EB7598 /* EventRequest.swift in Sources */,
 				EB9978202432890300DD5663 /* AccountViewController.swift in Sources */,
 				EBF87442242F81330056623E /* SceneDelegate.swift in Sources */,
@@ -789,7 +773,7 @@
 				EB3B320324509E3C0023E930 /* AddEventsRequest.swift in Sources */,
 				EB3B31F4244DA6510023E930 /* UserRequest.swift in Sources */,
 				EBA3F1E8246B830B0065A28B /* BaseDeleteRequest.swift in Sources */,
-				EB5D02382474BC2700FE43B2 /* ChangeConferenceRequest.swift in Sources */,
+				EB5D02382474BC2700FE43B2 /* ChangeRequest.swift in Sources */,
 				EB3B31F6244DA6F50023E930 /* UserParser.swift in Sources */,
 				EB6F38A72464C83800BDEBCE /* TicketViewController.swift in Sources */,
 				EBE681B82454919400CB9285 /* Global.swift in Sources */,

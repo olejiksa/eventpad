@@ -32,14 +32,14 @@ struct RequestFactory {
     }
     
     static func changeUser(user: User, role: Role) -> RequestConfig<SuccessParser> {
-        let request = ChangeUserRequest(user: user, role: role)
+        let request = ChangeRequest(user: user, role: role)
         let parser = SuccessParser()
         
         return .init(request: request, parser: parser)
     }
     
     static func changeTariff(tariff: Tariff) -> RequestConfig<SuccessParser> {
-        let request = ChangeTariffRequest(tariff: tariff)
+        let request = ChangeRequest(tariff: tariff)
         let parser = SuccessParser()
         
         return .init(request: request, parser: parser)
@@ -185,21 +185,21 @@ struct RequestFactory {
     // MARK: - Deletion
     
     static func deleteEvent(eventID: Int) -> RequestConfig<SuccessParser> {
-        let request = DeleteEventRequest(eventID: eventID)
+        let request = DeleteRequest(eventID: eventID)
         let parser = SuccessParser()
                
         return .init(request: request, parser: parser)
     }
     
     static func deleteConference(conferenceID: Int) -> RequestConfig<SuccessParser> {
-        let request = DeleteConferencetRequest(conferenceID: conferenceID)
+        let request = DeleteRequest(conferenceID: conferenceID)
         let parser = SuccessParser()
                
         return .init(request: request, parser: parser)
     }
     
     static func deleteTariff(tariffID: Int) -> RequestConfig<SuccessParser> {
-        let request = DeleteTariffRequest(tariffID: tariffID)
+        let request = DeleteRequest(tariffID: tariffID)
         let parser = SuccessParser()
                
         return .init(request: request, parser: parser)
@@ -216,7 +216,14 @@ struct RequestFactory {
     }
     
     static func changeConference(_ conference: Conference) -> RequestConfig<SuccessParser> {
-        let request = ChangeConferenceRequest(conference: conference)
+        let request = ChangeRequest(conference: conference)
+        let parser = SuccessParser()
+        
+        return .init(request: request, parser: parser)
+    }
+    
+    static func changeEvent(_ event: Event) -> RequestConfig<SuccessParser> {
+        let request = ChangeRequest(event: event)
         let parser = SuccessParser()
         
         return .init(request: request, parser: parser)

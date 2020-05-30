@@ -22,6 +22,8 @@ final class NewTariffViewController: UIViewController {
     @IBOutlet private weak var deleteButton: BigButton!
     
     var conferenceID: Int?
+    var completionHandler: ((Tariff) -> ())?
+
     private let alertService = AlertService()
     private let userDefaultsService = UserDefaultsService()
     private let requestSender = RequestSender()
@@ -54,7 +56,7 @@ final class NewTariffViewController: UIViewController {
             navigationItem.title = "Новый тариф"
 
         case .edit:
-            navigationItem.title = "Изменение тарифа"
+            navigationItem.title = "Тариф"
         }
         
         let closeButton = UIBarButtonItem(barButtonSystemItem: .close,
@@ -92,6 +94,10 @@ final class NewTariffViewController: UIViewController {
             titleField.text = tariff.title
             priceField.text = String(Int(tariff.price))
             ticketCountField.text = String(tariff.ticketsTotalCount)
+            doneButton.isHidden = true
+            titleField.isUserInteractionEnabled = false
+            priceField.isUserInteractionEnabled = false
+            ticketCountField.isUserInteractionEnabled = false
         }
     }
     
@@ -116,6 +122,7 @@ final class NewTariffViewController: UIViewController {
                     
                     self.deleteButton.hideLoading()
                     self.close()
+                    self.completionHandler?(tariff)
                     
                 case .failure(let error):
                     self.deleteButton.hideLoading()
@@ -178,6 +185,7 @@ final class NewTariffViewController: UIViewController {
                     }
                     
                     self.doneButton.hideLoading()
+                    self.completionHandler?(tariff)
                     self.close()
                     
                 case .failure(let error):

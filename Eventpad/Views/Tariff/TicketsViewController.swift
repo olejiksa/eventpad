@@ -149,6 +149,7 @@ final class TicketsViewController: UIViewController {
                 }
                 
             case .failure(let error):
+                self.dismiss(animated: false, completion: nil)
                 let alert = self.alertService.alert(error.localizedDescription)
                 self.present(alert, animated: true)
             }

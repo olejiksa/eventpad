@@ -14,8 +14,10 @@ final class TariffsViewController: UIViewController {
     private let alertService = AlertService()
     private let requestSender = RequestSender()
     private let cellID = "\(SubtitleCell.self)"
-    private let tariffs: [Tariff]
+    private var tariffs: [Tariff]
+    private var searchedTariffs: [Tariff] = []
     private let conferenceID: Int
+    private let searchController = UISearchController(searchResultsController: nil)
     
     @IBOutlet private weak var noDataLabel: UILabel!
     @IBOutlet private weak var tableView: UITableView!
@@ -36,6 +38,13 @@ final class TariffsViewController: UIViewController {
 
         setupNavigation()
         setupTableView()
+        setupSearchController()
+    }
+    
+    private func setupSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        navigationItem.searchController = searchController
     }
     
     private func setupNavigation() {
@@ -55,8 +64,19 @@ final class TariffsViewController: UIViewController {
     @objc private func addDidTap() {
         let vc = NewTariffViewController(mode: .new)
         vc.conferenceID = conferenceID
+        vc.completionHandler = { [weak self] newTariff in
+            guard let self = self else { return }
+            self.tariffs.append(newTariff)
+            self.tableView.reloadData()
+        }
         let nvc = UINavigationController(rootViewController: vc)
         present(nvc, animated: true)
+    }
+    
+    private func filterContent(for searchText: String) {
+        searchedTariffs = tariffs.filter {
+            $0.title.localizedCaseInsensitiveContains(searchText)
+        }
     }
 }
 
@@ -68,7 +88,7 @@ extension TariffsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        return tariffs.count
+        return searchController.isActive ? searchedTariffs.count : tariffs.count
     }
     
     func tableView(_ tableView: UITableView,
@@ -77,7 +97,7 @@ extension TariffsViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as? SubtitleCell
         else { return .init(frame: .zero) }
         
-        let tariff = tariffs[indexPath.row]
+        let tariff = searchController.isActive ? searchedTariffs[indexPath.row] : tariffs[indexPath.row]
         cell.textLabel?.text = tariff.title
         cell.detailTextLabel?.text = "Цена: \(Int(tariff.price)) y.e., осталось билетов: \(tariff.ticketsLeftCount)"
         return cell
@@ -92,10 +112,27 @@ extension TariffsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let tariff = tariffs[indexPath.row]
+        let tariff = searchController.isActive ? searchedTariffs[indexPath.row] : tariffs[indexPath.row]
         let vc = NewTariffViewController(mode: .edit(tariff))
         vc.conferenceID = conferenceID
+        vc.completionHandler = { [weak self] _ in
+            guard let self = self else { return }
+            self.tariffs.remove(at: indexPath.row)
+            self.tableView.reloadData()
+        }
         let nvc = UINavigationController(rootViewController: vc)
         present(nvc, animated: true)
+    }
+}
+
+
+// MARK: - UISearchResultsUpdating
+
+extension TariffsViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let searchText = searchController.searchBar.text else { return }
+        filterContent(for: searchText)
+        tableView.reloadData()
     }
 }

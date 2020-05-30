@@ -80,7 +80,7 @@ final class ScheduleViewController: UIViewController {
                 self.tableView.separatorStyle = events.isEmpty ? .none : .singleLine
                 let groupSorted = events.groupSort(byDate: { $0.dateStart })
                 self.items = groupSorted
-                self.titles = events.sorted { $0.dateStart > $1.dateStart }.map { $0.dateStartFormatted }
+                self.titles = events.sorted { $0.dateStart > $1.dateStart }.map { $0.dateStartFormatted }.uniques
                 self.tableView.reloadData()
                 
             case .failure(let error):
@@ -91,7 +91,7 @@ final class ScheduleViewController: UIViewController {
     }
     
     @objc private func addDidTap() {
-        let vc = NewEventViewController(conferenceID: parentID)
+        let vc = NewEventViewController(conferenceID: parentID, mode: .new)
         let nvc = UINavigationController(rootViewController: vc)
         present(nvc, animated: true)
     }
@@ -174,5 +174,20 @@ extension Sequence {
             categories[dayIndex].insert(element, at: nextIndex)
         }
         return categories
+    }
+}
+
+
+extension Array where Element: Hashable {
+    var uniques: Array {
+        var buffer = Array()
+        var added = Set<Element>()
+        for elem in self {
+            if !added.contains(elem) {
+                buffer.append(elem)
+                added.insert(elem)
+            }
+        }
+        return buffer
     }
 }

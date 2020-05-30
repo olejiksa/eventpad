@@ -1,5 +1,5 @@
 //
-//  DeleteEventRequest.swift
+//  DeleteRequest.swift
 //  Eventpad
 //
 //  Created by Oleg Samoylov on 13.05.2020.
@@ -8,10 +8,20 @@
 
 import Foundation
 
-final class DeleteEventRequest: BaseDeleteRequest {
+final class DeleteRequest: BaseDeleteRequest {
+    
+    init(conferenceID: Int) {
+        let endpoint = "\(RequestFactory.endpointRoot)org/deleteConference/\(conferenceID)"
+        super.init(endpoint: endpoint)
+    }
     
     init(eventID: Int) {
         let endpoint = "\(RequestFactory.endpointRoot)org/deleteEvent/\(eventID)"
+        super.init(endpoint: endpoint)
+    }
+    
+    init(tariffID: Int) {
+        let endpoint = "\(RequestFactory.endpointRoot)org/deleteTariff/\(tariffID)"
         super.init(endpoint: endpoint)
     }
     

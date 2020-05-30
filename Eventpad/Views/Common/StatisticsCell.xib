@@ -16,8 +16,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="381" height="87"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zXk-LW-DGF">
-                        <rect key="frame" x="16" y="16" width="349" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="LabelLabelLabelLabelLabelLabelLabelLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zXk-LW-DGF">
+                        <rect key="frame" x="16" y="16" width="300" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="M3R-1K-gHV"/>
                         </constraints>
@@ -25,7 +25,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsi-tz-e34">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsi-tz-e34">
                         <rect key="frame" x="332" y="19.5" width="33" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
@@ -42,10 +42,10 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="919-uF-WHV" secondAttribute="trailing" constant="16" id="0dO-Nr-1c5"/>
-                    <constraint firstAttribute="trailing" secondItem="zXk-LW-DGF" secondAttribute="trailing" constant="16" id="FQn-WQ-oQM"/>
                     <constraint firstItem="919-uF-WHV" firstAttribute="top" secondItem="zXk-LW-DGF" secondAttribute="bottom" constant="16" id="KMl-41-6GA"/>
                     <constraint firstAttribute="trailing" secondItem="rsi-tz-e34" secondAttribute="trailing" constant="16" id="Lxy-Da-s16"/>
                     <constraint firstItem="919-uF-WHV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="U6I-1C-ZPl"/>
+                    <constraint firstItem="rsi-tz-e34" firstAttribute="leading" secondItem="zXk-LW-DGF" secondAttribute="trailing" constant="16" id="Zde-qb-p39"/>
                     <constraint firstItem="rsi-tz-e34" firstAttribute="firstBaseline" secondItem="zXk-LW-DGF" secondAttribute="firstBaseline" id="dio-XP-QB1"/>
                     <constraint firstItem="zXk-LW-DGF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="f9o-Ww-j7g"/>
                     <constraint firstItem="zXk-LW-DGF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="pOL-JQ-TWD"/>
@@ -59,7 +59,7 @@
                 <outlet property="statLabel" destination="rsi-tz-e34" id="DIS-bT-qA4"/>
                 <outlet property="titleLabel" destination="zXk-LW-DGF" id="cTn-Hn-pDZ"/>
             </connections>
-            <point key="canvasLocation" x="181.8840579710145" y="95.424107142857139"/>
+            <point key="canvasLocation" x="137" y="102"/>
         </tableViewCell>
     </objects>
 </document>
