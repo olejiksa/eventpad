@@ -43,6 +43,7 @@ final class FeedViewController: UIViewController {
     
     private func setupNavigation() {
         navigationItem.title = "Афиша"
+        navigationController?.navigationBar.prefersLargeTitles = true
         
         let userImage = UIImage(systemName: "person.crop.circle")
         let userButton = UIBarButtonItem(image: userImage,
@@ -70,7 +71,7 @@ final class FeedViewController: UIViewController {
     private func setupCollectionView() {
         collectionViewLayout = UICollectionViewCompositionalLayout { [weak self] index, _ -> NSCollectionLayoutSection? in
             guard let self = self else { return nil }
-            return self.sections[index].layoutSection()
+            return self.sections[index].layoutSection(self.view)
         }
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
@@ -113,11 +114,11 @@ final class FeedViewController: UIViewController {
 
         spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
+        spinner.startAnimating()
     }
     
     private func loadData() {
-        spinner.startAnimating()
-
         if let category = Global.categoryInUse {
             let config = RequestFactory.conferences(categoryID: category.rawValue, limit: 20, offset: 0)
             requestSender.send(config: config) { [weak self] result in
@@ -170,6 +171,7 @@ final class FeedViewController: UIViewController {
         } else {
             let vc = AuthViewController()
             let nvc = UINavigationController(rootViewController: vc)
+            nvc.modalPresentationStyle = .formSheet
             present(nvc, animated: true)
         }
     }
@@ -177,13 +179,15 @@ final class FeedViewController: UIViewController {
     @objc private func filterDidTap() {
         let vc = CategoriesViewController()
         let nvc = UINavigationController(rootViewController: vc)
+        nvc.modalPresentationStyle = .formSheet
         present(nvc, animated: true)
     }
     
     @objc private func addDidTap() {
         let vc = OrganizerSignUpViewController()
         let nvc = UINavigationController(rootViewController: vc)
-        self.present(nvc, animated: true)
+        nvc.modalPresentationStyle = .formSheet
+        present(nvc, animated: true)
     }
     
     @objc private func refresh() {
@@ -193,6 +197,7 @@ final class FeedViewController: UIViewController {
     @objc private func locationDidTap() {
         let vc = LocationViewController()
         let nvc = UINavigationController(rootViewController: vc)
+        nvc.modalPresentationStyle = .formSheet
         present(nvc, animated: true)
     }
 }
@@ -228,5 +233,17 @@ extension FeedViewController: UICollectionViewDelegate {
         let conference = sections[indexPath.section].conference
         let viewController = ConferenceViewController(conference: conference, isManager: false)
         navigationController?.pushViewController(viewController, animated: true)
+    }
+}
+
+
+// MARK: - UISplitViewControllerDelegate
+
+extension FeedViewController: UISplitViewControllerDelegate {
+    
+    func splitViewController(_ splitViewController: UISplitViewController,
+                             collapseSecondary secondaryViewController: UIViewController,
+                             onto primaryViewController: UIViewController) -> Bool {
+        return true
     }
 }

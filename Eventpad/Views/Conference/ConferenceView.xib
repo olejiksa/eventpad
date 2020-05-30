@@ -315,7 +315,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <action selector="pushDidTap" destination="-1" eventType="touchUpInside" id="cwf-po-tYr"/>
+                                                        <action selector="deleteDidTap" destination="-1" eventType="touchUpInside" id="xEf-nM-mqe"/>
                                                     </connections>
                                                 </button>
                                             </subviews>

@@ -51,7 +51,9 @@ final class AuthViewController: UIViewController {
     }
     
     private func setupKeyboard() {
-        scrollView.bottomAnchor.constraint(lessThanOrEqualTo: keyboardLayoutGuide.topAnchor).isActive = true
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            scrollView.bottomAnchor.constraint(lessThanOrEqualTo: keyboardLayoutGuide.topAnchor).isActive = true
+        }
     }
     
     private func login(username: String, password: String) {

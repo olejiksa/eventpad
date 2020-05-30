@@ -46,7 +46,9 @@ final class OrganizerSignUpViewController: UIViewController {
     }
     
     private func setupKeyboard() {
-        scrollView.bottomAnchor.constraint(lessThanOrEqualTo: keyboardLayoutGuide.topAnchor).isActive = true
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            scrollView.bottomAnchor.constraint(lessThanOrEqualTo: keyboardLayoutGuide.topAnchor).isActive = true
+        }
     }
     
     private func setupTextView() {

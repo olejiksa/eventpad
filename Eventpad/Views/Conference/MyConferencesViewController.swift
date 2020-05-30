@@ -61,7 +61,7 @@ final class MyConferencesViewController: UIViewController {
     private func setupCollectionView() {
         collectionViewLayout = UICollectionViewCompositionalLayout { [weak self] index, _ -> NSCollectionLayoutSection? in
             guard let self = self else { return nil }
-            return self.sections[index].layoutSection()
+            return self.sections[index].layoutSection(self.view)
         }
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
@@ -121,6 +121,7 @@ final class MyConferencesViewController: UIViewController {
     @objc private func addDidTap() {
         let vc = NewConferenceViewController(mode: .new)
         let nvc = UINavigationController(rootViewController: vc)
+        nvc.modalPresentationStyle = .formSheet
         present(nvc, animated: true)
     }
     

@@ -30,7 +30,6 @@
 		EB3081562451EF4800EB7598 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3081552451EF4800EB7598 /* Ticket.swift */; };
 		EB3081582451F05700EB7598 /* TicketRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3081572451F05700EB7598 /* TicketRequest.swift */; };
 		EB30815A2451F0AD00EB7598 /* TicketParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3081592451F0AD00EB7598 /* TicketParser.swift */; };
-		EB30815E2452E3C800EB7598 /* TabBarFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB30815D2452E3C800EB7598 /* TabBarFactory.swift */; };
 		EB3081622452E4B600EB7598 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3081602452E4B600EB7598 /* SearchViewController.swift */; };
 		EB3081632452E4B600EB7598 /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB3081612452E4B600EB7598 /* SearchView.xib */; };
 		EB3081662452E4DE00EB7598 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3081642452E4DE00EB7598 /* FavoritesViewController.swift */; };
@@ -126,7 +125,38 @@
 		EBF8745C242F85B00056623E /* SignUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBF8745A242F85B00056623E /* SignUpView.xib */; };
 		EBFE6EC2247FE2AE00EE9B87 /* ChangeUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFE6EC1247FE2AE00EE9B87 /* ChangeUserRequest.swift */; };
 		EBFE6EC424801C3800EE9B87 /* ChangeTariffRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFE6EC324801C3800EE9B87 /* ChangeTariffRequest.swift */; };
+		EBFE6ECC248238AA00EE9B87 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBFE6ECB248238AA00EE9B87 /* NotificationCenter.framework */; };
+		EBFE6ECF248238AA00EE9B87 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFE6ECE248238AA00EE9B87 /* TodayViewController.swift */; };
+		EBFE6ED2248238AA00EE9B87 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBFE6ED0248238AA00EE9B87 /* MainInterface.storyboard */; };
+		EBFE6ED6248238AA00EE9B87 /* EventpadToday.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EBFE6EC9248238AA00EE9B87 /* EventpadToday.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EBFE6EDC24823AA500EE9B87 /* TabBarBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFE6EDB24823AA500EE9B87 /* TabBarBuilder.swift */; };
+		EBFE6EDF24823B5300EE9B87 /* EmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFE6EDD24823B5300EE9B87 /* EmptyViewController.swift */; };
+		EBFE6EE024823B5300EE9B87 /* EmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBFE6EDE24823B5300EE9B87 /* EmptyView.xib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EBFE6ED4248238AA00EE9B87 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EBF87434242F81330056623E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EBFE6EC8248238AA00EE9B87;
+			remoteInfo = EventpadToday;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EBFE6EDA248238AB00EE9B87 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				EBFE6ED6248238AA00EE9B87 /* EventpadToday.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		EB06F37524332D810018605E /* ConferenceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceCell.swift; sourceTree = "<group>"; };
@@ -152,7 +182,6 @@
 		EB3081552451EF4800EB7598 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		EB3081572451F05700EB7598 /* TicketRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketRequest.swift; sourceTree = "<group>"; };
 		EB3081592451F0AD00EB7598 /* TicketParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketParser.swift; sourceTree = "<group>"; };
-		EB30815D2452E3C800EB7598 /* TabBarFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarFactory.swift; sourceTree = "<group>"; };
 		EB3081602452E4B600EB7598 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		EB3081612452E4B600EB7598 /* SearchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchView.xib; sourceTree = "<group>"; };
 		EB3081642452E4DE00EB7598 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
@@ -249,6 +278,14 @@
 		EBF8745A242F85B00056623E /* SignUpView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpView.xib; sourceTree = "<group>"; };
 		EBFE6EC1247FE2AE00EE9B87 /* ChangeUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUserRequest.swift; sourceTree = "<group>"; };
 		EBFE6EC324801C3800EE9B87 /* ChangeTariffRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeTariffRequest.swift; sourceTree = "<group>"; };
+		EBFE6EC9248238AA00EE9B87 /* EventpadToday.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EventpadToday.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBFE6ECB248238AA00EE9B87 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		EBFE6ECE248238AA00EE9B87 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		EBFE6ED1248238AA00EE9B87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		EBFE6ED3248238AA00EE9B87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EBFE6EDB24823AA500EE9B87 /* TabBarBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarBuilder.swift; sourceTree = "<group>"; };
+		EBFE6EDD24823B5300EE9B87 /* EmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewController.swift; sourceTree = "<group>"; };
+		EBFE6EDE24823B5300EE9B87 /* EmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +295,14 @@
 			files = (
 				EB5D023E2474FA9600FE43B2 /* Kingfisher in Frameworks */,
 				EB997816243096BB00DD5663 /* KeyboardAdjuster in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBFE6EC6248238AA00EE9B87 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBFE6ECC248238AA00EE9B87 /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,10 +381,12 @@
 				EB3081602452E4B600EB7598 /* SearchViewController.swift */,
 				EB8309B7246AF9A100A6D47E /* StatisticsCell.swift */,
 				EB8309B8246AF9A100A6D47E /* StatisticsCell.xib */,
-				EB549C0E2469D85700CD1951 /* StatisticsView.xib */,
 				EB549C0D2469D85700CD1951 /* StatisticsViewController.swift */,
-				EB8309BC246AFEBA00A6D47E /* TariffDataView.xib */,
+				EB549C0E2469D85700CD1951 /* StatisticsView.xib */,
 				EB8309BB246AFEBA00A6D47E /* TariffDataViewController.swift */,
+				EB8309BC246AFEBA00A6D47E /* TariffDataView.xib */,
+				EBFE6EDD24823B5300EE9B87 /* EmptyViewController.swift */,
+				EBFE6EDE24823B5300EE9B87 /* EmptyView.xib */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -380,7 +427,6 @@
 				EB9978172430995B00DD5663 /* FormHelper.swift */,
 				EB06F3792433309A0018605E /* Section.swift */,
 				EB30816D2452EBF800EB7598 /* SubtitleCell.swift */,
-				EB30815D2452E3C800EB7598 /* TabBarFactory.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -486,6 +532,8 @@
 			isa = PBXGroup;
 			children = (
 				EBF8743E242F81330056623E /* Eventpad */,
+				EBFE6ECD248238AA00EE9B87 /* EventpadToday */,
+				EBFE6ECA248238AA00EE9B87 /* Frameworks */,
 				EBF8743D242F81330056623E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -494,6 +542,7 @@
 			isa = PBXGroup;
 			children = (
 				EBF8743C242F81330056623E /* Eventpad.app */,
+				EBFE6EC9248238AA00EE9B87 /* EventpadToday.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -514,8 +563,27 @@
 				EBF8744D242F81370056623E /* Info.plist */,
 				EBF8744A242F81370056623E /* LaunchScreen.storyboard */,
 				EBF87441242F81330056623E /* SceneDelegate.swift */,
+				EBFE6EDB24823AA500EE9B87 /* TabBarBuilder.swift */,
 			);
 			path = Eventpad;
+			sourceTree = "<group>";
+		};
+		EBFE6ECA248238AA00EE9B87 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EBFE6ECB248238AA00EE9B87 /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EBFE6ECD248238AA00EE9B87 /* EventpadToday */ = {
+			isa = PBXGroup;
+			children = (
+				EBFE6ECE248238AA00EE9B87 /* TodayViewController.swift */,
+				EBFE6ED0248238AA00EE9B87 /* MainInterface.storyboard */,
+				EBFE6ED3248238AA00EE9B87 /* Info.plist */,
+			);
+			path = EventpadToday;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -528,10 +596,12 @@
 				EBF87438242F81330056623E /* Sources */,
 				EBF87439242F81330056623E /* Frameworks */,
 				EBF8743A242F81330056623E /* Resources */,
+				EBFE6EDA248238AB00EE9B87 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				EBFE6ED5248238AA00EE9B87 /* PBXTargetDependency */,
 			);
 			name = Eventpad;
 			packageProductDependencies = (
@@ -541,6 +611,23 @@
 			productName = Eventpad;
 			productReference = EBF8743C242F81330056623E /* Eventpad.app */;
 			productType = "com.apple.product-type.application";
+		};
+		EBFE6EC8248238AA00EE9B87 /* EventpadToday */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EBFE6ED7248238AB00EE9B87 /* Build configuration list for PBXNativeTarget "EventpadToday" */;
+			buildPhases = (
+				EBFE6EC5248238AA00EE9B87 /* Sources */,
+				EBFE6EC6248238AA00EE9B87 /* Frameworks */,
+				EBFE6EC7248238AA00EE9B87 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EventpadToday;
+			productName = EventpadToday;
+			productReference = EBFE6EC9248238AA00EE9B87 /* EventpadToday.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -554,6 +641,9 @@
 				TargetAttributes = {
 					EBF8743B242F81330056623E = {
 						CreatedOnToolsVersion = 11.4;
+					};
+					EBFE6EC8248238AA00EE9B87 = {
+						CreatedOnToolsVersion = 11.4.1;
 					};
 				};
 			};
@@ -575,6 +665,7 @@
 			projectRoot = "";
 			targets = (
 				EBF8743B242F81330056623E /* Eventpad */,
+				EBFE6EC8248238AA00EE9B87 /* EventpadToday */,
 			);
 		};
 /* End PBXProject section */
@@ -599,6 +690,7 @@
 				EB6F38A82464C83800BDEBCE /* TicketView.xib in Resources */,
 				EBDB1E172458C198009316FC /* LocationView.xib in Resources */,
 				EB78FE43245CA1C5002DE6FC /* PurchaseView.xib in Resources */,
+				EBFE6EE024823B5300EE9B87 /* EmptyView.xib in Resources */,
 				EBF8744C242F81370056623E /* LaunchScreen.storyboard in Resources */,
 				EB30816B2452E59600EB7598 /* TicketsView.xib in Resources */,
 				EB3081632452E4B600EB7598 /* SearchView.xib in Resources */,
@@ -612,6 +704,14 @@
 				EBDB1E0B245750BE009316FC /* MyConferencesView.xib in Resources */,
 				EB32CD942461E26E00AC1FAB /* EventView.xib in Resources */,
 				EB06F37824332D810018605E /* ConferenceCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBFE6EC7248238AA00EE9B87 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBFE6ED2248238AA00EE9B87 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -651,6 +751,7 @@
 				EB3081702452EF2300EB7598 /* SearchItemType.swift in Sources */,
 				EB3081422451735200EB7598 /* ConferenceRequest.swift in Sources */,
 				EB9978132430925800DD5663 /* BigButton.swift in Sources */,
+				EBFE6EDC24823AA500EE9B87 /* TabBarBuilder.swift in Sources */,
 				EB5CE48F245379A40085E59B /* NewConferenceViewController.swift in Sources */,
 				EB06F37A2433309A0018605E /* Section.swift in Sources */,
 				EBB3224124486AF500942A2B /* LoginRequest.swift in Sources */,
@@ -686,7 +787,6 @@
 				EB30813A2451689600EB7598 /* EventsRequest.swift in Sources */,
 				EB3B31F0244D7A880023E930 /* Tariff.swift in Sources */,
 				EB3B320324509E3C0023E930 /* AddEventsRequest.swift in Sources */,
-				EB30815E2452E3C800EB7598 /* TabBarFactory.swift in Sources */,
 				EB3B31F4244DA6510023E930 /* UserRequest.swift in Sources */,
 				EBA3F1E8246B830B0065A28B /* BaseDeleteRequest.swift in Sources */,
 				EB5D02382474BC2700FE43B2 /* ChangeConferenceRequest.swift in Sources */,
@@ -710,11 +810,28 @@
 				EB3081382451631100EB7598 /* MessageResponse.swift in Sources */,
 				EB6E6AFC246BB6E000F1077F /* TariffsViewController.swift in Sources */,
 				EB30815A2451F0AD00EB7598 /* TicketParser.swift in Sources */,
+				EBFE6EDF24823B5300EE9B87 /* EmptyViewController.swift in Sources */,
 				EBB32239244846A800942A2B /* Error.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EBFE6EC5248238AA00EE9B87 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBFE6ECF248238AA00EE9B87 /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EBFE6ED5248238AA00EE9B87 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EBFE6EC8248238AA00EE9B87 /* EventpadToday */;
+			targetProxy = EBFE6ED4248238AA00EE9B87 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		EBF8744A242F81370056623E /* LaunchScreen.storyboard */ = {
@@ -724,6 +841,14 @@
 			);
 			name = LaunchScreen.storyboard;
 			path = .;
+			sourceTree = "<group>";
+		};
+		EBFE6ED0248238AA00EE9B87 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EBFE6ED1248238AA00EE9B87 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -846,6 +971,7 @@
 		EBF87451242F81370056623E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Eventpad/Eventpad.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -868,6 +994,7 @@
 		EBF87452242F81370056623E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Eventpad/Eventpad.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -882,6 +1009,44 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.olejiksa.Eventpad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EBFE6ED8248238AB00EE9B87 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B2FMGUSH44;
+				INFOPLIST_FILE = EventpadToday/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.olejiksa.Eventpad.EventpadToday;
+				PRODUCT_NAME = EventpadToday;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EBFE6ED9248238AB00EE9B87 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B2FMGUSH44;
+				INFOPLIST_FILE = EventpadToday/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.olejiksa.Eventpad.EventpadToday;
+				PRODUCT_NAME = EventpadToday;
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -904,6 +1069,15 @@
 			buildConfigurations = (
 				EBF87451242F81370056623E /* Debug */,
 				EBF87452242F81370056623E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EBFE6ED7248238AB00EE9B87 /* Build configuration list for PBXNativeTarget "EventpadToday" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBFE6ED8248238AB00EE9B87 /* Debug */,
+				EBFE6ED9248238AB00EE9B87 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

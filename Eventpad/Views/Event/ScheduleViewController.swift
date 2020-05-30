@@ -93,6 +93,7 @@ final class ScheduleViewController: UIViewController {
     @objc private func addDidTap() {
         let vc = NewEventViewController(conferenceID: parentID)
         let nvc = UINavigationController(rootViewController: vc)
+        nvc.modalPresentationStyle = .formSheet
         present(nvc, animated: true)
     }
 }

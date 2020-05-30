@@ -104,13 +104,17 @@ final class EventViewController: UIViewController {
         deleteButton.isHidden = !isManager
     }
     
-    @objc private func shareDidTap() {
+    @objc private func shareDidTap(sender: UIBarButtonItem) {
         guard let id = event.id else { return }
         let text = event.title
         let url = URL(string: "eventpad://event?id=\(id)")!
         let sharedObjects = [url as AnyObject, text as AnyObject]
         let activityViewController = UIActivityViewController(activityItems: sharedObjects, applicationActivities: nil)
-        activityViewController.popoverPresentationController?.sourceView = self.view
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            if activityViewController.responds(to: #selector(getter: UIViewController.popoverPresentationController)) {
+                activityViewController.popoverPresentationController?.barButtonItem = sender
+            }
+        }
         present(activityViewController, animated: true, completion: nil)
     }
     
@@ -348,6 +352,7 @@ final class EventViewController: UIViewController {
     @objc private func didEditTap() {
         let vc = NewEventViewController(conferenceID: 0)
         let nvc = UINavigationController(rootViewController: vc)
+        nvc.modalPresentationStyle = .formSheet
         present(nvc, animated: true)
     }
     

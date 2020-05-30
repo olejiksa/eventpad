@@ -27,7 +27,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        window?.rootViewController = TabBarFactory.tabBarController()
+        window?.rootViewController = TabBarBuilder.build()
         window?.makeKeyAndVisible()
         window?.windowScene = windowScene
         
@@ -96,7 +96,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
             window = UIWindow(frame: UIScreen.main.bounds)
             
-            tabBarController = TabBarFactory.tabBarController()
+            tabBarController = TabBarBuilder.build()
             window?.rootViewController = tabBarController
             window?.makeKeyAndVisible()
         }

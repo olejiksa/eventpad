@@ -187,3 +187,15 @@ extension FavoritesViewController: UISearchResultsUpdating {
         tableView.reloadData()
     }
 }
+
+
+// MARK: - UISplitViewControllerDelegate
+
+extension FavoritesViewController: UISplitViewControllerDelegate {
+    
+    func splitViewController(_ splitViewController: UISplitViewController,
+                             collapseSecondary secondaryViewController: UIViewController,
+                             onto primaryViewController: UIViewController) -> Bool {
+        return true
+    }
+}

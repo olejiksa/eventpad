@@ -12,7 +12,7 @@ struct RequestFactory {
     
     static let endpointTerms = "https://vk.com/@hseapp-terms"
     static let endpointPrivacy = "https://vk.com/@hseapp-privacy"
-    static let endpointRoot = "http://54.93.249.91:8080/api/"
+    static let endpointRoot = "http://52.59.138.34:8080/api/"
     
     
     // MARK: Credentials

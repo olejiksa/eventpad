@@ -33,7 +33,9 @@ final class SearchViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
        super.viewDidAppear(animated)
         
-       searchController.searchBar.becomeFirstResponder()
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            searchController.searchBar.becomeFirstResponder()
+        }
     }
     
     private func setupNavigation() {
@@ -221,5 +223,17 @@ extension SearchViewController: UITableViewDelegate {
         }
         
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+
+// MARK: - UISplitViewControllerDelegate
+
+extension SearchViewController: UISplitViewControllerDelegate {
+    
+    func splitViewController(_ splitViewController: UISplitViewController,
+                             collapseSecondary secondaryViewController: UIViewController,
+                             onto primaryViewController: UIViewController) -> Bool {
+        return true
     }
 }

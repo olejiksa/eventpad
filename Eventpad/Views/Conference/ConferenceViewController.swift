@@ -77,6 +77,7 @@ final class ConferenceViewController: UIViewController {
     @objc private func didEditTap() {
         let vc = NewConferenceViewController(mode: .edit(conference))
         let nvc = UINavigationController(rootViewController: vc)
+        nvc.modalPresentationStyle = .formSheet
         present(nvc, animated: true)
     }
     
@@ -115,10 +116,12 @@ final class ConferenceViewController: UIViewController {
         if Global.accessToken == nil {
             let vc = AuthViewController()
             let nvc = UINavigationController(rootViewController: vc)
+            nvc.modalPresentationStyle = .formSheet
             present(nvc, animated: true)
         } else if let tariffs = conference.tariffs {
             let vc = PurchaseViewController(tariffs: tariffs, conferenceID: conference.id!)
             let nvc = UINavigationController(rootViewController: vc)
+            nvc.modalPresentationStyle = .formSheet
             present(nvc, animated: true)
         }
     }
@@ -137,13 +140,17 @@ final class ConferenceViewController: UIViewController {
         mapItem.openInMaps(launchOptions: options)
     }
     
-    @objc private func shareDidTap() {
+    @objc private func shareDidTap(sender: UIBarButtonItem) {
         guard let id = conference.id else { return }
         let text = conference.title
         let url = URL(string: "eventpad://conference?id=\(id)")!
         let sharedObjects = [url as AnyObject, text as AnyObject]
         let activityViewController = UIActivityViewController(activityItems: sharedObjects, applicationActivities: nil)
-        activityViewController.popoverPresentationController?.sourceView = self.view
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            if activityViewController.responds(to: #selector(getter: UIViewController.popoverPresentationController)) {
+                activityViewController.popoverPresentationController?.barButtonItem = sender
+            }
+        }
         present(activityViewController, animated: true, completion: nil)
     }
     

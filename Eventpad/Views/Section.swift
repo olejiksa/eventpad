@@ -12,7 +12,7 @@ protocol Section {
     
     var numberOfItems: Int { get }
     
-    func layoutSection() -> NSCollectionLayoutSection
+    func layoutSection(_ view: UIView) -> NSCollectionLayoutSection
     func configureCell(collectionView: UICollectionView,
                        indexPath: IndexPath) -> UICollectionViewCell
 }
@@ -27,11 +27,11 @@ struct EventSection: Section {
         self.conference = conference
     }
 
-    func layoutSection() -> NSCollectionLayoutSection {
+    func layoutSection(_ view: UIView) -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
-        let height = UIScreen.main.bounds.width - 17.5
+        let height = view.bounds.width - 17.5
         
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(height))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])

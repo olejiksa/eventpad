@@ -141,7 +141,7 @@ final class AccountViewController: UIViewController {
         }
     }
     
-    @objc private func shareDidTap() {
+    @objc private func shareDidTap(sender: UIBarButtonItem) {
         let text = user.name + " " + user.surname
         let url: URL
         switch role {
@@ -154,14 +154,19 @@ final class AccountViewController: UIViewController {
         
         let sharedObjects = [url as AnyObject, text as AnyObject]
         let activityViewController = UIActivityViewController(activityItems: sharedObjects, applicationActivities: nil)
-        activityViewController.popoverPresentationController?.sourceView = self.view
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            if activityViewController.responds(to: #selector(getter: UIViewController.popoverPresentationController)) {
+                activityViewController.popoverPresentationController?.barButtonItem = sender
+            }
+        }
         present(activityViewController, animated: true, completion: nil)
     }
     
     @objc private func editDidTap() {
         let vc = SignUpViewController(mode: .edit(user))
         let nvc = UINavigationController(rootViewController: vc)
-        self.present(nvc, animated: true)
+        nvc.modalPresentationStyle = .formSheet
+        present(nvc, animated: true)
     }
     
     @IBAction private func scannerDidTap() {
