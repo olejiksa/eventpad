@@ -88,7 +88,7 @@ final class NewEventViewController: UIViewController {
         if let datePicker = dateStartField.inputView as? UIDatePicker {
             let dateformatter = DateFormatter()
             dateformatter.dateStyle = .medium
-            dateformatter.timeStyle = .medium
+            dateformatter.timeStyle = .short
             dateStartField.text = dateformatter.string(from: datePicker.date)
             dateStart = datePicker.date
         }
@@ -99,7 +99,7 @@ final class NewEventViewController: UIViewController {
     @objc private func tapDoneEnd() {
         if let datePicker = dateEndField.inputView as? UIDatePicker {
             let dateformatter = DateFormatter()
-            dateformatter.dateStyle = .short
+            dateformatter.dateStyle = .medium
             dateformatter.timeStyle = .short
             dateEndField.text = dateformatter.string(from: datePicker.date)
             dateEnd = datePicker.date

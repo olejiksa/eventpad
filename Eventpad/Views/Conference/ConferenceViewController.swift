@@ -85,18 +85,13 @@ final class ConferenceViewController: UIViewController {
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .short
         
-        var dateComponent = DateComponents()
-        dateComponent.year = 31
-        let dateStartFinal = Calendar.current.date(byAdding: dateComponent, to: conference.dateStart)!
-        let dateEndFinal = Calendar.current.date(byAdding: dateComponent, to: conference.dateEnd)!
-        
-        let dateStart = dateFormatter.string(from: dateStartFinal)
-        let dateEnd = dateFormatter.string(from: dateEndFinal)
+        let dateStart = dateFormatter.string(from: conference.dateStart)
+        let dateEnd = dateFormatter.string(from: conference.dateEnd)
         
         titleLabel.text = conference.title
         dateStartLabel.text = dateStart
         dateEndLabel.text = dateEnd
-        descriptionLabel.text = conference.description
+        descriptionLabel.text = conference.description.isEmpty ? "(отсутствует)" : conference.description
         categoryLabel.text = conference.category.description
         locationLabel.text = conference.location
         
@@ -158,14 +153,9 @@ final class ConferenceViewController: UIViewController {
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .short
         
-        var dateComponent = DateComponents()
-        dateComponent.year = 31
-        let dateStartFinal = Calendar.current.date(byAdding: dateComponent, to: conference.dateStart)!
-        let dateEndFinal = Calendar.current.date(byAdding: dateComponent, to: conference.dateEnd)!
-        
         createEventInTheCalendar(with: conference.title,
-                                 forDate: dateStartFinal,
-                                 toDate: dateEndFinal)
+                                 forDate: conference.dateStart,
+                                 toDate: conference.dateEnd)
     }
     
     @IBAction private func didRemindersTap() {
@@ -173,14 +163,9 @@ final class ConferenceViewController: UIViewController {
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .short
         
-        var dateComponent = DateComponents()
-        dateComponent.year = 31
-        let dateStartFinal = Calendar.current.date(byAdding: dateComponent, to: conference.dateStart)!
-        let dateEndFinal = Calendar.current.date(byAdding: dateComponent, to: conference.dateEnd)!
-        
         createEventInTheReminders(with: conference.title,
-                                  forDate: dateStartFinal,
-                                  toDate: dateEndFinal)
+                                  forDate: conference.dateStart,
+                                  toDate: conference.dateEnd)
     }
     
     @IBAction private func scheduleDidTap() {

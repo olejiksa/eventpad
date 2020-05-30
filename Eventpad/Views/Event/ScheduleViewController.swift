@@ -122,15 +122,8 @@ extension ScheduleViewController: UITableViewDataSource {
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .short
         
-        var dateComponent = DateComponents()
-        dateComponent.year = 31
-        let dateStartFinal = Calendar.current.date(byAdding: dateComponent, to: item.dateStart)!
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
-        let dateformatter = DateFormatter()
-        dateformatter.dateStyle = .medium
-        dateformatter.timeStyle = .medium
-        let dateString = dateformatter.string(from: dateStartFinal)
+        let dateString = dateFormatter.string(from: item.dateStart)
         cell.textLabel?.text = item.title
         cell.detailTextLabel?.text = dateString
         cell.accessoryType = .disclosureIndicator

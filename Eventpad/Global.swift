@@ -28,5 +28,5 @@ func convertImageToBase64(_ image: UIImage) -> String {
 func convertBase64ToImage(_ str: String) -> UIImage? {
     guard let dataDecoded = Data(base64Encoded: str, options: .ignoreUnknownCharacters) else { return nil }
     let decodedimage = UIImage(data: dataDecoded)
-    return decodedimage!
+    return decodedimage
 }

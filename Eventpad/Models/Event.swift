@@ -35,18 +35,10 @@ struct Event: Codable, Hashable {
     let photoUrl: String?
     
     var dateStartFormatted: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .short
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
         
-        var dateComponent = DateComponents()
-        dateComponent.year = 31
-        let dateStartFinal = Calendar.current.date(byAdding: dateComponent, to: dateStart)!
-        
-        let dateformatter = DateFormatter()
-        dateformatter.dateStyle = .medium
-        dateformatter.timeStyle = .none
-        
-        return dateformatter.string(from: dateStartFinal)
+        return formatter.string(from: dateStart)
     }
 }

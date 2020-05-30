@@ -87,13 +87,8 @@ final class TicketViewController: UIViewController {
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .short
         
-        var dateComponent = DateComponents()
-        dateComponent.year = 31
-        let dateStartFinal = Calendar.current.date(byAdding: dateComponent, to: conference.dateStart)!
-        let dateEndFinal = Calendar.current.date(byAdding: dateComponent, to: conference.dateEnd)!
-        
-        let dateStart = dateFormatter.string(from: dateStartFinal)
-        let dateEnd = dateFormatter.string(from: dateEndFinal)
+        let dateStart = dateFormatter.string(from: conference.dateStart)
+        let dateEnd = dateFormatter.string(from: conference.dateEnd)
         let datePurchase = dateFormatter.string(from: ticket.released)
         
         if let url = conference.photoUrl, let image = convertBase64ToImage(url) {
@@ -115,14 +110,9 @@ final class TicketViewController: UIViewController {
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .short
         
-        var dateComponent = DateComponents()
-        dateComponent.year = 31
-        let dateStartFinal = Calendar.current.date(byAdding: dateComponent, to: conference.dateStart)!
-        let dateEndFinal = Calendar.current.date(byAdding: dateComponent, to: conference.dateEnd)!
-        
         createEventInTheCalendar(with: conference.title,
-                                 forDate: dateStartFinal,
-                                 toDate: dateEndFinal)
+                                 forDate: conference.dateStart,
+                                 toDate: conference.dateEnd)
     }
     
     @IBAction func reminderDidTap() {
@@ -130,14 +120,9 @@ final class TicketViewController: UIViewController {
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .short
         
-        var dateComponent = DateComponents()
-        dateComponent.year = 31
-        let dateStartFinal = Calendar.current.date(byAdding: dateComponent, to: conference.dateStart)!
-        let dateEndFinal = Calendar.current.date(byAdding: dateComponent, to: conference.dateEnd)!
-        
         createEventInTheReminders(with: conference.title,
-                                  forDate: dateStartFinal,
-                                  toDate: dateEndFinal)
+                                  forDate: conference.dateStart,
+                                  toDate: conference.dateEnd)
     }
     
     @IBAction func scheduleDidTap() {

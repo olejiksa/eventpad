@@ -16,7 +16,7 @@ final class NewConferenceViewController: UIViewController {
     
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var titleTextField: UITextField!
-    @IBOutlet private weak var descriptionTextField: UITextField!
+    @IBOutlet private weak var descriptionTextView: UITextView!
     @IBOutlet private weak var categoryTextField: UITextField!
     @IBOutlet private weak var locationTextField: UITextField!
     @IBOutlet private weak var dateStartTextField: UITextField!
@@ -52,13 +52,13 @@ final class NewConferenceViewController: UIViewController {
         super.viewDidLoad()
 
         setupNavigation()
+        setupView()
         setupCategoryTextField()
         setupDateTextFields()
         setupFormHelper()
         setupKeyboard()
         setupPicker()
         setupImagePicker()
-        setupView()
     }
     
     private func setupImagePicker() {
@@ -86,7 +86,6 @@ final class NewConferenceViewController: UIViewController {
     
     private func setupFormHelper() {
         let textFields: [UITextField] = [titleTextField,
-                                         descriptionTextField,
                                          categoryTextField,
                                          locationTextField,
                                          dateStartTextField,
@@ -101,7 +100,7 @@ final class NewConferenceViewController: UIViewController {
         guard
             let user = userDefaultsService.getUser(),
             let title = titleTextField.text,
-            let description = descriptionTextField.text,
+            let description = descriptionTextView.text,
             let categoryName = categoryTextField.text,
             let category = Category(string: categoryName),
             let location = locationTextField.text,
@@ -118,6 +117,12 @@ final class NewConferenceViewController: UIViewController {
             photoUrl = ""
         }
         
+        var dateComponent = DateComponents()
+        dateComponent.year = 31
+        dateComponent.day = 1
+        let dateStartFinal = Calendar.current.date(byAdding: dateComponent, to: dateStart)!
+        let dateEndFinal = Calendar.current.date(byAdding: dateComponent, to: dateEnd)!
+        
         if let conference = conference {
             let conference = Conference(id: conference.id,
                                         title: title,
@@ -125,8 +130,8 @@ final class NewConferenceViewController: UIViewController {
                                         category: category,
                                         tariffs: nil,
                                         location: location,
-                                        dateStart: dateStart,
-                                        dateEnd: dateEnd,
+                                        dateStart: dateStartFinal,
+                                        dateEnd: dateEndFinal,
                                         isCancelled: false,
                                         organizerName: user.username,
                                         organizerID: nil,
@@ -139,8 +144,8 @@ final class NewConferenceViewController: UIViewController {
                                         category: category,
                                         tariffs: nil,
                                         location: location,
-                                        dateStart: dateStart,
-                                        dateEnd: dateEnd,
+                                        dateStart: dateStartFinal,
+                                        dateEnd: dateEndFinal,
                                         isCancelled: false,
                                         organizerName: user.username,
                                         organizerID: nil,
@@ -172,11 +177,11 @@ final class NewConferenceViewController: UIViewController {
     }
     
     private func setupDateTextFields() {
-        dateStartTextField.setInputViewDatePicker(target: self,
-                                                  selector: #selector(tapDoneStart))
+        dateStartTextField.setStartInputViewDatePicker(target: self,
+                                                       selector: #selector(tapDoneStart), date: conference?.dateStart)
         
-        dateEndTextField.setInputViewDatePicker(target: self,
-                                                selector: #selector(tapDoneEnd))
+        dateEndTextField.setEndInputViewDatePicker(target: self,
+                                                   selector: #selector(tapDoneEnd), date: conference?.dateEnd)
     }
     
     private func setupKeyboard() {
@@ -186,11 +191,16 @@ final class NewConferenceViewController: UIViewController {
     }
     
     private func setupView() {
+        descriptionTextView.layer.cornerRadius = 5
+        descriptionTextView.layer.borderColor = UIColor.gray.withAlphaComponent(0.5).cgColor
+        descriptionTextView.layer.borderWidth = 0.5
+        descriptionTextView.clipsToBounds = true
+        
         switch mode {
         case .edit(let conference):
             self.conference = conference
             titleTextField.text = conference.title
-            descriptionTextField.text = conference.description
+            descriptionTextView.text = conference.description
             if let photoUrl = conference.photoUrl {
                 avatarImageView.image = convertBase64ToImage(photoUrl)
                 avatarView.isHidden = avatarImageView.image == nil
@@ -199,14 +209,12 @@ final class NewConferenceViewController: UIViewController {
             categoryTextField.text = conference.category.description
             locationTextField.text = conference.location
             
-            var dateComponent = DateComponents()
-            dateComponent.year = 31
-            dateStart = Calendar.current.date(byAdding: dateComponent, to: conference.dateStart)!
-            dateEnd = Calendar.current.date(byAdding: dateComponent, to: conference.dateEnd)!
+            dateStart = conference.dateStart
+            dateEnd = conference.dateEnd
             
             let dateformatter = DateFormatter()
             dateformatter.dateStyle = .medium
-            dateformatter.timeStyle = .medium
+            dateformatter.timeStyle = .short
             dateStartTextField.text = dateformatter.string(from: dateStart!)
             dateEndTextField.text = dateformatter.string(from: dateEnd!)
             
@@ -273,9 +281,14 @@ final class NewConferenceViewController: UIViewController {
         if let datePicker = dateStartTextField.inputView as? UIDatePicker {
             let dateformatter = DateFormatter()
             dateformatter.dateStyle = .medium
-            dateformatter.timeStyle = .medium
+            dateformatter.timeStyle = .short
             dateStartTextField.text = dateformatter.string(from: datePicker.date)
             dateStart = datePicker.date
+            dateEnd = datePicker.date.addingTimeInterval(3600)
+            if let dateEnd = dateEnd {
+                (dateEndTextField.inputView as? UIDatePicker)?.date = dateEnd
+                dateEndTextField.text = dateformatter.string(from: dateEnd)
+            }
         }
         
         dateStartTextField.resignFirstResponder()
@@ -285,7 +298,7 @@ final class NewConferenceViewController: UIViewController {
     @objc private func tapDoneEnd() {
         if let datePicker = dateEndTextField.inputView as? UIDatePicker {
             let dateformatter = DateFormatter()
-            dateformatter.dateStyle = .short
+            dateformatter.dateStyle = .medium
             dateformatter.timeStyle = .short
             dateEndTextField.text = dateformatter.string(from: datePicker.date)
             dateEnd = datePicker.date
@@ -339,11 +352,41 @@ extension NewConferenceViewController: UIPickerViewDelegate {
 
 private extension UITextField {
     
-    func setInputViewDatePicker(target: Any, selector: Selector) {
+    func setStartInputViewDatePicker(target: Any, selector: Selector, date: Date? = nil) {
         let screenWidth = UIScreen.main.bounds.width
         let rect = CGRect(x: 0, y: 0, width: screenWidth, height: 216)
         let datePicker = UIDatePicker(frame: rect)
         datePicker.datePickerMode = .dateAndTime
+        if let date = date {
+            datePicker.date = date
+        }
+        inputView = datePicker
+        
+        let toolBarRect = CGRect(x: 0.0, y: 0.0, width: screenWidth, height: 44.0)
+        let toolBar = UIToolbar(frame: toolBarRect)
+        let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                                       target: nil,
+                                       action: nil)
+        let cancel = UIBarButtonItem(title: "Cancel",
+                                     style: .plain,
+                                     target: nil,
+                                     action: #selector(tapCancel))
+        let barButton = UIBarButtonItem(title: "Done",
+                                        style: .plain,
+                                        target: target,
+                                        action: selector)
+        toolBar.setItems([cancel, flexible, barButton], animated: false)
+        inputAccessoryView = toolBar
+    }
+    
+    func setEndInputViewDatePicker(target: Any, selector: Selector, date: Date? = nil) {
+        let screenWidth = UIScreen.main.bounds.width
+        let rect = CGRect(x: 0, y: 0, width: screenWidth, height: 216)
+        let datePicker = UIDatePicker(frame: rect)
+        datePicker.datePickerMode = .dateAndTime
+        if let date = date {
+            datePicker.date = date
+        }
         inputView = datePicker
         
         let toolBarRect = CGRect(x: 0.0, y: 0.0, width: screenWidth, height: 44.0)

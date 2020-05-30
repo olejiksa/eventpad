@@ -87,13 +87,8 @@ final class EventViewController: UIViewController {
             imageView.image = image
         }
         
-        var dateComponent = DateComponents()
-        dateComponent.year = 31
-        let dateStartFinal = Calendar.current.date(byAdding: dateComponent, to: event.dateStart)!
-        let dateEndFinal = Calendar.current.date(byAdding: dateComponent, to: event.dateEnd)!
-        
-        let dateStart = dateFormatter.string(from: dateStartFinal)
-        let dateEnd = dateFormatter.string(from: dateEndFinal)
+        let dateStart = dateFormatter.string(from: event.dateStart)
+        let dateEnd = dateFormatter.string(from: event.dateEnd)
         
         titleLabel.text = event.title
         dateStartLabel.text = dateStart
@@ -175,14 +170,9 @@ final class EventViewController: UIViewController {
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .short
         
-        var dateComponent = DateComponents()
-        dateComponent.year = 31
-        let dateStartFinal = Calendar.current.date(byAdding: dateComponent, to: event.dateStart)!
-        let dateEndFinal = Calendar.current.date(byAdding: dateComponent, to: event.dateEnd)!
-        
         createEventInTheCalendar(with: event.title,
-                                 forDate: dateStartFinal,
-                                 toDate: dateEndFinal)
+                                 forDate: event.dateStart,
+                                 toDate: event.dateEnd)
     }
     
     @IBAction private func remindersDidTap() {
@@ -190,14 +180,9 @@ final class EventViewController: UIViewController {
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .short
         
-        var dateComponent = DateComponents()
-        dateComponent.year = 31
-        let dateStartFinal = Calendar.current.date(byAdding: dateComponent, to: event.dateStart)!
-        let dateEndFinal = Calendar.current.date(byAdding: dateComponent, to: event.dateEnd)!
-        
         createEventInTheReminders(with: event.title,
-                                  forDate: dateStartFinal,
-                                  toDate: dateEndFinal)
+                                  forDate: event.dateStart,
+                                  toDate: event.dateEnd)
     }
     
     @IBAction private func scheduleDidTap() {
